@@ -1,7 +1,7 @@
 # Developer Experience
 
 ## Credited Contributors
-  @Benjmhart @AdsIO @francolq @workshop-maybe @nrutledge @scarmuega @lgodlab @colll78 @waalge
+** @Benjmhart @AdsIO @francolq @workshop-maybe @nrutledge @scarmuega @lgodlab @colll78 @waalge
   
 
 
