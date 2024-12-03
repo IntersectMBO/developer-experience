@@ -1,4 +1,17 @@
-# Developer-Experience-Working-Group
+# Developer Experience
+
+## Credited Contributors
+  @Benjmhart @AdsIO @francolq @workshop-maybe @nrutledge @scarmuega @lgodlab @colll78 @waalge
+  
+
+
+
+
+
+
+
+
+# Developer-Experience-Working-Group (Archive)
 
 Welcome to the Cardano Developer Experience Working Group.
 
