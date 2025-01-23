@@ -46,7 +46,7 @@ We believe in transparency and sharing our personal experiences. These interview
 
 ## 🤝 How to Get Involved
 - **Meetings**: [tobediscussed]
-- **GitHub**: Most discussions will happen in Github issues  and pull requests. Issues are the problems faced by the Cardano Devleoper community and PR's propose solutions.Participate in discussions and contribute to projects
+- **GitHub**: Most discussions will happen in Github issues  and pull requests. Issues are the problems faced by the Cardano Developer community and PR's propose solutions.Participate in discussions and contribute to projects
 - **Discord**: [Dev-Ex WG](https://discord.com/channels/1136727663583698984/1250047836339306526)
 - **Share Feedback**: Share your feedback on our discord and help us improve the ecosystem.
 
