@@ -2,7 +2,7 @@
 
 ## 🚀 What We Do
 
-Currently Contributors are disengaged with the working group due to mismatch between the existing working group model and the principle of incentivised participation that is presented at cardano.org website. To address this issue in Q1 and Q2 2025 the working group will bootstrap incentivisation mechanism inspired by the [Gimbalabs Governance Process](). 
+Currently Contributors are disengaged with the working group due to mismatch between the existing working group model and the principle of incentivised participation that is presented at cardano.org website. To address this issue in Q1 and Q2 2025 the working group will bootstrap incentivisation mechanism inspired by the [Gimbalabs Governance Process](https://www.youtube.com/watch?v=_uPnn4FcxPM&list=PLCCIAmutGEbdijNNWGEfJMTpn9KVttV3t). 
 
 ## 🎯 Our Mission 
 We are a community of `Developer Advocates` from `IntersectMBO` focused on enhancing the developer experience within the Cardano ecosystem. Our goal is to identify, address, and improve key aspects of the development process to make building on Cardano more accessible, efficient, and rewarding.
