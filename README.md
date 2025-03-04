@@ -1,5 +1,9 @@
 # Welcome to the Intersect MBO Developer Experience Working Group
 
+## 🚀 What We Do
+
+Currently Contributors are disengaged with the working group due to mismatch between the existing working group model and the principle of incentivised participation that is presented at cardano.org website. To address this issue in Q1 and Q2 2025 the working group will bootstrap incentivisation mechanism inspired by the [Gimbalabs Governance Process](). 
+
 ## 🎯 Our Mission 
 We are a community of `Developer Advocates` from `IntersectMBO` focused on enhancing the developer experience within the Cardano ecosystem. Our goal is to identify, address, and improve key aspects of the development process to make building on Cardano more accessible, efficient, and rewarding.
 
@@ -25,17 +29,6 @@ We believe in transparency and sharing our personal experiences. These interview
    - **LinkedIn**  : [Udai's LinkedIn](https://www.linkedin.com/in/solanki/)  
    - **Discord**   : thecoder0001
 
-## 🚀 What We Do
-
-- Identify and prioritize developer experience issues in the Cardano ecosystem.
-- Propose and implement solutions to improve tooling, documentation, and workflows.
-- Foster collaboration between developers, projects, and stakeholders.
-- Support multi-language integration.
-- Develop and workshop a Developer Thriving Framework to address social barriers and improve community engagement.
-- Focus on the human component of developer experience, beyond just documentation and technology.
-- Organize collaborative workshops to gather diverse perspectives and create shared understanding.
-- Address pain points and obstacles that hinder newcomer involvement and growth.
-- Build trust and break down silos within the developer community.
 
 ## 🔍 Key Focus Areas
 - **Onboarding and Documentation**
