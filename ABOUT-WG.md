@@ -6,8 +6,18 @@ The aim is to identify and develop strategies to improve the overall developer e
 [Open Source Committee (OSC)](https://committees.docs.intersectmbo.org/intersect-open-source-committee)
 
 # Working Group Lead
+The working group is led by the developer advocates team made up of:
+* [Alex](https://www.linkedin.com/in/alex-seregin/) 
+* [Suganya](https://www.linkedin.com/in/suganya-raju/)
+* [Bernard](https://www.linkedin.com/in/bernard-sibanda-954563243/)
+* [Udai](https://www.linkedin.com/in/solanki/)
 
 # Working Group Members
+ This group is a community led initiative and new members are welcome to join. Group meetings are open to join.
+ The current members are:
+* Tex M
+* Kelly Muhindi 
+* Jaiyeola Demilade
 
 
 # Working Group Objective/Desired Outcome
