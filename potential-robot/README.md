@@ -6,6 +6,8 @@ Adderall is a project that utilizes the eUTXO model and Helios, a domain-specifi
 
 Adderall is designed to simplify the development of decentralized applications on Cardano by leveraging the eUTXO model and Helios. The project includes a basic vesting contract example, which serves as a starting point for developers to create their own smart contracts. The use of Test-Driven Development (TDD) ensures that the contracts are reliable and maintainable.
 
+The target audience for Adderall includes developers who are familiar with Typescript and want to explore Cardano's smart contract capabilities. The project aims to provide a user-friendly experience for developers, enabling them to focus on building innovative applications without getting bogged down by complex infrastructure. It offers lightweight, easy-to-use tools that enable developers to quickly prototype and test their ideas.
+
 **Conclusion**
 
 Adding Adderall to the Developer Experience Working Group repository can foster collaboration, innovation, and growth within the Cardano development community. We believe that the project's unique approach to decentralized application development, focus on Test-Driven Development, and Helios-based architecture make it an excellent addition to the repository. We look forward to the opportunity to contribute to the growth and development of the Cardano ecosystem.
