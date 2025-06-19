@@ -1,6 +1,6 @@
 **Introduction**
 
-Adderall is a project that utilizes the eUTXO model and Helios, a domain-specific language, to architect decentralized applications on the Cardano blockchain. The project provides a simple dApp example, including a vesting contract, and encourages users to implement their own smart contracts using Test-Driven Development. We propose adding Adderall to the Developer Experience Working Group repository to promote collaboration, innovation, and growth within the Cardano development community.
+[Adderall](https://github.com/aleeusgr/potential-robot) is a project that utilizes the eUTXO model and Helios, a domain-specific language, to architect decentralized applications on the Cardano blockchain. The project provides a simple dApp example, including a vesting contract, and encourages users to implement their own smart contracts using Test-Driven Development. We propose adding Adderall to the Developer Experience Working Group repository to promote collaboration, innovation, and growth within the Cardano development community.
 
 **Project Overview**
 
