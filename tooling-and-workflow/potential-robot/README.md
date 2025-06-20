@@ -1,16 +1,20 @@
 **Introduction**
 
-[Adderall](https://github.com/aleeusgr/potential-robot) is a project that utilizes the eUTXO model and Helios, a domain-specific language, to architect decentralized applications on the Cardano blockchain. The project provides a simple dApp example, including a vesting contract, and encourages users to implement their own smart contracts using Test-Driven Development. We propose adding Adderall to the Developer Experience Working Group repository to enhance the resources available for Cardano developers and promote the use of Helios in building decentralized applications.
+[Adderall](https://github.com/aleeusgr/potential-robot) is the latest release of potential-robot, a lightweight template for Cardano smart contracts written in Helios. 
 
 **Project Overview**
 
-Adderall is designed to simplify the development of decentralized applications on Cardano by leveraging the eUTXO model and Helios. The project includes a basic vesting contract example, which serves as a starting point for developers to create their own smart contracts. The use of Test-Driven Development (TDD) ensures that the contracts are reliable and maintainable.
+Adderall is designed to simplify onboarding and reduce TTP (Time to Production) for developers working with Cardano smart contracts. It provides an easy-to-use framework for writing and testing smart contracts in Helios. The project includes a comprehensive suite of tests demonstrating how transactions are constructed, how to use the Helios library, and how to write tests using Vitest. It provides development environment setup that allows the user to start experimenting with Cardano smart contracts in under 3 minutes.
 
-The target audience for Adderall includes developers who are familiar with Typescript and want to explore Cardano's smart contract capabilities. The project aims to provide a user-friendly experience for developers, enabling them to focus on building innovative applications without getting bogged down by complex infrastructure. It offers lightweight, easy-to-use tools that enable developers to quickly prototype and test their ideas.
+**What is the value of this project?**
 
-**Conclusion**
+- it reduces the time to production for Cardano smart contracts. eUTXO model is complex in itself and this project minimizes the number of tools user needs to learn to get started.
+- Using Helios allows Typescript developers to write Cardano smart contracts in a familiar language, making it easier to onboard new developers.
+- Test-driven development (TDD) is a not common practice in Typescript development, but it is essential for Cardano smart contracts. This project demonstrates how to develop smart contracts using TDD principles, ensuring that contracts are reliable and maintainable.
 
-Adding Adderall to the Developer Experience Working Group repository can foster collaboration, innovation, and growth within the Cardano development community. We believe that the project's unique approach to decentralized application development, focus on Test-Driven Development, and Helios-based architecture make it an excellent addition to the repository. We look forward to the opportunity to contribute to the growth and development of the Cardano ecosystem.
+**Getting Started**
+
+Proceed with the link above to the [repository](https://github.com/aleeusgr/potential-robot). The repository includes detailed instructions on how to set up the project, run tests, and deploy contracts.
 
 **References**
 
