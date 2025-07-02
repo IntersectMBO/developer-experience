@@ -1,0 +1,140 @@
+{
+    "Main Function": {
+      "prefix": "main",
+      "body": [
+        "main :: IO ()",
+        "main = do",
+        "    ${0: write logic}"
+      ],
+      "description": "Main function template"
+    },
+    "Case Expression": {
+      "prefix": "case",
+      "body": [
+        "case ${1:expression} of",
+        "    ${2:pattern1} -> ${3:result1}",
+        "    _ -> ${4:defaultResult}"
+      ],
+      "description": "Case expression template"
+    },
+    "Data Declaration": {
+      "prefix": "data",
+      "body": [
+        "data ${1:TypeName} = ${2:Constructor1} | ${3:Constructor2}"
+      ],
+      "description": "Data type declaration"
+    },
+    "Newtype Declaration": {
+      "prefix": "newtype",
+      "body": [
+        "newtype ${1:TypeName} = ${2:Constructor} ${3:Type}"
+      ],
+      "description": "Newtype declaration"
+    },
+    "Type Synonym": {
+      "prefix": "type",
+      "body": [
+        "type ${1:TypeName} = ${2:ExistingType}"
+      ],
+      "description": "Type synonym declaration"
+    },
+    "Class Declaration": {
+      "prefix": "class",
+      "body": [
+        "class ${1:ClassName} ${2:a} where",
+        "    ${3:method} :: ${4:a} -> ${5:Type}"
+      ],
+      "description": "Class declaration"
+    },
+    "Instance Declaration": {
+      "prefix": "instance",
+      "body": [
+        "instance ${1:ClassName} ${2:TypeName} where",
+        "    ${3:method} = ${4:implementation}"
+      ],
+      "description": "Instance declaration"
+    },
+    "If Expression": {
+      "prefix": "if",
+      "body": [
+        "if ${1:condition}",
+        "    then ${2:expression1}",
+        "    else ${3:expression2}"
+      ],
+      "description": "If expression template"
+    },
+    "Let Expression": {
+      "prefix": "let",
+      "body": [
+        "let ${1:variable} = ${2:expression}",
+        "in ${3:expression}"
+      ],
+      "description": "Let expression template"
+    },
+    "Where Clause": {
+      "prefix": "where",
+      "body": [
+        "${1:expression}",
+        "    where",
+        "        ${2:variable} = ${3:expression}"
+      ],
+      "description": "Where clause template"
+    },
+    "Module Declaration": {
+      "prefix": "module",
+      "body": [
+        "module ${1:module_name} (${2:functions}) where $0"
+      ],
+      "description": "Module declaration"
+    },
+    "Import Statement": {
+      "prefix": "import",
+      "body": [
+        "import ${1:module_name}"
+      ],
+      "description": "Import statement"
+    },
+    "Forall": {
+      "prefix": "forall",
+      "body": [
+        "forall ${1:a}. ${2:a} -> ${3:a}"
+      ],
+      "description": "Forall declaration"
+    },
+    "Guard": {
+      "prefix": "guard",
+      "body": [
+        "${1:condition} = if ${1:condition} then ${2:return ()} else ${3:mzero}"
+      ],
+      "description": "Guard expression template"
+    },
+    "language pragmas": {
+      "prefix": "language pragmas",
+      "body": [
+        "{-# LANGUAGE ${0:pragmas_name} #-}"
+      ],
+      "description": "language pragmas in Haskell with placeholder"
+    },
+    "Print Function": {
+      "prefix": "print",
+      "body": [
+        "print ${1:integer}"
+      ],
+      "description": "Print function"
+    },
+    "PutStr Function": {
+      "prefix": "putStr",
+      "body": [
+        "putStr ${1:string}"
+      ],
+      "description": "putStr function"
+    },
+    "PutStrLn Function": {
+      "prefix": "putStrLn",
+      "body": [
+        "putStrLn ${1:string}"
+      ],
+      "description": "putStrLn function"
+    }
+  }
+  

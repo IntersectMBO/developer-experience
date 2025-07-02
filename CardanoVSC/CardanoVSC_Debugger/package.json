@@ -1,0 +1,182 @@
+{
+  "name": "cardanovsc-debugger",
+  "displayName": "CardanoVSC_Debugger",
+  "description": "Plutus and Haskell  debugger extension",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "icon": "media/cardanovscdebugger.png",
+  "keywords": [
+    "Plutus",
+    "debug",
+    "CardanoVSC",
+    "cardanovsc",
+    "cardano",
+    "blockchain",
+    "haskell",
+    "plutus",
+    "cardanovsc_debugger",
+    "CardanoVSC_Debugger",
+    "ghci",
+    "cabal",
+    "debugger"
+  ],
+  "publisher": "AIQUANT-TECHNOLOGIES",
+  "license": "MIT",
+  "categories": [
+    "Debuggers"
+  ],
+  "extensionDependencies": [
+    "AIQUANT-TECHNOLOGIES.cardanovsc"
+  ],
+  "activationEvents": [
+    "onDebugResolve:haskell",
+    "onLanguage:haskell"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AIQUANT-Tech/CardanoVSC/tree/main/cardanovsc_debugger"
+  },
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "haskell",
+        "extensions": [
+          ".hs"
+        ],
+        "aliases": [
+          "Haskell"
+        ]
+      }
+    ],
+    "breakpoints": [
+      {
+        "language": "haskell"
+      }
+    ],
+    "debuggers": [
+      {
+        "type": "haskell",
+        "label": "Haskell Debugger",
+        "program": "./out/debugAdapter.js",
+        "runtime": "node",
+        "languages": [
+          "haskell"
+        ],
+        "configurationAttributes": {
+          "launch": {
+            "required": [
+              "program"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "haskell"
+                ]
+              },
+              "request": {
+                "type": "string",
+                "enum": [
+                  "launch"
+                ]
+              },
+              "program": {
+                "type": "string",
+                "description": "Path to the Haskell program to debug"
+              },
+              "showIO": {
+                "type": "boolean",
+                "default": true,
+                "description": "Display I/O output from the program"
+              },
+              "cwd": {
+                "type": "string",
+                "description": "Working directory for the debuggee"
+              },
+              "activeFile": {
+                "type": "string",
+                "description": "Path to the active file being debugged"
+              }
+            }
+          }
+        },
+        "initialConfigurations": [
+          {
+            "type": "haskell",
+            "request": "launch",
+            "name": "Debug Cabal Project",
+            "program": "cabal repl --repl-no-load",
+            "activeFile": "${file}",
+            "showIO": true,
+            "cwd": "${workspaceFolder}"
+          }
+        ],
+        "configurationSnippets": [
+          {
+            "label": "cardanovsc_debugger: Launch",
+            "description": "Debug a Haskell program",
+            "body": {
+              "type": "haskell",
+              "request": "launch",
+              "name": "Debug Cabal Project",
+              "program": "cabal repl --repl-no-load",
+              "activeFile": "${file}",
+              "showIO": true,
+              "cwd": "${workspaceFolder}"
+            }
+          }
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "cardanovscDebugger.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "cardanovscDebugger.getUtxoDetails",
+        "title": "Get latest UTXO Details",
+        "category": "cardanovsc_debugger"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/chai": "^5.2.1",
+    "@types/jest": "^29.5.14",
+    "@types/lodash": "^4.17.16",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.96.0",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "@vscode/debugadapter-testsupport": "^1.51.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.16.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.3.4",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@vscode/debugadapter": "^1.68.0",
+    "@vscode/debugprotocol": "^1.68.0",
+    "await-notify": "^1.0.1",
+    "axios": "^1.9.0",
+    "chai": "^5.2.0",
+    "lodash": "^4.17.21",
+    "rxjs": "^7.8.2",
+    "vscode-debugadapter": "^1.51.0",
+    "vscode-debugadapter-testsupport": "^1.51.0"
+  }
+}

@@ -1,0 +1,285 @@
+{
+  "name": "cardanovsc",
+  "displayName": "CardanoVSC",
+  "description": "supports in cardano development",
+
+  "version": "0.2.0",
+
+  "publisher": "AIQUANT-TECHNOLOGIES",
+  "license": "MIT",
+  "keywords": [
+    "CardanoVSC",
+    "cardanovsc",
+    "cardano",
+    "blockchain",
+    "haskell",
+    "plutus"
+  ],
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "icon": "media/icon1.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AIQUANT-Tech/CardanoVSC"
+  },
+  "activationEvents": [
+    
+  ],
+ 
+   "main": "./out/extension.js",
+  "contributes": {
+
+    "commands": [
+      {
+        "command": "cardanovsc.helloWorld",
+        "title": "cardanovsc: Hello World"
+      },
+      {
+        "command": "cardanovsc.get_block_details",
+        "title": "cardanovsc: Get Block Details"
+      },
+      {
+        "command": "cardanovsc.get_latest_block_details",
+        "title": "cardanovsc: Get Latest Block Details"
+      },
+      {
+        "command": "cardanovsc.get_address_balance",
+        "title": "cardanovsc: Get Address Balance"
+      },
+      {
+        "command": "cardanovsc.get_pool_details",
+        "title": "cardanovsc: Get Pool Details"
+      },
+      {
+        "command": "cardanovsc.get_pool_stats",
+        "title": "cardanovsc: Get Pool Stats"
+      },
+      {
+        "command": "cardanovsc.get_pools_list",
+        "title": "cardanovsc: Get Pools List"
+      },
+      {
+        "command": "cardanovsc.get_pools_expiring",
+        "title": "Get Pools Expiring"
+      },
+      {
+        "command": "cardanovsc.get_pools_expired",
+        "title": "cardanovsc: Get Pools Expired"
+      },
+      {
+        "command": "cardanovsc.get_asset_details",
+        "title": "cardanovsc: Get Asset Details"
+      },
+      {
+        "command": "cardanovsc.get_assets_by_policyId",
+        "title": "cardanovsc: Get Assets by PolicyId"
+      },
+      {
+        "command": "cardanovsc.get_assets_by_address",
+        "title": "cardanovsc: Get Assets by Address"
+      },
+      {
+        "command": "cardanovsc.get_transaction_details",
+        "title": "cardanovsc: Get Transaction Details"
+      },
+      {
+        "command": "cardanovsc.get_transaction_list_by_address",
+        "title": "cardanovsc: Get Transaction List by Address"
+      },
+      {
+        "command": "cardanovsc.get_stake_key_details",
+        "title": "cardanovsc: Get Stake Key Details"
+      },
+      {
+        "command": "cardanovsc.get_governance_action",
+        "title": "cardanovsc: Get Governance Action"
+      },
+      {
+        "command": "cardanovsc.get_dreps_list",
+        "title": "cardanovsc: Get dReps List"
+      },
+      {
+        "command": "cardanovsc.get_drep_information",
+        "title": "cardanovsc: Get dRep Information"
+      },
+      {
+        "command": "cardanovsc.get_committee_members",
+        "title": "cardanovsc: Get Committee Members"
+      },
+      {
+        "command": "cardanovsc.get_committee_information",
+        "title": "cardanovsc: Get Committee Information"
+      },
+      {
+        "command": "cardanovsc.get_cc_member_details",
+        "title": "cardanovsc: Get CCMember Details"
+      },
+      {
+        "command": "cardanovsc.get_cc_hot_details",
+        "title": "cardanovsc: Get CCHot Details"
+      },
+      {
+        "command": "cardanovsc.get_network_protocol_details",
+        "title": "cardanovsc: Get Network Protocol Details"
+      },
+      {
+        "command": "cardanovsc.get_network_details",
+        "title": "cardanovsc: Get Network Details"
+      },
+      {
+        "command": "cardanovsc.get_addresses_associated_with_stake_key",
+        "title": "cardanovsc: Get Addresses Associated with Stake Key"
+      },
+      {
+        "command": "cardanovsc.get_transaction_list_by_address",
+        "title": "cardanovsc: Get Transaction List by Address"
+      },
+      {
+        "command": "cardano.apiIntegration",
+        "title": "cardanovsc: cardanoScan api integration"
+      },
+      {
+        "command": "cardanovsc.deleteNetwork",
+        "title": "cardanovsc: Delete Cardano Network"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "CardanoVSC",
+          "title": "CardanoVSC",
+          "icon": "media/icon1.svg"
+        }
+      ]
+    },
+    "views": {
+      "CardanoVSC": [
+        {
+          "type": "webview",
+          "id": "cardanovsc.webview",
+          "name": "",
+          "icon": ""
+        }
+      ]
+    },
+    "languages": [
+      {
+        "id": "plutus",
+        "extensions": [
+          ".plutus"
+        ]
+      },
+      {
+        "id": "haskell",
+        "aliases": [
+          "Haskell",
+          "haskell"
+        ],
+        "extensions": [
+          ".hs",
+          ".hsig",
+          "hs-boot"
+        ],
+        "configuration": "./haskell-configuration.json"
+      },
+      {
+        "id": "cabal",
+        "aliases": [
+          "Cabal",
+          "cabal"
+        ],
+        "extensions": [
+          ".cabal"
+        ],
+        "configuration": "./cabal-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "plutus",
+        "scopeName": "source.plutus",
+        "path": "./syntaxes/plutus.tmLanguage.json"
+      },
+      {
+        "language": "haskell",
+        "scopeName": "source.haskell",
+        "path": "./syntaxes/haskell.tmLanguage.json"
+      },
+      
+     
+      {
+        "language": "cabal",
+        "scopeName": "source.cabal",
+        "path": "./syntaxes/cabal.tmLanguage.json"
+      }
+    
+
+    ],
+    "snippets": [
+      {
+        "language": "haskell",
+        "path": "./snippets/haskell.json"
+      }
+    ],
+    "configurationDefaults": {
+      "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "scope": "keyword.key",
+            "settings": {
+              "foreground": "#569CD6",
+              "fontStyle": "bold"
+            }
+          },
+          {
+            "scope": "punctuation.separator",
+            "settings": {
+              "foreground": "#D4D4D4",
+              "fontStyle": "bold"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/chai": "^5.0.1",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.17.14",
+    "@types/sinon": "^17.0.3",
+    "@types/vscode": "^1.96.0",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "chai": "^5.1.2",
+    "eslint": "^9.16.0",
+    "mocha": "^11.0.1",
+    "sinon": "^19.0.2",
+    "typescript": "^5.7.2",
+    "vscode-test": "^1.6.1"
+  },
+  "dependencies": {
+    "@blockfrost/blockfrost-js": "^5.7.0",
+    "axios": "^1.8.2",
+    "dotenv": "^16.4.7",
+    "fs": "^0.0.1-security",
+    "glob": "^11.0.1",
+    "lucid-cardano": "^0.10.11",
+    "path": "^0.12.7",
+    "lru-cache": "^11.0.2"
+
+  }
+}

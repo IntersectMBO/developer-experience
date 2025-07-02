@@ -1,0 +1,4902 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Cardanoscan API Service"
+  },
+  "servers": [
+    {
+      "url": "https://api.cardanoscan.io/api/v1"
+    }
+  ],
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Free",
+      "description": "Free API plan required to access these API's"
+    },
+    {
+      "name": "Pro",
+      "description": "Pro API plans required to access these API's"
+    }
+  ],
+  "paths": {
+    "/block": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get block details",
+        "description": "Get block details by providing either `blockHash`, `blockHeight`, or `absoluteSlot`. If none of these are provided, ensure both `epoch` and `slot` parameters are included.",
+        "parameters": [
+          {
+            "name": "blockHash",
+            "in": "query",
+            "description": "64 chars hex string",
+            "schema": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64
+            }
+          },
+          {
+            "name": "blockHeight",
+            "in": "query",
+            "description": "Block height number",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "absoluteSlot",
+            "in": "query",
+            "description": "Absolute slot number",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "epoch",
+            "in": "query",
+            "description": "Epoch number",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          {
+            "name": "slot",
+            "in": "query",
+            "description": "Slot number of the epoch",
+            "schema": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Block details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Block"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/Block"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/block/latest": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get latest block details",
+        "responses": {
+          "200": {
+            "description": "Latest block details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Block"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/Block"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/address/balance": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get address balance",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Address Balance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Address"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/Address"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pool": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get pool details",
+        "parameters": [
+          {
+            "name": "poolId",
+            "in": "query",
+            "description": "Hex representation of the pool id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 56,
+              "maxLength": 56
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pool details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pool"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/Pool"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pool/stats": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get pool stats",
+        "parameters": [
+          {
+            "name": "poolId",
+            "in": "query",
+            "description": "Hex representation of the pool id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 56,
+              "maxLength": 56
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Pool stats",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PoolStats"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/PoolStats"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pool/list": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get pools list",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "description": "Search term to filter pools"
+          },
+          {
+            "name": "retiredPools",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            },
+            "description": "Flag to include retired pools in the response"
+          },
+          {
+            "name": "sortBy",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["name", "margin", "pledge", "random"],
+              "default": "name"
+            },
+            "description": "Field to sort the response by"
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["asc", "desc"],
+              "default": "asc"
+            },
+            "description": "Sort order of the response"
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "description": "Page number to fetch"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 50,
+              "minimum": 1
+            },
+            "description": "Number of pools to fetch per page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "list of pools",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pageNo": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "pools": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Pool"
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/PoolList"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pool/list/expiring": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get pools which are set to expire.",
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "description": "Page number to fetch"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 50,
+              "minimum": 1
+            },
+            "description": "Number of pools to fetch per page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of expiring pools",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pageNo": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "pools": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "poolId": {
+                            "type": "string"
+                          },
+                          "epoch": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "pageNo": 1,
+                      "limit": 10,
+                      "count": 1,
+                      "pools": [
+                        {
+                          "poolId": "d39231fdecb829f683aae46c23ef651fbf40efe0071fad7909912c9b",
+                          "epoch": 526
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pool/list/expired": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get expired pools.",
+        "parameters": [
+          {
+            "name": "pageNo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "description": "Page number to fetch"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 50,
+              "minimum": 1
+            },
+            "description": "Number of pools to fetch per page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of expired pools",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pageNo": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "pools": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "poolId": {
+                            "type": "string"
+                          },
+                          "epoch": {
+                            "type": "integer"
+                          }
+                        }
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "pageNo": 1,
+                      "limit": 10,
+                      "count": 1,
+                      "pools": [
+                        {
+                          "poolId": "d39231fdecb829f683aae46c23ef651fbf40efe0071fad7909912c9b",
+                          "epoch": 526
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/asset": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get asset details",
+        "parameters": [
+          {
+            "name": "assetId",
+            "in": "query",
+            "description": "If assetId is not supplied, fingerprint of the asset is required",
+            "schema": {
+              "type": "string",
+              "minLength": 56
+            }
+          },
+          {
+            "name": "fingerprint",
+            "in": "query",
+            "description": "If fingerprint of the asset is not supplied, assetId is required",
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Asset details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Token"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/Token"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/asset/list/byPolicyId": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get assets by policyId",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "policyId",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 56,
+              "minLength": 56
+            }
+          },
+          {
+            "in": "query",
+            "name": "pageNo",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of assets under a policy",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pageNo": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "tokens": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Token"
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "pageNo": 1,
+                      "limit": 10,
+                      "count": 1,
+                      "tokens": [
+                        {
+                          "policyId": "5ac3d4bdca238105a040a565e5d7e734b7c9e1630aec7650e809e34a",
+                          "assetName": "6b697474656e5f6164615f6c71",
+                          "fingerprint": "5008e495175c394b19abdd76609aca1c7a6a982f",
+                          "assetId": "5ac3d4bdca238105a040a565e5d7e734b7c9e1630aec7650e809e34a6b697474656e5f6164615f6c71",
+                          "txCount": 8,
+                          "mintedOn": "2023-07-06T10:15:05.000Z",
+                          "totalSupply": "18446744073709551614"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/asset/list/byAddress": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get assets by address",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "address",
+            "description": "Hex representation of the address",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            }
+          },
+          {
+            "in": "query",
+            "name": "pageNo",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Asset balances of an address",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pageNo": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "tokens": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "policyId": {
+                            "type": "string"
+                          },
+                          "assetName": {
+                            "type": "string"
+                          },
+                          "fingerprint": {
+                            "type": "string"
+                          },
+                          "assetId": {
+                            "type": "string"
+                          },
+                          "balance": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "pageNo": 1,
+                      "limit": 10,
+                      "count": 1,
+                      "tokens": [
+                        {
+                          "policyId": "5ac3d4bdca238105a040a565e5d7e734b7c9e1630aec7650e809e34a",
+                          "assetName": "6b697474656e5f6164615f6c71",
+                          "fingerprint": "5008e495175c394b19abdd76609aca1c7a6a982f",
+                          "assetId": "5ac3d4bdca238105a040a565e5d7e734b7c9e1630aec7650e809e34a6b697474656e5f6164615f6c71",
+                          "balance": "500"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transaction": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get transaction details",
+        "parameters": [
+          {
+            "name": "hash",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Transaction"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/Transaction"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transaction/list": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get transaction list by address",
+        "parameters": [
+          {
+            "name": "address",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            }
+          },
+          {
+            "in": "query",
+            "name": "pageNo",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": ["asc", "desc"],
+              "default": "asc"
+            },
+            "description": "Sort order of the response"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transactions of an address",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pageNo": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "transactions": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Transaction"
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/TransactionList"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rewardAccount": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get stake key details",
+        "parameters": [
+          {
+            "name": "rewardAddress",
+            "in": "query",
+            "description": "Hex representation of the reward address",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 58
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stake key details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StakeKeyDetails"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "poolId": "bf94a435bab1bc756f2f61443cc26d857b2e227903d9f2f5f2e7b686",
+                      "rewardAddress": "e02f5fde105530993a262d744e534847794d477d2cc5a457312b2014b1",
+                      "stake": "10000000000000",
+                      "status": true,
+                      "rewardsAvailable": "0",
+                      "rewardsWithdrawn": "0"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/rewardAccount/addresses": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get addresses associated with a stake key",
+        "parameters": [
+          {
+            "name": "rewardAddress",
+            "in": "query",
+            "description": "Hex representation of the stake key",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 58
+            }
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "description": "Page number",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "Number of items per page",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Addresses associated with stake key",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "addresses": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Address"
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "pageNo": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "addresses": [
+                        {
+                          "balance": "10000000000000",
+                          "hash": "004da890918cb29f4446d07602a7c3877887326eb9e98394b8d6ce57b32f5fde105530993a262d744e534847794d477d2cc5a457312b2014b1"
+                        }
+                      ],
+                      "count": 1,
+                      "pageNo": 1,
+                      "limit": 20
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/network/state": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get network details",
+        "responses": {
+          "200": {
+            "description": "Network state details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkState"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "circulatingSupply": "37404996776693279",
+                      "reserves": "7595003223306721",
+                      "treasury": "1605867363924094",
+                      "liveCirculatingSupply": "35799129412769185"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/network/protocolParams": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get network protocol details",
+        "responses": {
+          "200": {
+            "description": "Network protocol details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkProtocol"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/NetworkProtocol"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/governance/ccHot": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get CCHot details",
+        "parameters": [
+          {
+            "name": "hotHex",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 58,
+              "maxLength": 58
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CCHot Details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CCHot"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "hotHex": "03f8f56120e1ec00feb088ece39ef14f07339afeb37b4e949ff12b89ff",
+                      "pub": "{\"script\":\"Plutus V2\",\"byteCode\":\"590ba801010033232323232323232323222593293232325333573466e1d2000002132323232323232328009919192999ab9a3370e900000109919191919191919191919191919191919999999999991999199199111111111111111400404201f00e806c03201700a804c02200f006802c0120070028008c004d5d080a18009aba1013302623232325333573466e1d2000002180098101aba100198029aba13574400213030491035054310035573c0046aae74004dd5000998130009aba101123232325333573466e1d2000002132328009919192999ab9a3370e90000010c004c08cd5d0800ccc0848c8c8c94ccd5cd19b87480000086002604e6ae840042a666ae68cdc3a4004004265003375a6ae8400a6eb4d5d0800cdd69aba13574400235744002260709201035054310035573c0046aae74004dd50009aba135744002130344901035054310035573c0046aae74004dd51aba100398039aba10029919192999ab9a3370e90000010c00054ccd5cd19b8748008008600a6eb8d5d0800854ccd5cd19b874801000860066ae8400426068921035054310035573c0046aae74004dd51aba10019980f3ae357426ae880046ae88004d5d100089817a481035054310035573c0046aae74004dd50009bad3574201e60026ae84038c004c005d69981200b1aba100c33301501975a6ae8402cc8c8c94ccd5cd19b87480000086002646464a666ae68cdc3a400000430013302e75a6ae84006605a6ae84d5d100084c0c12401035054310035573c0046aae74004dd51aba10019919192999ab9a3370e90000010c004cc0b9d69aba100198169aba13574400213030491035054310035573c0046aae74004dd51aba1357440021302d491035054310035573c0046aae74004dd51aba100a3302475c6ae84024ccc0548c8c8c94ccd5cd19b874800000860066eb8d5d0800854ccd5cd19b87480080086012603c6ae840042a666ae68cdc3a40080043007301d3574200215333573466e1d200600218009bad35742003301a357426ae880042a666ae68cdc3a4010004300b301c3574200215333573466e1d200a00218029bad357420033018357426ae880042605c9201035054310035573c0046aae74004dd50008131aba1008330010263574200e6eb8d5d080319980a80c1980a81491919192999ab9a3370e90000010c00854ccd5cd19b874800800860082a666ae68cdc3a400800430001302e4901035054310035573c0046aae74004dd50009aba1005330240143574200860046ae8400cc008d5d09aba2003301475c602aeb4d5d10009aba2001357440026ae88004d5d10009aba2001357440026ae88004d5d10009aba2001357440026ae88004d5d10009aba20011301a491035054310035573c0046aae74004dd51aba10099aba10089919192999ab9a3370e90000010c00cdd71aba10010a999ab9a3370e90010010c024c028d5d0800ccc01c058d5d09aba20010a999ab9a3370e90020010c01cc024d5d0800854ccd5cd19b874801800860026eb4d5d0800cc018d5d09aba20010a999ab9a3370e90040010c02cc020d5d0800854ccd5cd19b8748028008600a6eb4d5d0800cc010d5d09aba20010980d2481035054310035573c0046aae74004dd51aba13574401023232325333573466e1d20000021328009bad35742005300a357420033232325333573466e1d20000021328049980600f1aba10029aba1001998063ae357426ae880046ae8800454ccd5cd19b874800800860026601603a6ae84006646464a666ae68cdc3a40000043001375a6ae840066eb4d5d09aba200109810a481035054310035573c0046aae74004dd51aba13574400215333573466e1d20040021805999804806bad357420033300b75c6ae84d5d1000854ccd5cd19b8748018008600e6601603a6ae840042a666ae68cdc3a40100042646500d3300d01f357420073301a00f3574200533300b00f75a6ae840072646464a666ae68cdc3a40000043001375a6ae840066eb4d5d09aba200109811a481035054310035573c0046aae74004dd51aba135744003223301a0020010d5d10009aba200115333573466e1d200a00218029980580e9aba10019919192999ab9a3370e90000010998073ae35742002260429201035054310035573c0046aae74004dd51aba13574400215333573466e1d200c00218010980f2481035054310035573c0046aae74004dd51aba1357440023574400226034921035054310035573c0046aae74004dd50009119118011bab00130182233335573e0025000232801c004c018d55ce800cc014d55cf000a60086ae8800c6ae8400a0004646464a666ae68cdc3a4000004300d3007357420033300575a6ae84d5d1000854ccd5cd19b87480080086026600e6ae840066600aeb4d5d09aba20010a99199ab9a3370e90020018c00cc020d5d08014c004d5d09aba20020a999ab9a3370e9003001899402cc024d5d0801cc008d5d0800cdd69aba135744002357440042a666ae68cdc3a40100063009300835742005375a6ae84d5d1001054ccd5cd19b874802800c602a60106ae840082a666ae68cdc3a40180063011300835742005375a6ae84d5d1001054ccd5cd19b874803800c600a6eb8d5d08014dd71aba13574400415333573466e1d201000318039bae35742005375a6ae84d5d1001054ccd5cd19b874804800c600260106ae8400a60106ae84d5d1001054ccd5cd19b874805000c601e60106ae84008260329201035054310023232325333573466e1d200000218009bae357420021532333573466e1d2002003180298009aba10020a999ab9a3370e90020018c00cdd71aba100298009aba1357440041301d491035054310023232325333573466e1d2000002180098079aba10010a999ab9a3370e90010010c00854ccd5cd19b8748010008600826040921035054310035573c0046aae74004dd50009aab9e00235573a0026ea8004d55cf0011aab9d001375400244646464a666ae68cdc3a4004004300215333573466e1d2000002180098029aba10010980c249035054310035573c0046aae74004dd500091919192999ab9a3370e90000010c004c014d5d0800854ccd5cd19b87480080086006600a6ae840042a666ae68cdc3a40080043005375c6ae840042602c921035054310035573c0046aae74004dd500091919192999ab9a3370e90000010c004dd71aba10010a999ab9a3370e90010010c00cdd71aba10010980aa49035054310035573c0046aae74004dd500091919192999ab9a3370e90000010c004dd71aba10019bad357426ae8800426028921035054310035573c0046aae74004dd50009aba20011300f491035054310035573c0046aae74004dd5001488a4006450029400a450029400a4500291802c802488888888888888880401806112c800c4c0220052219002914800c88894ccd5cd19b874800a403244646603244b20031480024432005225333573466e3c0080244c01c0044c01800c006301822590018a40012219002912999ab9a3371e00400e20022600c00604c0420002601400e229344c02d2401035054350018049112999ab9a3370e900000089805a481035054330015333573466e20005200013300333702900000119b81480000044ca00266e1000c00666e10008004660080040026010444a666ae68cdc3a4000002200426600600266e180080048c88c008dd60009804111999aab9f00128001400cc010d5d08014c00cd5d100120004b2003180046004200123232325333573466e1d200000218010a999ab9a3370e90010010c0004c01d241035054310035573c0046aae74004dd5000911919192999ab9a3370e90000010c00854ccd5cd19b87480080086002600a6ae840042a666ae68cdc3a40080043004130074901035054310035573c0046aae74004dd500091919192999ab9a3370e90000010c004dd71aba10019bad357426ae880042600a921035054310035573c0046aae74004dd5000919319ab9c00180011918008009180111980100100099aa99a8910010891400400a00211212900280092211cc70ef82c7ff32b5dda84e3519d8d2b8cbd29c1d2a93cc2e1837971430048811e5e249e4b897fe25aea28119031cbb7931ccd4ae135caec5c90fabe3d23010001\"}",
+                      "votes": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/governance/ccMember": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get CCMember details",
+        "parameters": [
+          {
+            "name": "coldHex",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 58,
+              "maxLength": 58
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CCMember details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CCMember"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "hotHex": "03f8f56120e1ec00feb088ece39ef14f07339afeb37b4e949ff12b89ff",
+                      "coldHex": "137ceede7d6a89e006408e6b7c6acb3dd094b3f6817e43b4a36d01535b",
+                      "pub": "{\"script\":\"Plutus V2\",\"byteCode\":\"590ba801010033232323232323232323222593293232325333573466e1d2000002132323232323232328009919192999ab9a3370e900000109919191919191919191919191919191919999999999991999199199111111111111111400404201f00e806c03201700a804c02200f006802c0120070028008c004d5d080a18009aba1013302623232325333573466e1d2000002180098101aba100198029aba13574400213030491035054310035573c0046aae74004dd5000998130009aba101123232325333573466e1d2000002132328009919192999ab9a3370e90000010c004c08cd5d0800ccc0848c8c8c94ccd5cd19b87480000086002604e6ae840042a666ae68cdc3a4004004265003375a6ae8400a6eb4d5d0800cdd69aba13574400235744002260709201035054310035573c0046aae74004dd50009aba135744002130344901035054310035573c0046aae74004dd51aba100398039aba10029919192999ab9a3370e90000010c00054ccd5cd19b8748008008600a6eb8d5d0800854ccd5cd19b874801000860066ae8400426068921035054310035573c0046aae74004dd51aba10019980f3ae357426ae880046ae88004d5d100089817a481035054310035573c0046aae74004dd50009bad3574201e60026ae84038c004c005d69981200b1aba100c33301501975a6ae8402cc8c8c94ccd5cd19b87480000086002646464a666ae68cdc3a400000430013302e75a6ae84006605a6ae84d5d100084c0c12401035054310035573c0046aae74004dd51aba10019919192999ab9a3370e90000010c004cc0b9d69aba100198169aba13574400213030491035054310035573c0046aae74004dd51aba1357440021302d491035054310035573c0046aae74004dd51aba100a3302475c6ae84024ccc0548c8c8c94ccd5cd19b874800000860066eb8d5d0800854ccd5cd19b87480080086012603c6ae840042a666ae68cdc3a40080043007301d3574200215333573466e1d200600218009bad35742003301a357426ae880042a666ae68cdc3a4010004300b301c3574200215333573466e1d200a00218029bad357420033018357426ae880042605c9201035054310035573c0046aae74004dd50008131aba1008330010263574200e6eb8d5d080319980a80c1980a81491919192999ab9a3370e90000010c00854ccd5cd19b874800800860082a666ae68cdc3a400800430001302e4901035054310035573c0046aae74004dd50009aba1005330240143574200860046ae8400cc008d5d09aba2003301475c602aeb4d5d10009aba2001357440026ae88004d5d10009aba2001357440026ae88004d5d10009aba2001357440026ae88004d5d10009aba20011301a491035054310035573c0046aae74004dd51aba10099aba10089919192999ab9a3370e90000010c00cdd71aba10010a999ab9a3370e90010010c024c028d5d0800ccc01c058d5d09aba20010a999ab9a3370e90020010c01cc024d5d0800854ccd5cd19b874801800860026eb4d5d0800cc018d5d09aba20010a999ab9a3370e90040010c02cc020d5d0800854ccd5cd19b8748028008600a6eb4d5d0800cc010d5d09aba20010980d2481035054310035573c0046aae74004dd51aba13574401023232325333573466e1d20000021328009bad35742005300a357420033232325333573466e1d20000021328049980600f1aba10029aba1001998063ae357426ae880046ae8800454ccd5cd19b874800800860026601603a6ae84006646464a666ae68cdc3a40000043001375a6ae840066eb4d5d09aba200109810a481035054310035573c0046aae74004dd51aba13574400215333573466e1d20040021805999804806bad357420033300b75c6ae84d5d1000854ccd5cd19b8748018008600e6601603a6ae840042a666ae68cdc3a40100042646500d3300d01f357420073301a00f3574200533300b00f75a6ae840072646464a666ae68cdc3a40000043001375a6ae840066eb4d5d09aba200109811a481035054310035573c0046aae74004dd51aba135744003223301a0020010d5d10009aba200115333573466e1d200a00218029980580e9aba10019919192999ab9a3370e90000010998073ae35742002260429201035054310035573c0046aae74004dd51aba13574400215333573466e1d200c00218010980f2481035054310035573c0046aae74004dd51aba1357440023574400226034921035054310035573c0046aae74004dd50009119118011bab00130182233335573e0025000232801c004c018d55ce800cc014d55cf000a60086ae8800c6ae8400a0004646464a666ae68cdc3a4000004300d3007357420033300575a6ae84d5d1000854ccd5cd19b87480080086026600e6ae840066600aeb4d5d09aba20010a99199ab9a3370e90020018c00cc020d5d08014c004d5d09aba20020a999ab9a3370e9003001899402cc024d5d0801cc008d5d0800cdd69aba135744002357440042a666ae68cdc3a40100063009300835742005375a6ae84d5d1001054ccd5cd19b874802800c602a60106ae840082a666ae68cdc3a40180063011300835742005375a6ae84d5d1001054ccd5cd19b874803800c600a6eb8d5d08014dd71aba13574400415333573466e1d201000318039bae35742005375a6ae84d5d1001054ccd5cd19b874804800c600260106ae8400a60106ae84d5d1001054ccd5cd19b874805000c601e60106ae84008260329201035054310023232325333573466e1d200000218009bae357420021532333573466e1d2002003180298009aba10020a999ab9a3370e90020018c00cdd71aba100298009aba1357440041301d491035054310023232325333573466e1d2000002180098079aba10010a999ab9a3370e90010010c00854ccd5cd19b8748010008600826040921035054310035573c0046aae74004dd50009aab9e00235573a0026ea8004d55cf0011aab9d001375400244646464a666ae68cdc3a4004004300215333573466e1d2000002180098029aba10010980c249035054310035573c0046aae74004dd500091919192999ab9a3370e90000010c004c014d5d0800854ccd5cd19b87480080086006600a6ae840042a666ae68cdc3a40080043005375c6ae840042602c921035054310035573c0046aae74004dd500091919192999ab9a3370e90000010c004dd71aba10010a999ab9a3370e90010010c00cdd71aba10010980aa49035054310035573c0046aae74004dd500091919192999ab9a3370e90000010c004dd71aba10019bad357426ae8800426028921035054310035573c0046aae74004dd50009aba20011300f491035054310035573c0046aae74004dd5001488a4006450029400a450029400a4500291802c802488888888888888880401806112c800c4c0220052219002914800c88894ccd5cd19b874800a403244646603244b20031480024432005225333573466e3c0080244c01c0044c01800c006301822590018a40012219002912999ab9a3371e00400e20022600c00604c0420002601400e229344c02d2401035054350018049112999ab9a3370e900000089805a481035054330015333573466e20005200013300333702900000119b81480000044ca00266e1000c00666e10008004660080040026010444a666ae68cdc3a4000002200426600600266e180080048c88c008dd60009804111999aab9f00128001400cc010d5d08014c00cd5d100120004b2003180046004200123232325333573466e1d200000218010a999ab9a3370e90010010c0004c01d241035054310035573c0046aae74004dd5000911919192999ab9a3370e90000010c00854ccd5cd19b87480080086002600a6ae840042a666ae68cdc3a40080043004130074901035054310035573c0046aae74004dd500091919192999ab9a3370e90000010c004dd71aba10019bad357426ae880042600a921035054310035573c0046aae74004dd5000919319ab9c00180011918008009180111980100100099aa99a8910010891400400a00211212900280092211cc70ef82c7ff32b5dda84e3519d8d2b8cbd29c1d2a93cc2e1837971430048811e5e249e4b897fe25aea28119031cbb7931ccd4ae135caec5c90fabe3d23010001\"}",
+                      "anchor": {
+                        "url": "https://raw.githubusercontent.com/wafflepool-cardano/drep-demo/main/Dim_Rep_Sum.jsonld",
+                        "hash": "10dec86303fff4e5b7b185ede1e233a793ce40620a9c7c0d5ae414383a62d87c"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/governance/committee": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get Committee Information",
+        "responses": {
+          "200": {
+            "description": "Committee Information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Committee"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "status": 1,
+                      "updated": "2023-11-23T17:36:33.499Z",
+                      "threshold": 0.66,
+                      "constitution": {
+                        "anchor": {
+                          "hash": "f89cc2469ce31c3dfda2f3e0b56c5c8b4ee4f0e5f66c30a3f12a95298b01179e",
+                          "url": "https://raw.githubusercontent.com/carloslodelar/proposals/main/constitution.txt"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/governance/committee/members": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get Committee Members",
+        "parameters": [
+          {
+            "name": "includeExpired",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "description": "Page number to fetch"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 50,
+              "minimum": 1
+            },
+            "description": "Number of members to fetch per page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Committee Members",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pageNo": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "members": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/CommitteeMember"
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "pageNo": 1,
+                      "limit": 10,
+                      "count": 1,
+                      "members": [
+                        {
+                          "hotHex": "03f8f56120e1ec00feb088ece39ef14f07339afeb37b4e949ff12b89ff",
+                          "coldHex": "137ceede7d6a89e006408e6b7c6acb3dd094b3f6817e43b4a36d01535b",
+                          "pub": "{\"script\":\"Plutus V2\",\"byteCode\":\"590ba801010033232323232323232323222593293232325333573466e1d2000002132323232323232328009919192999ab9a3370e900000109919191919191919191919191919191919999999999991999199199111111111111111400404201f00e806c03201700a804c02200f006802c0120070028008c004d5d080a18009aba1013302623232325333573466e1d2000002180098101aba100198029aba13574400213030491035054310035573c0046aae74004dd5000998130009aba101123232325333573466e1d2000002132328009919192999ab9a3370e90000010c004c08cd5d0800ccc0848c8c8c94ccd5cd19b87480000086002604e6ae840042a666ae68cdc3a4004004265003375a6ae8400a6eb4d5d0800cdd69aba13574400235744002260709201035054310035573c0046aae74004dd50009aba135744002130344901035054310035573c0046aae74004dd51aba100398039aba10029919192999ab9a3370e90000010c00054ccd5cd19b8748008008600a6eb8d5d0800854ccd5cd19b874801000860066ae8400426068921035054310035573c0046aae74004dd51aba10019980f3ae357426ae880046ae88004d5d100089817a481035054310035573c0046aae74004dd50009bad3574201e60026ae84038c004c005d69981200b1aba100c33301501975a6ae8402cc8c8c94ccd5cd19b87480000086002646464a666ae68cdc3a400000430013302e75a6ae84006605a6ae84d5d100084c0c12401035054310035573c0046aae74004dd51aba10019919192999ab9a3370e90000010c004cc0b9d69aba100198169aba13574400213030491035054310035573c0046aae74004dd51aba1357440021302d491035054310035573c0046aae74004dd51aba100a3302475c6ae84024ccc0548c8c8c94ccd5cd19b874800000860066eb8d5d0800854ccd5cd19b87480080086012603c6ae840042a666ae68cdc3a40080043007301d3574200215333573466e1d200600218009bad35742003301a357426ae880042a666ae68cdc3a4010004300b301c3574200215333573466e1d200a00218029bad357420033018357426ae880042605c9201035054310035573c0046aae74004dd50008131aba1008330010263574200e6eb8d5d080319980a80c1980a81491919192999ab9a3370e90000010c00854ccd5cd19b874800800860082a666ae68cdc3a400800430001302e4901035054310035573c0046aae74004dd50009aba1005330240143574200860046ae8400cc008d5d09aba2003301475c602aeb4d5d10009aba2001357440026ae88004d5d10009aba2001357440026ae88004d5d10009aba2001357440026ae88004d5d10009aba20011301a491035054310035573c0046aae74004dd51aba10099aba10089919192999ab9a3370e90000010c00cdd71aba10010a999ab9a3370e90010010c024c028d5d0800ccc01c058d5d09aba20010a999ab9a3370e90020010c01cc024d5d0800854ccd5cd19b874801800860026eb4d5d0800cc018d5d09aba20010a999ab9a3370e90040010c02cc020d5d0800854ccd5cd19b8748028008600a6eb4d5d0800cc010d5d09aba20010980d2481035054310035573c0046aae74004dd51aba13574401023232325333573466e1d20000021328009bad35742005300a357420033232325333573466e1d20000021328049980600f1aba10029aba1001998063ae357426ae880046ae8800454ccd5cd19b874800800860026601603a6ae84006646464a666ae68cdc3a40000043001375a6ae840066eb4d5d09aba200109810a481035054310035573c0046aae74004dd51aba13574400215333573466e1d20040021805999804806bad357420033300b75c6ae84d5d1000854ccd5cd19b8748018008600e6601603a6ae840042a666ae68cdc3a40100042646500d3300d01f357420073301a00f3574200533300b00f75a6ae840072646464a666ae68cdc3a40000043001375a6ae840066eb4d5d09aba200109811a481035054310035573c0046aae74004dd51aba135744003223301a0020010d5d10009aba200115333573466e1d200a00218029980580e9aba10019919192999ab9a3370e90000010998073ae35742002260429201035054310035573c0046aae74004dd51aba13574400215333573466e1d200c00218010980f2481035054310035573c0046aae74004dd51aba1357440023574400226034921035054310035573c0046aae74004dd50009119118011bab00130182233335573e0025000232801c004c018d55ce800cc014d55cf000a60086ae8800c6ae8400a0004646464a666ae68cdc3a4000004300d3007357420033300575a6ae84d5d1000854ccd5cd19b87480080086026600e6ae840066600aeb4d5d09aba20010a99199ab9a3370e90020018c00cc020d5d08014c004d5d09aba20020a999ab9a3370e9003001899402cc024d5d0801cc008d5d0800cdd69aba135744002357440042a666ae68cdc3a40100063009300835742005375a6ae84d5d1001054ccd5cd19b874802800c602a60106ae840082a666ae68cdc3a40180063011300835742005375a6ae84d5d1001054ccd5cd19b874803800c600a6eb8d5d08014dd71aba13574400415333573466e1d201000318039bae35742005375a6ae84d5d1001054ccd5cd19b874804800c600260106ae8400a60106ae84d5d1001054ccd5cd19b874805000c601e60106ae84008260329201035054310023232325333573466e1d200000218009bae357420021532333573466e1d2002003180298009aba10020a999ab9a3370e90020018c00cdd71aba100298009aba1357440041301d491035054310023232325333573466e1d2000002180098079aba10010a999ab9a3370e90010010c00854ccd5cd19b8748010008600826040921035054310035573c0046aae74004dd50009aab9e00235573a0026ea8004d55cf0011aab9d001375400244646464a666ae68cdc3a4004004300215333573466e1d2000002180098029aba10010980c249035054310035573c0046aae74004dd500091919192999ab9a3370e90000010c004c014d5d0800854ccd5cd19b87480080086006600a6ae840042a666ae68cdc3a40080043005375c6ae840042602c921035054310035573c0046aae74004dd500091919192999ab9a3370e90000010c004dd71aba10010a999ab9a3370e90010010c00cdd71aba10010980aa49035054310035573c0046aae74004dd500091919192999ab9a3370e90000010c004dd71aba10019bad357426ae8800426028921035054310035573c0046aae74004dd50009aba20011300f491035054310035573c0046aae74004dd5001488a4006450029400a450029400a4500291802c802488888888888888880401806112c800c4c0220052219002914800c88894ccd5cd19b874800a403244646603244b20031480024432005225333573466e3c0080244c01c0044c01800c006301822590018a40012219002912999ab9a3371e00400e20022600c00604c0420002601400e229344c02d2401035054350018049112999ab9a3370e900000089805a481035054330015333573466e20005200013300333702900000119b81480000044ca00266e1000c00666e10008004660080040026010444a666ae68cdc3a4000002200426600600266e180080048c88c008dd60009804111999aab9f00128001400cc010d5d08014c00cd5d100120004b2003180046004200123232325333573466e1d200000218010a999ab9a3370e90010010c0004c01d241035054310035573c0046aae74004dd5000911919192999ab9a3370e90000010c00854ccd5cd19b87480080086002600a6ae840042a666ae68cdc3a40080043004130074901035054310035573c0046aae74004dd500091919192999ab9a3370e90000010c004dd71aba10019bad357426ae880042600a921035054310035573c0046aae74004dd5000919319ab9c00180011918008009180111980100100099aa99a8910010891400400a00211212900280092211cc70ef82c7ff32b5dda84e3519d8d2b8cbd29c1d2a93cc2e1837971430048811e5e249e4b897fe25aea28119031cbb7931ccd4ae135caec5c90fabe3d23010001\"}",
+                          "expire": 12,
+                          "status": 0,
+                          "anchor": {
+                            "url": "https://raw.githubusercontent.com/wafflepool-cardano/drep-demo/main/Dim_Rep_Sum.jsonld",
+                            "hash": "10dec86303fff4e5b7b185ede1e233a793ce40620a9c7c0d5ae414383a62d87c"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/governance/dRep": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get dRep Information",
+        "parameters": [
+          {
+            "name": "dRepId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 58,
+              "maxLength": 58
+            },
+            "description": "Hex representation of DRep"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "dRep details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DRep"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/DRep"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/governance/dRep/list": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get dReps list",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "maxLength": 200
+            },
+            "description": "Search term to filter dReps"
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            },
+            "description": "Page number to fetch"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 20,
+              "maximum": 50,
+              "minimum": 1
+            },
+            "description": "Number of dReps to fetch per page"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "list of dReps",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pageNo": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "dReps": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/DRep"
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/DRepList"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/governance/action": {
+      "get": {
+        "tags": ["Free"],
+        "summary": "Get Governance Action",
+        "parameters": [
+          {
+            "name": "actionId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 66
+            },
+            "description": "Hex representation of ActionId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Action details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Action"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/Action"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transaction/submit": {
+      "post": {
+        "tags": ["Pro"],
+        "summary": "Submit Transaction",
+        "description": "Submit a transaction to cardano node",
+        "requestBody": {
+          "required": true,
+          "description": "Transaction CBOR",
+          "content": {
+            "application/cbor": {
+              "schema": {
+                "type": "string",
+                "format": "binary"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Transaction submitted successfully"
+          },
+          "400": {
+            "description": "Transaction failed error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transaction/summary": {
+      "get": {
+        "tags": ["Pro"],
+        "summary": "Get Transaction Summary",
+        "parameters": [
+          {
+            "name": "hash",
+            "in": "query",
+            "description": "Hex representation of the transaction id",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 64,
+              "maxLength": 64
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Transaction summary",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionSummary"
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/TransactionSummary"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/utxo/list": {
+      "get": {
+        "tags": ["Pro"],
+        "summary": "Get UTXOs",
+        "description": "Retrieve UTXOs by providing either payment address or reward address.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "paymentAddress",
+            "description": "Hex representation of the payment address",
+            "schema": {
+              "type": "string",
+              "minLength": 58,
+              "maxLength": 200
+            }
+          },
+          {
+            "in": "query",
+            "name": "rewardAddress",
+            "description": "Hex representation of the reward address",
+            "schema": {
+              "type": "string",
+              "minLength": 58,
+              "maxLength": 58
+            }
+          },
+          {
+            "in": "query",
+            "name": "pageNo",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of Utxo's",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pageNo": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "utxos": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Utxo"
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/Utxo"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/asset/holders/byPolicyId": {
+      "get": {
+        "tags": ["Pro"],
+        "summary": "Get asset holders by policyId",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "policyId",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 56,
+              "minLength": 56
+            }
+          },
+          {
+            "in": "query",
+            "name": "pageNo",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Asset holders by policyId",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pageNo": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "holders": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "address": {
+                            "type": "string"
+                          },
+                          "policyId": {
+                            "type": "string"
+                          },
+                          "assetName": {
+                            "type": "string"
+                          },
+                          "fingerprint": {
+                            "type": "string"
+                          },
+                          "assetId": {
+                            "type": "string"
+                          },
+                          "balance": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "pageNo": 1,
+                      "limit": 3,
+                      "holders": [
+                        {
+                          "address": "70034438d83ae8dfed2061704914524ab48f1ea764659dce05330c2e1f",
+                          "policyId": "3da414859ddd0955cf6694a20cbbc000d60c4cb49dcbf46ad543568a",
+                          "assetName": "37f9a73217d919ef97332211ade0afd42732e38b11577c82bbddfd9f2301",
+                          "fingerprint": "d33b2719e7779c877446e1539d7d8c09bb642cc9",
+                          "assetId": "3da414859ddd0955cf6694a20cbbc000d60c4cb49dcbf46ad543568a37f9a73217d919ef97332211ade0afd42732e38b11577c82bbddfd9f2301",
+                          "balance": "1"
+                        }
+                      ],
+                      "count": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/asset/holders/byAssetId": {
+      "get": {
+        "tags": ["Pro"],
+        "summary": "Get asset holders by assetId",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "assetId",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 56
+            }
+          },
+          {
+            "in": "query",
+            "name": "pageNo",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 10000
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50,
+              "default": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Asset holders by assetId",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "pageNo": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    },
+                    "holders": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "address": {
+                            "type": "string"
+                          },
+                          "balance": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "pageNo": 1,
+                      "limit": 3,
+                      "holders": [
+                        {
+                          "address": "70034438d83ae8dfed2061704914524ab48f1ea764659dce05330c2e1f",
+                          "balance": "1"
+                        }
+                      ],
+                      "count": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/asset/metadata": {
+      "get": {
+        "tags": ["Pro"],
+        "summary": "Get metadata for assets",
+        "parameters": [
+          {
+            "name": "assetIds",
+            "in": "query",
+            "description": "Array of asset IDs (maximum 20 items)",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 56
+              },
+              "maxItems": 20
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of available asset metadata",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "metadataList": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/AssetMetadata"
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/AssetMetadata"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/votes/byVoter": {
+      "get": {
+        "tags": ["Pro"],
+        "summary": "Get Votes by Voter",
+        "parameters": [
+          {
+            "name": "voterHex",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "maxLength": 58
+            }
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "votes by the voter",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "votes": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Vote"
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "pageNo": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": ["votes", "count", "pageNo", "limit"]
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/Vote"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/votes/byAction": {
+      "get": {
+        "tags": ["Pro"],
+        "summary": "Get Votes by Action",
+        "parameters": [
+          {
+            "name": "actionId",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "minLength": 66
+            }
+          },
+          {
+            "name": "pageNo",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Votes for the specified action.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "votes": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Vote"
+                      }
+                    },
+                    "count": {
+                      "type": "integer"
+                    },
+                    "pageNo": {
+                      "type": "integer"
+                    },
+                    "limit": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": ["votes", "count", "pageNo", "limit"]
+                },
+                "examples": {
+                  "json": {
+                    "value": {
+                      "$ref": "#/components/examples/Vote"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "apiKey"
+      }
+    },
+    "schemas": {
+      "Address": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string"
+          },
+          "balance": {
+            "type": "string"
+          }
+        }
+      },
+      "Block": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string"
+          },
+          "previousBlockHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "blockHeight": {
+            "type": "integer"
+          },
+          "totalFees": {
+            "type": "string"
+          },
+          "slot": {
+            "type": "integer"
+          },
+          "epoch": {
+            "type": "integer"
+          },
+          "absSlot": {
+            "type": "integer"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "txCount": {
+            "type": "integer"
+          },
+          "assetTxCount": {
+            "type": "integer"
+          },
+          "totalOutput": {
+            "type": "string"
+          },
+          "slotLeader": {
+            "type": "string",
+            "nullable": true
+          },
+          "bodySize": {
+            "type": "integer"
+          },
+          "protocolVersion": {
+            "type": "string"
+          },
+          "vrfVKey": {
+            "type": "string",
+            "description": "Only available in PRO plan"
+          },
+          "nonceVrf": {
+            "type": "object",
+            "description": "Only available in PRO plan",
+            "properties": {
+              "natural": {
+                "type": "string"
+              },
+              "cert": {
+                "type": "string"
+              }
+            }
+          },
+          "leaderVrf": {
+            "type": "object",
+            "description": "Only available in PRO plan",
+            "properties": {
+              "natural": {
+                "type": "string"
+              },
+              "cert": {
+                "type": "string"
+              }
+            }
+          },
+          "vrfResult": {
+            "type": "array",
+            "description": "Only available in PRO plan",
+            "items": {
+              "type": "string"
+            }
+          },
+          "operationalCert": {
+            "type": "object",
+            "description": "Only available in PRO plan",
+            "properties": {
+              "hotVKey": {
+                "type": "string"
+              },
+              "sequenceNumber": {
+                "type": "number"
+              },
+              "kesPeriod": {
+                "type": "number"
+              },
+              "sigma": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "Pool": {
+        "type": "object",
+        "properties": {
+          "poolId": {
+            "type": "string"
+          },
+          "vrfKeyHash": {
+            "type": "string"
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "ticker": {
+            "type": "string",
+            "nullable": true
+          },
+          "website": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "margin": {
+            "type": "string"
+          },
+          "cost": {
+            "type": "string"
+          },
+          "declaredPledge": {
+            "type": "string"
+          },
+          "rewardAccount": {
+            "type": "string"
+          },
+          "owners": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "registeredOn": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string",
+                "nullable": true
+              },
+              "metadataHash": {
+                "type": "string",
+                "nullable": true
+              }
+            }
+          },
+          "relays": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "port": {
+                  "type": "integer",
+                  "nullable": true
+                },
+                "ipv4": {
+                  "type": "string",
+                  "nullable": true
+                },
+                "ipv6": {
+                  "type": "string",
+                  "nullable": true
+                },
+                "dnsName": {
+                  "type": "string"
+                },
+                "srvName": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "PoolStats": {
+        "type": "object",
+        "properties": {
+          "poolId": {
+            "type": "string"
+          },
+          "lifetimeBlocks": {
+            "type": "integer"
+          },
+          "currentEpochBlocks": {
+            "type": "integer"
+          },
+          "lifetimeRewards": {
+            "type": "string"
+          },
+          "activePledge": {
+            "type": "string"
+          },
+          "interest": {
+            "type": "number"
+          },
+          "liveStake": {
+            "type": "string"
+          },
+          "saturationLevel": {
+            "type": "string"
+          }
+        }
+      },
+      "Token": {
+        "type": "object",
+        "properties": {
+          "policyId": {
+            "type": "string"
+          },
+          "assetName": {
+            "type": "string"
+          },
+          "fingerprint": {
+            "type": "string"
+          },
+          "assetId": {
+            "type": "string"
+          },
+          "totalSupply": {
+            "type": "string"
+          },
+          "txCount": {
+            "type": "integer"
+          },
+          "mintedOn": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "NativeScript": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "pubKeyHash": {
+                "type": "string"
+              }
+            },
+            "required": ["pubKeyHash"]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "all": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NativeScript"
+                }
+              }
+            },
+            "required": ["all"]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "any": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NativeScript"
+                }
+              }
+            },
+            "required": ["any"]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "n": {
+                "type": "string"
+              },
+              "k": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/NativeScript"
+                }
+              }
+            },
+            "required": ["n", "k"]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "invalidBefore": {
+                "type": "string"
+              }
+            },
+            "required": ["invalidBefore"]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "invalidAfter": {
+                "type": "string"
+              }
+            },
+            "required": ["invalidAfter"]
+          }
+        ]
+      },
+      "ScriptRef": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "script": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/NativeScript"
+              }
+            ]
+          },
+          "hash": {
+            "type": "string"
+          }
+        },
+        "required": ["type", "script", "hash"]
+      },
+      "TransactionInput": {
+        "type": "object",
+        "properties": {
+          "index": {
+            "type": "integer"
+          },
+          "txId": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string"
+          },
+          "tokens": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "policyId": {
+                  "type": "string"
+                },
+                "assetName": {
+                  "type": "string"
+                },
+                "fingerprint": {
+                  "type": "string"
+                },
+                "assetId": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "datum": {
+            "type": "object",
+            "properties": {
+              "hash": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "required": ["hash", "value"]
+          },
+          "scriptRef": {
+            "$ref": "#/components/schemas/ScriptRef"
+          }
+        },
+        "required": ["index", "txId", "address", "value"]
+      },
+      "TransactionOutput": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "tokens": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "policyId": {
+                  "type": "string"
+                },
+                "assetName": {
+                  "type": "string"
+                },
+                "fingerprint": {
+                  "type": "string"
+                },
+                "assetId": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "datum": {
+            "type": "object",
+            "properties": {
+              "hash": {
+                "type": "string"
+              },
+              "value": {
+                "type": "string"
+              }
+            },
+            "required": ["hash", "value"]
+          },
+          "scriptRef": {
+            "$ref": "#/components/schemas/ScriptRef"
+          }
+        },
+        "required": ["value", "address"]
+      },
+      "GovAction": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "number",
+            "enum": [0, 1, 2, 3, 4, 5, 6],
+            "description": "PARAM_CHANGE_ACTION = 0, HF_INIT_ACTION = 1, TREASURY_WITHDRAW_ACTION = 2, NO_CONFIDENCE_ACTION = 3, UPDATE_COMMITTEE_ACTION = 4, NEW_CONSTITUTION_ACTION = 5, INFO_ACTION = 6"
+          },
+          "action": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "prevActionId": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "protocolParamUpdate": {
+                    "type": "object",
+                    "properties": {
+                      "minFeeA": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "minFeeB": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "maxBlockBodySize": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "maxTransactionSize": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "maxBlockHeaderSize": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "stakeKeyDeposit": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "poolDeposit": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "poolRetireMaxEpoch": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "n": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "pledgeInfluence": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "expansionRate": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "treasuryGrowthRate": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "minPoolCost": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "adaPerUtxoByte": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "costMdls": {
+                        "type": "object",
+                        "properties": {
+                          "plutusV1": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            }
+                          },
+                          "plutusV2": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            }
+                          },
+                          "plutusV3": {
+                            "type": "array",
+                            "items": {
+                              "type": "number"
+                            }
+                          }
+                        }
+                      },
+                      "exUnitPrices": {
+                        "type": "object",
+                        "properties": {
+                          "mem": {
+                            "type": "number"
+                          },
+                          "steps": {
+                            "type": "number"
+                          }
+                        },
+                        "nullable": true
+                      },
+                      "maxTxExUnits": {
+                        "type": "object",
+                        "properties": {
+                          "mem": {
+                            "type": "number"
+                          },
+                          "steps": {
+                            "type": "number"
+                          }
+                        },
+                        "nullable": true
+                      },
+                      "maxBlockExUnits": {
+                        "type": "object",
+                        "properties": {
+                          "mem": {
+                            "type": "number"
+                          },
+                          "steps": {
+                            "type": "number"
+                          }
+                        },
+                        "nullable": true
+                      },
+                      "maxValueSize": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "collateralPercent": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "maxCollateralInputs": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "poolVotingThreshold": {
+                        "type": "object",
+                        "properties": {
+                          "motionNoConfidence": {
+                            "type": "number"
+                          },
+                          "committeeNormal": {
+                            "type": "number"
+                          },
+                          "committeeNoConfidence": {
+                            "type": "number"
+                          },
+                          "hfInitiation": {
+                            "type": "number"
+                          },
+                          "securityParamVoting": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "dRepVotingThreshold": {
+                        "type": "object",
+                        "properties": {
+                          "motionNoConfidence": {
+                            "type": "number"
+                          },
+                          "committeeNormal": {
+                            "type": "number"
+                          },
+                          "committeeNoConfidence": {
+                            "type": "number"
+                          },
+                          "updateConstitution": {
+                            "type": "number"
+                          },
+                          "hfInitiation": {
+                            "type": "number"
+                          },
+                          "networkParamVoting": {
+                            "type": "number"
+                          },
+                          "economicParamVoting": {
+                            "type": "number"
+                          },
+                          "technicalParamVoting": {
+                            "type": "number"
+                          },
+                          "govParamVoting": {
+                            "type": "number"
+                          },
+                          "treasuryWithdrawal": {
+                            "type": "number"
+                          }
+                        },
+                        "nullable": true
+                      },
+                      "minCommitteeSize": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "committeeTermLimit": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "govActionValidity": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "govActionDeposit": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "dRepDeposit": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "dRepInactivity": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "refScriptCostByte": {
+                        "type": "integer",
+                        "nullable": true
+                      },
+                      "protocolVersion": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  },
+                  "policyHash": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "prevActionId": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "protocolVersion": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "withdrawals": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "stakeHex": {
+                          "type": "string"
+                        },
+                        "amount": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "policyHash": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "prevActionId": {
+                    "type": "string",
+                    "nullable": true
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "prevActionId": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "removeColdHex": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "addColdHex": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "hex": {
+                          "type": "string"
+                        },
+                        "epoch": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  },
+                  "threshold": {
+                    "type": "integer"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "prevActionId": {
+                    "type": "string",
+                    "nullable": true
+                  },
+                  "constitution": {
+                    "type": "object",
+                    "properties": {
+                      "anchor": {
+                        "type": "object",
+                        "properties": {
+                          "url": {
+                            "type": "string"
+                          },
+                          "hash": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "scriptHash": {
+                        "type": "string",
+                        "nullable": true
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "properties": {
+                  "info": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      },
+      "Transaction": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string"
+          },
+          "blockHash": {
+            "type": "string"
+          },
+          "fees": {
+            "type": "string"
+          },
+          "slot": {
+            "type": "integer"
+          },
+          "epoch": {
+            "type": "integer"
+          },
+          "blockHeight": {
+            "type": "integer"
+          },
+          "absSlot": {
+            "type": "integer"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "index": {
+            "type": "integer"
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionInput"
+            }
+          },
+          "collateral": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionInput"
+            }
+          },
+          "outputs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TransactionOutput"
+            }
+          },
+          "collateralOutput": {
+            "$ref": "#/components/schemas/TransactionOutput"
+          },
+          "totalCollateral": {
+            "type": "string"
+          },
+          "referenceInputs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "index": {
+                  "type": "integer"
+                },
+                "txId": {
+                  "type": "string"
+                }
+              },
+              "required": ["index", "txId"]
+            }
+          },
+          "certificates": {
+            "type": "object",
+            "properties": {
+              "stakeRegistrations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "rewardAddress": {
+                      "type": "string"
+                    },
+                    "deposit": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["index", "rewardAddress"]
+                }
+              },
+              "stakeDeRegistrations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "rewardAddress": {
+                      "type": "string"
+                    },
+                    "deposit": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["index", "rewardAddress"]
+                }
+              },
+              "stakeDelegations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "rewardAddress": {
+                      "type": "string"
+                    },
+                    "poolKeyHash": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["index", "rewardAddress", "poolKeyHash"]
+                }
+              },
+              "poolRegistrations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "operator": {
+                      "type": "string"
+                    },
+                    "vrfKeyHash": {
+                      "type": "string"
+                    },
+                    "pledge": {
+                      "type": "string"
+                    },
+                    "cost": {
+                      "type": "string"
+                    },
+                    "margin": {
+                      "type": "array",
+                      "items": {
+                        "type": "number"
+                      }
+                    },
+                    "rewardAccount": {
+                      "type": "string"
+                    },
+                    "poolOwners": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "relays": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "port": {
+                            "type": "integer",
+                            "nullable": true
+                          },
+                          "ipv4": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "ipv6": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "dnsName": {
+                            "type": "string"
+                          },
+                          "srvName": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["dnsName", "srvName"]
+                      }
+                    },
+                    "poolMetadata": {
+                      "type": "object",
+                      "properties": {
+                        "url": {
+                          "type": "string"
+                        },
+                        "metadataHash": {
+                          "type": "string"
+                        }
+                      },
+                      "required": ["url", "metadataHash"],
+                      "nullable": true
+                    }
+                  },
+                  "required": [
+                    "index",
+                    "operator",
+                    "vrfKeyHash",
+                    "pledge",
+                    "cost",
+                    "margin",
+                    "rewardAccount",
+                    "poolOwners",
+                    "relays",
+                    "poolMetadata"
+                  ]
+                }
+              },
+              "poolDeRegistrations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "poolKeyHash": {
+                      "type": "string"
+                    },
+                    "epoch": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": ["index", "poolKeyHash", "epoch"]
+                }
+              },
+              "instantaneousRewards": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "pot": {
+                      "type": "number"
+                    },
+                    "rewards": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "rewardAddress": {
+                            "type": "string"
+                          },
+                          "amount": {
+                            "type": "string"
+                          }
+                        },
+                        "required": ["rewardAddress", "amount"]
+                      }
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["index", "pot", "rewards", "value"]
+                }
+              },
+              "genesisDelegations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "genesisHash": {
+                      "type": "string"
+                    },
+                    "genesisDelegateHash": {
+                      "type": "string"
+                    },
+                    "vrfKeyHash": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "index",
+                    "genesisHash",
+                    "genesisDelegateHash",
+                    "vrfKeyHash"
+                  ]
+                }
+              },
+              "voteDelegations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "rewardAddress": {
+                      "type": "string"
+                    },
+                    "drepId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["index", "rewardAddress", "drepId"]
+                }
+              },
+              "stakeVoteDelegs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "rewardAddress": {
+                      "type": "string"
+                    },
+                    "poolKeyHash": {
+                      "type": "string"
+                    },
+                    "drepId": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "index",
+                    "rewardAddress",
+                    "poolKeyHash",
+                    "drepId"
+                  ]
+                }
+              },
+              "stakeRegDelegs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "rewardAddress": {
+                      "type": "string"
+                    },
+                    "poolKeyHash": {
+                      "type": "string"
+                    },
+                    "deposit": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "index",
+                    "rewardAddress",
+                    "poolKeyHash",
+                    "deposit"
+                  ]
+                }
+              },
+              "voteRegDelegs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "rewardAddress": {
+                      "type": "string"
+                    },
+                    "drepId": {
+                      "type": "string"
+                    },
+                    "deposit": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["index", "rewardAddress", "drepId", "deposit"]
+                }
+              },
+              "stakeVoteRegDeleg": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "rewardAddress": {
+                      "type": "string"
+                    },
+                    "poolKeyHash": {
+                      "type": "string"
+                    },
+                    "drepId": {
+                      "type": "string"
+                    },
+                    "deposit": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "index",
+                    "rewardAddress",
+                    "poolKeyHash",
+                    "drepId",
+                    "deposit"
+                  ]
+                }
+              },
+              "committeeAuthHot": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "coldHex": {
+                      "type": "string"
+                    },
+                    "hotHex": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["index", "coldHex", "hotHex"]
+                }
+              },
+              "committeeResignCold": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "coldHex": {
+                      "type": "string"
+                    },
+                    "anchor": {
+                      "type": "object",
+                      "nullable": true,
+                      "properties": {
+                        "url": {
+                          "type": "string"
+                        },
+                        "hash": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": ["index", "coldHex"]
+                }
+              },
+              "dRepRegs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "drepId": {
+                      "type": "string"
+                    },
+                    "deposit": {
+                      "type": "string"
+                    },
+                    "anchor": {
+                      "type": "object",
+                      "nullable": true,
+                      "properties": {
+                        "url": {
+                          "type": "string"
+                        },
+                        "hash": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": ["index", "drepId", "deposit"]
+                }
+              },
+              "dRepDeRegs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "drepId": {
+                      "type": "string"
+                    },
+                    "deposit": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["index", "drepId", "deposit"]
+                }
+              },
+              "dRepUpdates": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "index": {
+                      "type": "integer"
+                    },
+                    "drepId": {
+                      "type": "string"
+                    },
+                    "anchor": {
+                      "type": "object",
+                      "nullable": true,
+                      "properties": {
+                        "url": {
+                          "type": "string"
+                        },
+                        "hash": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "required": ["index", "drepId"]
+                }
+              }
+            }
+          },
+          "withdrawals": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "rewardAddress": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "string"
+                }
+              },
+              "required": ["rewardAddress", "amount"]
+            }
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "hash": {
+                "type": "string"
+              },
+              "data": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "label": {
+                      "type": "string"
+                    },
+                    "value": {
+                      "type": "string"
+                    }
+                  },
+                  "required": ["label", "value"]
+                }
+              }
+            },
+            "required": ["hash", "data"]
+          },
+          "update": {
+            "type": "object",
+            "properties": {
+              "proposals": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "genesisHash": {
+                      "type": "string"
+                    },
+                    "parameter": {
+                      "type": "object",
+                      "properties": {
+                        "minFeeA": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "minFeeB": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "maxBlockBodySize": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "maxTransactionSize": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "maxBlockHeaderSize": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "keyDeposit": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "poolDeposit": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "maxEpoch": {
+                          "type": "integer",
+                          "nullable": true
+                        },
+                        "n": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "pledgeInfluence": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "expansionRate": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "treasuryGrowthRate": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "d": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "entropy": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          },
+                          "nullable": true
+                        },
+                        "protocolVersion": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          },
+                          "nullable": true
+                        },
+                        "minPoolCost": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "adaPerUtxoByte": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "costMdls": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "language": {
+                                "type": "number"
+                              },
+                              "costModel": {
+                                "type": "array",
+                                "items": {
+                                  "type": "number"
+                                }
+                              }
+                            },
+                            "required": ["language", "costModel"]
+                          },
+                          "nullable": true
+                        },
+                        "exUnitPrices": {
+                          "type": "object",
+                          "properties": {
+                            "mem": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "step": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "required": ["mem", "step"],
+                          "nullable": true
+                        },
+                        "maxTxExUnits": {
+                          "type": "object",
+                          "properties": {
+                            "mem": {
+                              "type": "number"
+                            },
+                            "step": {
+                              "type": "number"
+                            }
+                          },
+                          "required": ["mem", "step"],
+                          "nullable": true
+                        },
+                        "maxBlockExUnits": {
+                          "type": "object",
+                          "properties": {
+                            "mem": {
+                              "type": "number"
+                            },
+                            "step": {
+                              "type": "number"
+                            }
+                          },
+                          "required": ["mem", "step"],
+                          "nullable": true
+                        },
+                        "maxValueSize": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "collateralPercent": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "maxCollateralInputs": {
+                          "type": "number",
+                          "nullable": true
+                        },
+                        "minUtxoValue": {
+                          "type": "number",
+                          "nullable": true
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "required": ["genesisHash", "parameter"]
+                }
+              },
+              "epoch": {
+                "type": "integer"
+              }
+            },
+            "required": ["proposals", "epoch"]
+          },
+          "mint": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "policyId": {
+                  "type": "string"
+                },
+                "assetName": {
+                  "type": "string"
+                },
+                "fingerprint": {
+                  "type": "string"
+                },
+                "assetId": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "policyId",
+                "assetName",
+                "fingerprint",
+                "assetId",
+                "value"
+              ]
+            }
+          },
+          "scriptDataHash": {
+            "type": "string"
+          },
+          "redeemers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "index": {
+                  "type": "integer"
+                },
+                "tag": {
+                  "type": "string",
+                  "enum": ["SPEND", "MINT", "CERT", "REWARD", "VOTE", "PROPOSE"]
+                },
+                "data": {
+                  "type": "string"
+                },
+                "exUnits": {
+                  "type": "object",
+                  "properties": {
+                    "mem": {
+                      "type": "number"
+                    },
+                    "steps": {
+                      "type": "number"
+                    }
+                  },
+                  "required": ["mem", "steps"]
+                }
+              },
+              "required": ["index", "tag", "data", "exUnits"]
+            }
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "ttl": {
+            "type": "object",
+            "properties": {
+              "timestamp": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "slot": {
+                "type": "integer"
+              }
+            },
+            "required": ["timestamp", "slot"],
+            "nullable": true
+          },
+          "treasuryAmount": {
+            "type": "string"
+          },
+          "donation": {
+            "type": "string"
+          },
+          "votingProcedures": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "voter": {
+                  "type": "string"
+                },
+                "votes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "actionId": {
+                        "type": "string"
+                      },
+                      "vote": {
+                        "type": "integer",
+                        "enum": [0, 1, 2],
+                        "description": "No=0, Yes=1, ABSTAIN=2"
+                      },
+                      "anchor": {
+                        "type": "object",
+                        "nullable": true,
+                        "properties": {
+                          "url": {
+                            "type": "string"
+                          },
+                          "hash": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "required": ["actionId", "vote"]
+                  }
+                }
+              },
+              "required": ["voter", "votes"]
+            }
+          },
+          "proposalProcedures": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "index": {
+                  "type": "integer"
+                },
+                "deposit": {
+                  "type": "string"
+                },
+                "rewardAccount": {
+                  "type": "string"
+                },
+                "action": {
+                  "$ref": "#/components/schemas/GovAction"
+                },
+                "anchor": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string"
+                    },
+                    "hash": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "required": [
+                "index",
+                "deposit",
+                "rewardAccount",
+                "action",
+                "anchor"
+              ]
+            }
+          }
+        },
+        "required": [
+          "hash",
+          "blockHash",
+          "fees",
+          "slot",
+          "epoch",
+          "blockHeight",
+          "absSlot",
+          "timestamp",
+          "totalOutput",
+          "index",
+          "inputs",
+          "outputs",
+          "status"
+        ]
+      },
+      "StakeKeyDetails": {
+        "type": "object",
+        "properties": {
+          "poolId": {
+            "type": "string",
+            "nullable": true
+          },
+          "rewardAddress": {
+            "type": "string"
+          },
+          "stake": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "rewardsAvailable": {
+            "type": "string",
+            "nullable": true
+          },
+          "rewardsWithdrawn": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "required": ["rewardAddress"]
+      },
+      "NetworkState": {
+        "type": "object",
+        "nullable": true,
+        "properties": {
+          "circulatingSupply": {
+            "type": "string"
+          },
+          "reserves": {
+            "type": "string"
+          },
+          "treasury": {
+            "type": "string"
+          },
+          "liveCirculatingSupply": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "circulatingSupply",
+          "reserves",
+          "treasury",
+          "liveCirculatingSupply"
+        ]
+      },
+      "NetworkProtocol": {
+        "type": "object",
+        "properties": {
+          "protocolParams": {
+            "type": "object",
+            "properties": {
+              "minFeeA": {
+                "type": "string"
+              },
+              "minFeeB": {
+                "type": "string"
+              },
+              "stakeKeyDeposit": {
+                "type": "string"
+              },
+              "lovelacePerUtxoWord": {
+                "type": "string"
+              },
+              "collateralPercent": {
+                "type": "string"
+              },
+              "priceSteps": {
+                "type": "string"
+              },
+              "priceMem": {
+                "type": "string"
+              },
+              "poolDeposit": {
+                "type": "string"
+              },
+              "maxTokenValue": {
+                "type": "string"
+              },
+              "networkMagic": {
+                "type": "integer"
+              },
+              "maxTxSize": {
+                "type": "string"
+              },
+              "maxValueSize": {
+                "type": "string"
+              },
+              "utxoCostPerByte": {
+                "type": "string"
+              },
+              "languageView": {
+                "type": "object",
+                "properties": {
+                  "PlutusScriptV1": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "number"
+                    },
+                    "description": "Dynamic keys with number values"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CCHot": {
+        "type": "object",
+        "properties": {
+          "hotHex": {
+            "type": "string"
+          },
+          "pub": {
+            "type": "string"
+          },
+          "votes": {
+            "type": "integer",
+            "description": "Only available in PRO plan"
+          }
+        },
+        "required": ["hotHex"]
+      },
+      "CCMember": {
+        "type": "object",
+        "properties": {
+          "hotHex": {
+            "type": "string"
+          },
+          "coldHex": {
+            "type": "string"
+          },
+          "pub": {
+            "type": "string"
+          },
+          "anchor": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "hash": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": ["coldHex"]
+      },
+      "Committee": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "integer",
+            "enum": [0, 1],
+            "description": "CONFIDENCE=0, NO_CONFIDENCE=1"
+          },
+          "updated": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "threshold": {
+            "type": "integer"
+          },
+          "constitution": {
+            "type": "object",
+            "properties": {
+              "script": {
+                "type": "string"
+              },
+              "scriptHash": {
+                "type": "string",
+                "nullable": true
+              },
+              "anchor": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "hash": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "CommitteeMember": {
+        "type": "object",
+        "properties": {
+          "hotHex": {
+            "type": "string"
+          },
+          "coldHex": {
+            "type": "string"
+          },
+          "pub": {
+            "type": "string"
+          },
+          "expire": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "integer",
+            "enum": [0, 1, 2, 3],
+            "description": "ACTIVE = 0, REMOVED = 1, RESIGNED = 2, INACTIVE = 3."
+          },
+          "anchor": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "hash": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "required": ["coldHex"]
+      },
+      "DRep": {
+        "type": "object",
+        "properties": {
+          "dRepId": {
+            "type": "string"
+          },
+          "pub": {
+            "type": "string"
+          },
+          "deposit": {
+            "type": "string"
+          },
+          "registered": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "votes": {
+            "type": "integer",
+            "description": "Only available in PRO plan"
+          },
+          "anchor": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "hash": {
+                "type": "string"
+              }
+            }
+          },
+          "meta": {
+            "type": "object",
+            "description": "Only available in PRO plan",
+            "nullable": true,
+            "properties": {
+              "hash": {
+                "type": "string"
+              },
+              "givenName": {
+                "type": "string"
+              },
+              "image": {
+                "type": "string"
+              },
+              "imageObject": {
+                "type": "string"
+              },
+              "objectives": {
+                "type": "string"
+              },
+              "motivations": {
+                "type": "string"
+              },
+              "qualifications": {
+                "type": "string"
+              },
+              "paymentAddress": {
+                "type": "string"
+              },
+              "references": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "uri": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": ["hex"]
+      },
+      "Action": {
+        "type": "object",
+        "properties": {
+          "actionId": {
+            "type": "string"
+          },
+          "txId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "epoch": {
+            "type": "integer"
+          },
+          "blockHeight": {
+            "type": "integer"
+          },
+          "action": {
+            "$ref": "#/components/schemas/GovAction"
+          },
+          "deposit": {
+            "type": "string"
+          },
+          "rewardAccount": {
+            "type": "string"
+          },
+          "anchor": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "hash": {
+                "type": "string"
+              }
+            }
+          },
+          "votes": {
+            "type": "object",
+            "description": "Only available in PRO plan",
+            "properties": {
+              "dReps": {
+                "type": "object",
+                "properties": {
+                  "yes": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      },
+                      "stake": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["count"]
+                  },
+                  "no": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      },
+                      "stake": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["count"]
+                  },
+                  "abstain": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      },
+                      "stake": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["count"]
+                  }
+                }
+              },
+              "spos": {
+                "type": "object",
+                "properties": {
+                  "yes": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      },
+                      "stake": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["count"]
+                  },
+                  "no": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      },
+                      "stake": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["count"]
+                  },
+                  "abstain": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      },
+                      "stake": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["count"]
+                  }
+                }
+              },
+              "committeeMembers": {
+                "type": "object",
+                "properties": {
+                  "yes": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": ["count"]
+                  },
+                  "no": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": ["count"]
+                  },
+                  "abstain": {
+                    "type": "object",
+                    "properties": {
+                      "count": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": ["count"]
+                  }
+                }
+              }
+            }
+          },
+          "meta": {
+            "type": "object",
+            "description": "Only available in PRO plan",
+            "nullable": true,
+            "properties": {
+              "hash": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "abstract": {
+                "type": "string"
+              },
+              "motivation": {
+                "type": "string"
+              },
+              "rationale": {
+                "type": "string"
+              },
+              "references": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "uri": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "required": [
+          "actionId",
+          "txId",
+          "timestamp",
+          "epoch",
+          "blockHeight",
+          "action",
+          "deposit",
+          "rewardAccount",
+          "anchor"
+        ]
+      },
+      "TransactionSummary": {
+        "type": "object",
+        "properties": {
+          "hash": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "wallet": {
+                  "type": "string"
+                },
+                "amount": {
+                  "type": "string"
+                },
+                "sentTokens": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "policyId": {
+                        "type": "string"
+                      },
+                      "assetName": {
+                        "type": "string"
+                      },
+                      "fingerprint": {
+                        "type": "string"
+                      },
+                      "assetId": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "receivedTokens": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "policyId": {
+                        "type": "string"
+                      },
+                      "assetName": {
+                        "type": "string"
+                      },
+                      "fingerprint": {
+                        "type": "string"
+                      },
+                      "assetId": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "Utxo": {
+        "type": "object",
+        "properties": {
+          "address": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "string"
+          },
+          "assets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "policyId": {
+                  "type": "string"
+                },
+                "assetName": {
+                  "type": "string"
+                },
+                "fingerprint": {
+                  "type": "string"
+                },
+                "assetId": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "hash": {
+                "type": "string"
+              },
+              "value": { "type": "string" }
+            }
+          },
+          "txId": {
+            "type": "string"
+          },
+          "index": {
+            "type": "integer"
+          }
+        }
+      },
+      "AssetMetadata": {
+        "type": "object",
+        "properties": {
+          "policyId": {
+            "type": "string"
+          },
+          "assetName": {
+            "type": "string"
+          },
+          "assetId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "ticker": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "image": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            }
+          },
+          "logo": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              }
+            }
+          },
+          "description": {
+            "type": "string"
+          },
+          "decimals": {
+            "type": "integer"
+          }
+        }
+      },
+      "Vote": {
+        "type": "object",
+        "properties": {
+          "actionId": {
+            "type": "string"
+          },
+          "txId": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "epoch": {
+            "type": "integer"
+          },
+          "blockHeight": {
+            "type": "integer"
+          },
+          "vote": {
+            "type": "number",
+            "enum": [0, 1, 2],
+            "description": "No=0, Yes=1, ABSTAIN=2"
+          },
+          "voter": {
+            "type": "string"
+          },
+          "anchor": {
+            "type": "object",
+            "nullable": true,
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "hash": {
+                "type": "string"
+              }
+            }
+          },
+          "meta": {
+            "type": "object",
+            "properties": {
+              "hash": {
+                "type": "string"
+              },
+              "comment": {
+                "type": "string"
+              },
+              "references": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string"
+                    },
+                    "label": {
+                      "type": "string"
+                    },
+                    "uri": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            },
+            "required": ["hash"]
+          }
+        },
+        "required": [
+          "actionId",
+          "txId",
+          "timestamp",
+          "epoch",
+          "blockHeight",
+          "vote",
+          "voter"
+        ]
+      }
+    },
+    "examples": {
+      "Address": {
+        "hash": "30d3722348fd9d752cabc224e805ca2a9cf099e9fb3410c5e4e4627d",
+        "balance": "0"
+      },
+      "Block": {
+        "hash": "cad6b53c458b34404236de76adbf9acda5bcc027eaff9c1174b8537a73a0f396",
+        "previousBlockHash": "453dbc839e59f070cf5341f76a164993db7bc9843d0f9e56ce3f4ad1b1ed7c90",
+        "blockHeight": 1447338,
+        "totalFees": "0",
+        "slot": 133,
+        "epoch": 335,
+        "absSlot": 28944133,
+        "timestamp": "2024-05-15T00:32:13.000Z",
+        "txCount": 0,
+        "assetTxCount": 0,
+        "totalOutput": "0",
+        "slotLeader": "d9eaf1f9770c8bb35dd18df8d8a0b2b324cdbdeeb38e5e7ceb7ea734",
+        "bodySize": 4,
+        "protocolVersion": "9.0",
+        "vrfVKey": "87c785c69ea5200aed464f405731830616ddc4217806f505ce5ad936a7010480",
+        "vrfResult": [
+          "6561b18f2ea79418b87ea38b7a4427ee183ea86ca29aa5b2c5499af3d2fdad446eb4c9b5a1f01c8528437714dcbbb3cbf933d6fa6bba8479e71ded46843bac9d",
+          "7f9781a0dffa7e960a4d9727ce0a6204ee96dbb0d876614e40c3be124a4eec0d0238b646dfd78b08ce683a390bf1b3c0638ae4730b71b9890e80a79a0da141e0324477d7470efcee5905786cc6389c0e"
+        ],
+        "operationalCert": {
+          "hotVKey": "1db85566fca900100d02337861325f2ba4f0911952b4dca641671ef269c6e8ad",
+          "sequenceNumber": 3,
+          "kesPeriod": 171,
+          "sigma": "4bce09f4d00754b0f65bd922f186ac971f5340ee5d3574d1a132a34ddc3f1acd7934be0fd59ac6b7672d87ba9116e9de226aff02565f8a06c955e2234ca7fa08"
+        }
+      },
+      "Pool": {
+        "poolId": "8fc7a730bba533f2f6f0c4ce0df1783bd002ee9d923ae941728b2830",
+        "vrfKeyHash": "48f8762dd20e68830b05aa9320ee9f0f5dd0173a8a3c73b0a7ad725e039ea4ca",
+        "status": true,
+        "name": "Able Stake Pool",
+        "ticker": "ABLE",
+        "website": "https://able-pool.io",
+        "description": "Able Pool On Sancho Testnet",
+        "margin": "1",
+        "cost": "500000000",
+        "declaredPledge": "100000000000000",
+        "rewardAccount": "e083d27f03b197750ee41b7dca02c806718164b934b0fbfa747349e8f2",
+        "owners": ["b2f1e813fb3108fe6926717ec6409bc369ae81b485aa2120dc1fa1d7"],
+        "registeredOn": "2023-06-15T00:31:00.000Z",
+        "metadata": {
+          "url": "https://junostakepool.com/juno-sancho.metadata.json",
+          "metadataHash": "098b2ced4cf44471bb7737e07f600bab426fe485ef71343b7f4b2a4b067e325f"
+        },
+        "relays": [
+          {
+            "port": 3001,
+            "ipv4": null,
+            "ipv6": null,
+            "dnsName": "sanchonet3-node.play.dev.cardano.org"
+          }
+        ]
+      },
+      "PoolStats": {
+        "poolId": "948e7da731887b371c16b5dbb70e44f2c94502d88461900ac0a52ef6",
+        "lifetimeBlocks": 446,
+        "currentEpochBlocks": 0,
+        "lifetimeRewards": "223833877790",
+        "activePledge": "0",
+        "interest": 0,
+        "liveStake": "0",
+        "saturationLevel": "0.00"
+      },
+      "PoolList": {
+        "count": 1,
+        "limit": 10,
+        "pools": [
+          {
+            "poolId": "8fc7a730bba533f2f6f0c4ce0df1783bd002ee9d923ae941728b2830",
+            "vrfKeyHash": "48f8762dd20e68830b05aa9320ee9f0f5dd0173a8a3c73b0a7ad725e039ea4ca",
+            "status": true,
+            "name": "Able Stake Pool",
+            "ticker": "ABLE",
+            "website": "https://able-pool.io",
+            "description": "Able Pool On Sancho Testnet",
+            "margin": "1",
+            "cost": "500000000",
+            "declaredPledge": "100000000000000",
+            "rewardAccount": "e083d27f03b197750ee41b7dca02c806718164b934b0fbfa747349e8f2",
+            "owners": [
+              "b2f1e813fb3108fe6926717ec6409bc369ae81b485aa2120dc1fa1d7"
+            ],
+            "registeredOn": "2023-06-15T00:31:00.000Z",
+            "metadata": {
+              "url": "https://junostakepool.com/juno-sancho.metadata.json",
+              "metadataHash": "098b2ced4cf44471bb7737e07f600bab426fe485ef71343b7f4b2a4b067e325f"
+            },
+            "relays": [
+              {
+                "port": 3001,
+                "ipv4": null,
+                "ipv6": null,
+                "dnsName": "sanchonet3-node.play.dev.cardano.org"
+              }
+            ]
+          }
+        ],
+        "pageNo": 1
+      },
+      "Token": {
+        "policyId": "5ac3d4bdca238105a040a565e5d7e734b7c9e1630aec7650e809e34a",
+        "assetName": "6b697474656e5f6164615f6c71",
+        "fingerprint": "5008e495175c394b19abdd76609aca1c7a6a982f",
+        "assetId": "5ac3d4bdca238105a040a565e5d7e734b7c9e1630aec7650e809e34a6b697474656e5f6164615f6c71",
+        "txCount": 8,
+        "mintedOn": "2023-07-06T10:15:05.000Z",
+        "totalSupply": "18446744073709551614"
+      },
+      "Transaction": {
+        "hash": "64ed7c9676c3b2954c188b60def3950bd750f8af90a233b077b6ff4345395308",
+        "blockHash": "8f4e50c397cf0796e6ac9b6db9fc0b761a29f1a040a7f1cfaa35513e3cc4db38",
+        "fees": "238057",
+        "slot": 60,
+        "epoch": 0,
+        "blockHeight": 2,
+        "absSlot": 60,
+        "timestamp": "2023-06-15T00:31:00.000Z",
+        "index": 0,
+        "inputs": [
+          {
+            "address": "604da890918cb29f4446d07602a7c3877887326eb9e98394b8d6ce57b3",
+            "index": 0,
+            "txId": "79cddff1766c0635aff65865bb74af6795ed881da48a09c0a3c0ccac7fc508e0",
+            "value": "29999999999800000",
+            "tokens": []
+          }
+        ],
+        "collateral": [],
+        "outputs": [
+          {
+            "address": "004da890918cb29f4446d07602a7c3877887326eb9e98394b8d6ce57b3f535d2bfc700116bb07ad9f9a1159d45577e85fc3c472d692780d996",
+            "value": "100000000000000"
+          }
+        ],
+        "certificate": {
+          "stakeRegistrations": [
+            {
+              "rewardAddress": "e0f535d2bfc700116bb07ad9f9a1159d45577e85fc3c472d692780d996",
+              "index": 0
+            }
+          ],
+          "stakeDelegations": [
+            {
+              "index": 2,
+              "poolKeyHash": "d9eaf1f9770c8bb35dd18df8d8a0b2b324cdbdeeb38e5e7ceb7ea734",
+              "rewardAddress": "e0f535d2bfc700116bb07ad9f9a1159d45577e85fc3c472d692780d996"
+            }
+          ],
+          "poolRegistrations": [
+            {
+              "index": 1,
+              "operator": "d9eaf1f9770c8bb35dd18df8d8a0b2b324cdbdeeb38e5e7ceb7ea734",
+              "vrfKeyHash": "668902c613a1875f7b1b3323fc995cc2c94dace33203d6c7cb042c6da0a9d103",
+              "pledge": "100000000000000",
+              "cost": "500000000",
+              "margin": [1, 1],
+              "rewardAccount": "e083d27f03b197750ee41b7dca02c806718164b934b0fbfa747349e8f2",
+              "poolOwners": [
+                "f535d2bfc700116bb07ad9f9a1159d45577e85fc3c472d692780d996"
+              ],
+              "relays": [
+                {
+                  "port": 30004,
+                  "dnsName": "sanchonet-node.world.dev.cardano.org"
+                }
+              ]
+            }
+          ]
+        },
+        "withdrawals": [],
+        "redeemers": [],
+        "status": true
+      },
+      "TransactionList": {
+        "pageNo": 1,
+        "limit": 20,
+        "count": 1,
+        "transactions": [
+          {
+            "hash": "64ed7c9676c3b2954c188b60def3950bd750f8af90a233b077b6ff4345395308",
+            "blockHash": "8f4e50c397cf0796e6ac9b6db9fc0b761a29f1a040a7f1cfaa35513e3cc4db38",
+            "fees": "238057",
+            "slot": 60,
+            "epoch": 0,
+            "blockHeight": 2,
+            "absSlot": 60,
+            "timestamp": "2023-06-15T00:31:00.000Z",
+            "index": 0,
+            "inputs": [
+              {
+                "address": "604da890918cb29f4446d07602a7c3877887326eb9e98394b8d6ce57b3",
+                "index": 0,
+                "txId": "79cddff1766c0635aff65865bb74af6795ed881da48a09c0a3c0ccac7fc508e0",
+                "value": "29999999999800000",
+                "tokens": []
+              }
+            ],
+            "collateral": [],
+            "outputs": [
+              {
+                "address": "004da890918cb29f4446d07602a7c3877887326eb9e98394b8d6ce57b3f535d2bfc700116bb07ad9f9a1159d45577e85fc3c472d692780d996",
+                "value": "100000000000000"
+              }
+            ],
+            "certificate": {
+              "stakeRegistrations": [
+                {
+                  "rewardAddress": "e0f535d2bfc700116bb07ad9f9a1159d45577e85fc3c472d692780d996",
+                  "index": 0
+                }
+              ],
+              "stakeDelegations": [
+                {
+                  "index": 2,
+                  "poolKeyHash": "d9eaf1f9770c8bb35dd18df8d8a0b2b324cdbdeeb38e5e7ceb7ea734",
+                  "rewardAddress": "e0f535d2bfc700116bb07ad9f9a1159d45577e85fc3c472d692780d996"
+                }
+              ],
+              "poolRegistrations": [
+                {
+                  "index": 1,
+                  "operator": "d9eaf1f9770c8bb35dd18df8d8a0b2b324cdbdeeb38e5e7ceb7ea734",
+                  "vrfKeyHash": "668902c613a1875f7b1b3323fc995cc2c94dace33203d6c7cb042c6da0a9d103",
+                  "pledge": "100000000000000",
+                  "cost": "500000000",
+                  "margin": [1, 1],
+                  "rewardAccount": "e083d27f03b197750ee41b7dca02c806718164b934b0fbfa747349e8f2",
+                  "poolOwners": [
+                    "f535d2bfc700116bb07ad9f9a1159d45577e85fc3c472d692780d996"
+                  ],
+                  "relays": [
+                    {
+                      "port": 30004,
+                      "dnsName": "sanchonet-node.world.dev.cardano.org"
+                    }
+                  ]
+                }
+              ]
+            },
+            "withdrawals": [],
+            "redeemers": [],
+            "status": true
+          }
+        ]
+      },
+      "NetworkProtocol": {
+        "protocolParams": {
+          "minFeeA": "44",
+          "minFeeB": "155381",
+          "stakeKeyDeposit": "2000000",
+          "lovelacePerUtxoWord": "34482",
+          "collateralPercent": "150",
+          "priceSteps": "0.0000721",
+          "priceMem": "0.0577",
+          "poolDeposit": "500000000",
+          "maxTokenValue": "9223372036854775807",
+          "networkMagic": 764824073,
+          "maxTxSize": "16384",
+          "maxValueSize": "5000",
+          "utxoCostPerByte": "4310",
+          "languageView": {
+            "PlutusScriptV1": {
+              "sha2_256-memory-arguments": 4,
+              "equalsString-cpu-arguments-constant": 1000
+            }
+          }
+        }
+      },
+      "DRep": {
+        "dRepId": "22f6cdcb2f508f87a4529e2e64db933a6aceb77234743cc3c840293b86",
+        "pub": "16be20913dbeb98d96110d1e36ae4f258ceb5ffd4ce824df6cedb9433341cafc",
+        "deposit": "500000000",
+        "registered": "2024-07-12T00:30:50.000Z",
+        "votes": 1,
+        "anchor": {
+          "url": "https://raw.githubusercontent.com/wafflepool-cardano/drep-demo/main/Dim_Rep_Sum.jsonld",
+          "hash": "10dec86303fff4e5b7b185ede1e233a793ce40620a9c7c0d5ae414383a62d87c"
+        },
+        "meta": null
+      },
+      "DRepList": {
+        "count": 1,
+        "limit": 10,
+        "dReps": [
+          {
+            "dRepId": "22f6cdcb2f508f87a4529e2e64db933a6aceb77234743cc3c840293b86",
+            "pub": "16be20913dbeb98d96110d1e36ae4f258ceb5ffd4ce824df6cedb9433341cafc",
+            "deposit": "500000000",
+            "registered": "2024-07-12T00:30:50.000Z",
+            "votes": 1,
+            "anchor": {
+              "url": "https://raw.githubusercontent.com/wafflepool-cardano/drep-demo/main/Dim_Rep_Sum.jsonld",
+              "hash": "10dec86303fff4e5b7b185ede1e233a793ce40620a9c7c0d5ae414383a62d87c"
+            },
+            "meta": null
+          }
+        ],
+        "pageNo": 1
+      },
+      "Action": {
+        "actionId": "62e75938cb29bcb73dd5f57bf04e58c29519a8993aa16a1336e3a4d31629d00a00",
+        "txId": "62e75938cb29bcb73dd5f57bf04e58c29519a8993aa16a1336e3a4d31629d00a",
+        "timestamp": "2024-07-15T19:52:45.000Z",
+        "epoch": 396,
+        "blockHeight": 1715307,
+        "action": {
+          "type": 6,
+          "action": {
+            "info": true
+          }
+        },
+        "deposit": "100000000000",
+        "rewardAccount": "e072715e17c335384378239b830eca11de0f76f436c231337395a4acdf",
+        "anchor": {
+          "url": "https://raw.githubusercontent.com/cardano-foundation/CIPs/master/CIP-0108/examples/treasury-withdrawal.jsonld",
+          "hash": "311b148ca792007a3b1fee75a8698165911e306c3bc2afef6cf0145ecc7d03d4"
+        },
+        "meta": null
+      },
+      "TransactionSummary": {
+        "hash": "9c1d2a6f4b231640c069a65d57d8a2f4de855f950e191a7db84e77c578193f20",
+        "summary": [
+          {
+            "wallet": "addr_test1vpx63yy33jef73zx6pmq9f7rsaugwvnwh85c899c6m890vcuqn9yg",
+            "amount": "-1000002200000",
+            "receivedTokens": [
+              {
+                "policyId": "5ac3d4bdca238105a040a565e5d7e734b7c9e1630aec7650e809e34a",
+                "assetName": "6b697474656e5f6164615f6c71",
+                "fingerprint": "5008e495175c394b19abdd76609aca1c7a6a982f",
+                "assetId": "5ac3d4bdca238105a040a565e5d7e734b7c9e1630aec7650e809e34a6b697474656e5f6164615f6c71",
+                "value": "29999999999800000"
+              }
+            ],
+            "sentTokens": [
+              {
+                "policyId": "c70ef82c7ff32b5dda84e3519d8d2b8cbd29c1d2a93cc2e183797143",
+                "assetName": "5ea4fa27f12cda53293b37f721092eedad3f3221832c3a6c706e8d3a2300",
+                "fingerprint": "ccc03eb605598d012e365d766a400e2029c19ff3",
+                "assetId": "3da414859ddd0955cf6694a20cbbc000d60c4cb49dcbf46ad543568a37f9a73217d919ef97332211ade0afd42732e38b11577c82bbddfd9f2301",
+                "value": "100000000000000"
+              }
+            ]
+          }
+        ]
+      },
+      "Utxo": {
+        "pageNo": 1,
+        "limit": 20,
+        "count:": 1,
+        "utxos": [
+          {
+            "amount": "1000000000000",
+            "address": "004da890918cb29f4446d07602a7c3877887326eb9e98394b8d6ce57b317292569e0ec44c791297459acc89b734b8dd3dfe9dd0649f3922589",
+            "txId": "bccabb1b135a87cf2e0e35836ead33881d939510014489ac4f015a0aaddc3153",
+            "index": 1
+          }
+        ]
+      },
+      "AssetMetadata": {
+        "metadataList": [
+          {
+            "logo": {
+              "src": "https://onchainlogo.fnxtoken.com/logo.png",
+              "type": "https"
+            },
+            "assetId": "805dba5284db75636dabc96c02f62c9d382e246ee22aa937a7a12aec0014df10464e58",
+            "policyId": "805dba5284db75636dabc96c02f62c9d382e246ee22aa937a7a12aec",
+            "assetName": "0014df10464e58",
+            "name": "FNX",
+            "description": "FNX Ecosystem Token",
+            "decimals": 6,
+            "url": null,
+            "ticker": "FNX"
+          }
+        ]
+      },
+      "Vote": {
+        "count": 1,
+        "pageNo": 1,
+        "limit": 20,
+        "votes": [
+          {
+            "actionId": "62e75938cb29bcb73dd5f57bf04e58c29519a8993aa16a1336e3a4d31629d00a00",
+            "txId": "62e75938cb29bcb73dd5f57bf04e58c29519a8993aa16a1336e3a4d31629d00a",
+            "timestamp": "2024-07-15T19:52:45.000Z",
+            "epoch": 396,
+            "blockHeight": 1715307,
+            "vote": 0,
+            "voter": "222eed24ec0f9cb10dbd3e888f14cce9d7dee2b4fd82397893e468bcbe",
+            "anchor": {
+              "url": "https://raw.githubusercontent.com/wafflepool-cardano/drep-demo/main/Dim_Rep_Sum.jsonld",
+              "hash": "10dec86303fff4e5b7b185ede1e233a793ce40620a9c7c0d5ae414383a62d87c"
+            },
+            "meta": null
+          }
+        ]
+      }
+    }
+  }
+}
