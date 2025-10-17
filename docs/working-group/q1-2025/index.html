@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-working-group/q1-2025/README" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.7.0">
+<title data-rh="true">Developer Experience Working Group (Q1: Oct–Dec 2025) | Cardano Developer Experience</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://devex.intersectmbo.org/developer-experience/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://devex.intersectmbo.org/developer-experience/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://devex.intersectmbo.org/developer-experience/docs/working-group/q1-2025/"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Developer Experience Working Group (Q1: Oct–Dec 2025) | Cardano Developer Experience"><meta data-rh="true" name="description" content="Purpose &amp; Why"><meta data-rh="true" property="og:description" content="Purpose &amp; Why"><link data-rh="true" rel="icon" href="/developer-experience/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://devex.intersectmbo.org/developer-experience/docs/working-group/q1-2025/"><link data-rh="true" rel="alternate" href="https://devex.intersectmbo.org/developer-experience/docs/working-group/q1-2025/" hreflang="en"><link data-rh="true" rel="alternate" href="https://devex.intersectmbo.org/developer-experience/docs/working-group/q1-2025/" hreflang="x-default"><link rel="stylesheet" href="/developer-experience/assets/css/styles.081fff1a.css">
+<script src="/developer-experience/assets/js/runtime~main.6267325f.js" defer="defer"></script>
+<script src="/developer-experience/assets/js/main.c6c425e9.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t(null!==e?e:"light")}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/developer-experience/"><div class="navbar__logo"><img src="/developer-experience/img/OSO-image_modified.PNG" alt="Intersect MBO Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/developer-experience/img/OSO-image_modified.PNG" alt="Intersect MBO Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Cardano DevEx</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/developer-experience/docs/getting-started">Documentation</a></div><div class="navbar__items navbar__items--right"><a href="https://github.com/IntersectMBO/developer-experience" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite" aria-pressed="false"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/developer-experience/docs/getting-started">Get Started</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/developer-experience/docs/intersect-membership-guide">Why Join Intersect? Complete Membership Guide</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/developer-experience/docs/how-to-guide/advanced/">how-to-guide</a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/developer-experience/docs/resources/repositories">resources</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/developer-experience/docs/tutorials/">Tutorials</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--active" href="/developer-experience/docs/working-group/">Developer Experience Working Group</a><button aria-label="Collapse sidebar category &#x27;Developer Experience Working Group&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible menu__list-item-collapsible--active"><a class="menu__link menu__link--sublist menu__link--active" aria-current="page" tabindex="0" href="/developer-experience/docs/working-group/q1-2025/">Developer Experience Working Group (Q1: Oct–Dec 2025)</a><button aria-label="Collapse sidebar category &#x27;Developer Experience Working Group (Q1: Oct–Dec 2025)&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/developer-experience/docs/working-group/q1-2025/media/explainer-videos/">media</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/developer-experience/docs/working-group/q1-2025/resources/">Resources</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/developer-experience/docs/working-group/q1-2025/sessions/kickoff-orientation/">sessions</a></div></li></ul></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/developer-experience/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item"><a class="breadcrumbs__link" itemprop="item" href="/developer-experience/docs/working-group/"><span itemprop="name">Developer Experience Working Group</span></a><meta itemprop="position" content="1"></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">Developer Experience Working Group (Q1: Oct–Dec 2025)</span><meta itemprop="position" content="2"></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Developer Experience Working Group (Q1: Oct–Dec 2025)</h1></header>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="purpose--why">Purpose &amp; Why<a href="#purpose--why" class="hash-link" aria-label="Direct link to Purpose &amp; Why" title="Direct link to Purpose &amp; Why">​</a></h2>
+<p>The Developer Experience (DevEx) Working Group exists to onboard, support, and empower developers and contributors in the Cardano ecosystem. For Q1 (Oct–Dec 2025), our focus is on creating a clear entry path for newcomers, addressing common beginner barriers, and inspiring participation through real stories and practical skill-building. In the process we are looking to document every bit of how to join Cardano in general.</p>
+<p>This quarter lays the foundation for long-term engagement by ensuring that every participant:</p>
+<ul>
+<li><strong>Understands where to find resources</strong> (repos, docs, tooling, support)</li>
+<li><strong>Gains confidence with practical hands-on experience</strong></li>
+<li><strong>Sees clear pathways to contribute</strong>, both as developers and non-developers</li>
+<li><strong>Feels part of a supportive, global community</strong> aligned around 2026 goals</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="quarter-goals">Quarter Goals<a href="#quarter-goals" class="hash-link" aria-label="Direct link to Quarter Goals" title="Direct link to Quarter Goals">​</a></h2>
+<ol>
+<li><strong>Onboard New Developers</strong> – Provide clarity on repos, docs, tools, and support channels</li>
+<li><strong>Practical Skill Development</strong> – Through beginner and intermediate workshops (environment setup, token creation, wallet integration)</li>
+<li><strong>Highlight Contribution/Builder Paths</strong> – Showcase developer and community builder stories</li>
+<li><strong>Support and Troubleshoot</strong> – Open clinics to resolve common blockers and share solutions</li>
+<li><strong>Documentation &amp; Open Source Awareness</strong> – Teach newcomers how to contribute to repos, docs, and community resources</li>
+<li><strong>Community Alignment</strong> – Reflect on 2025 achievements and build momentum for 2026</li>
+</ol>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="session-plan-12-sessions">Session Plan (12 Sessions)<a href="#session-plan-12-sessions" class="hash-link" aria-label="Direct link to Session Plan (12 Sessions)" title="Direct link to Session Plan (12 Sessions)">​</a></h2>
+<table><thead><tr><th>Session</th><th>Title</th><th>Focus</th><th>Format</th></tr></thead><tbody><tr><td><strong>1</strong></td><td><strong>Kickoff &amp; Orientation</strong></td><td>Clear map of the Cardano ecosystem</td><td>Directive teaching</td></tr><tr><td><strong>2</strong></td><td><strong>Opportunities as a Dev in Cardano</strong></td><td>Explore career and contribution roles</td><td>Overview &amp; discussion</td></tr><tr><td><strong>3</strong></td><td><strong>Hands-On #1 (Beginner)</strong></td><td>Setting up a dev environment</td><td>Workshop</td></tr><tr><td><strong>4</strong></td><td><strong>Very Important Links to Know</strong></td><td>Official repos, docs, APIs, explorers, forums</td><td>Resource guide</td></tr><tr><td><strong>5</strong></td><td><strong>Spotlight: Developer Story #1</strong></td><td>Beginner journey from idea to MVP</td><td>Story showcase</td></tr><tr><td><strong>6</strong></td><td><strong>Hands-On #2 (Beginner)</strong></td><td>Creating and transferring a native token</td><td>Workshop</td></tr><tr><td><strong>7</strong></td><td><strong>Contributing to Intersect</strong></td><td>Non-dev contribution opportunities</td><td>Overview &amp; guidance</td></tr><tr><td><strong>8</strong></td><td><strong>Open Clinic #1</strong></td><td>Live troubleshooting for beginner blockers</td><td>Support session</td></tr><tr><td><strong>9</strong></td><td><strong>Spotlight: Community Builder Story</strong></td><td>Impact of non-coding contributions</td><td>Story showcase</td></tr><tr><td><strong>10</strong></td><td><strong>Hands-On #3 (Intermediate)</strong></td><td>Wallet integration fundamentals</td><td>Workshop</td></tr><tr><td><strong>11</strong></td><td><strong>Open Source &amp; Documentation</strong></td><td>Writing docs, repo improvement, issue management</td><td>Contribution guide</td></tr><tr><td><strong>12</strong></td><td><strong>Ecosystem Wrap-Up &amp; Year-End Reflections</strong></td><td>2025 highlights, 2026 planning, and motivational close</td><td>Reflection &amp; planning</td></tr></tbody></table>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="session-details">Session Details<a href="#session-details" class="hash-link" aria-label="Direct link to Session Details" title="Direct link to Session Details">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-1-kickoff--orientation">Session 1: Kickoff &amp; Orientation<a href="#session-1-kickoff--orientation" class="hash-link" aria-label="Direct link to Session 1: Kickoff &amp; Orientation" title="Direct link to Session 1: Kickoff &amp; Orientation">​</a></h3>
+<ul>
+<li><strong>Objective</strong>: Provide a comprehensive map of the Cardano ecosystem</li>
+<li><strong>Key Topics</strong>:<!-- -->
+<ul>
+<li>Introduction to Cardano and Intersect</li>
+<li>Core repositories and their purposes</li>
+<li>Documentation resources and learning paths</li>
+<li>Community channels and support structures</li>
+</ul>
+</li>
+<li><strong>Deliverable</strong>: Complete ecosystem navigation guide</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-2-opportunities-as-a-dev-in-cardano">Session 2: Opportunities as a Dev in Cardano<a href="#session-2-opportunities-as-a-dev-in-cardano" class="hash-link" aria-label="Direct link to Session 2: Opportunities as a Dev in Cardano" title="Direct link to Session 2: Opportunities as a Dev in Cardano">​</a></h3>
+<ul>
+<li><strong>Objective</strong>: Show various career and contribution paths</li>
+<li><strong>Key Topics</strong>:<!-- -->
+<ul>
+<li>Smart contract development roles</li>
+<li>Infrastructure and tooling opportunities</li>
+<li>Community building and advocacy</li>
+<li>Open source contribution paths</li>
+</ul>
+</li>
+<li><strong>Deliverable</strong>: Career pathway documentation</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-3-hands-on-1-beginner---dev-environment-setup">Session 3: Hands-On #1 (Beginner) - Dev Environment Setup<a href="#session-3-hands-on-1-beginner---dev-environment-setup" class="hash-link" aria-label="Direct link to Session 3: Hands-On #1 (Beginner) - Dev Environment Setup" title="Direct link to Session 3: Hands-On #1 (Beginner) - Dev Environment Setup">​</a></h3>
+<ul>
+<li><strong>Objective</strong>: Get participants&#x27; development environments ready</li>
+<li><strong>Key Topics</strong>:<!-- -->
+<ul>
+<li>Installing cardano-node and cardano-cli</li>
+<li>Setting up Docker environments</li>
+<li>Testnet configuration</li>
+<li>Basic CLI operations</li>
+</ul>
+</li>
+<li><strong>Deliverable</strong>: Working development environment</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-4-very-important-links-to-know">Session 4: Very Important Links to Know<a href="#session-4-very-important-links-to-know" class="hash-link" aria-label="Direct link to Session 4: Very Important Links to Know" title="Direct link to Session 4: Very Important Links to Know">​</a></h3>
+<ul>
+<li><strong>Objective</strong>: Curate essential resources for daily development</li>
+<li><strong>Key Topics</strong>:<!-- -->
+<ul>
+<li>GitHub organizations and key repositories</li>
+<li>Documentation sites and API references</li>
+<li>Block explorers and debugging tools</li>
+<li>Community forums and support channels</li>
+</ul>
+</li>
+<li><strong>Deliverable</strong>: Essential bookmarks list</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-5-spotlight---developer-story-1">Session 5: Spotlight - Developer Story #1<a href="#session-5-spotlight---developer-story-1" class="hash-link" aria-label="Direct link to Session 5: Spotlight - Developer Story #1" title="Direct link to Session 5: Spotlight - Developer Story #1">​</a></h3>
+<ul>
+<li><strong>Objective</strong>: Inspire through real developer journey</li>
+<li><strong>Format</strong>: Interview/presentation with community developer</li>
+<li><strong>Focus</strong>: From beginner to building first MVP</li>
+<li><strong>Deliverable</strong>: Recorded story for community inspiration</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-6-hands-on-2-beginner---native-token-creation">Session 6: Hands-On #2 (Beginner) - Native Token Creation<a href="#session-6-hands-on-2-beginner---native-token-creation" class="hash-link" aria-label="Direct link to Session 6: Hands-On #2 (Beginner) - Native Token Creation" title="Direct link to Session 6: Hands-On #2 (Beginner) - Native Token Creation">​</a></h3>
+<ul>
+<li><strong>Objective</strong>: Create and transfer custom native tokens</li>
+<li><strong>Key Topics</strong>:<!-- -->
+<ul>
+<li>Understanding native tokens vs smart contracts</li>
+<li>Minting policies and token creation</li>
+<li>Transaction building and signing</li>
+<li>Token transfer operations</li>
+</ul>
+</li>
+<li><strong>Deliverable</strong>: Successfully created and transferred token</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-7-contributing-to-intersect">Session 7: Contributing to Intersect<a href="#session-7-contributing-to-intersect" class="hash-link" aria-label="Direct link to Session 7: Contributing to Intersect" title="Direct link to Session 7: Contributing to Intersect">​</a></h3>
+<ul>
+<li><strong>Objective</strong>: Show non-developer contribution opportunities</li>
+<li><strong>Key Topics</strong>:<!-- -->
+<ul>
+<li>Documentation improvements</li>
+<li>Testing and quality assurance</li>
+<li>Community moderation and support</li>
+<li>Event organization and advocacy</li>
+</ul>
+</li>
+<li><strong>Deliverable</strong>: Contribution opportunity matrix</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-8-open-clinic-1">Session 8: Open Clinic #1<a href="#session-8-open-clinic-1" class="hash-link" aria-label="Direct link to Session 8: Open Clinic #1" title="Direct link to Session 8: Open Clinic #1">​</a></h3>
+<ul>
+<li><strong>Objective</strong>: Provide live support for common issues</li>
+<li><strong>Format</strong>: Q&amp;A and live troubleshooting</li>
+<li><strong>Focus</strong>: Environment setup, basic operations, common errors</li>
+<li><strong>Deliverable</strong>: Troubleshooting guide from common issues</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-9-spotlight---community-builder-story">Session 9: Spotlight - Community Builder Story<a href="#session-9-spotlight---community-builder-story" class="hash-link" aria-label="Direct link to Session 9: Spotlight - Community Builder Story" title="Direct link to Session 9: Spotlight - Community Builder Story">​</a></h3>
+<ul>
+<li><strong>Objective</strong>: Highlight non-coding contributions impact</li>
+<li><strong>Format</strong>: Interview with community builder</li>
+<li><strong>Focus</strong>: Education, advocacy, and ecosystem growth</li>
+<li><strong>Deliverable</strong>: Community building inspiration content</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-10-hands-on-3-intermediate---wallet-integration">Session 10: Hands-On #3 (Intermediate) - Wallet Integration<a href="#session-10-hands-on-3-intermediate---wallet-integration" class="hash-link" aria-label="Direct link to Session 10: Hands-On #3 (Intermediate) - Wallet Integration" title="Direct link to Session 10: Hands-On #3 (Intermediate) - Wallet Integration">​</a></h3>
+<ul>
+<li><strong>Objective</strong>: Build basic wallet connectivity</li>
+<li><strong>Key Topics</strong>:<!-- -->
+<ul>
+<li>Wallet connector libraries</li>
+<li>Transaction building in applications</li>
+<li>Frontend integration patterns</li>
+<li>Testing with different wallets</li>
+</ul>
+</li>
+<li><strong>Deliverable</strong>: Working wallet integration demo</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-11-open-source--documentation">Session 11: Open Source &amp; Documentation<a href="#session-11-open-source--documentation" class="hash-link" aria-label="Direct link to Session 11: Open Source &amp; Documentation" title="Direct link to Session 11: Open Source &amp; Documentation">​</a></h3>
+<ul>
+<li><strong>Objective</strong>: Teach effective open source contribution</li>
+<li><strong>Key Topics</strong>:<!-- -->
+<ul>
+<li>Writing effective documentation</li>
+<li>Filing quality bug reports and feature requests</li>
+<li>Code contribution best practices</li>
+<li>Review processes and community standards</li>
+</ul>
+</li>
+<li><strong>Deliverable</strong>: Open source contribution guide</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-12-ecosystem-wrap-up--year-end-reflections">Session 12: Ecosystem Wrap-Up &amp; Year-End Reflections<a href="#session-12-ecosystem-wrap-up--year-end-reflections" class="hash-link" aria-label="Direct link to Session 12: Ecosystem Wrap-Up &amp; Year-End Reflections" title="Direct link to Session 12: Ecosystem Wrap-Up &amp; Year-End Reflections">​</a></h3>
+<ul>
+<li><strong>Objective</strong>: Celebrate progress and plan ahead</li>
+<li><strong>Key Topics</strong>:<!-- -->
+<ul>
+<li>Q4 2025 ecosystem achievements</li>
+<li>Individual participant progress review</li>
+<li>2026 roadmap and opportunities</li>
+<li>Community building and continued engagement</li>
+</ul>
+</li>
+<li><strong>Deliverable</strong>: 2026 engagement plan</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="documentation-and-media">Documentation and Media<a href="#documentation-and-media" class="hash-link" aria-label="Direct link to Documentation and Media" title="Direct link to Documentation and Media">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="repository-structure">Repository Structure<a href="#repository-structure" class="hash-link" aria-label="Direct link to Repository Structure" title="Direct link to Repository Structure">​</a></h3>
+<p>All session materials will be published in the <code>IntersectMBO/developer-experience</code> repository:</p>
+<div class="codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_biex"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">developer-experience/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── Working-Group/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── Q1-2025/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   ├── sessions/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   ├── 01-kickoff-orientation/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   ├── 02-dev-opportunities/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   ├── 03-environment-setup/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   ├── 04-essential-links/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   ├── 05-developer-story-1/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   ├── 06-token-creation/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   ├── 07-contributing-intersect/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   ├── 08-open-clinic-1/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   ├── 09-community-builder-story/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   ├── 10-wallet-integration/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   ├── 11-open-source-docs/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   └── 12-ecosystem-wrapup/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   ├── resources/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   ├── troubleshooting-guide.md</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   ├── essential-bookmarks.md</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   │   └── contribution-opportunities.md</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │   └── media/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │       ├── session-recordings/</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   │       └── explainer-videos/</span><br></span></code></pre><div class="buttonGroup__atx"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_eSgA" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_y97N"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_LjdS"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="content-types">Content Types<a href="#content-types" class="hash-link" aria-label="Direct link to Content Types" title="Direct link to Content Types">​</a></h3>
+<ul>
+<li><strong>Session Notes</strong>: Detailed notes and key takeaways from each session</li>
+<li><strong>Hands-on Guides</strong>: Step-by-step tutorials with code examples</li>
+<li><strong>Troubleshooting Docs</strong>: Solutions to common issues encountered</li>
+<li><strong>Resource Lists</strong>: Curated links and references</li>
+<li><strong>Story Content</strong>: Developer and community builder spotlights</li>
+<li><strong>Video Content</strong>: Short explainer and recap videos for social sharing</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="community-adoption-goal">Community Adoption Goal<a href="#community-adoption-goal" class="hash-link" aria-label="Direct link to Community Adoption Goal" title="Direct link to Community Adoption Goal">​</a></h3>
+<p>We hope the community adopts this as the go-to beginner&#x27;s guide for Cardano development and contribution.</p>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="roles--delivery">Roles &amp; Delivery<a href="#roles--delivery" class="hash-link" aria-label="Direct link to Roles &amp; Delivery" title="Direct link to Roles &amp; Delivery">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="presenters">Presenters<a href="#presenters" class="hash-link" aria-label="Direct link to Presenters" title="Direct link to Presenters">​</a></h3>
+<p>Rotating presentation duties between:</p>
+<ul>
+<li><strong>Tyty</strong> - Lead coordinator and technical sessions</li>
+<li><strong>Uche</strong> - Community building and contribution focus</li>
+<li><strong>Dan</strong> - Technical workshops and troubleshooting</li>
+<li><strong>Harun</strong> - Developer stories and ecosystem overview</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="session-formats">Session Formats<a href="#session-formats" class="hash-link" aria-label="Direct link to Session Formats" title="Direct link to Session Formats">​</a></h3>
+<ul>
+<li><strong>Directive Teaching</strong>: Structured presentations with clear learning objectives</li>
+<li><strong>Hands-on Workshops</strong>: Interactive coding and setup sessions</li>
+<li><strong>Spotlight Stories</strong>: Developer and builder journey showcases</li>
+<li><strong>Open Clinics</strong>: Live Q&amp;A and troubleshooting support</li>
+<li><strong>Ecosystem Reflection</strong>: Community discussion and planning</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="cadence--accessibility">Cadence &amp; Accessibility<a href="#cadence--accessibility" class="hash-link" aria-label="Direct link to Cadence &amp; Accessibility" title="Direct link to Cadence &amp; Accessibility">​</a></h3>
+<ul>
+<li><strong>12 sessions total</strong> (weekly schedule)</li>
+<li><strong>Alternating time slots</strong> - morning/evening for global participation</li>
+<li><strong>Recorded sessions</strong> available for asynchronous access</li>
+<li><strong>Multiple language support</strong> where possible</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="expected-outcomes">Expected Outcomes<a href="#expected-outcomes" class="hash-link" aria-label="Direct link to Expected Outcomes" title="Direct link to Expected Outcomes">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="quantitative-goals">Quantitative Goals<a href="#quantitative-goals" class="hash-link" aria-label="Direct link to Quantitative Goals" title="Direct link to Quantitative Goals">​</a></h3>
+<ul>
+<li><strong>15–30 newcomers onboarded</strong> into the Cardano ecosystem</li>
+<li><strong>3 core technical skills</strong> gained by participants:<!-- -->
+<ol>
+<li>Development environment setup</li>
+<li>Native token creation and management</li>
+<li>Basic wallet integration</li>
+</ol>
+</li>
+<li><strong>100% session documentation</strong> published in public repository</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="qualitative-goals">Qualitative Goals<a href="#qualitative-goals" class="hash-link" aria-label="Direct link to Qualitative Goals" title="Direct link to Qualitative Goals">​</a></h3>
+<ul>
+<li><strong>Participants gain confidence</strong> to build independently on Cardano</li>
+<li><strong>Clear contribution ladder</strong> established for developers and non-developers</li>
+<li><strong>Documented feedback and troubleshooting resources</strong> from open clinic sessions</li>
+<li><strong>Shared community identity</strong> and alignment heading into 2026</li>
+<li><strong>Reduced barriers</strong> to entry for new ecosystem participants</li>
+</ul>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="long-term-impact">Long-term Impact<a href="#long-term-impact" class="hash-link" aria-label="Direct link to Long-term Impact" title="Direct link to Long-term Impact">​</a></h3>
+<ul>
+<li><strong>Sustainable onboarding process</strong> that can be replicated</li>
+<li><strong>Community-maintained resources</strong> that live beyond the working group</li>
+<li><strong>Network effects</strong> as participants become mentors for future newcomers</li>
+<li><strong>Improved developer experience</strong> across the entire ecosystem</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="quarter-one-theme">Quarter One Theme<a href="#quarter-one-theme" class="hash-link" aria-label="Direct link to Quarter One Theme" title="Direct link to Quarter One Theme">​</a></h2>
+<p><strong>&quot;Laying the Foundations&quot;</strong> – equipping contributors with clarity, confidence, and community to thrive in the Cardano ecosystem.</p>
+<p>This theme emphasizes that Q1 2025 is about building the fundamental knowledge, skills, and connections that will enable participants to become active, confident contributors to Cardano&#x27;s growth throughout 2026 and beyond.</p>
+<hr>
+<h2 class="anchor anchorWithStickyNavbar_LWe7" id="getting-started">Getting Started<a href="#getting-started" class="hash-link" aria-label="Direct link to Getting Started" title="Direct link to Getting Started">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="for-new-participants">For New Participants<a href="#for-new-participants" class="hash-link" aria-label="Direct link to For New Participants" title="Direct link to For New Participants">​</a></h3>
+<ol>
+<li>First become a member at <a href="https://www.intersectmbo.org/" target="_blank" rel="noopener noreferrer">Intersect</a> and register at <a href="https://members.intersectmbo.org/registration" target="_blank" rel="noopener noreferrer">members.intersectmbo.org</a>. After joining, you&#x27;ll get access to our Discord community</li>
+<li>Introduce yourself in the Developer Experience channel</li>
+<li>Review the <a href="/developer-experience/docs/working-group/q1-2025/sessions/kickoff-orientation/directive-kickoff">Directive: Kickoff &amp; Orientation</a> guide</li>
+<li>Attend the weekly working group sessions</li>
+<li>Follow along with hands-on exercises</li>
+<li>Contribute to documentation and community resources</li>
+</ol>
+<h3 class="anchor anchorWithStickyNavbar_LWe7" id="for-session-leaders">For Session Leaders<a href="#for-session-leaders" class="hash-link" aria-label="Direct link to For Session Leaders" title="Direct link to For Session Leaders">​</a></h3>
+<ol>
+<li>Review session objectives and materials</li>
+<li>Prepare hands-on environments and examples</li>
+<li>Test all technical demonstrations beforehand</li>
+<li>Document session notes and key takeaways</li>
+<li>Gather participant feedback for continuous improvement</li>
+</ol>
+<hr>
+<p><em>This plan is a living document and will be updated based on participant feedback and community needs.</em></p>
+<p><em>Last Updated: October 2025 | Maintained by Developer Experience Working Group</em></p></div></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/developer-experience/docs/working-group/"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Developer Experience Working Group</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/developer-experience/docs/working-group/q1-2025/media/explainer-videos/"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Explainer Videos</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#purpose--why" class="table-of-contents__link toc-highlight">Purpose &amp; Why</a></li><li><a href="#quarter-goals" class="table-of-contents__link toc-highlight">Quarter Goals</a></li><li><a href="#session-plan-12-sessions" class="table-of-contents__link toc-highlight">Session Plan (12 Sessions)</a></li><li><a href="#session-details" class="table-of-contents__link toc-highlight">Session Details</a><ul><li><a href="#session-1-kickoff--orientation" class="table-of-contents__link toc-highlight">Session 1: Kickoff &amp; Orientation</a></li><li><a href="#session-2-opportunities-as-a-dev-in-cardano" class="table-of-contents__link toc-highlight">Session 2: Opportunities as a Dev in Cardano</a></li><li><a href="#session-3-hands-on-1-beginner---dev-environment-setup" class="table-of-contents__link toc-highlight">Session 3: Hands-On #1 (Beginner) - Dev Environment Setup</a></li><li><a href="#session-4-very-important-links-to-know" class="table-of-contents__link toc-highlight">Session 4: Very Important Links to Know</a></li><li><a href="#session-5-spotlight---developer-story-1" class="table-of-contents__link toc-highlight">Session 5: Spotlight - Developer Story #1</a></li><li><a href="#session-6-hands-on-2-beginner---native-token-creation" class="table-of-contents__link toc-highlight">Session 6: Hands-On #2 (Beginner) - Native Token Creation</a></li><li><a href="#session-7-contributing-to-intersect" class="table-of-contents__link toc-highlight">Session 7: Contributing to Intersect</a></li><li><a href="#session-8-open-clinic-1" class="table-of-contents__link toc-highlight">Session 8: Open Clinic #1</a></li><li><a href="#session-9-spotlight---community-builder-story" class="table-of-contents__link toc-highlight">Session 9: Spotlight - Community Builder Story</a></li><li><a href="#session-10-hands-on-3-intermediate---wallet-integration" class="table-of-contents__link toc-highlight">Session 10: Hands-On #3 (Intermediate) - Wallet Integration</a></li><li><a href="#session-11-open-source--documentation" class="table-of-contents__link toc-highlight">Session 11: Open Source &amp; Documentation</a></li><li><a href="#session-12-ecosystem-wrap-up--year-end-reflections" class="table-of-contents__link toc-highlight">Session 12: Ecosystem Wrap-Up &amp; Year-End Reflections</a></li></ul></li><li><a href="#documentation-and-media" class="table-of-contents__link toc-highlight">Documentation and Media</a><ul><li><a href="#repository-structure" class="table-of-contents__link toc-highlight">Repository Structure</a></li><li><a href="#content-types" class="table-of-contents__link toc-highlight">Content Types</a></li><li><a href="#community-adoption-goal" class="table-of-contents__link toc-highlight">Community Adoption Goal</a></li></ul></li><li><a href="#roles--delivery" class="table-of-contents__link toc-highlight">Roles &amp; Delivery</a><ul><li><a href="#presenters" class="table-of-contents__link toc-highlight">Presenters</a></li><li><a href="#session-formats" class="table-of-contents__link toc-highlight">Session Formats</a></li><li><a href="#cadence--accessibility" class="table-of-contents__link toc-highlight">Cadence &amp; Accessibility</a></li></ul></li><li><a href="#expected-outcomes" class="table-of-contents__link toc-highlight">Expected Outcomes</a><ul><li><a href="#quantitative-goals" class="table-of-contents__link toc-highlight">Quantitative Goals</a></li><li><a href="#qualitative-goals" class="table-of-contents__link toc-highlight">Qualitative Goals</a></li><li><a href="#long-term-impact" class="table-of-contents__link toc-highlight">Long-term Impact</a></li></ul></li><li><a href="#quarter-one-theme" class="table-of-contents__link toc-highlight">Quarter One Theme</a></li><li><a href="#getting-started" class="table-of-contents__link toc-highlight">Getting Started</a><ul><li><a href="#for-new-participants" class="table-of-contents__link toc-highlight">For New Participants</a></li><li><a href="#for-session-leaders" class="table-of-contents__link toc-highlight">For Session Leaders</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/developer-experience/docs/getting-started">Documentation</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/IntersectMBO/developer-experience" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_nPIU"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 My Project, Inc. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
