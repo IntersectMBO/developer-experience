@@ -25,6 +25,12 @@ jobs:
         run: npm run build
         working-directory: ./contributor-beginner # Change to your subfolder
 
+      - name: Move artifacts
+        run: |
+               rm -rf ./docs
+               mv ./website/build/docs ./docs
+        working-directory: ./website 
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
