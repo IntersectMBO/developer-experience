@@ -5,52 +5,50 @@ import styles from './styles.module.css';
 
 type FeatureItem = {
   title: string;
-  icon: string;
   description: ReactNode;
 };
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Comprehensive Guides',
-    icon: '📚',
+    title: 'Developer Experience Working Group',
     description: (
       <>
-        Step-by-step guides from beginner to advanced, covering everything from
-        setting up your development environment to building complex dApps on Cardano.
+        Join our community-driven initiative led by developer advocates. Participate in 
+        bi-weekly meetings, identify developer challenges, and collaborate on solutions 
+        to enhance the Cardano Layer 1 developer experience.
       </>
     ),
   },
   {
-    title: 'Hands-On Learning',
-    icon: '🛠️',
+    title: 'Developer Advocate Program',
     description: (
       <>
-        Interactive tutorials and workshops that get you building immediately.
-        Learn by doing with real examples and practical exercises.
+        Connect with developer advocates who foster vibrant communities, onboard new 
+        developers, maintain documentation, and engage through workshops and mentorship 
+        programs within the Cardano ecosystem.
       </>
     ),
   },
   {
-    title: 'Community Driven',
-    icon: '🤝',
+    title: 'Member-Driven Organization',
     description: (
       <>
-        Built by the community, for the community. Join our working groups
-        and help shape the future of Cardano development.
+        Become part of Intersect MBO, a member-driven organization at the heart of Cardano. 
+        Engage in working groups, vote on key decisions, and help shape the future of 
+        the Cardano ecosystem through collaborative innovation.
       </>
     ),
   },
 ];
 
-function Feature({title, icon, description}: FeatureItem) {
+function Feature({title, description}: FeatureItem) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <div className={styles.featureIcon}>{icon}</div>
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+      <div className={styles.featureCard}>
+        <div className={styles.featureContent}>
+          <Heading as="h3" className={styles.featureTitle}>{title}</Heading>
+          <p className={styles.featureDescription}>{description}</p>
+        </div>
       </div>
     </div>
   );
@@ -60,6 +58,14 @@ export default function HomepageFeatures(): ReactNode {
   return (
     <section className={styles.features}>
       <div className="container">
+        <div className={styles.featuresHeader}>
+          <Heading as="h2" className={styles.featuresTitle}>
+            Join the Developer Experience Initiative
+          </Heading>
+          <p className={styles.featuresSubtitle}>
+            Community-driven programs enhancing Cardano's developer ecosystem
+          </p>
+        </div>
         <div className="row">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />

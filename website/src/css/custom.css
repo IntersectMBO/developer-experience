@@ -4,27 +4,458 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
+/* Intersect MBO Brand Colors - Custom Blue Theme */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  /* Primary Brand Colors */
+  --ifm-color-primary: #0128aa;
+  --ifm-color-primary-dark: #011a7a;
+  --ifm-color-primary-darker: #01166b;
+  --ifm-color-primary-darkest: #011255;
+  --ifm-color-primary-light: #1a3bb8;
+  --ifm-color-primary-lighter: #2644c1;
+  --ifm-color-primary-lightest: #4d66d1;
+
+  /* Secondary Colors */
+  --ifm-color-secondary: #f8f9fa;
+  --ifm-color-secondary-dark: #e9ecef;
+  --ifm-color-secondary-darker: #dee2e6;
+  --ifm-color-secondary-darkest: #ced4da;
+  --ifm-color-secondary-light: #ffffff;
+  --ifm-color-secondary-lighter: #ffffff;
+  --ifm-color-secondary-lightest: #ffffff;
+
+  /* Accent Colors */
+  --ifm-color-accent: #00d4aa;
+  --ifm-color-accent-dark: #00b894;
+  --ifm-color-accent-darker: #00a085;
+  --ifm-color-accent-darkest: #008975;
+  --ifm-color-accent-light: #1ad8b8;
+  --ifm-color-accent-lighter: #33dcc6;
+  --ifm-color-accent-lightest: #66e4d4;
+
+  /* Typography */
+  --ifm-font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace;
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.6;
+
+  /* Code styling */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(1, 40, 170, 0.1);
+
+  /* Spacing */
+  --ifm-spacing-horizontal: 1.5rem;
+  --ifm-spacing-vertical: 1rem;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Dark Mode - Intersect Brand Colors */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  /* Primary Brand Colors - Adjusted for dark mode */
+  --ifm-color-primary: #4d66d1;
+  --ifm-color-primary-dark: #2644c1;
+  --ifm-color-primary-darker: #1a3bb8;
+  --ifm-color-primary-darkest: #0128aa;
+  --ifm-color-primary-light: #6b7fd8;
+  --ifm-color-primary-lighter: #7a8ddd;
+  --ifm-color-primary-lightest: #9aa8e4;
+
+  /* Secondary Colors for dark mode */
+  --ifm-color-secondary: #2d3748;
+  --ifm-color-secondary-dark: #1a202c;
+  --ifm-color-secondary-darker: #171923;
+  --ifm-color-secondary-darkest: #0f1419;
+  --ifm-color-secondary-light: #4a5568;
+  --ifm-color-secondary-lighter: #718096;
+  --ifm-color-secondary-lightest: #a0aec0;
+
+  /* Accent Colors - Maintained for consistency */
+  --ifm-color-accent: #00d4aa;
+  --ifm-color-accent-dark: #00b894;
+  --ifm-color-accent-darker: #00a085;
+  --ifm-color-accent-darkest: #008975;
+  --ifm-color-accent-light: #1ad8b8;
+  --ifm-color-accent-lighter: #33dcc6;
+  --ifm-color-accent-lightest: #66e4d4;
+
+  /* Dark mode code highlighting */
+  --docusaurus-highlighted-code-line-bg: rgba(77, 102, 209, 0.2);
+}
+
+/* Custom Intersect Branding Styles */
+
+/* Navbar styling */
+.navbar {
+  background: #0128aa;
+  box-shadow: 0 2px 8px rgba(1, 40, 170, 0.15);
+}
+
+.navbar__brand {
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: white !important;
+}
+
+.navbar__logo {
+  height: 32px;
+  width: auto;
+}
+
+/* Navbar text elements - white on blue background */
+.navbar__item {
+  color: white !important;
+}
+
+.navbar__link {
+  color: white !important;
+  font-weight: 500;
+}
+
+.navbar__link:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.navbar__link--active {
+  color: white !important;
+  font-weight: 600;
+}
+
+/* Dropdown menu styling */
+.navbar__item--show .navbar__link {
+  color: white !important;
+}
+
+.dropdown__link {
+  color: var(--ifm-color-primary) !important;
+}
+
+.dropdown__link:hover {
+  color: var(--ifm-color-primary-dark) !important;
+  background-color: rgba(1, 40, 170, 0.1);
+}
+
+/* Mobile menu toggle */
+.navbar__toggle {
+  color: white !important;
+}
+
+.navbar-sidebar__brand {
+  color: white !important;
+}
+
+
+/* Card styling */
+.card {
+  border: 1px solid rgba(1, 40, 170, 0.1);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 20px rgba(1, 40, 170, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Footer styling */
+.footer {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  border-top: 3px solid var(--ifm-color-primary);
+}
+
+.footer__title {
+  color: var(--ifm-color-primary-light);
+  font-weight: 600;
+}
+
+.footer__link-item {
+  color: var(--ifm-color-secondary-lighter);
+  transition: color 0.2s ease;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary-light);
+}
+
+/* Hero section styling */
+.hero {
+  background: linear-gradient(135deg, rgba(1, 40, 170, 0.03) 0%, rgba(0, 212, 170, 0.03) 100%);
+  padding: 6rem 0 4rem 0;
+  border-bottom: 1px solid rgba(1, 40, 170, 0.1);
+}
+
+.hero__title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.hero__subtitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--ifm-color-primary);
+  margin: 1.5rem 0;
+  line-height: 1.4;
+}
+
+/* Enhanced button styling */
+.button--primary {
+  background: var(--ifm-color-primary);
+  border: 2px solid var(--ifm-color-primary);
+  color: white !important;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.button--primary:hover {
+  background: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(1, 40, 170, 0.3);
+}
+
+.button--secondary {
+  background: transparent;
+  border: 2px solid var(--ifm-color-primary);
+  color: var(--ifm-color-primary) !important;
+  font-weight: 600;
+  padding: 0.875rem 2rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.button--secondary:hover {
+  background: var(--ifm-color-primary);
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(1, 40, 170, 0.2);
+}
+
+.button--outline {
+  background: transparent;
+  border: 2px solid var(--ifm-color-primary);
+  color: var(--ifm-color-primary) !important;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.button--outline:hover {
+  background: var(--ifm-color-primary);
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(1, 40, 170, 0.2);
+}
+
+/* Dark mode button fixes */
+[data-theme='dark'] .button--primary {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: white !important;
+}
+
+[data-theme='dark'] .button--primary:hover {
+  background: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+  color: white !important;
+}
+
+[data-theme='dark'] .button--secondary {
+  background: transparent;
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary) !important;
+}
+
+[data-theme='dark'] .button--secondary:hover {
+  background: var(--ifm-color-primary);
+  color: white !important;
+}
+
+[data-theme='dark'] .button--outline {
+  background: transparent;
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary) !important;
+}
+
+[data-theme='dark'] .button--outline:hover {
+  background: var(--ifm-color-primary);
+  color: white !important;
+}
+
+/* Code blocks */
+.prism-code {
+  border-radius: 8px;
+  border: 1px solid rgba(1, 40, 170, 0.1);
+}
+
+/* Sidebar styling */
+.theme-doc-sidebar-container {
+  border-right: 1px solid rgba(1, 40, 170, 0.1);
+}
+
+.menu__link--active {
+  background: transparent !important;
+  color: #0128aa !important;
+  font-weight: 600;
+}
+
+.menu__link--active:hover {
+  background: transparent !important;
+  color: #0128aa !important;
+}
+
+/* More specific selectors for active menu items */
+.theme-doc-sidebar-container .menu__link--active {
+  color: #0128aa !important;
+  background: transparent !important;
+}
+
+.theme-doc-sidebar-container .menu__link--active:hover {
+  color: #0128aa !important;
+  background: transparent !important;
+}
+
+/* Override any conflicting styles */
+.menu__link--active,
+.menu__link--active:visited,
+.menu__link--active:focus,
+.menu__link--active:active {
+  color: #0128aa !important;
+  background: transparent !important;
+}
+
+.menu__link {
+  color: var(--ifm-color-content) !important;
+}
+
+.menu__link:hover {
+  background: rgba(1, 40, 170, 0.05);
+  color: var(--ifm-color-content) !important;
+}
+
+/* Dark mode sidebar fixes */
+[data-theme='dark'] .menu__link {
+  color: var(--ifm-color-content) !important;
+}
+
+[data-theme='dark'] .menu__link:hover {
+  color: var(--ifm-color-content) !important;
+}
+
+[data-theme='dark'] .menu__link--active {
+  background: transparent !important;
+  color: #0128aa !important;
+}
+
+[data-theme='dark'] .menu__link--active:hover {
+  background: transparent !important;
+  color: #0128aa !important;
+}
+
+/* More specific dark mode selectors */
+[data-theme='dark'] .theme-doc-sidebar-container .menu__link--active {
+  color: #0128aa !important;
+  background: transparent !important;
+}
+
+[data-theme='dark'] .theme-doc-sidebar-container .menu__link--active:hover {
+  color: #0128aa !important;
+  background: transparent !important;
+}
+
+/* Override dark mode conflicting styles */
+[data-theme='dark'] .menu__link--active,
+[data-theme='dark'] .menu__link--active:visited,
+[data-theme='dark'] .menu__link--active:focus,
+[data-theme='dark'] .menu__link--active:active {
+  color: #0128aa !important;
+  background: transparent !important;
+}
+
+/* Responsive design improvements */
+@media (max-width: 996px) {
+  .navbar__brand {
+    font-size: 1.1rem;
+  }
+
+  .hero {
+    padding: 4rem 0 3rem 0;
+  }
+
+  .hero__title {
+    font-size: 2.5rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 0 2rem 0;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__subtitle {
+    font-size: 1.125rem;
+  }
+
+  .button--primary,
+  .button--secondary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Link visibility fixes */
+a {
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--ifm-color-primary-dark) !important;
+  text-decoration: underline;
+}
+
+/* Dark mode link fixes */
+[data-theme='dark'] a {
+  color: var(--ifm-color-primary) !important;
+}
+
+[data-theme='dark'] a:hover {
+  color: var(--ifm-color-primary-light) !important;
+}
+
+/* Footer link fixes */
+.footer__link-item {
+  color: var(--ifm-color-secondary-lighter) !important;
+  transition: color 0.2s ease;
+}
+
+.footer__link-item:hover {
+  color: var(--ifm-color-primary-light) !important;
+}
+
+[data-theme='dark'] .footer__link-item {
+  color: var(--ifm-color-secondary-lighter) !important;
+}
+
+[data-theme='dark'] .footer__link-item:hover {
+  color: var(--ifm-color-primary-light) !important;
+}
+
+/* Loading and transition effects */
+* {
+  transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
