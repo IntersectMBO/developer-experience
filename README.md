@@ -63,6 +63,21 @@ Meet and connect with our past and present developer advocates:
       - **Interview** : [Watch now](https://www.youtube.com/watch?v=UDXshRpVA6M)  
       - **LinkedIn**  : [Udai's LinkedIn](https://www.linkedin.com/in/solanki/)  
       - **Discord**   : thecoder0001
+
+## Our Valued Contributors
+
+We extend our sincere gratitude to all the individuals who have contributed to the Developer Experience Working Group. Your efforts are invaluable in making the Cardano ecosystem more accessible and rewarding for developers.
+
+- **Tex M.** ([@Ranchhand87](https://github.com/Ranchhand87))
+- **Suganya Raju** ([@SuganyaAK](https://github.com/SuganyaAK))
+- **dan Baruka** ([@danbaruka](https://github.com/danbaruka))
+- **Uchechukwu Obasi** ([@thisisobate](https://github.com/thisisobate))
+- **Tyty.Emmanuel** ([@Emmanuel-Tyty](https://github.com/Emmanuel-Tyty))
+- **Harun Mwangi** ([@HarunJr](https://github.com/HarunJr))
+- **Fifty** ([@aleeusgr](https://github.com/aleeusgr))
+- **Bernard Sibanda** ([@besiwims](https://github.com/besiwims))
+- **Christian Taylor** ([@ThatGuyLLC](https://github.com/ThatGuyLLC))
+
 ## Contact & Communication
 
 - **GitHub Discussions**: [Developer-Experience Working Group Repository](https://github.com/IntersectMBO/developer-experience/discussions)
