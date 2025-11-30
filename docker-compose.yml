@@ -1,0 +1,66 @@
+services:
+  # Development environment with hot reload
+  devex-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: devex-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount source code for hot reload
+      - ./website:/app:cached
+      # Use named volumes for node_modules to avoid overwriting
+      - node_modules:/app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+      - FAST_REFRESH=true
+    command: yarn start --host 0.0.0.0 --port 3000
+    networks:
+      - devex-network
+    restart: unless-stopped
+
+  # Production build and serve
+  devex-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: devex-prod
+    ports:
+      - "8080:80"
+    networks:
+      - devex-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Test runner (optional - run on demand)
+  devex-test:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: test
+    container_name: devex-test
+    volumes:
+      - ./website:/app:cached
+      - node_modules:/app/node_modules
+    networks:
+      - devex-network
+    profiles:
+      - test
+    command: yarn typecheck
+
+networks:
+  devex-network:
+    driver: bridge
+
+volumes:
+  node_modules:
+    driver: local

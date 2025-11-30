@@ -1,0 +1,86 @@
+# Ignore Git files
+.git
+.gitignore
+.gitattributes
+
+# Ignore CI/CD files
+.github
+.gitlab-ci.yml
+.travis.yml
+.circleci
+
+# Ignore documentation that's not needed in the container
+*.md
+!website/docs/**/*.md
+!website/blog/**/*.md
+CHANGELOG.md
+CODE-OF-CONDUCT.md
+CONTRIBUTING.md
+LICENSE
+README.md
+SECURITY.md
+
+# Ignore IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+.project
+.classpath
+.settings
+*.sublime-*
+
+# Ignore node_modules (will be installed in container)
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Ignore build artifacts and cache
+build
+dist
+.docusaurus
+.cache
+*.local
+
+# Ignore environment files (use docker-compose for env vars)
+.env
+.env.local
+.env.*.local
+.env.production
+.env.development
+
+# Ignore test coverage
+coverage
+.nyc_output
+*.lcov
+
+# Ignore temporary files
+tmp
+temp
+*.tmp
+*.log
+
+# Ignore OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Ignore Docker files themselves (no need to copy into image)
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Ignore archive and historical content not needed at runtime
+IOHK Archive
+
+# Ignore package manager lock files that might cause conflicts
+# (We'll copy them explicitly in Dockerfile)
+# Uncomment if needed:
+# yarn.lock
+# package-lock.json
+# pnpm-lock.yaml
