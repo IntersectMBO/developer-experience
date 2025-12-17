@@ -9,16 +9,8 @@ slug: /working-group/q1-2025/sessions/06-repo-walkthrough/recordings
 
 🎥 **Repository Walkthrough & Demo**
 
-# Coming soon...
-
-## Recording 2 (2025/12/17 07:00 AM UTC)
-
-🎥 **Repository Walkthrough & Demo**
-
-# Coming soon...
-
 <!-- <iframe
-  src="https://drive.google.com/file/d/RECORDING_ID_HERE/preview"
+  src="https://www.youtube.com/embed/qXEO-bZ-tAk"
   title="Session 06: Repository Walkthrough & Demo"
   width="100%"
   height="480"
@@ -35,7 +27,14 @@ slug: /working-group/q1-2025/sessions/06-repo-walkthrough/recordings
   - On-chain code implementation in Aiken
   - Property-based testing with fuzzy tests (838 automated checks)
   - Development best practices and common pitfalls
-  - Q&A with Bernard Sibanda on test-driven development -->
+  - Q&A with Bernard Sibanda on test-driven development  -->
+
+
+## Recording 2 (2025/12/17 07:00 AM UTC)
+
+🎥 **Repository Walkthrough & Demo**
+
+
 
 For additional sessions, check the [Working Group Session Recordings](../../../media/session-recordings/readme.md) hub.
 
