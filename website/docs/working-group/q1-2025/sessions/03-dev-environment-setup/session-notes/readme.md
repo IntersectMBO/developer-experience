@@ -115,7 +115,7 @@ API keys and endpoints vary by network (mainnet, preprod, preview).
 - Maintain separate configs for `mainnet`, `preprod`, and `preview`
 - Align node/CLI versions with official releases
 - Document project-specific steps in your repo `README` for team consistency
-- For deeper ecosystem links (wallets, SDKs, explorers), see [Essential Tooling](../../01-kickoff-orientation/session-notes/readme.md#essential-tooling) and [Block Explorers & APIs](../../01-kickoff-orientation/session-notes/readme.md#block-explorers-apis)
+- For deeper ecosystem links (wallets, SDKs, explorers), see [Essential Tooling](../../01-kickoff-orientation/session-notes/readme.md#essential-tooling) and [Block Explorers & APIs](../../01-kickoff-orientation/session-notes/readme.md#block-explorers--apis)
 
 ## Session Resources
 

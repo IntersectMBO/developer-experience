@@ -39,7 +39,7 @@ Welcome to the Cardano ecosystem! This guide provides a comprehensive map of whe
 
 ---
 
-## ▸ Core Repositories
+## ▸ Core Repositories {#core-repositories}
 
 ### Cardano Node & Core Infrastructure
 
@@ -77,7 +77,7 @@ Welcome to the Cardano ecosystem! This guide provides a comprehensive map of whe
 
 ---
 
-## ▸ Documentation Resources
+## ▸ Documentation Resources {#documentation-resources}
 
 ### Official Documentation
 
@@ -98,7 +98,7 @@ Welcome to the Cardano ecosystem! This guide provides a comprehensive map of whe
 
 ---
 
-## ▸ Essential Tooling
+## ▸ Essential Tooling {#essential-tooling}
 
 ### Development Environments
 
@@ -126,7 +126,7 @@ Welcome to the Cardano ecosystem! This guide provides a comprehensive map of whe
 | **Eternl**           | Multi-platform wallet    | [eternl.io](https://eternl.io)                                                                                                 |
 | **Wallet Connector** | dApp integration library | [github.com/cardano-foundation/cardano-connect-with-wallet](https://github.com/cardano-foundation/cardano-connect-with-wallet) |
 
-### Block Explorers & APIs
+### Block Explorers & APIs {#block-explorers--apis}
 
 | Service              | Purpose                          | URL                                                  |
 | -------------------- | -------------------------------- | ---------------------------------------------------- |
