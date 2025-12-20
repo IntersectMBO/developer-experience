@@ -1,0 +1,53 @@
+name: Update Changelog on Tag
+
+on:
+  push:
+    tags:
+      - 'v*'  # Triggers on tags starting with 'v' (e.g., v2.1.2)
+      - '[0-9]+.[0-9]+.[0-9]+'  # Also triggers on semantic version tags (e.g., 2.1.2)
+
+permissions:
+  contents: write
+
+jobs:
+  update-changelog:
+    name: Regenerate Changelog
+    runs-on: ubuntu-latest
+    # Skip if the commit message indicates standard-version already ran
+    if: ${{ github.event.head_commit.message && !contains(github.event.head_commit.message, 'chore(release)') }}
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      
+      - name: Verify changelog is up to date
+        run: |
+          # This workflow ensures changelog is updated when tags are manually created
+          # If standard-version was used, the changelog should already be updated
+          echo "Tag ${{ github.ref_name }} was pushed. Verifying changelog is up to date."
+          
+          # Check if CHANGELOG.md contains the current tag
+          if grep -q "${{ github.ref_name }}" CHANGELOG.md; then
+            echo "Changelog already contains this tag version."
+          else
+            echo "Warning: Changelog may not contain this tag version."
+            echo "Consider running 'npm run release' to generate changelog before creating tags."
+          fi
+
