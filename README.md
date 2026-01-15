@@ -37,11 +37,17 @@ Meet and connect with our past and present developer advocates:
 - **Current Cohort**:
    - [Uche](https://www.linkedin.com/in/thisisobate)
      - Schedule a call with Uche [here](https://calendar.app.google/6HC9yHfTHrQ1dfcB9)
+     - Discord: @obate.
    - [Emmanuel](https://www.linkedin.com/in/emmanuel-shikuku-devops/)
+     - X (Twitter): [@Emmanuel_tyty](https://x.com/Emmanuel_tyty)
+     - Discord: @emmanueltyty
+     - Schedule a call with Emmanuel [here](https://calendar.app.google/3LGaFshgi7q9fsQD8)
    - [Dan](https://www.linkedin.com/in/danbaruka/)
      - X (Twitter): [@danamphred](https://x.com/danamphred)
+     - Discord: @danamphred
      - Schedule a call with Dan [here](https://calendar.app.google/Ry32VJXbdgazUFe79)
    - [Harun](https://www.linkedin.com/in/harunslinked/)
+     - Discord: @wesh09
      - Schedule a call with Harun [here](https://calendly.com/harunm28/30min)
 - **Past Cohort**:
    1. **Alex**  

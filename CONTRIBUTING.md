@@ -104,20 +104,20 @@ docs/
 
 ### Submission Process
 
-#### For Small Changes
-1. Fork the repository
-2. Create a feature branch: `git checkout -b fix/update-documentation`
-3. Make your changes
-4. Test locally: `npm start`
-5. Commit with descriptive message: `git commit -m "Fix typo in environment setup guide"`
-6. Push to your fork: `git push origin fix/update-documentation`
-7. Create a Pull Request
+1. **Discuss Proposed Changes**:
+   - **Create an Issue**: First, create a GitHub issue to propose your changes.
+   - **Contact a Developer Advocate**: Reach out to a Developer Advocate (e.g., in the Intersect Discord #developer-experience channel) to discuss the relevance and scope of the work.
 
-#### For Large Changes
-1. **First, create an issue** to discuss the proposed changes
-2. Get feedback from maintainers
-3. Follow the same process as small changes
-4. Reference the issue in your PR description
+2. **Agreement & Timeline**:
+   - Work should typically not begin until there is an agreement on the scope.
+   - **Timeline**: Timelines can be discussed, but **one week** is the standard duration for submitting a Pull Request (PR) after agreement.
+
+3. **Implementation**:
+   - Fork the repository and create a feature branch.
+   - Make your changes and test locally.
+
+4. **Submit Pull Request**:
+   - Create your PR and ensure it is linked to the issue.
 
 ### Pull Request Guidelines
 
