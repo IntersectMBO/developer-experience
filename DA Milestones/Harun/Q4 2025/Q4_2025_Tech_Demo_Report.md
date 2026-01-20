@@ -52,7 +52,7 @@ A comprehensive walkthrough of a production smart contract demonstrating:
 ## Evidence
 
 **Session Recording:**  
-Google Drive: https://drive.google.com/drive/u/0/search?q=11%20Dec
+Google Drive: https://drive.google.com/file/d/1LAzIEGQsbF3mEec48HoZgdPTGEblK5Iw/view?usp=sharing
 
 https://devex.intersectmbo.org/docs/working-group/q1-2025/sessions/06-repo-walkthrough/recordings
 
