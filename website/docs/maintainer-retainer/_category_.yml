@@ -1,2 +1,4 @@
-label: Maintainer Retainer Program (MRP)
+label: Maintainer Program
 position: 3
+customProps:
+  full_name: Maintainer Retainer Program (MRP)

@@ -449,6 +449,76 @@
   color: #999999 !important;
 }
 
+/* Text truncation and resize improvements - Menu items */
+.menu__link {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+/* Ensure label text respects max-width */
+.menu__link span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Tooltip styling - display full text on hover */
+.menu__link[title]:hover::after,
+.menu__list-item-collapsible .menu__link[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  background-color: #333333;
+  color: #ffffff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  white-space: normal;
+  width: auto;
+  max-width: 200px;
+  left: 100%;
+  top: 0;
+  margin-left: 0.5rem;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+}
+
+/* Tooltip styling for dark mode */
+[data-theme='dark'] .menu__link[title]:hover::after,
+[data-theme='dark'] .menu__list-item-collapsible .menu__link[title]:hover::after {
+  background-color: #666666;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Arrow pointer for tooltip */
+.menu__link[title]:hover::before,
+.menu__list-item-collapsible .menu__link[title]:hover::before {
+  content: '';
+  position: absolute;
+  border: 5px solid transparent;
+  border-right-color: #333333;
+  left: calc(100% - 5px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1001;
+}
+
+[data-theme='dark'] .menu__link[title]:hover::before,
+[data-theme='dark'] .menu__list-item-collapsible .menu__link[title]:hover::before {
+  border-right-color: #666666;
+}
+
+/* Menu item positioning for tooltip display */
+.menu__list-item-collapsible,
+.menu__list-item {
+  position: relative;
+}
+
 /* Nested menu items - thin font, maintain gray color for inactive nested items */
 .menu__list .menu__list-item .menu__link {
   color: #404040 !important;

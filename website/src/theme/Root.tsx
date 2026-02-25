@@ -8,6 +8,27 @@ export default function Root({ children }) {
   const siteUrl = siteConfig.url;
 
   useEffect(() => {
+    // Tooltip mappings for shortened menu items
+    const tooltipMap = {
+      "Dev Experience WG": "Developer Experience Working Group",
+      "Maintainer Program": "Maintainer Retainer Program (MRP)",
+      "How-To": "How To Guide",
+    };
+
+    // Add title attributes to menu items for tooltip display
+    const addMenuTooltips = () => {
+      const menuLinks = document.querySelectorAll(".menu__link, .menu__link--sublist");
+      menuLinks.forEach((link) => {
+        const text = link.textContent?.trim();
+        if (text && tooltipMap[text] && !link.getAttribute("title")) {
+          link.setAttribute("title", tooltipMap[text]);
+        }
+      });
+    };
+
+    // Initial call
+    addMenuTooltips();
+
     // Minimal MutationObserver to fix any black text in search dropdown that CSS might miss
     const observer = new MutationObserver(() => {
       const darkTheme = document.documentElement.getAttribute("data-theme") === "dark";
@@ -28,6 +49,9 @@ export default function Root({ children }) {
           });
         });
       }
+
+      // Add tooltips to newly rendered menu items
+      addMenuTooltips();
     });
 
     observer.observe(document.body, {
