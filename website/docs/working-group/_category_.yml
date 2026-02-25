@@ -1,5 +1,7 @@
-label: Developer Experience Working Group
+label: Dev Experience WG
 position: 30
 link:
   type: doc
   id: readme
+customProps:
+  full_name: Developer Experience Working Group

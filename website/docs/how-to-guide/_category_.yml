@@ -1,4 +1,6 @@
-label: How To Guide
+label: How-To
 position: 10
 link:
   type: generated-index
+customProps:
+  full_name: How To Guide
