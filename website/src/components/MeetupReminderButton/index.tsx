@@ -66,7 +66,7 @@ const MeetupReminderButton: React.FC<MeetupReminderButtonProps> = ({
         }`}
         onClick={() => setIsExpanded(!isExpanded)}
         onKeyDown={handleKeyDown}
-        aria-label="Toggle meetup reminder"
+        aria-label="Toggle DevEx Sessions"
         aria-expanded={isExpanded}
         aria-controls="meetup-panel"
         type="button"
@@ -109,7 +109,7 @@ const MeetupReminderButton: React.FC<MeetupReminderButtonProps> = ({
             strokeLinejoin="round"
           />
         </svg>
-        <span className={styles.buttonText}>Meetup</span>
+        <span className={styles.buttonText}>DevEx Sessions</span>
       </button>
 
       {isExpanded && (
@@ -118,11 +118,11 @@ const MeetupReminderButton: React.FC<MeetupReminderButtonProps> = ({
           id="meetup-panel"
           className={styles.panel}
           role="dialog"
-          aria-label="Meetup information panel"
+          aria-label="DevEx Sessions information panel"
         >
           <div className={styles.panelHeader}>
             <h3 className={styles.panelTitle}>
-              {selectedSession ? currentSession?.name : "Select a Meetup"}
+              {selectedSession ? currentSession?.name : "Select a DevEx Session"}
             </h3>
             <button
               className={styles.closeButton}
@@ -130,7 +130,7 @@ const MeetupReminderButton: React.FC<MeetupReminderButtonProps> = ({
                 setIsExpanded(false);
                 setSelectedSession(null);
               }}
-              aria-label="Close meetup panel"
+              aria-label="Close DevEx Sessions panel"
               type="button"
             >
               <svg
