@@ -24,6 +24,7 @@ The Developer Experience (DevEx) Working Group continues to support and empower 
 | **10** | **Hands-On #3 (Intermediate)** | Wallet integration fundamentals | Workshop |
 | **11** | **Open Source & Documentation** | Writing docs, repo improvement, issue management | Contribution guide |
 | **12** | **Ecosystem Wrap-Up & Year-End Reflections** | 2025 highlights, 2026 planning, and motivational close | Reflection & planning |
+| **13** | **Deeper Dive: Smart Contracts & Languages** | Exploring Plinth, Aiken, OpShin, and more | Deep dive |
 
 ## Session Details
 
@@ -74,6 +75,14 @@ The Developer Experience (DevEx) Working Group continues to support and empower 
   - 2026 roadmap and opportunities
   - Community building and continued engagement
 - **Deliverable**: 2026 engagement plan
+
+### Session 13: Deeper Dive: Smart Contracts & Languages
+- **Objective**: Compare and contrast Cardano smart contract languages
+- **Key Topics**:
+  - Type Safety and Developer Experience
+  - Performance and Learning Curve
+  - Ecosystem Support and Production Readiness
+- **Deliverable**: Knowledge of Plinth, Aiken, OpShin, Helios, Plutarch, and others
 
 ## Working Group Information
 For operational details, roles, repository structure, and participation guidelines, please see the [Working Group Overview](../../readme.md).
