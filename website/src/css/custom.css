@@ -986,3 +986,19 @@ html[data-theme='dark'] .searchBar .dropdownMenu svg {
 [data-theme='dark'] .DocSearch-Commands * {
   color: rgba(255, 255, 255, 0.7) !important;
 }
+
+/* Jump to Top above DevEx Sessions (Meetup), same right alignment */
+@media (max-width: 767px) {
+  .theme-back-to-top-button {
+    bottom: 4.9rem !important;
+    right: 1.7rem !important;
+  }
+}
+
+/* Jump to Top to the left of DevEx Sessions (Meetup), same baseline */
+@media (min-width: 767px) {
+  .theme-back-to-top-button {
+    bottom: 2.2rem !important;
+    right: 11rem !important;
+  }
+}

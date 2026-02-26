@@ -1,8 +1,9 @@
 /* Container for the entire component */
 .container {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1rem;
+  right: 1.5rem;
+
   z-index: 9999;
   font-family: var(--ifm-font-family-base);
 }
@@ -78,6 +79,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -573,12 +575,17 @@
   color: var(--ifm-color-primary-light);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+
+/* Desktop (≥768px): DevEx Sessions (Meetup) at bottom-right corner, to the right of Jump to Top, same baseline */
+@media (min-width: 768px) {
   .container {
-    bottom: 1rem;
-    right: 1rem;
+    right: 2rem;
+    bottom: 2rem;
   }
+}
+
+@media (max-width: 768px) {
+
 
   .panel {
     bottom: 4.5rem;
@@ -625,7 +632,7 @@
 @media (max-width: 480px) {
   .container {
     bottom: 0.75rem;
-    right: 0.75rem;
+    right: 1.5rem;
   }
 
   .floatingButton {
@@ -666,6 +673,7 @@
 
 /* Accessibility - High Contrast Mode */
 @media (prefers-contrast: high) {
+
   .floatingButton,
   .linkButton,
   .calendarButton {
@@ -679,6 +687,7 @@
 
 /* Reduced Motion Support */
 @media (prefers-reduced-motion: reduce) {
+
   .floatingButton,
   .linkButton,
   .calendarButton,
@@ -688,6 +697,7 @@
   }
 
   @keyframes slideUp {
+
     from,
     to {
       opacity: 1;
