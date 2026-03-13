@@ -1,7 +1,6 @@
 # Community Engagement Report
 **Developer Advocate Submission – Intersect Open Source Office (OSO)**
 
-## Overview
 
 As part of the Community Engagement milestone, I attended two Web3 events during the quarter with the goal of engaging with the broader blockchain ecosystem, observing industry trends, and identifying opportunities to improve the developer experience within the Cardano ecosystem.
 
@@ -12,11 +11,8 @@ The events attended were:
 
 These events provided an opportunity to interact with developers, blockchain organizations, policymakers, and ecosystem contributors while gathering insights into how blockchain technology is being adopted across Africa.
 
----
 
 # Event 1: Africa Tech Summit
-
-## Event Description
 
 The **Africa Tech Summit** brought together a wide range of technology companies, startups, investors, and blockchain projects from across the African technology ecosystem. Unlike Cardano-focused events, the summit included organizations working across multiple blockchain platforms and financial technologies.
 
@@ -24,7 +20,6 @@ Many of the projects present were focused on solving real-world problems in Afri
 
 The event provided an opportunity to observe how different teams approach product development, user adoption, and infrastructure challenges.
 
----
 
 ## Outreach Efforts
 
@@ -37,7 +32,6 @@ During the event, engagement included:
 
 These conversations helped provide perspective on how Cardano can continue improving its developer experience and tooling to support builders targeting African markets.
 
----
 
 ## Attendance
 
@@ -52,7 +46,6 @@ Participants included:
 
 The diversity of attendees created an environment where cross-sector collaboration and innovation were actively discussed.
 
----
 
 ## Sentiment and Key Takeaways
 
@@ -66,7 +59,6 @@ Key observations included:
 
 These insights highlight opportunities for Cardano to position itself as a platform capable of supporting scalable financial infrastructure in emerging markets.
 
----
 
 # Event 2: Cardano Africa Tech Summit
 
@@ -84,7 +76,6 @@ The event brought together participants from multiple sectors including:
 
 Members of the **Intersect Product Committee** were present and actively engaged with attendees to better understand the needs of African builders and explore how the Cardano ecosystem can support solutions being developed across the continent.
 
----
 
 ## Outreach Efforts
 
@@ -97,7 +88,6 @@ Engagement during the summit included:
 
 The presence of the Intersect Product Committee allowed builders to directly communicate challenges and opportunities related to developing within the Cardano ecosystem.
 
----
 
 ## Attendance
 
@@ -111,7 +101,6 @@ The summit attracted a mix of technical and non-technical stakeholders including
 
 The multi-sector participation helped create discussions around both **technical development and ecosystem growth**.
 
----
 
 ## Sentiment and Key Takeaways
 
@@ -125,7 +114,6 @@ Key observations included:
 
 These discussions reinforced the importance of developer advocacy in helping bridge communication between builders and ecosystem governance structures.
 
----
 
 # Overall Observations
 
@@ -140,7 +128,6 @@ Many African blockchain startups focus on solving challenges related to payments
 ### Cross-Sector Collaboration Drives Adoption
 Blockchain innovation in Africa often involves collaboration between developers, regulators, legal experts, and entrepreneurs.
 
----
 
 # Contribution to the OSO Mission
 
@@ -153,15 +140,7 @@ Attending these events supported the mission of the Open Source Office by:
 
 These insights help inform future developer advocacy efforts and contribute to improving the developer experience within the Cardano ecosystem.
 
----
 
-# Conclusion
-
-Participation in the **Africa Tech Summit** and the **Cardano Africa Tech Summit** provided valuable exposure to both the broader Web3 ecosystem and the Cardano-specific development community.
-
-Through continued engagement with developers and builders across events like these, Developer Advocates can help ensure that developer needs are identified, communicated, and addressed as the ecosystem continues to evolve.
-
----
 
 # Media Coverage
 

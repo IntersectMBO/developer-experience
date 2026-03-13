@@ -204,9 +204,3 @@ These events supported the mission of the Open Source Office by:
 - Strengthening collaboration between ecosystem organizations
 - Supporting the growth of local developer communities
 
-
-# Conclusion
-
-The Cardano Hub Nairobi meetup, Cardano Hackathon workshop, and Intersect Core Repositories workshop all contributed to strengthening community engagement and promoting open-source participation within the Cardano ecosystem.
-
-Through continued collaboration with local organizations and community members, these initiatives help build a sustainable pipeline of developers interested in contributing to Cardano and its open-source projects.
