@@ -7,146 +7,138 @@ As part of the Community Engagement milestone, I attended two Web3 events during
 
 The events attended were:
 
-1. Cardano Africa Tech Summit  
-2. Cardano Tech Summit  
+1. Africa Tech Summit  
+2. Cardano Africa Tech Summit  
 
-These events provided an opportunity to engage with developers, ecosystem contributors, and stakeholders while gathering insights into how blockchain technology is being adopted and what challenges builders face.
+These events provided an opportunity to interact with developers, blockchain organizations, policymakers, and ecosystem contributors while gathering insights into how blockchain technology is being adopted across Africa.
 
 ---
 
-# Event 1: Cardano Africa Tech Summit
+# Event 1: Africa Tech Summit
 
 ## Event Description
 
-The Cardano Africa Tech Summit brought together a wide range of participants including developers, policymakers, legal professionals, marketing specialists, entrepreneurs, and blockchain organizations. The summit aimed to explore how blockchain technologies can address challenges facing African markets.
+The **Africa Tech Summit** brought together a wide range of technology companies, startups, investors, and blockchain projects from across the African technology ecosystem. Unlike Cardano-focused events, the summit included organizations working across multiple blockchain platforms and financial technologies.
 
-Members of the **Intersect Product Committee** were present and actively engaged with attendees in order to understand how the Cardano ecosystem can better support African builders and projects.
+Many of the projects present were focused on solving real-world problems in Africa, particularly in areas such as **cross-border payments, decentralized finance (DeFi), and financial inclusion**.
 
-Discussions during the summit covered several important areas:
-
-- Regulatory and policy considerations for blockchain adoption in Africa  
-- Legal frameworks surrounding digital assets  
-- Ecosystem growth and marketing strategies  
-- Real-world blockchain use cases including payments, identity, and financial inclusion  
-
-A recurring theme throughout the event was the development of solutions focused on **cross-border payments and decentralized finance (DeFi)**.
+The event provided an opportunity to observe how different teams approach product development, user adoption, and infrastructure challenges.
 
 ---
 
 ## Outreach Efforts
 
-During the event, outreach included:
+During the event, engagement included:
 
-- Engaging with developers building blockchain solutions in Africa
-- Discussing the Cardano ecosystem and developer tools
-- Observing how projects are approaching real-world adoption
-- Participating in conversations with ecosystem stakeholders including builders and governance representatives
+- Interacting with developers and founders building blockchain-based products
+- Learning how different projects approach adoption and scaling in African markets
+- Discussing the Cardano ecosystem and potential areas for collaboration
+- Observing industry trends and technical approaches used by other blockchain platforms
 
-The presence of the Intersect Product Committee also helped facilitate discussions around how the ecosystem can better support builders solving real-world problems.
-
----
-
-## Attendance
-
-The summit brought together a diverse audience including:
-
-- Developers and startup founders
-- Policy makers and regulatory stakeholders
-- Legal professionals
-- Marketing and ecosystem growth specialists
-- Blockchain infrastructure providers
-
-The cross-sector representation highlighted the broad interest in blockchain technologies and their potential applications in Africa.
-
----
-
-## Sentiment and Key Takeaways
-
-Overall sentiment at the summit was **optimistic but pragmatic**.
-
-Builders are enthusiastic about blockchain’s potential but are also focused on platforms that allow them to move quickly and reach real users.
-
-Key takeaways included:
-
-- Strong interest in **cross-border payment infrastructure**
-- A need for **accessible developer tooling and documentation**
-- Growing collaboration between **technical, legal, and policy sectors**
-
-These observations highlight opportunities for Cardano to further support developers building real-world solutions in Africa.
-
----
-
-# Event 2: Cardano Tech Summit
-
-## Event Description
-
-The Cardano Tech Summit focused on ongoing technical development within the Cardano ecosystem. The event brought together contributors, developers, and ecosystem participants to discuss improvements to the platform and its developer experience.
-
-Members of the **Intersect Product Committee** presented and participated in discussions regarding ecosystem priorities and ways to strengthen developer engagement.
-
-Topics discussed during the summit included:
-
-- Improvements to developer tooling
-- Enhancing collaboration across ecosystem contributors
-- Aligning product development with developer needs
-- Supporting the growth of decentralized applications on Cardano
-
----
-
-## Outreach Efforts
-
-Outreach at the event involved:
-
-- Engaging with ecosystem participants and developers
-- Observing discussions around developer experience improvements
-- Identifying areas where developer advocates can help bridge communication between builders and governance bodies
-
-These interactions provided insight into how technical discussions and governance efforts influence the development experience within the ecosystem.
+These conversations helped provide perspective on how Cardano can continue improving its developer experience and tooling to support builders targeting African markets.
 
 ---
 
 ## Attendance
 
-The event was attended by:
+Participants included:
 
-- Cardano ecosystem developers
-- Technical contributors
-- Members of governance bodies
-- Product and infrastructure teams
-- Community participants interested in Cardano development
+- Startup founders and entrepreneurs
+- Blockchain developers
+- Fintech companies
+- Venture investors
+- Infrastructure providers
+- Technology ecosystem stakeholders
 
-The summit created an environment where builders and governance participants could share perspectives on the future direction of the ecosystem.
+The diversity of attendees created an environment where cross-sector collaboration and innovation were actively discussed.
 
 ---
 
 ## Sentiment and Key Takeaways
 
-Sentiment at the Cardano Tech Summit was largely **focused on improvement and collaboration**.
-
-Participants emphasized the importance of strengthening the developer experience and improving coordination between ecosystem contributors.
+Sentiment at the summit was **strongly focused on practical adoption and real-world impact**.
 
 Key observations included:
 
-- Continued focus on improving developer tooling and infrastructure
-- Recognition of the importance of developer feedback
-- Growing collaboration between working groups and contributors
+- High interest in **cross-border payment infrastructure**
+- Growing demand for **developer-friendly platforms**
+- Emphasis on solutions that can quickly reach real users
 
-These discussions reinforced the role of Developer Advocates in helping communicate developer needs and ensuring builders remain engaged in the ecosystem.
+These insights highlight opportunities for Cardano to position itself as a platform capable of supporting scalable financial infrastructure in emerging markets.
+
+---
+
+# Event 2: Cardano Africa Tech Summit
+
+## Event Description
+
+The **Cardano Africa Tech Summit** was focused specifically on the Cardano ecosystem and its role in supporting developers and builders across Africa.
+
+The event brought together participants from multiple sectors including:
+
+- Developers
+- Policymakers
+- Legal professionals
+- Marketing and ecosystem growth teams
+- Entrepreneurs and startup founders
+
+Members of the **Intersect Product Committee** were present and actively engaged with attendees to better understand the needs of African builders and explore how the Cardano ecosystem can support solutions being developed across the continent.
+
+---
+
+## Outreach Efforts
+
+Engagement during the summit included:
+
+- Conversations with developers building on Cardano
+- Discussions with ecosystem participants about developer tooling and onboarding
+- Observing collaboration between governance bodies and builders
+- Sharing insights about developer needs within the ecosystem
+
+The presence of the Intersect Product Committee allowed builders to directly communicate challenges and opportunities related to developing within the Cardano ecosystem.
+
+---
+
+## Attendance
+
+The summit attracted a mix of technical and non-technical stakeholders including:
+
+- Cardano ecosystem developers
+- Governance representatives
+- Policy and legal professionals
+- Community contributors
+- Builders exploring Cardano as a development platform
+
+The multi-sector participation helped create discussions around both **technical development and ecosystem growth**.
+
+---
+
+## Sentiment and Key Takeaways
+
+Sentiment during the summit was **collaborative and solution-focused**.
+
+Key observations included:
+
+- Continued focus on improving **developer experience**
+- Strong interest in supporting **African builders**
+- Collaboration between ecosystem governance and developers
+
+These discussions reinforced the importance of developer advocacy in helping bridge communication between builders and ecosystem governance structures.
 
 ---
 
 # Overall Observations
 
-Across both events, several themes emerged:
+Across both events, several common themes emerged.
 
-### 1. Developer Experience Matters
-Projects often prioritize platforms that offer strong documentation, developer tooling, and efficient development workflows.
+### Developer Experience is Critical
+Developers often choose platforms that provide strong documentation, tooling, and support for building applications efficiently.
 
-### 2. Payments and Financial Infrastructure Remain Key Use Cases
-Many blockchain projects in Africa focus on solving payment fragmentation and improving financial access.
+### Payments and Financial Infrastructure are Major Use Cases
+Many African blockchain startups focus on solving challenges related to payments, remittances, and financial access.
 
-### 3. Collaboration Across Sectors is Essential
-Blockchain adoption involves coordination between developers, regulators, legal experts, and business stakeholders.
+### Cross-Sector Collaboration Drives Adoption
+Blockchain innovation in Africa often involves collaboration between developers, regulators, legal experts, and entrepreneurs.
 
 ---
 
@@ -154,17 +146,27 @@ Blockchain adoption involves coordination between developers, regulators, legal 
 
 Attending these events supported the mission of the Open Source Office by:
 
-- Engaging with the broader blockchain and developer community
-- Identifying trends and developer needs
-- Strengthening connections between builders and the Cardano ecosystem
-- Observing opportunities to improve developer onboarding and tools
+- Engaging with the broader Web3 developer community
+- Identifying trends and developer challenges
+- Strengthening relationships with ecosystem builders
+- Observing opportunities to improve developer onboarding and tooling
 
-These insights will inform future developer advocacy efforts and contribute to improving the overall developer experience within the Cardano ecosystem.
+These insights help inform future developer advocacy efforts and contribute to improving the developer experience within the Cardano ecosystem.
 
 ---
 
 # Conclusion
 
-Participation in the Cardano Africa Tech Summit and the Cardano Tech Summit provided valuable exposure to both the broader Web3 landscape and the internal development efforts within the Cardano ecosystem.
+Participation in the **Africa Tech Summit** and the **Cardano Africa Tech Summit** provided valuable exposure to both the broader Web3 ecosystem and the Cardano-specific development community.
 
-Through continued engagement with events and builders, Developer Advocates can help ensure that developer needs are identified, communicated, and addressed as the ecosystem continues to evolve.
+Through continued engagement with developers and builders across events like these, Developer Advocates can help ensure that developer needs are identified, communicated, and addressed as the ecosystem continues to evolve.
+
+---
+
+# Media Coverage
+
+## Africa Tech Summit
+Images: https://photos.app.goo.gl/MWMWu7bRpbhVje8v6
+
+## Cardano Africa Tech Summit
+Images: https://drive.google.com/drive/folders/1VCqSCXMwYAbrImLqKaOZijBnPvPlgRit
