@@ -56,7 +56,7 @@ Participants were able to:
 Photos and videos from the event can be viewed here:
 
 **Event Media Link:**  
-[Insert Event Photos and Videos Link]
+[Link](https://photos.app.goo.gl/4eHia6VRjpZKg8bv8)
 
 ---
 
