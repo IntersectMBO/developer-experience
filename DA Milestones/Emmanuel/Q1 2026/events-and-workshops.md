@@ -1,7 +1,6 @@
 # Community Engagement Report – Q1
-**Developer Advocate – Intersect Open Source Office (OSO)**
 
-## Overview
+
 
 As part of the Community Engagement milestone for Q1, I organized and facilitated three community-focused events in Nairobi aimed at strengthening the local Cardano developer ecosystem and encouraging participation in open-source development.
 
@@ -13,7 +12,6 @@ The events organized were:
 
 These events were designed to support developers, encourage collaboration, and promote active contributions to the Cardano ecosystem.
 
----
 
 # Event 1: Cardano Hub Nairobi Monthly Meetup
 
@@ -58,7 +56,6 @@ Photos and videos from the event can be viewed here:
 **Event Media Link:**  
 [Link](https://photos.app.goo.gl/4eHia6VRjpZKg8bv8)
 
----
 
 # Event 2: Cardano Hackathon (Workshop)
 
@@ -72,7 +69,6 @@ The goal of the hackathon was to encourage developers to actively contribute to 
 
 Unlike traditional hackathons focused on building standalone applications, this event was designed to introduce developers to the **open-source contribution process** within the Cardano ecosystem.
 
----
 
 ## Objectives of the Workshop
 
@@ -84,7 +80,6 @@ The hackathon workshop focused on several goals:
 - Building familiarity with identifying and solving issues within existing repositories
 - Encouraging long-term participation in the Cardano developer ecosystem
 
----
 
 ## Workshop Structure
 
@@ -100,7 +95,6 @@ Activities included:
 
 Participants worked individually or in small groups to review issues and submit improvements to the relevant repositories.
 
----
 
 ## Contributions and Outcomes
 
@@ -111,14 +105,12 @@ Developers engaged directly with repository issues and submitted pull requests a
 ### Hackathon Contribution Resources
 
 **GitHub Organization (PR Submissions):**  
-[Insert GitHub Organization Link]
+[Link](https://github.com/CardanoHubNBO)
 
-**List of Issues Tackled:**  
-[Insert Issue List Link]
+
 
 These contributions demonstrate meaningful engagement with the Cardano open-source ecosystem and provided participants with practical experience in contributing to real-world projects.
 
----
 
 ## Attendance
 
@@ -131,7 +123,6 @@ Participants included:
 - Open-source contributors
 - Members of the Nairobi blockchain community
 
----
 
 ## Sentiment and Feedback
 
@@ -145,7 +136,6 @@ Participants showed strong interest in:
 
 Many participants expressed interest in continuing to contribute to the ecosystem beyond the workshop.
 
----
 
 # Event 3: Intersect Core Repositories Workshop (Repository Walkthrough)
 
@@ -166,7 +156,6 @@ The workshop included live demonstrations and walkthroughs of several important 
 
 Participants were shown how these repositories connect across the **protocol, networking, and application layers**, giving them a clearer understanding of the overall system architecture.
 
----
 
 ## Workshop Goals
 
@@ -177,7 +166,6 @@ The session aimed to:
 - Demonstrate how the **Cardano Blueprint** maps architecture to implementation
 - Lower the barrier for developers interested in contributing to core repositories
 
----
 
 ## Outcomes
 
@@ -192,7 +180,6 @@ Participants gained insight into:
 **Workshop Recording:**  
 [Insert Video Recording Link]
 
----
 
 # Key Observations
 
@@ -207,7 +194,6 @@ Regular meetups help maintain momentum and ensure developers remain engaged with
 ### Value of Hands-On Workshops
 Workshops such as hackathons and repository walkthroughs provide practical environments where developers can transition from learning about blockchain technology to actively contributing to it.
 
----
 
 # Contribution to the OSO Mission
 
@@ -218,7 +204,6 @@ These events supported the mission of the Open Source Office by:
 - Strengthening collaboration between ecosystem organizations
 - Supporting the growth of local developer communities
 
----
 
 # Conclusion
 
