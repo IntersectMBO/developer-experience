@@ -1,4 +1,4 @@
-import type {ReactNode} from 'react';
+import type { ReactNode } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -9,7 +9,7 @@ import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
 function HomepageHeader() {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx('hero', styles.heroBanner)}>
       <div className="container">
@@ -19,9 +19,9 @@ function HomepageHeader() {
           </Heading>
           <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
           <p className={styles.heroDescription}>
-            Join the Developer Experience Working Group and connect with developer advocates 
-            who are enhancing the Cardano ecosystem. Access comprehensive resources, participate 
-            in bi-weekly meetings, and collaborate with a community-driven initiative focused on 
+            Join the Developer Experience Working Group and connect with developer advocates
+            who are enhancing the Cardano ecosystem. Access comprehensive resources, participate
+            in bi-weekly meetings, and collaborate with a community-driven initiative focused on
             improving developer tools and processes.
           </p>
           <div className={styles.buttons}>
@@ -32,7 +32,7 @@ function HomepageHeader() {
             </Link>
             <Link
               className="button button--secondary button--lg"
-              to="/docs/working-group/q1-2025">
+              to="/docs/working-group/">
               Learn About Programs
             </Link>
           </div>
@@ -53,8 +53,8 @@ function CommunitySection() {
                 Have Any Questions or Need Help?
               </Heading>
               <p className={styles.sectionDescription}>
-                Go to our GitHub repository and create a blank issue to ask, suggest, or question anything. 
-                Our developer advocates and community members will be happy to assist you with your 
+                Go to our GitHub repository and create a blank issue to ask, suggest, or question anything.
+                Our developer advocates and community members will be happy to assist you with your
                 Cardano development journey.
               </p>
               <div className={styles.communityStats}>
@@ -72,15 +72,15 @@ function CommunitySection() {
                 </div>
               </div>
               <div className={styles.communityActions}>
-                <Link 
-                  className="button button--primary button--orange button--lg" 
+                <Link
+                  className="button button--primary button--orange button--lg"
                   href="https://members.intersectmbo.org/"
                   target="_blank"
                   rel="noopener noreferrer">
                   Join Intersect
                 </Link>
-                <Link 
-                  className="button button--secondary button--lg" 
+                <Link
+                  className="button button--secondary button--lg"
                   href="https://github.com/IntersectMBO/developer-experience"
                   target="_blank"
                   rel="noopener noreferrer">
@@ -112,7 +112,7 @@ function ResourcesSection() {
             Developer Resources
           </Heading>
           <p className={styles.sectionDescription}>
-            Access comprehensive documentation, guides, and tools designed to accelerate 
+            Access comprehensive documentation, guides, and tools designed to accelerate
             your Cardano development journey.
           </p>
         </div>
@@ -121,7 +121,7 @@ function ResourcesSection() {
             <div className={styles.resourceCard}>
               <Heading as="h3" className={styles.resourceTitle}>Getting Started</Heading>
               <p className={styles.resourceDescription}>
-                Step-by-step guides to begin your Cardano development journey with 
+                Step-by-step guides to begin your Cardano development journey with
                 essential tools and setup instructions.
               </p>
               <Link className="button button--outline" to="/docs/getting-started">
@@ -133,7 +133,7 @@ function ResourcesSection() {
             <div className={styles.resourceCard}>
               <Heading as="h3" className={styles.resourceTitle}>How-to Guides</Heading>
               <p className={styles.resourceDescription}>
-                Practical tutorials covering smart contracts, DeFi applications, and 
+                Practical tutorials covering smart contracts, DeFi applications, and
                 advanced Cardano development techniques.
               </p>
               <Link className="button button--outline" to="/docs/how-to-guide/beginner">
@@ -145,10 +145,10 @@ function ResourcesSection() {
             <div className={styles.resourceCard}>
               <Heading as="h3" className={styles.resourceTitle}>Working Groups</Heading>
               <p className={styles.resourceDescription}>
-                Explore our Q1 2025 working group sessions, resources, and community 
+                Explore our Q1 2025 working group sessions, resources, and community
                 initiatives shaping the Cardano ecosystem.
               </p>
-              <Link className="button button--outline" to="/docs/working-group/q1-2025">
+              <Link className="button button--outline" to="/docs/working-group/">
                 Explore Groups
               </Link>
             </div>
@@ -178,21 +178,21 @@ function GettingInvolvedSection() {
                 Get Involved Today
               </Heading>
               <p className={styles.sectionDescription}>
-                Become a member of Intersect MBO and actively participate in shaping 
-                the future of Cardano. Join working groups, vote on key decisions, 
+                Become a member of Intersect MBO and actively participate in shaping
+                the future of Cardano. Join working groups, vote on key decisions,
                 and contribute to collaborative innovation.
               </p>
               <div className={styles.involvedActions}>
-                <Link 
-                  className="button button--primary button--lg" 
+                <Link
+                  className="button button--primary button--lg"
                   href="https://intersectmbo.org"
                   target="_blank"
                   rel="noopener noreferrer">
                   Become a Member
                 </Link>
-                <Link 
-                  className="button button--secondary button--lg" 
-                  to="/docs/working-group/q1-2025">
+                <Link
+                  className="button button--secondary button--lg"
+                  to="/docs/working-group/">
                   View Q1 2025 Sessions
                 </Link>
               </div>
@@ -205,7 +205,7 @@ function GettingInvolvedSection() {
 }
 
 export default function Home(): ReactNode {
-  const {siteConfig} = useDocusaurusContext();
+  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title={`${siteConfig.title}`}

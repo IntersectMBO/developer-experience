@@ -1,6 +1,9 @@
 import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '.env' });
 
 const organizationName = "IntersectMBO";
 const projectName = "developer-experience";
@@ -34,7 +37,6 @@ const config: Config = {
   projectName, // Usually your repo name.
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -50,18 +52,71 @@ const config: Config = {
       {
         docs: {
           sidebarPath: "./sidebars.ts",
-          // Please change this to your repo.
+          showLastUpdateAuthor: false,
+          showLastUpdateTime: true,
         },
-        blog: false, // Disabled until blog posts are added
+        blog: false,
         theme: {
           customCss: "./src/css/custom.css",
+        },
+        sitemap: {
+          changefreq: "weekly",
+          priority: 0.5,
+          ignorePatterns: ["/tags/**"],
+          filename: "sitemap.xml",
         },
       } satisfies Preset.Options,
     ],
   ],
 
+  markdown: {
+    mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: "throw",
+    },
+  },
+
+  plugins: [
+    function suppressVscodeLspWarning() {
+      return {
+        name: "suppress-vscode-lsp-warning",
+        configureWebpack() {
+          return {
+            ignoreWarnings: [
+              {
+                module: /vscode-languageserver-types/,
+                message: /Critical dependency: require function is used in a way in which dependencies cannot be statically extracted/,
+              },
+            ],
+          };
+        },
+      };
+    },
+  ],
+
+  themes: [
+    "@docusaurus/theme-mermaid",
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        indexDocs: true,
+        indexBlog: false,
+        indexPages: false,
+        language: ["en"],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        docsRouteBasePath: "/docs",
+        forceIgnoreNoIndex: true,
+      },
+    ],
+  ],
+
   themeConfig: {
-    // Replace with your project's social card
+    metadata: [
+      { name: "keywords", content: "Cardano, developer experience, blockchain, smart contracts, DeFi, Intersect MBO" },
+      { name: "author", content: "Intersect MBO Developer Experience Working Group" },
+    ],
     image: "img/docusaurus-social-card.jpg",
     navbar: {
       title: "Developer Experience",
@@ -91,9 +146,18 @@ const config: Config = {
             },
             {
               label: "Working Groups",
-              to: "/docs/working-group/q1-2025",
+              to: "/docs/working-group/",
             },
           ],
+        },
+        {
+          label: "FAQs",
+          to: "/docs/faq",
+          position: "left",
+        },
+        {
+          type: "search",
+          position: "right",
         },
         {
           href: "https://github.com/IntersectMBO/developer-experience",
@@ -123,7 +187,7 @@ const config: Config = {
             },
             {
               label: "Working Groups",
-              to: "/docs/working-group/q1-2025",
+              to: "/docs/working-group/",
             },
           ],
         },
@@ -159,6 +223,10 @@ const config: Config = {
               label: "Tools & APIs",
               to: "/docs/resources/tools",
             },
+            {
+              label: "FAQs",
+              to: "/docs/faq",
+            },
           ],
         },
       ],
@@ -169,6 +237,10 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
+  customFields: {
+    googleScriptUrl: process.env.GOOGLE_SCRIPT_URL,
+  },
 };
 
 export default config;

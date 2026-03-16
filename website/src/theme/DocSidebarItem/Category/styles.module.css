@@ -1,0 +1,39 @@
+/**
+ * Styles for the swizzled category item.  We're reducing the label to a
+ * single line with ellipsis so that long category names don't force wrapped
+ * items and break the sidebar on narrow viewports.
+ */
+
+.categoryLink {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+/* never let the toggle button shrink to zero width */
+.categoryLink > button {
+  flex-shrink: 0;
+}
+
+.categoryLinkLabel {
+  flex: 1 1 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* preserve existing behaviour for submenu caret */
+:global(.menu__link--sublist-caret)::after {
+  margin-left: var(--ifm-menu-link-padding-vertical);
+}
+
+/* explicit icon inside collapse button */
+.caretIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  color: var(--ifm-color-menu-link); /* match normal menu text */
+  flex-shrink: 0;
+}
