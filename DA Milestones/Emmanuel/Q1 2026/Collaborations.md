@@ -82,6 +82,54 @@ The event focused on:
 
 The hackathon helped establish a **local developer contribution pipeline** and strengthened collaboration between the Nairobi blockchain community and the broader Cardano ecosystem.
 
+### Cardano Hub Nairobi – Open Contribution Pull Requests
+
+Below is the list of pull requests generated during the hackathon across various core Cardano repositories:
+
+#### ouroboros-network
+- **PR #2**: Issue/5225 dmq node readme by @Irenenditi
+  - URL: https://github.com/CardanoHubNBO/ouroboros-network/pull/2
+- **PR #1**: enhanced security features by @DANFOLDM
+  - URL: https://github.com/CardanoHubNBO/ouroboros-network/pull/1
+
+#### plutus
+- **PR #1**: Fix 1: Dead .uplc.flat on line 152-154, Fix 2: Manual takeFileName by @Lampard7crypt
+  - URL: https://github.com/CardanoHubNBO/plutus/pull/1
+
+#### evolution-sdk
+- **PR #6**: Docker Containerization Support for Evolution SDK by @mwihoti
+  - URL: https://github.com/CardanoHubNBO/evolution-sdk/pull/6
+- **PR #5**: test(evolution): add KeyHash and ScriptHash test coverage by @mokayaj857
+  - URL: https://github.com/CardanoHubNBO/evolution-sdk/pull/5
+- **PR #4**: feat: move Devnet to separate package by @Robertmwatua
+  - URL: https://github.com/CardanoHubNBO/evolution-sdk/pull/4
+- **PR #3**: docs: add withSchema, hashData, DataEncoded, DataError, and helper API reference to Data guide by @Nandiehakuna
+  - URL: https://github.com/CardanoHubNBO/evolution-sdk/pull/3
+- **PR #2**: docs: restructure tschema and add missing encoding sections by @kanyuku
+  - URL: https://github.com/CardanoHubNBO/evolution-sdk/pull/2
+- **PR #1**: documentation expansion adding new schema types (Boolean, Literal, Un… by @Crimzor3086
+  - URL: https://github.com/CardanoHubNBO/evolution-sdk/pull/1
+
+#### cardano-base
+- **PR #2**: Refactor internal modules: moved files to Internal folders and update… by @oduoriwyclife3-max
+  - URL: https://github.com/CardanoHubNBO/cardano-base/pull/2
+- **PR #1**: Add missing NFData instances to crypto type family by @liliankavengi
+  - URL: https://github.com/CardanoHubNBO/cardano-base/pull/1
+
+#### lsm-tree
+- **PR #1**: Issue 666 by @Crimzor3086
+  - URL: https://github.com/CardanoHubNBO/lsm-tree/pull/1
+
+#### antaeus
+- **PR #4**: security: fix infinite loops, unsafe fromJust, naming collisions, and… by @kanyuku
+  - URL: https://github.com/CardanoHubNBO/antaeus/pull/4
+- **PR #3**: feat(e2e): add PlutusV3 txInfoProposalProcedures and txInfoVotingProcedures for ParameterChange #49 by @mwihoti
+  - URL: https://github.com/CardanoHubNBO/antaeus/pull/3
+- **PR #2**: Add PlutusV3 tests for txInfoCurrentTreasuryAmount by @godsueglitch
+  - URL: https://github.com/CardanoHubNBO/antaeus/pull/2
+- **PR #1**: docs: add missing OSC governance documentation by @Convexkarma
+  - URL: https://github.com/CardanoHubNBO/antaeus/pull/1
+
 ![Coordination meeting with Tex regarding Blockchain Center Nairobi partnership](images/Screenshot%202026-03-16%20at%2011.46.17.png)
 
 
