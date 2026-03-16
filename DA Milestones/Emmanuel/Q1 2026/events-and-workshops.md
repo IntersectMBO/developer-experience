@@ -178,7 +178,7 @@ Participants gained insight into:
 - Entry points for developers interested in contributing to the ecosystem
 
 **Workshop Recording:**  
-[Insert Video Recording Link]
+[Link](https://drive.google.com/file/d/1kUSSM1Brye6Y6ly2x4aOD6HI_0nakEFi/view?usp=drive_link)
 
 
 # Key Observations
