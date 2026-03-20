@@ -39,6 +39,10 @@
   transform: translateY(-4px);
 }
 
+.featureCardLinks:hover {
+  text-decoration: none;
+}
+
 .featureContent {
   text-align: center;
   display: flex;

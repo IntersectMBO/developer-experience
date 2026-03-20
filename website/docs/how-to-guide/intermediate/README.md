@@ -42,7 +42,7 @@ Before starting these guides, you should be comfortable with:
 1. Start with [Beginner Guides](../beginner/README.md) if you haven't already
 2. Join the [Developer Experience Working Group](../../working-group/readme.md) for hands-on sessions
 3. Practice with testnet before moving to mainnet
-4. Progress to [Advanced Guides](../advanced/README.md) when ready
+4. Progress to Advanced Guides when ready
 
 ## Getting Help
 

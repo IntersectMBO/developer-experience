@@ -1,0 +1,17 @@
+/**
+ * Custom styles for the swizzled sidebar link label.  The original theme
+ * allowed a two‑line clamp which caused the long text to wrap on narrow
+ * screens. The truncated component above ensures we always render a single
+ * line, but we also add the usual ellipsis overflow CSS just in case.
+ */
+
+.menuExternalLink {
+  align-items: center;
+}
+
+.linkLabel {
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

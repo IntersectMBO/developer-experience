@@ -2,49 +2,10 @@
 
 Welcome to the Advanced Guides section! These guides are for experienced developers ready to tackle complex Cardano development challenges and contribute to the ecosystem.
 
-## Coming Soon
+### Ecosystem Projects
+- **Cardano DB Sync**: Check out this awesome guide to Cardano DB Sync [here](./cardano-db-sync.md)
+- **Cardano API**: Check out this awesome guide to Cardano API [here](./cardano-api.md)
 
-### Protocol Development
-- Contributing to cardano-node
-- Understanding consensus mechanisms
-- Network protocol development
-- Core infrastructure improvements
-
-### Advanced Smart Contracts
-- Complex Plutus patterns and optimization
-- Cross-contract interactions
-- Formal verification techniques
-- Security auditing practices
-
-### Ecosystem Integration
-- Building Cardano infrastructure services
-- API development and scaling
-- Integration with external systems
-- Enterprise blockchain solutions
-
-### Research and Innovation
-- Implementing research papers
-- Experimental features and CIPs
-- Performance benchmarking
-- Novel use case development
-
-## Prerequisites
-
-Advanced guides assume you have:
-- Extensive experience with Cardano development
-- Completed multiple [Intermediate Guides](../intermediate/README.md)
-- Deep understanding of blockchain fundamentals
-- Production experience with Cardano applications
-- Familiarity with Haskell or other functional programming languages
-
-## Contribution Opportunities
-
-At this level, you're ready to:
-- Contribute to core Cardano repositories
-- Mentor other developers in the community
-- Lead Working Group sessions
-- Write technical documentation and guides
-- Participate in research and protocol improvements
 
 ## Getting Involved
 

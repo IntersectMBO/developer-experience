@@ -1,0 +1,39 @@
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    directory: "/website"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+    groups:
+      docusaurus:
+        patterns:
+          - "@docusaurus/*"
+        update-types:
+          - "minor"
+          - "patch"
+      babel:
+        patterns:
+          - "@babel/*"
+      webpack:
+        patterns:
+          - "webpack"
+          - "webpack-*"
+    ignore:
+      - dependency-name: "ajv"
+        versions: [">=7.0.0"]
+        update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "ci"

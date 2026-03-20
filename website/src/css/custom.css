@@ -741,3 +741,264 @@ a:hover {
 * {
   transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
+
+/* Dark mode search dropdown - text and icon visibility fixes */
+[data-theme='dark'] .DocSearch-Hit-title,
+[data-theme='dark'] .DocSearch-Hit-title * {
+  color: #ffffff !important;
+}
+
+[data-theme='dark'] .DocSearch-Hit-path,
+[data-theme='dark'] .DocSearch-Hit-path *,
+[data-theme='dark'] .DocSearch-Hit-text,
+[data-theme='dark'] .DocSearch-Hit-text * {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+[data-theme='dark'] .DocSearch-Hit-icon,
+[data-theme='dark'] .DocSearch-Hit-icon *,
+[data-theme='dark'] .DocSearch-Hit-icon svg {
+  color: var(--ifm-color-primary) !important;
+  fill: var(--ifm-color-primary) !important;
+  stroke: var(--ifm-color-primary) !important;
+  opacity: 1 !important;
+}
+
+/* Target plugin's CSS module classes and ensure all DocSearch elements are light in dark theme */
+html[data-theme='dark'] .searchBar .dropdownMenu,
+html[data-theme='dark'] .searchBar .dropdownMenu *,
+html[data-theme='dark'] [class*="searchBar"] [class*="dropdownMenu"],
+html[data-theme='dark'] [class*="searchBar"] [class*="dropdownMenu"] *,
+[data-theme='dark'] .DocSearch-Modal,
+[data-theme='dark'] .DocSearch-Modal *,
+[data-theme='dark'] .DocSearch-Container,
+[data-theme='dark'] .DocSearch-Container * {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+html[data-theme='dark'] .searchBar .dropdownMenu [class*="title"],
+html[data-theme='dark'] .searchBar .dropdownMenu [class*="Title"] {
+  color: #ffffff !important;
+}
+
+html[data-theme='dark'] .searchBar .dropdownMenu [class*="path"],
+html[data-theme='dark'] .searchBar .dropdownMenu [class*="Path"],
+html[data-theme='dark'] .searchBar .dropdownMenu [class*="text"],
+html[data-theme='dark'] .searchBar .dropdownMenu [class*="Text"],
+html[data-theme='dark'] .searchBar .dropdownMenu [class*="description"],
+html[data-theme='dark'] .searchBar .dropdownMenu [class*="Description"] {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+html[data-theme='dark'] .searchBar .dropdownMenu [class*="icon"],
+html[data-theme='dark'] .searchBar .dropdownMenu [class*="Icon"],
+html[data-theme='dark'] .searchBar .dropdownMenu svg {
+  color: var(--ifm-color-primary) !important;
+  fill: var(--ifm-color-primary) !important;
+  stroke: var(--ifm-color-primary) !important;
+  opacity: 1 !important;
+}
+
+
+/* ------------------------------ */
+/* Feedback Widget Styles         */
+/* ------------------------------ */
+
+.feedback-container {
+  margin-top: 3rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.feedback-widget {
+  background-color: var(--ifm-background-surface-color);
+  /* Match .card border and radius */
+  border: 1px solid rgba(37, 85, 254, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  min-width: 300px;
+  max-width: 500px;
+  text-align: center;
+  transition: all 0.2s ease;
+  /* Subtle shadow like .navbar or .card */
+  box-shadow: 0 2px 8px rgba(37, 85, 254, 0.05);
+}
+
+.feedback-widget:hover {
+  /* Subtle lift on hover like .card */
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 20px rgba(37, 85, 254, 0.1);
+  transform: translateY(-2px);
+}
+
+.feedback-widget .initial-state {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.feedback-widget .question {
+  font-weight: 600;
+  font-size: 1.1em;
+  color: var(--ifm-font-color-base);
+}
+
+.feedback-widget .buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
+/* Thumbs Buttons - mimic .button--outline but with state colors */
+.feedback-widget .button {
+  cursor: pointer;
+  background: transparent;
+  border: 2px solid var(--ifm-color-emphasis-300);
+  /* Neutral start */
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  /* Match site pill buttons */
+  font-weight: 600;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  color: var(--ifm-font-color-base);
+}
+
+.feedback-widget .button:hover {
+  transform: translateY(-1px);
+}
+
+.feedback-widget .thumbs-up:hover {
+  border-color: var(--ifm-color-success);
+  color: var(--ifm-color-success);
+  box-shadow: 0 4px 12px rgba(0, 164, 0, 0.1);
+}
+
+.feedback-widget .thumbs-down:hover {
+  border-color: var(--ifm-color-danger);
+  color: var(--ifm-color-danger);
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.1);
+}
+
+.feedback-widget .thank-you {
+  color: var(--ifm-color-success);
+  font-weight: 700;
+  font-size: 1.1em;
+  margin: 0;
+}
+
+.feedback-widget .comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+}
+
+.feedback-widget .follow-up {
+  margin: 0;
+  font-weight: 600;
+  font-size: 0.95em;
+  color: var(--ifm-font-color-base);
+}
+
+.feedback-widget .textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  /* Slightly softer */
+  border: 1px solid var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  resize: vertical;
+  font-family: inherit;
+  font-size: 0.9em;
+  transition: border-color 0.2s;
+}
+
+.feedback-widget .textarea:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 2px var(--ifm-color-primary-lightest);
+}
+
+.feedback-widget .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+/* Submit Button - Match .button--primary */
+.feedback-widget .submit-button {
+  background: var(--ifm-color-primary);
+  border: 2px solid var(--ifm-color-primary);
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  border-radius: 50px;
+  /* Pill shape */
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+}
+
+.feedback-widget .submit-button:hover {
+  background: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 85, 254, 0.3);
+}
+
+.feedback-widget .submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Cancel Button - Match simple text link or .button--secondary */
+.feedback-widget .cancel-button {
+  background: transparent;
+  border: none;
+  color: var(--ifm-font-color-secondary);
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  transition: color 0.2s;
+}
+
+.feedback-widget .cancel-button:hover {
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+[data-theme='dark'] .DocSearch-Input,
+[data-theme='dark'] .DocSearch-Input * {
+  color: #ffffff !important;
+}
+
+[data-theme='dark'] .DocSearch-Label,
+[data-theme='dark'] .DocSearch-Label *,
+[data-theme='dark'] .DocSearch-Commands,
+[data-theme='dark'] .DocSearch-Commands * {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Jump to Top above DevEx Sessions (Meetup), same right alignment */
+@media (max-width: 767px) {
+  .theme-back-to-top-button {
+    bottom: 4.9rem !important;
+    right: 1.7rem !important;
+  }
+}
+
+/* Jump to Top to the left of DevEx Sessions (Meetup), same baseline */
+@media (min-width: 767px) {
+  .theme-back-to-top-button {
+    bottom: 2rem !important;
+    right: 2.5rem !important;
+  }
+}

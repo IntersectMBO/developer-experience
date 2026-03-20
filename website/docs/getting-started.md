@@ -16,7 +16,7 @@ This repository serves as the comprehensive guide for developers and contributor
 **[Complete Intersect Membership Guide →](./intersect-membership-guide.md)**
 
 ### 2. **New to Cardano?**
-Start with our comprehensive ecosystem overview: [**Directive: Kickoff & Orientation**](./working-group/q1-2025/sessions/01-kickoff-orientation/directive-kickoff.md)
+Start with our comprehensive ecosystem overview: [**Directive: Kickoff & Orientation**](./working-group/sessions/q4-2025/01-kickoff-orientation/session-notes/readme.md)
 
 This guide provides a complete map of the Cardano ecosystem, including core repositories, documentation resources, developer tools, and community support channels.
 
@@ -27,7 +27,7 @@ Dive into our hands-on [**Beginner Guides**](./how-to-guide/beginner/) to start 
 - Working with native tokens
 
 ### 4. **Want to Contribute?**
-Join our [**Developer Experience Working Group**](./working-group/q1-2025/) - a quarterly initiative focused on onboarding new developers and improving the overall developer experience.
+Join our [**Developer Experience Working Group**](./working-group/sessions/q4-2025/index.md) - a quarterly initiative focused on onboarding new developers and improving the overall developer experience.
 
 ## What You'll Find Here
 
@@ -45,7 +45,7 @@ Built by the community, for the community. Join our working groups and help shap
 ### How-To Guides
 - **[Beginner](./how-to-guide/beginner/)** - Getting started guides for newcomers
 - **[Intermediate](./how-to-guide/intermediate/)** - Next-level guides for developers with basic knowledge  
-- **[Advanced](./how-to-guide/advanced/)** - Deep-dive technical guides for experienced developers
+- **Advanced** - Deep-dive technical guides for experienced developers (see [Cardano API](./how-to-guide/advanced/cardano-api.md) and [cardano-db-sync](./how-to-guide/advanced/cardano-db-sync.md))
 
 ### Tutorials
 - **Hands-On** - Interactive coding tutorials and workshops
@@ -58,24 +58,25 @@ Built by the community, for the community. Join our working groups and help shap
 ### [Working Group](./working-group/)
 - **[DevEx Working Group](./working-group/)** - Developer Experience Working Group materials and session content
 
-## Current Focus: Q1 2025
+## Current Focus: Q1 2026
 
-**Theme: "Laying the Foundations"**
+**Theme: "Deepening Engagement"**
 
 Our Developer Experience Working Group is running a 12-session program designed to:
 
-- **Onboard new developers** with clear guidance on repos, docs, tools, and support
-- **Build practical skills** through hands-on workshops (environment setup, token creation, wallet integration)
-- **Showcase real stories** from developers and community builders
+- **Foster active participation** in working groups
+- **Deliver intermediate workshops** (Wallet, Docs)
+- **Showcase community stories**
 - **Provide live support** through open clinic sessions
 - **Foster contribution** to documentation and open source projects
 
-[**Join the Working Group →**](./working-group/q1-2025/)
+[**Join the Working Group →**](./working-group/sessions/q1-2026/index.md)
 
 ## Getting Help
 
 ### **Community Support**
 - **Discord**: First become a member at [Intersect](https://www.intersectmbo.org/) and register at [members.intersectmbo.org](https://members.intersectmbo.org/registration) to get voting rights and access to our Discord community's #developer-experience channel. See our [Intersect Membership Guide](./intersect-membership-guide.md) to learn about all the benefits including decision-making power in the Cardano ecosystem
+- **FAQs**: Check our **[Frequently Asked Questions](./faq.md)** for common answers.
 - **Forum**: Ask questions on [Cardano Forum](https://forum.cardano.org)
 - **Stack Exchange**: Get technical help at [Cardano Stack Exchange](https://cardano.stackexchange.com)
 
@@ -106,10 +107,10 @@ This initiative is maintained by the **Developer Experience Working Group** with
 
 ## Our Goals
 
-By the end of Q1 2025, we aim to:
-- **Onboard 15-30 newcomers** into the Cardano ecosystem
-- **Equip developers** with 3 core technical skills
-- **Create sustainable resources** the community can build upon
+By the end of Q1 2026, we aim to:
+- **Foster active participation** in working groups
+- **Deliver intermediate workshops** (Wallet, Docs)
+- **Showcase community stories**
 - **Establish clear pathways** for both technical and non-technical contributions
 
 ---
@@ -118,7 +119,7 @@ By the end of Q1 2025, we aim to:
 
 **Step 1**: [Join Intersect - Get Your Voice in Cardano](./intersect-membership-guide.md)
 
-**Step 2**: [Directive: Kickoff & Orientation](./working-group/q1-2025/sessions/01-kickoff-orientation/directive-kickoff.md)
+**Step 2**: [Directive: Kickoff & Orientation](./working-group/sessions/q4-2025/01-kickoff-orientation/session-notes/readme.md)
 
 **Step 3**: [Beginner Guides](./how-to-guide/beginner/)
 

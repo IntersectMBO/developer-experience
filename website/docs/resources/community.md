@@ -11,6 +11,7 @@ There are a variety of community resources in the Cardano ecosystem for anyone l
 | What You Need | Where to Go | Link |
 |--------------|-------------|------|
 | Quick question or real-time help | Discord or Telegram | See Discord section below |
+| Common questions & misunderstandings | Frequently Asked Questions | **[Read FAQs](../faq.md)** |
 | Detailed problem that needs troubleshooting | Stack Exchange (search first!) | [cardano.stackexchange.com](https://cardano.stackexchange.com) |
 | Feedback on tools or docs | GitHub Discussions | [developer-experience](https://github.com/IntersectMBO/developer-experience/discussions) |
 | Technical consultation for your project | OSO Project Support | [oso@intersectmbo.org](https://committees.docs.intersectmbo.org/intersect-open-source-committee/about/open-source-office-oso/project-support-services) |
@@ -79,8 +80,8 @@ Telegram: Quick questions and chat (links shared in Discord)
 
 **Blogs**
 - [iohk.io/blog](https://iohk.io/blog) - Technical deep-dives and research
-- [cardanofoundation.org/blog](https://cardanofoundation.org/blog) - Ecosystem updates
-
+- [cardanofoundation.org/blog](https://cardanofoundation.org/blog)  Ecosystem updates
+- [intersectmbo.org/news](https://www.intersectmbo.org/news) - IntersectMBO developer reports
 ---
 
 ## Help Improve This Page
