@@ -1,8 +1,8 @@
 # Milestone Report: Foster Innovation & Technology Advancement (Q1 2026)
 
-**Reporting Advocate:** Harun Waweru Mwangi
-**Milestone Period:** Q1 2026
-**Working Group:** Developer Experience (DevEx)
+**Reporting Advocate:** Harun Waweru Mwangi  
+**Milestone Period:** Q1 2026  
+**Working Group:** Developer Experience (DevEx)  
 **Contract Milestone:** Yes
 
 **Goal:** Foster Innovation & Technology Advancement
@@ -28,10 +28,10 @@ This milestone was fulfilled through Session 09 of the Q1 2026 Developer Experie
 
 Vinay Devabhakthuni and Vinit Inamke joined the WG session to share the work Konma Lab is building on Cardano. The conversation covered:
 
-*   **HaskLedger** — an infrastructure project exploring Edge Computing on Cardano using RISC-V hardware, with a type-safe Haskell eDSL for writing validators and a full compilation pipeline to UPLC
-*   **Carbon Ledger** — a multi-chain framework focused on environmental measurement and verification, with an active partnership with UNDP for monitoring industrial water quality
-*   **MyOS** — an AI governance system integrating AI-driven decision-making with human oversight
-*   The Konma education-to-employment model: training developers in Haskell and Cardano, then employing them on these projects
+- **HaskLedger** — an infrastructure project exploring Edge Computing on Cardano using RISC-V hardware, with a type-safe Haskell eDSL for writing validators and a full compilation pipeline to UPLC
+- **Carbon Ledger** — a multi-chain framework focused on environmental measurement and verification, with an active partnership with UNDP for monitoring industrial water quality
+- **MyOS** — an AI governance system integrating AI-driven decision-making with human oversight
+- The Konma education-to-employment model: training developers in Haskell and Cardano, then employing them on these projects
 
 The session surfaced discussions on the broader Cardano developer ecosystem, collaboration opportunities with Intersect programs, and the challenges of developer retention and blockchain education in emerging markets.
 

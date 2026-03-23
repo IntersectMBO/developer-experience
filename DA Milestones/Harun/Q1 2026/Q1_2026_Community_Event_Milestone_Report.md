@@ -2,10 +2,13 @@
 
 ## Milestone Description
 
-**Goal:** Attend Web3 events to enrich and improve the developer experience.
-**Contract Milestone:** Yes.
-**Acceptance Criteria:** Attend a minimum of two (2) Web3 events per quarter and prepare a written report for Intersect review.
-**Due Date:** Q1 2026.
+**Goal:** Attend Web3 events to enrich and improve the developer experience.  
+
+**Contract Milestone:** Yes.  
+
+**Acceptance Criteria:** Attend a minimum of two (2) Web3 events per quarter and prepare a written report for Intersect review.  
+
+**Due Date:** Q1 2026.  
 
 ---
 
@@ -18,6 +21,7 @@ I attended four Web3 events during Q1 2026. Events spanned a local community mee
 ## Events Attended
 
 ### 1. Cardano Hub Nairobi — January Monthly Meetup
+
 **Date:** January 29, 2026
 **Location:** Blockchain Centre NBO, Nairobi, Kenya
 **Format:** In-Person Community Meetup
@@ -27,6 +31,7 @@ The monthly Cardano Hub Nairobi meetup drew a strong turnout of attendees intere
 ---
 
 ### 2. Africa Tech Summit
+
 **Date:** February 10–11, 2026
 **Location:** Nairobi, Kenya
 **Format:** In-Person Conference
@@ -39,6 +44,7 @@ Stablecoins and cross-border payments emerged as the dominant theme throughout t
 ---
 
 ### 3. Sunset & Stablecoins — Anzens, BlockAi & Encryptus
+
 **Date:** February 11, 2026 (7:00 PM – 9:30 PM)
 **Location:** Nairobi, Kenya
 **Format:** In-Person Industry Networking Evening
@@ -48,6 +54,7 @@ This industry evening brought together professionals and innovators working on d
 ---
 
 ### 4. Cardano Africa Tech Summit (CATS)
+
 **Date:** February 13, 2026
 **Location:** Nairobi, Kenya
 **Format:** In-Person Conference

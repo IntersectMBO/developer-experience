@@ -1,8 +1,8 @@
 # Milestone Report: Developer Experience Pain Points (Q1 2026)
 
-**Reporting Advocate:** Harun Waweru Mwangi
-**Milestone Period:** Q1 2026
-**Working Group:** Developer Experience (DevEx)
+**Reporting Advocate:** Harun Waweru Mwangi  
+**Milestone Period:** Q1 2026  
+**Working Group:** Developer Experience (DevEx)  
 **Contract Milestone:** Yes
 
 **Goal:** Foster Innovation & Technology Advancement
@@ -11,8 +11,8 @@
 
 ## Milestone Description
 
-*   **Acceptance Criteria:** Document 2–3 pain points with proposed solutions in the Developer Experience repo.
-*   **Due Date:** Q1 2026
+- **Acceptance Criteria:** Document 2–3 pain points with proposed solutions in the Developer Experience repo.
+- **Due Date:** Q1 2026
 
 ---
 
@@ -46,7 +46,7 @@ Bernard Sibanda, who manages a talent pool of over 600 students in Africa, noted
 
 **Identified in:** Session 11 (Open Source & Documentation), developer onboarding meetings.
 
-Robertino Martinez raised a gap that resonated widely in Session 11: Cardano's documentation tends to exist at two extremes, high-level user guides for beginners and low-level generated API references such as Haddock for Plutus. What is missing is a conceptual middle layer that explains *why* modules exist, *how* they interact, and what mental models developers need before diving into the raw API. This is particularly acute for developers from other ecosystems who understand programming but need context for Cardano-specific concepts like the eUTxO model or the relationship between on-chain and off-chain code. A related issue raised by Israel Chizungu is version drift: documentation referencing deprecated library versions sends developers down dead-end paths and erodes trust.
+Robertino Martinez raised a gap that resonated widely in Session 11: Cardano's documentation tends to exist at two extremes, high-level user guides for beginners and low-level generated API references such as Haddock for Plutus. What is missing is a conceptual middle layer that explains _why_ modules exist, _how_ they interact, and what mental models developers need before diving into the raw API. This is particularly acute for developers from other ecosystems who understand programming but need context for Cardano-specific concepts like the eUTxO model or the relationship between on-chain and off-chain code. A related issue raised by Israel Chizungu is version drift: documentation referencing deprecated library versions sends developers down dead-end paths and erodes trust.
 
 **Proposed Solution:** Work with the Open Source Committee to identify high-priority Core Cardano repositories lacking conceptual documentation and propose a structured contribution effort. Developer Advocates can draft conceptual overview documents as part of ongoing working group deliverables, and version indicators should be treated as a mandatory standard modelled in the DevEx repo.
 
@@ -66,8 +66,7 @@ This directly motivated redesigning Session 12 from an ecosystem wrap-up into a 
 
 ## Evidence
 
-*   [Session 09: Community Builder Story](https://devex.intersectmbo.org/docs/working-group/sessions/q1-2026/community-builder-story/session-notes)
-*   [Session 10: Wallet Integration](https://devex.intersectmbo.org/docs/working-group/sessions/q1-2026/wallet-integration/Session-1/session-notes)
-*   [Session 11: Open Source & Documentation](https://devex.intersectmbo.org/docs/working-group/sessions/q1-2026/open-source-docs/session-notes)
-*   [Session 12: Cardano Developer Pathway](https://devex.intersectmbo.org/docs/working-group/sessions/q1-2026/cardano-developer-pathway/session-notes)
-*   [Session 13: Smart Contracts & Languages](https://devex.intersectmbo.org/docs/working-group/sessions/q1-2026/smart-contracts-languages/session-notes)
+- [Session 09: Community Builder Story](https://devex.intersectmbo.org/docs/working-group/sessions/q1-2026/community-builder-story/session-notes)
+- [Session 10: Wallet Integration](https://devex.intersectmbo.org/docs/working-group/sessions/q1-2026/wallet-integration/Session-1/session-notes)
+- [Session 11: Open Source & Documentation](https://devex.intersectmbo.org/docs/working-group/sessions/q1-2026/open-source-docs/session-notes)
+- [Session 12: Cardano Developer Pathway](https://devex.intersectmbo.org/docs/working-group/sessions/q1-2026/cardano-developer-pathway/session-notes)

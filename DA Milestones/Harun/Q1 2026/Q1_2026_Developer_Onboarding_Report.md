@@ -1,7 +1,7 @@
 # Milestone Report: Developer Onboarding to Working Groups (Q1 2026)
 
-**Reporting Advocate:** Harun Waweru Mwangi
-**Milestone Period:** Q1 2026
+**Reporting Advocate:** Harun Waweru Mwangi  
+**Milestone Period:** Q1 2026  
 **Contract Milestone:** Yes
 
 **Goal:** Connect with developers from the community, encourage attendance to DevEx and Technical working groups, and maintain documentation specific to development on Cardano.

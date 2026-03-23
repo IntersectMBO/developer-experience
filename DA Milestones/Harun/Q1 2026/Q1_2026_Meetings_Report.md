@@ -1,8 +1,8 @@
 # Developer Advocate Meeting Report
 
-**Reporting Advocate:** Harun Waweru Mwangi
-**Reporting Period:** Q1 2026
-**Calendar:** [Q1 2026 Calendar](https://calendly.com/harunm28/30min)
+**Reporting Advocate:** Harun Waweru Mwangi  
+**Reporting Period:** Q1 2026  
+**Calendar:** [Q1 2026 Calendar](https://calendly.com/harunm28/30min)  
 **Role:** Developer Advocate – Developer Experience Working Group (Intersect)
 
 ---

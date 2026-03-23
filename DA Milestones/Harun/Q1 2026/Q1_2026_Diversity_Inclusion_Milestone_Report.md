@@ -2,10 +2,10 @@
 
 ## Milestone Description
 
-*   **Goal:** Implement Diversity & Inclusion Programs
-*   **Contract Milestone:** Yes
-*   **Acceptance Criteria:** State of Developer Experience Survey and related Translation.
-*   **Due Date:** Q1 2026
+**Goal:** Implement Diversity & Inclusion Programs  
+**Contract Milestone:** Yes  
+**Acceptance Criteria:** State of Developer Experience Survey and related Translation.  
+**Due Date:** Q1 2026
 
 ---
 
