@@ -23,7 +23,7 @@ The Developer Experience (DevEx) Working Group continues to support and empower 
 | **9** | **Spotlight: Community Builder Story** | Impact of non-coding contributions | Story showcase |
 | **10** | **Hands-On #3 (Intermediate)** | Wallet integration fundamentals | Workshop |
 | **11** | **Open Source & Documentation** | Writing docs, repo improvement, issue management | Contribution guide |
-| **12** | **Ecosystem Wrap-Up & Year-End Reflections** | 2025 highlights, 2026 planning, and motivational close | Reflection & planning |
+| **12** | **Cardano Developer Pathway** | Full roadmap from zero to core contributor or dApp builder; ecosystem wrap-up | Pathway guide & reflection |
 | **13** | **Deeper Dive: Smart Contracts & Languages** | Exploring Plinth, Aiken, OpShin, and more | Deep dive |
 
 ## Session Details
@@ -67,14 +67,14 @@ The Developer Experience (DevEx) Working Group continues to support and empower 
   - Review processes and community standards
 - **Deliverable**: Open source contribution guide
 
-### Session 12: Ecosystem Wrap-Up & Year-End Reflections
-- **Objective**: Celebrate progress and plan ahead
+### Session 12: Cardano Developer Pathway
+- **Objective**: Provide the full Cardano developer roadmap and wrap up the quarter
 - **Key Topics**:
-  - Q4 2025 ecosystem achievements
-  - Individual participant progress review
-  - 2026 roadmap and opportunities
+  - Cardano Developer Pathway (entry profiles, tracks, tools, careers, Web2→Web3)
+  - Q1 2026 program retrospective
+  - Next steps and continued learning
   - Community building and continued engagement
-- **Deliverable**: 2026 engagement plan
+- **Deliverable**: Pathway guide; 2026 engagement plan
 
 ### Session 13: Deeper Dive: Smart Contracts & Languages
 - **Objective**: Compare and contrast Cardano smart contract languages
