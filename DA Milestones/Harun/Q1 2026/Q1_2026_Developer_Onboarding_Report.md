@@ -24,13 +24,17 @@ Vinit was introduced to the Intersect ecosystem and collaboration opportunities 
 
 ### 2. Jayson Amati
 
+![Jayson conversation](images/jason-whatsapp.jpeg)
+
 Jayson was introduced to Intersect and IntersectMBO and received a walkthrough of the [developer-experience repository](https://github.com/IntersectMBO/developer-experience), covering its structure, open issues, and contribution process. He was introduced to the Maintainer Retainer Program and directed to the Developer Experience Working Group and Intersect Discord. Jayson was tasked with reviewing active Cardano repositories and selecting one to contribute to.
 
 ---
 
 ### 3. Kadiri Ahmed Tunde
 
-Kadiri was guided through navigating the Cardano developer ecosystem, covering both the Haskell learning path (node and ledger layers) and the Aiken smart contract path as an accessible entry point. He was directed to the Intersect Discord, specifically the developer watercooler, Open Source Committee, and Developer Experience Working Group, and encouraged to engage with the community early for long-term mentorship and guidance.
+![Kadiri reaching out on Discord](images/ahmed-discord.png)
+
+Kadiri was guided through navigating the Cardano developer ecosystem, covering both the Haskell learning path and the Aiken smart contract path as an accessible entry point. He was directed to the Intersect Discord, specifically the developer watercooler, Open Source Committee, and Developer Experience Working Group, and encouraged to engage with the community early for long-term mentorship and guidance.
 
 ---
 

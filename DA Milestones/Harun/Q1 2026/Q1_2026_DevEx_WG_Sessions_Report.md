@@ -1,8 +1,8 @@
 # Developer Experience Working Group Sessions Report
 
-**Reporting Advocate:** Harun Waweru Mwangi
-**Reporting Period:** Q1 2026 (January–March)
-**Role:** Developer Advocate – Developer Experience Working Group Lead (Intersect)
+**Reporting Advocate:** Harun Waweru Mwangi  
+**Reporting Period:** Q1 2026 (January–March)  
+**Role:** Developer Advocate – Developer Experience Working Group Lead (Intersect)  
 
 ---
 
@@ -18,9 +18,9 @@ During Q1 2026, I led two Developer Experience Working Group sessions as part of
 
 A spotlight session featuring **Vinay Devabhakthuni** (Konma Lab) and **Bernard Sibanda**, exploring how non-coding contributions drive ecosystem growth in Cardano. Vinay presented Konma's education-to-employment model and their work on HaskLedger, a verification layer for Haskell-based ledgers, while Bernard shared his strategy for scaling Cardano adoption across Africa. The session highlighted the impact of community builders, educators, and advocates beyond pure engineering work.
 
-**Recording:** https://devex.intersectmbo.org/docs/working-group/q1-2026/sessions/09-community-builder-story/recordings
+**Recording:** https://devex.intersectmbo.org/docs/working-group/sessions/q1-2026/community-builder-story/recordings
 
-**Session Notes:** https://devex.intersectmbo.org/docs/working-group/q1-2026/sessions/09-community-builder-story/session-notes
+**Session Notes:** https://devex.intersectmbo.org/docs/working-group/sessions/q1-2026/community-builder-story/session-notes
 
 ---
 
@@ -28,11 +28,11 @@ A spotlight session featuring **Vinay Devabhakthuni** (Konma Lab) and **Bernard 
 
 A session focused on the principles and practice of effective open source documentation. Topics covered included Documentation Driven Development, the ROI of well-maintained documentation, document types (READMEs, Design Docs, Executable Docs, Contributor Guidelines), and documentation formats (Markdown, LaTeX, Typst, AsciiDoc, Mermaid diagrams). The session also addressed AI-assisted documentation tooling, localization considerations, and included a community discussion on the challenges of centralizing and maintaining Cardano developer resources.
 
-**Recording:** https://devex.intersectmbo.org/docs/working-group/q1-2026/sessions/11-open-source-docs/recordings
+**Recording:** https://devex.intersectmbo.org/docs/working-group/sessions/q1-2026/open-source-docs/recordings
 
-**Session Notes:** https://devex.intersectmbo.org/docs/working-group/q1-2026/sessions/11-open-source-docs/session-notes
+**Session Notes:** https://devex.intersectmbo.org/docs/working-group/sessions/q1-2026/open-source-docs/session-notes
 
-**Resources:** https://devex.intersectmbo.org/docs/working-group/q1-2026/sessions/11-open-source-docs/session-resources
+**Resources:** https://devex.intersectmbo.org/docs/working-group/sessions/q1-2026/open-source-docs/session-resources
 
 ---
 
