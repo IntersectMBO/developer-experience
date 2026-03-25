@@ -47,6 +47,7 @@ The follow-up meeting with Kahindi explored pathways for IntersectMBO to engage 
 Dairy Chain is a Kenyan agri-tech startup exploring blockchain-based traceability for milk supply chains, covering sourcing, processing, and distribution. As a developer at TxMeta, a Cardano-focused development company, I facilitated an introductory meeting between the two parties to explore whether TxMeta could support building this system on Cardano.
 
 The conversation covered smart contract capabilities, transaction costs, and available Cardano tooling for supply chain applications. The meeting surfaced a concrete, locally relevant use case for Cardano in African agri-tech. No formal collaboration has been established and discussions are ongoing.
+
 ---
 
 ## Evidence
