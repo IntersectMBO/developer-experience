@@ -54,14 +54,6 @@ A session focused on the principles and practice of effective open source docume
 
 ## Key Outcomes
 
-**Documentation Deliverables:**
-
-*   Community Builder session notes and recording — inspiration content for non-coding contributors
-*   Open Source Documentation framework covering document types, formats, and best practices
-*   Curated resource list of best-in-class repositories and format learning materials
-
-**Community Impact:**
-
-*   Elevated the visibility of community builders and educators within the working group
-*   Provided actionable documentation standards for contributors working on Core Cardano repositories
-*   Established a reusable documentation guide that Developer Advocates and OSC members can share with new contributors
+- Session 09 notes, recording, and community builder profiles published to the DevEx portal
+- Session 11 documentation framework (document types, formats, best practices) and curated resources published
+- Reusable documentation guide available for Developer Advocates and OSC members to share with new contributors

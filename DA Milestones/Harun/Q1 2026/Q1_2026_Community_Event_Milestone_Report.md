@@ -22,8 +22,8 @@ I attended four Web3 events during Q1 2026. Events spanned a local community mee
 
 ### 1. Cardano Hub Nairobi — January Monthly Meetup
 
-**Date:** January 29, 2026
-**Location:** Blockchain Centre NBO, Nairobi, Kenya
+**Date:** January 29, 2026  
+**Location:** Blockchain Centre NBO, Nairobi, Kenya  
 **Format:** In-Person Community Meetup
 
 The monthly Cardano Hub Nairobi meetup drew a strong turnout of attendees interested in learning about Cardano. The event provided a recurring space for education, networking, and ecosystem updates, welcoming both newcomers and established community members.
@@ -32,9 +32,9 @@ The monthly Cardano Hub Nairobi meetup drew a strong turnout of attendees intere
 
 ### 2. Africa Tech Summit
 
-**Date:** February 10–11, 2026
-**Location:** Nairobi, Kenya
-**Format:** In-Person Conference
+**Date:** February 11–12, 2026  
+**Location:** Nairobi, Kenya  
+**Format:** In-Person Conference  
 **Website:** [africatechsummit.com/nairobi](https://www.africatechsummit.com/nairobi/)
 
 Africa Tech Summit is one of Africa's flagship technology conferences, bringing together innovators, investors, and builders from across the continent and beyond. Cardano participated as one of many ecosystems, represented at a dedicated Cardano corner alongside the Cardano Foundation and other ecosystem organisations.
@@ -45,8 +45,8 @@ Stablecoins and cross-border payments emerged as the dominant theme throughout t
 
 ### 3. Sunset & Stablecoins — Anzens, BlockAi & Encryptus
 
-**Date:** February 11, 2026 (7:00 PM – 9:30 PM)
-**Location:** Nairobi, Kenya
+**Date:** February 11, 2026 (7:00 PM – 9:30 PM)  
+**Location:** Nairobi, Kenya  
 **Format:** In-Person Industry Networking Evening
 
 This industry evening brought together professionals and innovators working on digital assets in Africa and beyond, with a focus on stablecoin adoption, real-world asset (RWA) tokenization, and blockchain infrastructure. A highlight was an address by Shantnoo, Acting CEO of Anzens, who spoke on the intersection of mobile money and stablecoins, exploring how stablecoin infrastructure can extend the reach of digital payments to underserved populations across Africa.
@@ -55,9 +55,9 @@ This industry evening brought together professionals and innovators working on d
 
 ### 4. Cardano Africa Tech Summit (CATS)
 
-**Date:** February 13, 2026
-**Location:** Nairobi, Kenya
-**Format:** In-Person Conference
+**Date:** February 13, 2026  
+**Location:** Nairobi, Kenya  
+**Format:** In-Person Conference  
 **Website:** [cats.wada.org](https://cats.wada.org/)
 
 The Cardano Africa Tech Summit, sponsored by WADA and the Blockchain Center Nairobi, was the standout event of the quarter. Despite a challenging market environment, attendance exceeded expectations with the venue at capacity, a strong signal of growing Cardano adoption and community maturity in the region.

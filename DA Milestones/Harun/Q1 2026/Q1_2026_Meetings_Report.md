@@ -11,9 +11,9 @@
 
 ### 1. Project Overview – Konma (Vinay)
 
-**Attendee:** Vinay (Konma)
-**Date:** Thursday, January 22, 2026
-**Time:** 12:30 PM – 1:30 PM IST
+**Attendee:** Vinay (Konma)  
+**Date:** Thursday, January 22, 2026  
+**Time:** 12:30 PM – 1:30 PM IST  
 **Platform:** Google Meet
 
 **Meeting Goal:**
@@ -26,9 +26,9 @@ Vinay provided an overview of Konma's active initiatives, including HaskLedger a
 
 ### 2. Deep Dive – Konma Team (Vinit & Vinay)
 
-**Attendees:** Vinit
-**Date:** Friday, January 23, 2026
-**Time:** 12:30 PM – 1:30 PM IST
+**Attendees:** Vinit  
+**Date:** Friday, January 23, 2026  
+**Time:** 12:30 PM – 1:30 PM IST  
 **Platform:** Google Meet
 
 **Meeting Goal:**
@@ -41,36 +41,32 @@ The conversation then shifted to collaboration opportunities within Intersect. H
 
 Potential collaboration with MLabs was discussed, along with strategies for securing funding and demonstrating project utility to the broader Cardano community. The session wrapped up with a discussion on blockchain education challenges: both Emergo Academy's difficulties in attracting students due to cost and accessibility, and the wider talent-building challenge in the African market.
 
-**Key Topics Discussed:**
-
-Topics covered included HaskLedger's technical complexity, current delays, and a path to completion by mid-February; Carbon Ledger's multi-chain approach for environmental MRV (Measurement, Reporting and Verification); the MyOS governance architecture and its AI-human oversight model; the Developer Advocate Program and Maintainer Retainer Program; collaboration opportunities with MLabs and funding strategies; and blockchain education challenges and talent development in Kenya.
-
 **Action Items:**
 
-Vinit agreed to share the MyOS documentation with Harun and to add Harun as a collaborator on the Plutarch starter project GitHub repository. Vinay committed to completing HaskLedger by mid-February as a milestone for future funding applications. Harun agreed to introduce the Konma team at the Open Source Committee meetings.
+Vinit agreed to share the MyOS documentation and add Harun as a collaborator on the Plutarch starter project repository. Vinay committed to completing HaskLedger by mid-February as a milestone for future funding applications. Harun agreed to introduce the Konma team at Open Source Committee meetings.
 
 ---
 
 ### 3. Developer Onboarding – Tony
 
-**Attendee:** Tony
-**Date:** Thursday, February 19, 2026
-**Time:** 1:00 PM – 2:00 PM EAT
+**Attendee:** Tony  
+**Date:** Thursday, February 19, 2026  
+**Time:** 1:00 PM – 2:00 PM EAT  
 **Platform:** Phone Call
 
 **Meeting Goal:**
 To introduce Tony to the Intersect ecosystem and walk him through the Maintainer Retainer Program and available contribution paths.
 
 **Summary:**
-Tony was introduced to Intersect and IntersectMBO, with a focus on opportunities for developers looking to contribute to open-source Cardano projects. Harun walked him through the [developer-experience repository](https://github.com/IntersectMBO/developer-experience), explaining its structure, open issues, and how contributions are reviewed and merged. The session covered the **Maintainer Retainer Program**, including how it works, what it rewards, and how developers can qualify. Tony was given a task to review active Cardano repositories and select one or more he would like to contribute to, as a concrete first step into the ecosystem.
+Tony was introduced to Intersect and IntersectMBO. Harun walked him through the [developer-experience repository](https://github.com/IntersectMBO/developer-experience) and covered the **Maintainer Retainer Program**. Tony was tasked with reviewing active Cardano repositories and selecting one to contribute to as a first step.
 
 ---
 
 ### 4. Developer Onboarding – Kahindi
 
-**Attendee:** Kahindi
-**Date:** Tuesday, February 24, 2026
-**Time:** 1:00 PM – 2:00 PM EAT
+**Attendee:** Kahindi  
+**Date:** Tuesday, February 24, 2026  
+**Time:** 1:00 PM – 2:00 PM EAT  
 **Platform:** Google Meet
 
 **Meeting Goal:**
@@ -85,24 +81,24 @@ Harun provided an introduction to Intersect and IntersectMBO, covering the organ
 
 ### 5. Developer Onboarding – Jayson
 
-**Attendee:** Jayson
-**Date:** Wednesday, February 25, 2026
-**Time:** 1:00 PM – 2:00 PM EAT
+**Attendee:** Jayson  
+**Date:** Wednesday, February 25, 2026  
+**Time:** 1:00 PM – 2:00 PM EAT  
 **Platform:** Google Meet
 
 **Meeting Goal:**
 To introduce Jayson to the Intersect ecosystem and walk him through the Maintainer Retainer Program and available contribution paths.
 
 **Summary:**
-Jayson was new to the Intersect ecosystem and keen to understand how to get involved in Cardano open-source development. Harun introduced him to IntersectMBO, its working groups, and the structure of the developer-experience repository. The session included a walkthrough of open issues, contribution guidelines, and the **Maintainer Retainer Program**, covering how it incentivizes sustained open-source contributions and what the path to participation looks like. Like Tony, Jayson was given a task to review active Cardano repositories and select one or more to contribute to as a concrete starting point.
+Jayson was introduced to IntersectMBO, its working groups, and the developer-experience repository. The session covered open issues, contribution guidelines, and the **Maintainer Retainer Program**. Jayson was tasked with reviewing active Cardano repositories and selecting one to contribute to.
 
 ---
 
 ### 6. Ecosystem Navigation – Kadiri
 
-**Attendee:** Kadiri
-**Date:** Thursday, February 26, 2026
-**Time:** 11:00 AM – 12:00 PM WAT
+**Attendee:** Kadiri  
+**Date:** Thursday, February 26, 2026  
+**Time:** 11:00 AM – 12:00 PM WAT  
 **Platform:** Google Meet
 
 **Meeting Goal:**

@@ -17,10 +17,10 @@ This milestone was fulfilled through Session 09 of the Q1 2026 Developer Experie
 
 ## Session Details
 
-**Session:** Session 09 – Community Builder Story: Konma & HaskLedger
-**Date:** February 5, 2026
-**Format:** Live DevEx Working Group session
-**Guests:** Vinay Devabhakthuni and Vinit Inamke — Konma Lab
+**Session:** Session 09 – Community Builder Story: Konma & HaskLedger  
+**Date:** February 5, 2026  
+**Format:** Live DevEx Working Group session  
+**Guests:** Vinay Devabhakthuni and Vinit Inamke – Konma Lab
 
 ---
 
@@ -28,9 +28,9 @@ This milestone was fulfilled through Session 09 of the Q1 2026 Developer Experie
 
 Vinay Devabhakthuni and Vinit Inamke joined the WG session to share the work Konma Lab is building on Cardano. The conversation covered:
 
-- **HaskLedger** — an infrastructure project exploring Edge Computing on Cardano using RISC-V hardware, with a type-safe Haskell eDSL for writing validators and a full compilation pipeline to UPLC
-- **Carbon Ledger** — a multi-chain framework focused on environmental measurement and verification, with an active partnership with UNDP for monitoring industrial water quality
-- **MyOS** — an AI governance system integrating AI-driven decision-making with human oversight
+- **HaskLedger** – an infrastructure project exploring Edge Computing on Cardano using RISC-V hardware, with a type-safe Haskell eDSL for writing validators and a full compilation pipeline to UPLC
+- **Carbon Ledger** – a multi-chain framework focused on environmental measurement and verification, with an active partnership with UNDP for monitoring industrial water quality
+- **MyOS** – an AI governance system integrating AI-driven decision-making with human oversight
 - The Konma education-to-employment model: training developers in Haskell and Cardano, then employing them on these projects
 
 The session surfaced discussions on the broader Cardano developer ecosystem, collaboration opportunities with Intersect programs, and the challenges of developer retention and blockchain education in emerging markets.

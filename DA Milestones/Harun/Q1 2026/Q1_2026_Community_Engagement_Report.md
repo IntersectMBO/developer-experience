@@ -26,7 +26,7 @@ The January monthly meetup drew a solid turnout of attendees keen to learn about
 
 February brought a remarkable concentration of events to Nairobi that made the week feel like a turning point for Cardano's presence in East Africa.
 
-#### Africa Tech Summit (February 10-11, 2026)
+#### Africa Tech Summit (February 11-12, 2026)
 
 Africa Tech Summit drew builders, investors, and innovators from across the continent. Cardano was well represented, with a dedicated corner shared by the Cardano Foundation, Intersect, and other ecosystem organisations. The standout theme of the conference was stablecoins. Cross-border payments and peer-to-peer stablecoin transactions were everywhere, reflecting how deeply digital financial tools have already taken root in African markets. The conversations were energetic and grounded; this was not an audience speculating about the future, but one that is already living in it.
 

@@ -34,7 +34,7 @@ Cardano's documentation is spread across the Cardano Foundation, IOG, Intersect,
 
 ## Pain Point 2: No Interactive Playgrounds for Smart Contract Languages
 
-**Identified in:** Session 09 (Community Builder Story), feedback from Bernard Sibanda's students at Coxygen, Session 13 (Smart Contracts & Languages).
+**Identified in:** Session 09 (Community Builder Story), feedback from Bernard Sibanda's students at Coxygen, Session 12 (Cardano Developer Pathway).
 
 Bernard Sibanda, who manages a talent pool of over 600 students in Africa, noted that many lack the hardware to run full Cardano development environments locally. The Cardano ecosystem currently has a playground only for Marlowe. Languages such as **Aiken**, **Plutarch**, **Plu-ts**, and **Plinth** have no browser-based equivalent where developers can write, test, and explore code without local setup. Getting a working environment running remains the hardest part of starting with Cardano, a barrier that falls disproportionately on students and developers in hardware-constrained regions.
 
