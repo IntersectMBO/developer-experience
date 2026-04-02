@@ -1054,20 +1054,25 @@ html[data-theme='dark'] .searchBar .dropdownMenu svg {
 }
 
 /*
- * Full Pathway: OUTCOME node — Mermaid sets a fixed foreignObject box; padding on
+ * Full Pathway: dense outcome node — Mermaid sets a fixed foreignObject box; padding on
  * the inner div makes content taller than that box and clips. Keep padding minimal,
  * slightly smaller type, and let the rectangle shape size to the label.
+ * (IDs: legacy OUTCOME, current outcomes)
  */
 .docusaurus-mermaid-container svg g[id^='flowchart-OUTCOME'],
-.docusaurus-mermaid-container svg g[id^='flowchart-OUTCOME'] .label {
+.docusaurus-mermaid-container svg g[id^='flowchart-OUTCOME'] .label,
+.docusaurus-mermaid-container svg g[id^='flowchart-outcomes'],
+.docusaurus-mermaid-container svg g[id^='flowchart-outcomes'] .label {
   overflow: visible;
 }
 
-.docusaurus-mermaid-container svg g[id^='flowchart-OUTCOME'] foreignObject {
+.docusaurus-mermaid-container svg g[id^='flowchart-OUTCOME'] foreignObject,
+.docusaurus-mermaid-container svg g[id^='flowchart-outcomes'] foreignObject {
   overflow: visible;
 }
 
-.docusaurus-mermaid-container svg g[id^='flowchart-OUTCOME'] foreignObject div {
+.docusaurus-mermaid-container svg g[id^='flowchart-OUTCOME'] foreignObject div,
+.docusaurus-mermaid-container svg g[id^='flowchart-outcomes'] foreignObject div {
   padding: 0.2rem 0.45rem;
   text-align: center;
   font-size: 0.86rem;
@@ -1076,7 +1081,8 @@ html[data-theme='dark'] .searchBar .dropdownMenu svg {
   box-sizing: border-box;
 }
 
-.docusaurus-mermaid-container svg g[id^='flowchart-OUTCOME'] .basic.label-container {
+.docusaurus-mermaid-container svg g[id^='flowchart-OUTCOME'] .basic.label-container,
+.docusaurus-mermaid-container svg g[id^='flowchart-outcomes'] .basic.label-container {
   rx: 18px;
   ry: 18px;
 }

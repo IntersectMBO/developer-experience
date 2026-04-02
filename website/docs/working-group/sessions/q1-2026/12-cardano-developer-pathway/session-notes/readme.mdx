@@ -5,436 +5,232 @@ sidebar_position: 1
 ---
 
 import CardanoToolGrid from '@site/src/components/CardanoToolGrid';
+import MermaidDiagramFrame from '@site/src/components/MermaidDiagramFrame';
 
 # Cardano Developer Pathway
 
 ## From Zero to Core Contributor or dApp Builder
 
-The diagrams below are fully interactive **hover any node** to see a tooltip, **click any node** to open its documentation in a new tab. The interactive reference grids below each diagram let you explore all tools in detail.
+This page is a **single interactive map** of the Cardano developer journey. **Hover** nodes for tooltips, **click** nodes to open docs (new tab). Use **Full view** on the diagram toolbar for fullscreen, and **Zoom in / out** (or **Ctrl/Cmd + scroll wheel** over the diagram) to change scale. It incorporates the [Session 12 DX audit themes](https://github.com/IntersectMBO/developer-experience/issues/200): local devnets, transaction anatomy, concurrency, debugging, hosted APIs, NFT standards, EVM migration, governance, L2, and cross-chain—without splitting content across many files.
 
-For the full written explainer, see [Resources](../session-resources/readme.md).
+The diagram is **supplementary**: it is dense on purpose. For a linear narrative, tables, and [curated links that match diagram nodes](../session-resources/readme.md#pathway-deep-links), use **Resources**.
+
+Use the **tool grid** under the diagram to explore each product in depth.
 
 ---
 
 ## Full Pathway Diagram
 
-```mermaid
-flowchart TD
-    START([🚀 Where are you starting from?])
-
-    START --> BEGINNER[Complete beginner<br/>No code background]
-    START --> WEB2[Web2 developer<br/>JS · Python · Rust · Java · Haskell]
-    START --> DESIGNER[Designer / UI-UX<br/>Figma · CSS · UX]
-
-    BEGINNER --> FUNDAMENTALS
-    WEB2 --> FUNDAMENTALS
-    DESIGNER --> FUNDAMENTALS
-
-    FUNDAMENTALS["📚 Cardano fundamentals<br/>eUTxO model · native tokens · Ouroboros · Voltaire governance · CIPs"]
-
-    FUNDAMENTALS --> LEARN_FUND["🎓 Learn here<br/>Cardano Academy · developers.cardano.org<br/>Gimbalabs · cardano-course.gitbook.io"]
-
-    FUNDAMENTALS --> CHOOSE{Choose your track}
-
-    CHOOSE --> TRACK_SC["⚙️ Smart contracts<br/>On-chain logic"]
-    CHOOSE --> TRACK_FE["🖥️ Frontend dApp<br/>JS · React · Next.js"]
-    CHOOSE --> TRACK_INFRA["🔧 Infrastructure<br/>Node · indexers · APIs"]
-    CHOOSE --> TRACK_MARLOWE["📊 Finance / no-code<br/>Marlowe DSL"]
-
-    TRACK_SC --> LANG_CHOICE{Language choice}
-
-    LANG_CHOICE --> AIKEN["🦀 Aiken<br/>Rust-like · 62% SC activity · v1.1.11"]
-    LANG_CHOICE --> PLUTUS["λ Plutus V3<br/>Haskell · 5× growth 2025"]
-    LANG_CHOICE --> OTHERS_SC["Other languages<br/>OpShin · Helios · Scalus · Plu-ts"]
-
-    AIKEN --> AIKEN_LEARN["📖 Aiken learning path<br/>aiken-lang.org · stdlib<br/>Gimbalabs PPBL · Discord"]
-    PLUTUS --> PLUTUS_LEARN["📖 Plutus learning path<br/>IOG Haskell Bootcamp<br/>Plutus Pioneer Program<br/>10 weeks · 10 hrs/week"]
-
-    AIKEN_LEARN --> SC_BUILD
-    PLUTUS_LEARN --> SC_BUILD
-    OTHERS_SC --> SC_BUILD
-
-    SC_BUILD["✍️ Write validators + scripts<br/>eUTxO patterns · datum · redeemer<br/>ScriptContext · minting policies"]
-
-    TRACK_FE --> SDK_CHOICE{SDK choice}
-
-    SDK_CHOICE --> MESHJS["MeshJS<br/>TS · beginners · full toolkit"]
-    SDK_CHOICE --> LUCID["Lucid-evo<br/>TS · Anastasia Labs · Plomin-ready"]
-    SDK_CHOICE --> BLAZE["Blaze<br/>TS · strongly typed · v0.2.22"]
-    SDK_CHOICE --> OTHER_SDK["Others<br/>CTL · PyCardano · Atlas · Evolution SDK"]
-
-    MESHJS --> WALLET_INT
-    LUCID --> WALLET_INT
-    BLAZE --> WALLET_INT
-    OTHER_SDK --> WALLET_INT
-
-    WALLET_INT["🔗 Wallet integration<br/>CIP-30 · CIP-95 · CIP-62<br/>Eternl · Lace · Nami · Vespr"]
-    WALLET_INT --> FE_BUILD["🎨 Build dApp UI<br/>Tx builder · chain queries · state"]
-
-    TRACK_INFRA --> NODE["⬛ Cardano node + CLI<br/>v10.5.3 · cardano-course.gitbook.io<br/>raw tx · KES keys · epoch mechanics"]
-
-    NODE --> INDEXER["🗄️ Indexing layer<br/>DB-Sync · Kupo · Scrolls<br/>Oura · Dolos v0.33.1"]
-    INDEXER --> API_LAYER["🌐 API / middleware<br/>Ogmios v6.14 · Blockfrost<br/>Koios · Maestro"]
-    API_LAYER --> SPO["⛓️ Stake pool operation<br/>SPO · DevOps · Grafana<br/>Prometheus · monitoring"]
-
-    TRACK_MARLOWE --> MARLOWE_LEARN["📖 Marlowe Pioneer Program<br/>IOG · 7 weeks · no Haskell needed"]
-    MARLOWE_LEARN --> MARLOWE_PLAY["🎮 Marlowe Playground<br/>Visual Blockly editor<br/>Haskell · JS interfaces"]
-    MARLOWE_PLAY --> MARLOWE_BUILD["💰 Financial dApps<br/>Loans · escrow · options<br/>bonds · swaps · DCA"]
-
-    DESIGNER --> UX_LEARN["🎓 Learn Web3 UX patterns<br/>Wallet approval flows<br/>tx pending states · fee UX"]
-    UX_LEARN --> FE_BUILD
-
-    SC_BUILD --> FULLSTACK
-    FE_BUILD --> FULLSTACK
-    SPO --> FULLSTACK
-    MARLOWE_BUILD --> FULLSTACK
-
-    FULLSTACK["🔄 Full-stack dApp integration<br/>On-chain validator + off-chain Tx builder<br/>+ Frontend UI + Chain data API"]
-
-    FULLSTACK --> TESTING["🧪 Testing + security<br/>Aiken tests · Plutarch · audit<br/>Demeter preview · property-based tests"]
-
-    TESTING --> AUDIT{"Security audit<br/>needed?"}
-    AUDIT -->|DeFi protocol| AUDIT_FIRM["🔍 External audit<br/>Tweag · Anastasia Labs<br/>MLabs · Vacuum Labs"]
-    AUDIT -->|Simple dApp| TESTNET
-
-    AUDIT_FIRM --> TESTNET
-
-    TESTNET["🧪 Testnet deployment<br/>Preview · Pre-prod · Sanchonet<br/>Demeter workspaces · free tier"]
-    TESTNET --> MAINNET["🚀 Mainnet launch<br/>DeFi · NFT · DAO · RWA · Gaming"]
-
-    MAINNET --> CATALYST["💰 Project Catalyst<br/>Fund15 · transitioning to CF<br/>projectcatalyst.io"]
-    MAINNET --> COMMUNITY["👥 Community hubs<br/>Discord · Stack Exchange<br/>Cardano Forum · Twitter/X"]
-
-    CATALYST --> ADVANCED
-    COMMUNITY --> ADVANCED
-
-    ADVANCED{Advanced specialisation}
-
-    ADVANCED --> CORE["🧬 Core protocol<br/>Haskell · IOG · Intersect MBO<br/>CIP author · ledger contributor"]
-    ADVANCED --> DEFI["📈 DeFi dApp founder<br/>DEX · lending · stablecoin<br/>yield farming · options"]
-    ADVANCED --> INFRA_ADV["⚡ Infra / L2<br/>Hydra (prod-ready) · Mithril v1.0<br/>Pallas · Dolos · zkFold"]
-    ADVANCED --> NFT_GAME["🎮 NFT / Gaming<br/>Marketplace · GameFi<br/>Metaverse · RWA"]
-    ADVANCED --> GOV["🏛️ Governance<br/>DRep · Intersect MBO<br/>Voltaire · DAO builder · gov.tools"]
-
-    CORE --> OUTCOME
-    DEFI --> OUTCOME
-    INFRA_ADV --> OUTCOME
-    NFT_GAME --> OUTCOME
-    GOV --> OUTCOME
-
-    OUTCOME["🏆 Outcome : <br/>1. Core contributor or dApp builder<br/><br/>2. Freelance startups<br/>Cardano Foundation · Emurgo · open source<br/><br/>2. Salary · Catalyst grants · equity · protocol fees"]
-
-    OUTCOME -->|keep building| CATALYST
-
-    click START "/docs/working-group/sessions/q1-2026/12-cardano-developer-pathway/session-resources/readme"
-    click FUNDAMENTALS "https://developers.cardano.org/docs/get-started/"
-    click LEARN_FUND "https://academy.cardanofoundation.org"
-    click AIKEN "https://aiken-lang.org"
-    click PLUTUS "https://plutus.readthedocs.io"
-    click OTHERS_SC "https://developers.cardano.org/docs/smart-contracts/"
-    click AIKEN_LEARN "https://aiken-lang.org/installation-instructions"
-    click PLUTUS_LEARN "https://iog.io/en/education/programs/plutus-pioneers-program/"
-    click SC_BUILD "https://aiken-lang.org/language-tour/validators"
-    click MESHJS "https://meshjs.dev"
-    click LUCID "https://lucid-evolution.netlify.app"
-    click BLAZE "https://blaze.butane.dev"
-    click OTHER_SDK "https://developers.cardano.org/docs/get-started/"
-    click WALLET_INT "https://github.com/cardano-foundation/CIPs/tree/master/CIP-0030"
-    click FE_BUILD "https://developers.cardano.org/docs/get-started/"
-    click NODE "https://cardano-course.gitbook.io"
-    click INDEXER "https://github.com/IntersectMBO/cardano-db-sync"
-    click API_LAYER "https://blockfrost.io"
-    click SPO "https://developers.cardano.org/docs/operate-a-stake-pool/"
-    click MARLOWE_LEARN "https://iog.io/en/education/programs/marlowe-pioneers/"
-    click MARLOWE_PLAY "https://play.marlowe.iohk.io"
-    click MARLOWE_BUILD "https://marlowe.iohk.io"
-    click UX_LEARN "https://developers.cardano.org/docs/get-started/"
-    click FULLSTACK "https://developers.cardano.org/docs/get-started/"
-    click TESTING "https://aiken-lang.org/language-tour/tests"
-    click AUDIT_FIRM "https://developers.cardano.org/docs/smart-contracts/"
-    click TESTNET "https://docs.cardano.org/cardano-testnets/getting-started/"
-    click MAINNET "https://developers.cardano.org/showcase"
-    click CATALYST "https://projectcatalyst.io"
-    click COMMUNITY "https://cardano.stackexchange.com"
-    click CORE "https://github.com/intersectmbo/cardano-node"
-    click DEFI "https://developers.cardano.org/docs/smart-contracts/"
-    click INFRA_ADV "https://hydra.family"
-    click NFT_GAME "https://developers.cardano.org/docs/native-tokens/"
-    click GOV "https://gov.tools"
-    click OUTCOME "https://developers.cardano.org/showcase"
-    classDef sc fill:#EEF2FF,stroke:#4C51BF,stroke-width:2.2px,color:#2B2F77
-    classDef fe fill:#E6F8F0,stroke:#0F7A5D,stroke-width:2.2px,color:#07543F
-    classDef infra fill:#FFF1EB,stroke:#A84420,stroke-width:2.2px,color:#7A2E14
-    classDef learn fill:#E8F4FF,stroke:#2555fe,stroke-width:2.2px,color:#13497D
-    classDef marlowe fill:#FFF3E1,stroke:#976014,stroke-width:2.2px,color:#6B4207
-    classDef outcome fill:#FFEAF1,stroke:#AD3F65,stroke-width:2.2px,color:#7F2948
-    classDef neutral fill:#F7F8FB,stroke:#5A6475,stroke-width:2px,color:#2D3440
-    classDef decision fill:#F1F5F9,stroke:#63748A,stroke-width:2.2px,color:#1F2937
-    classDef primary fill:#2555fe,stroke:#1a43d4,stroke-width:2.2px,color:#ffffff
-
-    class SC_BUILD,AIKEN,PLUTUS,OTHERS_SC,AIKEN_LEARN,PLUTUS_LEARN,LANG_CHOICE sc
-    class FE_BUILD,MESHJS,LUCID,BLAZE,OTHER_SDK,WALLET_INT,SDK_CHOICE,UX_LEARN fe
-    class NODE,INDEXER,API_LAYER,SPO,INFRA_ADV infra
-    class FUNDAMENTALS,LEARN_FUND,MARLOWE_LEARN,MARLOWE_PLAY learn
-    class MARLOWE_BUILD,TRACK_MARLOWE marlowe
-    class CORE,DEFI,NFT_GAME,GOV outcome
-    class BEGINNER,WEB2,DESIGNER,TRACK_SC,TRACK_FE,TRACK_INFRA,TESTING,TESTNET,MAINNET,COMMUNITY,CATALYST,AUDIT_FIRM neutral
-    class CHOOSE,ADVANCED,AUDIT,LANG_CHOICE,SDK_CHOICE decision
-    class START,FUNDAMENTALS,FULLSTACK,OUTCOME primary
-```
-
-<CardanoToolGrid label="Interactive tool reference click any card to expand details and links" />
-
----
-
-## Tools and Platforms Reference
-
-```mermaid
-flowchart LR
-    subgraph LANG["⚙️ On-chain languages"]
-        AIKEN_T["Aiken<br/>Rust-like · ⭐ recommended<br/>62% SC activity · v1.1.11"]
-        PLUTUS_T["Plutus V3<br/>Haskell · 5× growth 2025"]
-        OPSHIN_T["OpShin<br/>Python → UPLC"]
-        HELIOS_T["Helios<br/>JS-like · browser-native"]
-        SCALUS_T["Scalus<br/>Scala 3 · JVM + JS"]
-        MARLOWE_TL["Marlowe<br/>DSL Finance · visual editor"]
-        PLUTS_T["Plu-ts<br/>TypeScript → UPLC"]
-    end
-
-    subgraph SDK["🖥️ Off-chain SDKs"]
-        MESH_T["MeshJS<br/>TS · beginners · 1M+ dl"]
-        LUCID_T["Lucid-evo<br/>TS · Plomin-ready"]
-        BLAZE_T["Blaze<br/>TS · typed · v0.2.22"]
-        EVOLUTION_T["Evolution SDK<br/>No Witness Labs · incubation"]
-        PYCARDANO_T["PyCardano<br/>Python · v0.19.2"]
-        CTL_T["CTL<br/>PureScript · production"]
-        ATLAS_T["Atlas 2.0<br/>Haskell · PAB · May 2025"]
-    end
-
-    subgraph API["🌐 APIs & indexers"]
-        BLOCKFROST_T["Blockfrost<br/>REST · 50M req/mo free"]
-        KOIOS_T["Koios<br/>REST · decentralised"]
-        MAESTRO_T["Maestro<br/>Events · managed"]
-        OGMIOS_T["Ogmios v6.14<br/>WebSocket · node bridge"]
-        KUPO_T["Kupo<br/>UTxO indexer · fast"]
-        OURA_T["Oura<br/>Rust event pipeline"]
-        DBSYNC_T["DB-Sync<br/>Full PostgreSQL · gov votes"]
-    end
-
-    subgraph ENV["🔧 Dev environments"]
-        DEMETER_T["Demeter.run<br/>Cloud workspaces · free tier"]
-        KUBIDE_T["KuberIDE<br/>Browser IDE · Plutus"]
-        CLI_T["cardano-cli<br/>Node v10.5.3"]
-        NIX_T["Nix dev shells<br/>Reproducible · flakes"]
-    end
-
-    subgraph LEARN2["🎓 Learning platforms"]
-        CF_ACAD_T["Cardano Academy<br/>CBCA · Pearson VUE · 32k+"]
-        GIMBAL_T["Gimbalabs<br/>PPBL · project-based"]
-        DEV_PORTAL_T["Developer Portal<br/>developers.cardano.org"]
-        CARDANO_COURSE_T["Cardano Course<br/>Node · CLI · SPO ops"]
-    end
-
-    subgraph L2["⚡ Advanced / L2 / ZK"]
-        HYDRA_T["Hydra<br/>L2 · prod-ready May 2023"]
-        MITHRIL_T["Mithril v1.0<br/>Mainnet 2025 · light clients"]
-        ZKFOLD_T["zkFold<br/>Zero-knowledge · beta"]
-        PALLAS_T["Pallas / Dolos v0.33.1<br/>Rust · Dec 2025"]
-    end
-
-    subgraph GOV2["🏛️ Governance tooling"]
-        GOVTOOL_T["GovTool<br/>gov.tools · DRep · live Jan 2025"]
-        INTERSECT_T["Intersect MBO<br/>Elected CC Sept 2025"]
-        CATALYST_T["Project Catalyst<br/>Fund15 → CF transition"]
-        AGORA_T["Agora<br/>On-chain DAO library"]
-    end
-
-    click AIKEN_T "https://aiken-lang.org"
-    click PLUTUS_T "https://plutus.readthedocs.io"
-    click OPSHIN_T "https://opshin.dev"
-    click HELIOS_T "https://www.hyperion-bt.org/helios-book/"
-    click SCALUS_T "https://scalus.org"
-    click MARLOWE_TL "https://marlowe.iohk.io"
-    click PLUTS_T "https://www.harmoniclabs.tech/plu-ts-docs/introduction.html"
-    click MESH_T "https://meshjs.dev"
-    click LUCID_T "https://lucid-evolution.netlify.app"
-    click BLAZE_T "https://blaze.butane.dev"
-    click EVOLUTION_T "https://github.com/IntersectMBO/evolution-sdk"
-    click PYCARDANO_T "https://pycardano.readthedocs.io"
-    click CTL_T "https://github.com/Plutonomicon/cardano-transaction-lib"
-    click ATLAS_T "https://atlas-app.io"
-    click BLOCKFROST_T "https://blockfrost.io"
-    click KOIOS_T "https://koios.rest"
-    click MAESTRO_T "https://www.gomaestro.org"
-    click OGMIOS_T "https://ogmios.dev"
-    click KUPO_T "https://cardanosolutions.github.io/kupo/"
-    click OURA_T "https://txpipe.github.io/oura/"
-    click DBSYNC_T "https://github.com/IntersectMBO/cardano-db-sync"
-    click DEMETER_T "https://demeter.run"
-    click KUBIDE_T "https://ide.kuber.run"
-    click CLI_T "https://cardano-course.gitbook.io"
-    click NIX_T "https://github.com/input-output-hk/iohk-nix"
-    click CF_ACAD_T "https://academy.cardanofoundation.org"
-    click GIMBAL_T "https://gimbalabs.com"
-    click DEV_PORTAL_T "https://developers.cardano.org"
-    click CARDANO_COURSE_T "https://cardano-course.gitbook.io"
-    click HYDRA_T "https://hydra.family"
-    click MITHRIL_T "https://mithril.network"
-    click ZKFOLD_T "https://zkfold.io"
-    click PALLAS_T "https://github.com/txpipe/pallas"
-    click GOVTOOL_T "https://gov.tools"
-    click INTERSECT_T "https://intersectmbo.org"
-    click CATALYST_T "https://projectcatalyst.io"
-    click AGORA_T "https://github.com/Liqwid-Labs/agora"
-```
-
-<CardanoToolGrid label="Interactive tool cards filter by category · click any card to expand details" />
-
----
-
-## Web2 to Web3 Transition Paths
-
-```mermaid
-flowchart LR
-    JS["JS / TypeScript<br/>React · Node"] -->|learn| JS2["UTxO · CIP-30<br/>wallet patterns · eUTxO"]
-    JS2 -->|use| JS3["MeshJS · Lucid-evo · Blaze<br/>+ Aiken validators"]
-    JS3 -->|become| JS4[("Full-stack<br/>dApp dev")]
-
-    PY["Python<br/>data · backend"] -->|learn| PY2["UTxO · tx building<br/>CBOR · chain data"]
-    PY2 -->|use| PY3["PyCardano v0.19.2<br/>OpShin smart contracts"]
-    PY3 -->|become| PY4[("Backend dev<br/>+ SC builder")]
-
-    RUST["Rust<br/>systems · WASM"] -->|learn| RUST2["Pallas · CBOR<br/>node internals"]
-    RUST2 -->|use| RUST3["Pallas · Dolos · Oura<br/>TxPipe toolchain"]
-    RUST3 -->|become| RUST4[("Infra engineer<br/>core tooling")]
-
-    JVM["Java / Kotlin / Scala<br/>JVM ecosystem"] -->|learn| JVM2["eUTxO · CBOR<br/>JVM serialisation"]
-    JVM2 -->|use| JVM3["Cardano Client Lib<br/>Scalus · Kogmios"]
-    JVM3 -->|become| JVM4[("Enterprise<br/>backend dev")]
-
-    HS["Haskell / FP<br/>functional langs"] -->|learn| HS2["Plutus · Plutarch<br/>ledger · Ouroboros"]
-    HS2 -->|use| HS3["Plutus Pioneer Program<br/>IOG / Intersect core team"]
-    HS3 -->|become| HS4[("Core protocol<br/>contributor")]
-
-    DEVOPS["DevOps / SRE<br/>Linux · Docker · K8s"] -->|learn| DO2["Node setup · relays<br/>KES rotation · topology"]
-    DO2 -->|use| DO3["cardano-cli · Demeter.run<br/>SPO setup guides"]
-    DO3 -->|become| DO4[("SPO operator<br/>Infra engineer")]
-
-    UIUX["UI/UX Designer<br/>Figma · CSS · motion"] -->|learn| UX2["Wallet UX patterns<br/>Web3 mental models<br/>tx pending states"]
-    UX2 -->|use| UX3["MeshJS starter kits<br/>React + CIP-30/95"]
-    UX3 -->|become| UX4[("dApp UX designer<br/>NFT marketplace")]
-
-    FIN["Finance / business<br/>no-code background"] -->|learn| FIN2["Smart contract logic<br/>DeFi primitives"]
-    FIN2 -->|use| FIN3["Marlowe Pioneer<br/>Playground · Blockly"]
-    FIN3 -->|become| FIN4[("DeFi product<br/>FinSC builder")]
-
-    SOL["Solidity / EVM<br/>Ethereum · Hardhat"] -->|learn| SOL2["UTxO vs accounts<br/>eUTxO patterns<br/>no msg.sender"]
-    SOL2 -->|use| SOL3["Aiken fast track<br/>Lucid-evo / Blaze<br/>familiar syntax"]
-    SOL3 -->|become| SOL4[("dApp dev<br/>fastest entry path ⚡")]
-
-    click JS "https://developers.cardano.org/docs/get-started/"
-    click JS3 "https://meshjs.dev"
-    click JS4 "https://developers.cardano.org/showcase"
-    click PY "https://pycardano.readthedocs.io"
-    click PY3 "https://pycardano.readthedocs.io"
-    click PY4 "https://developers.cardano.org/showcase"
-    click RUST "https://github.com/txpipe/pallas"
-    click RUST3 "https://txpipe.github.io/oura/"
-    click RUST4 "https://developers.cardano.org/showcase"
-    click JVM "https://github.com/bloxbean/cardano-client-lib"
-    click JVM3 "https://scalus.org"
-    click HS "https://plutus.readthedocs.io"
-    click HS3 "https://iog.io/en/education/programs/plutus-pioneers-program/"
-    click HS4 "https://github.com/intersectmbo/cardano-node"
-    click DEVOPS "https://cardano-course.gitbook.io"
-    click DO3 "https://demeter.run"
-    click DO4 "https://developers.cardano.org/docs/operate-a-stake-pool/"
-    click UIUX "https://developers.cardano.org/docs/get-started/"
-    click UX3 "https://meshjs.dev"
-    click FIN "https://iog.io/en/education/programs/marlowe-pioneers/"
-    click FIN3 "https://play.marlowe.iohk.io"
-    click SOL "https://aiken-lang.org"
-    click SOL3 "https://aiken-lang.org/installation-instructions"
-    click SOL4 "https://developers.cardano.org/showcase"
-```
-
-<CardanoToolGrid
-  categories={['off-chain-sdk', 'on-chain-language', 'dev-environment']}
-  label="Recommended tools for Web2 → Web3 transition"
-/>
-
----
-
-## Career Outcomes
+<MermaidDiagramFrame hint="Use Full view for the whole screen. Zoom with the buttons or Ctrl/Cmd + scroll wheel while over the diagram.">
 
 ```mermaid
 flowchart TD
-    DEV(["Cardano developer"])
+  subgraph phase1 [Phase 1 · Orientation and entry]
+    start([Where are you starting])
+    beginner[Complete beginner no code yet]
+    web2[Web2 developer JS Python Rust Java and more]
+    designer[Designer UI-UX Figma CSS motion]
+    evmEntry[Solidity or EVM background Hardhat Foundry etc]
+    start --> beginner
+    start --> web2
+    start --> designer
+    start --> evmEntry
+    beginner --> fund
+    web2 --> fund
+    designer --> fund
+    evmEntry -->|Recommended same core as everyone| fund
+    fund["Cardano fundamentals eUTxO native tokens Ouroboros Voltaire CIPs"]
+    fund --> learnHere["Learn here Academy developers.cardano.org Gimbalabs cardano-course"]
+  end
 
-    DEV --> SC_DEV["Smart contract dev<br/>Aiken · Plutus<br/>$85k–$190k+"]
-    DEV --> FE_DEV["Frontend dApp engineer<br/>TS · React · MeshJS<br/>$75k–$160k"]
-    DEV --> INFRA_DEV["Infrastructure engineer<br/>Node · DB-Sync · Ogmios<br/>$90k–$175k"]
-    DEV --> SPO_OUT["Stake pool operator<br/>Linux · monitoring<br/>margin income + rewards"]
-    DEV --> GOV_OUT["Governance contributor<br/>DRep · Intersect MBO<br/>CIP author · CC member"]
+  subgraph phase2 [Phase 2 · Cross-cutting knowledge]
+    stack2026["Default stack 2026 Aiken plus MeshJS plus Blockfrost swap Lucid Blaze Koios when needed"]
+    noFullNode["No synced full node for many dApps Blockfrost Koios Maestro"]
+    cborNote["CBOR in txs datums redeemers addresses low-level debugging"]
+    cipPick["Essential CIPs CIP-30 wallet CIP-25 27 31 CIP-33 CIP-68 CIP-1694"]
+  end
 
-    SC_DEV --> CORE_OUT["Core protocol contributor<br/>Haskell · IOG / Intersect MBO<br/>open source · Catalyst grants"]
-    FE_DEV --> FOUNDER["Startup founder / CTO<br/>Catalyst-funded<br/>VC / bootstrap / protocol fees"]
-    INFRA_DEV --> AUDITOR["Security auditor<br/>Smart contract audit<br/>$120k–$220k+"]
-    SPO_OUT --> EDUCATOR["Educator / content creator<br/>Gimbalabs · YouTube<br/>Catalyst-funded"]
-    GOV_OUT --> UXDESIGN["UI/UX designer<br/>dApp · NFT marketplace<br/>$65k–$140k"]
+  learnHere --> stack2026
+  learnHere --> noFullNode
+  fund --> cborNote
+  fund --> cipPick
 
-    subgraph VERTICALS["dApp verticals"]
-        V1["DeFi<br/>DEX · lending · stablecoin"]
-        V2["NFT<br/>Art · marketplace · RWA"]
-        V3["Gaming<br/>GameFi · Play-to-Earn"]
-        V4["RWA<br/>Real-world assets"]
-        V5["Identity<br/>DID · Atala PRISM"]
-        V6["DAO<br/>Governance · treasury"]
-    end
+  subgraph phase3 [Phase 3 · Intermediate projects]
+    rampVm[Vending machine or single-purpose contract]
+    rampNft[NFT minter CIP-25 CIP-67 CIP-68]
+    rampDex[Simple DEX or swap UTxO concurrency lesson]
+    rampFull[Full stack validator SDK UI APIs]
+    rampVm --> rampNft --> rampDex --> rampFull
+  end
 
-    subgraph EMPLOYERS["Who's hiring"]
-        E1["IOG<br/>Haskell · research · core"]
-        E2["Cardano Foundation<br/>Education · dev tools"]
-        E3["Emurgo<br/>Commercial · Africa · Asia"]
-        E4["DeFi protocols<br/>Minswap · Liqwid · DJED"]
-        E5["Catalyst DAOs<br/>Freelance · grants · bounties"]
-        E6["Startups<br/>TxPipe · dcSpark · GeniusYield"]
-    end
+  learnHere --> rampVm
 
-    CORE_OUT --> VERTICALS
-    FOUNDER --> VERTICALS
-    AUDITOR --> EMPLOYERS
-    EDUCATOR --> EMPLOYERS
+  evmEntry -->|Or fast path after basics| evmMap["EVM to Cardano accounts vs UTxO no msg.sender ExUnits vs gas Aiken ecosystem"]
+  evmMap --> readySpec
 
-    click SC_DEV "https://developers.cardano.org/docs/smart-contracts/"
-    click FE_DEV "https://meshjs.dev"
-    click INFRA_DEV "https://cardano-course.gitbook.io"
-    click SPO_OUT "https://developers.cardano.org/docs/operate-a-stake-pool/"
-    click GOV_OUT "https://gov.tools"
-    click CORE_OUT "https://github.com/intersectmbo/cardano-node"
-    click FOUNDER "https://projectcatalyst.io"
-    click AUDITOR "https://developers.cardano.org/docs/smart-contracts/"
-    click EDUCATOR "https://gimbalabs.com"
-    click UXDESIGN "https://meshjs.dev"
-    click V1 "https://developers.cardano.org/showcase"
-    click V2 "https://developers.cardano.org/docs/native-tokens/"
-    click V3 "https://developers.cardano.org/showcase"
-    click V4 "https://developers.cardano.org/showcase"
-    click V5 "https://atalaprism.io"
-    click V6 "https://github.com/Liqwid-Labs/agora"
-    click E1 "https://iog.io/careers/"
-    click E2 "https://cardanofoundation.org/en/jobs/"
-    click E3 "https://emurgo.io/careers/"
-    click E4 "https://minswap.org"
-    click E5 "https://projectcatalyst.io"
-    click E6 "https://txpipe.io"
+  rampFull --> readySpec
+  cipPick --> readySpec
+  stack2026 --> readySpec
+
+  readySpec[Ready to specialise primary track]
+
+  readySpec --> pickTrack{Choose primary track}
+
+  pickTrack --> trackSc[Smart contracts on-chain logic]
+  pickTrack --> trackFe[Frontend dApp JS React Next]
+  pickTrack --> trackInfra[Infrastructure node indexers APIs SPO]
+
+  trackSc --> langPick{On-chain language}
+
+  langPick --> aikenLang[Aiken Rust-like ecosystem default]
+  langPick --> plutusLang[Plutus Haskell core]
+  langPick --> otherLang[OpShin Helios Scalus Plu-ts]
+
+  aikenLang --> aikenLearn[Aiken docs stdlib tests Discord]
+  plutusLang --> plutusLearn[Plutus Pioneer IOG Haskell path]
+  otherLang --> localDevnet
+
+  aikenLearn --> localDevnet
+  plutusLearn --> localDevnet
+
+  localDevnet["Local devnet Yaci cardano-testnet Ogmios Kupo fast feedback before testnet waits"]
+  localDevnet --> scBuild["Validators datum redeemer minting policies"]
+
+  trackFe --> sdkPick{Off-chain SDK}
+
+  sdkPick --> meshSdk[MeshJS]
+  sdkPick --> lucidSdk[Lucid evolution]
+  sdkPick --> blazeSdk[Blaze typed TS]
+  sdkPick --> otherSdk[PyCardano CTL Atlas Evolution SDK]
+
+  meshSdk --> txAnatomy
+  lucidSdk --> txAnatomy
+  blazeSdk --> txAnatomy
+  otherSdk --> txAnatomy
+
+  txAnatomy["Tx anatomy minUTxO collateral ExUnits fees coin selection CIP-33 ref scripts"]
+
+  txAnatomy --> walletCip["Wallet APIs CIP-30 CIP-95 CIP-62"]
+
+  walletCip --> walletOps["Connect flows errors mobile hardware light vs full node"]
+
+  walletOps --> feBuild["dApp UI tx building chain state UX"]
+
+  trackInfra --> nodeCli[Cardano node and cardano-cli]
+  nodeCli --> indexerLayer[DB-Sync Kupo Scrolls Oura Dolos]
+  indexerLayer --> apiLayer[Ogmios Blockfrost Koios Maestro]
+  apiLayer --> spoPath[Stake pool operations DevOps monitoring]
+
+  noFullNode -.-> apiLayer
+
+  designer -->|UX-heavy path skips core SDK track| uxLearn[Web3 UX wallet flows pending txs fees]
+  uxLearn --> walletCip
+
+  scBuild --> integrateFull
+  feBuild --> integrateFull
+  spoPath --> integrateFull
+
+  integrateFull["Full-stack integration validators off-chain UI chain data"]
+
+  integrateFull --> utxoConcurrency["UTxO concurrency batching beacons fan-in fan-out avoid hot UTxO"]
+
+  utxoConcurrency --> testLayer["Tests property integration CI full stack"]
+
+  testLayer --> debugLayer["On-chain debug CLI evaluate traces Aiken tracing ExUnits"]
+
+  debugLayer --> auditGate{External audit needed}
+
+  auditGate -->|DeFi or high value| auditFirm[Tweag Anastasia MLabs Vacuum and peers]
+  auditGate -->|Simple dApp| shipTestnet
+
+  auditFirm --> shipTestnet
+
+  shipTestnet["Testnets Preview Preprod Sanchonet faucets SDK network config"]
+
+  shipTestnet --> mainnetShip[Mainnet launch DeFi NFT DAO RWA gaming]
+
+  mainnetShip --> catalyst[Project Catalyst grants]
+  mainnetShip --> community[Discord Stack Exchange Forum hubs]
+
+  catalyst --> growPick{Advanced specialisation}
+  community --> growPick
+
+  growPick --> corePath[Core protocol Haskell ledger CIPs cardano-node]
+  growPick --> defiPath[DeFi founder DEX lending stablecoins]
+  growPick --> l2Path[Hydra Mithril zk rollup research]
+  growPick --> nftPath[NFT gaming marketplaces RWA]
+  growPick --> govPath[GovTool DRep Agora Voltaire CIP-1694]
+  growPick --> bridgePath[Cross-chain bridges wrapped assets ecosystem]
+
+  corePath --> outcomes
+  defiPath --> outcomes
+  l2Path --> outcomes
+  nftPath --> outcomes
+  govPath --> outcomes
+  bridgePath --> outcomes
+
+  outcomes["Outcomes builder contributor salary grants portfolio Catalyst meetups"]
+
+  outcomes -->|Keep shipping| catalyst
+
+  click start "/docs/working-group/sessions/q1-2026/12-cardano-developer-pathway/session-resources/readme"
+  click fund "https://developers.cardano.org/docs/get-started/"
+  click learnHere "https://academy.cardanofoundation.org"
+  click stack2026 "/docs/working-group/sessions/q1-2026/12-cardano-developer-pathway/session-resources/readme#pathway-deep-links"
+  click noFullNode "https://blockfrost.io"
+  click cborNote "/docs/working-group/sessions/q1-2026/12-cardano-developer-pathway/session-resources/readme#pathway-cbor"
+  click cipPick "https://github.com/cardano-foundation/CIPs"
+  click rampVm "https://aiken-lang.org/language-tour/validators"
+  click rampNft "https://developers.cardano.org/docs/native-tokens/"
+  click rampDex "https://developers.cardano.org/docs/smart-contracts/"
+  click rampFull "https://developers.cardano.org/docs/get-started/"
+  click readySpec "/docs/working-group/sessions/q1-2026/12-cardano-developer-pathway/session-resources/readme#pathway-deep-links"
+  click evmEntry "https://developers.cardano.org/docs/get-started/"
+  click evmMap "https://aiken-lang.org"
+  click aikenLang "https://aiken-lang.org"
+  click plutusLang "https://plutus.readthedocs.io"
+  click otherLang "https://developers.cardano.org/docs/smart-contracts/"
+  click aikenLearn "https://aiken-lang.org/installation-instructions"
+  click plutusLearn "https://iog.io/en/education/programs/plutus-pioneers-program/"
+  click localDevnet "/docs/working-group/sessions/q1-2026/12-cardano-developer-pathway/session-resources/readme#pathway-local-devnet"
+  click scBuild "https://aiken-lang.org/language-tour/validators"
+  click meshSdk "https://meshjs.dev"
+  click lucidSdk "https://lucid-evolution.netlify.app"
+  click blazeSdk "https://blaze.butane.dev"
+  click otherSdk "https://developers.cardano.org/docs/get-started/"
+  click txAnatomy "/docs/working-group/sessions/q1-2026/12-cardano-developer-pathway/session-resources/readme#pathway-transaction-anatomy"
+  click walletCip "/docs/working-group/sessions/q1-2026/12-cardano-developer-pathway/session-resources/readme#pathway-wallets"
+  click walletOps "/docs/working-group/sessions/q1-2026/12-cardano-developer-pathway/session-resources/readme#pathway-wallets"
+  click feBuild "https://developers.cardano.org/docs/get-started/"
+  click nodeCli "https://cardano-course.gitbook.io"
+  click indexerLayer "https://github.com/IntersectMBO/cardano-db-sync"
+  click apiLayer "https://koios.rest"
+  click spoPath "https://developers.cardano.org/docs/operate-a-stake-pool/"
+  click uxLearn "https://meshjs.dev/guides"
+  click integrateFull "/docs/working-group/sessions/q1-2026/12-cardano-developer-pathway/session-resources/readme"
+  click utxoConcurrency "/docs/working-group/sessions/q1-2026/12-cardano-developer-pathway/session-resources/readme#pathway-concurrency"
+  click testLayer "/docs/working-group/sessions/q1-2026/12-cardano-developer-pathway/session-resources/readme#pathway-testing-debug"
+  click debugLayer "/docs/working-group/sessions/q1-2026/12-cardano-developer-pathway/session-resources/readme#pathway-testing-debug"
+  click auditFirm "https://developers.cardano.org/docs/smart-contracts/"
+  click shipTestnet "https://docs.cardano.org/cardano-testnets/getting-started/"
+  click mainnetShip "https://developers.cardano.org/showcase"
+  click catalyst "https://projectcatalyst.io"
+  click community "https://cardano.stackexchange.com"
+  click corePath "https://github.com/intersectmbo/cardano-node"
+  click defiPath "https://developers.cardano.org/docs/smart-contracts/"
+  click l2Path "https://hydra.family"
+  click nftPath "https://developers.cardano.org/docs/native-tokens/"
+  click govPath "https://gov.tools"
+  click bridgePath "/docs/working-group/sessions/q1-2026/12-cardano-developer-pathway/session-resources/readme#pathway-bridges"
+  click outcomes "https://developers.cardano.org/showcase"
 ```
 
-<CardanoToolGrid
-  categories={['governance', 'layer2-zk', 'learning']}
-  label="Advanced tools for specialisation and governance"
-/>
+</MermaidDiagramFrame>
+
+**How to read this map:** Steps run top to bottom, but **real delivery loops** between validators, off-chain builders, and UI—use the diagram for coverage, not as a strict waterfall.
+
+<CardanoToolGrid label="Explore tools APIs languages and learning platforms in detail" />
 
 ---
 
-For the full written explainer entry profiles, tracks, tools, career paths, Web2→Web3 conversion table, and quick-reference timelines see [Resources](../session-resources/readme.md).
+For the written explainer with entry profiles, tables, and quick-reference timelines, see [Resources](../session-resources/readme.md).

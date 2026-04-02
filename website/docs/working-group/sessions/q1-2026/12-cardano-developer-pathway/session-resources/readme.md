@@ -110,6 +110,53 @@ DeFi (DEX, lending, stablecoin, yield), NFT (marketplace, gaming), Identity, RWA
 
 ---
 
+## 11. Pathway diagram deep links {#pathway-deep-links}
+
+Curated links for nodes in the [Session Notes pathway diagram](../session-notes/readme.mdx). Use these when the generic developer portal is not enough.
+
+### Local devnet (fast iteration) {#pathway-local-devnet}
+
+- [Yaci DevKit](https://github.com/bloxbean/yaci-devkit) — local devnet and chain simulation
+- [cardano-testnet](https://github.com/IntersectMBO/cardano-testnet) — automated testnet environments
+- [Ogmios](https://ogmios.dev) + [Kupo](https://cardanosolutions.github.io/kupo/) — node bridge and UTxO indexer for local or remote dev
+
+### Transaction anatomy {#pathway-transaction-anatomy}
+
+- [Fees and min ADA (Cardano Docs)](https://docs.cardano.org/explore-cardano/cardano-architecture/working-with-cardano-node/cardano-cli/#calculate-the-minimum-utxo-of-an-output)
+- [CIP-33 — Reference scripts](https://github.com/cardano-foundation/CIPs/blob/master/CIP-0033/README.md)
+- [Integrate Cardano — developer portal](https://developers.cardano.org/docs/get-started/)
+
+### UTxO concurrency and patterns {#pathway-concurrency}
+
+- [Cardano Stack Exchange — smart-contracts tag](https://cardano.stackexchange.com/questions/tagged/smart-contracts) (search *concurrency*, *batching*, *single UTxO*)
+- [developers.cardano.org — smart contracts](https://developers.cardano.org/docs/smart-contracts/)
+- [CIPs repository](https://github.com/cardano-foundation/CIPs) — standards that shape how apps compose txs
+
+### CBOR and low-level debugging {#pathway-cbor}
+
+- [CIPs](https://github.com/cardano-foundation/CIPs) — many specs use CDDL; helps when reading raw CBOR
+- [Plutus docs — common types](https://plutus.readthedocs.io/en/latest/) — datums, redeemers, and on-chain data
+- [Cardano developer portal — get started](https://developers.cardano.org/docs/get-started/)
+
+### Wallet integration (depth) {#pathway-wallets}
+
+- [CIP-30 — dApp connector](https://github.com/cardano-foundation/CIPs/tree/master/CIP-0030)
+- [CIP-95](https://github.com/cardano-foundation/CIPs/tree/master/CIP-0095) · [CIP-62](https://github.com/cardano-foundation/CIPs/tree/master/CIP-0062)
+- [MeshJS guides](https://meshjs.dev/guides)
+
+### On-chain testing and tracing {#pathway-testing-debug}
+
+- [Aiken — tests](https://aiken-lang.org/language-tour/tests)
+- [Cardano CLI — transaction build & submit](https://docs.cardano.org/cardano-components/cardano-cli/) (includes evaluation workflows)
+- [Cardano testnets](https://docs.cardano.org/cardano-testnets/getting-started/)
+
+### Bridges and cross-chain {#pathway-bridges}
+
+- [developers.cardano.org — integrations / listings](https://developers.cardano.org/docs/integrate-cardano/listings/)
+- [CIPs](https://github.com/cardano-foundation/CIPs) — follow cross-chain and bridge-related proposals as the ecosystem evolves
+
+---
+
 ## Links
 
 **Portal & learning:** [developers.cardano.org](https://developers.cardano.org) · [Cardano Academy](https://academy.cardanofoundation.org) · [aiken-lang.org](https://aiken-lang.org) · [meshjs.dev](https://meshjs.dev) · [Gimbalabs](https://gimbalabs.com) · [cardano-course.gitbook.io](https://cardano-course.gitbook.io)
