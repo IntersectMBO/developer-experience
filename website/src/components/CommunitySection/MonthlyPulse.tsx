@@ -42,7 +42,6 @@ export default function MonthlyPulse() {
     <div className={styles.pulseCard}>
       <div className={styles.pulseHeader}>
         <h3>All-Time Overview</h3>
-        <span className={styles.pulseBadge} aria-label="Live" title="Live"></span>
       </div>
       <p className={styles.pulseDescription}>Recent repository activity</p>
       
@@ -62,12 +61,12 @@ export default function MonthlyPulse() {
       </div>
 
       <a 
-        href="https://github.com/IntersectMBO/developer-experience/pulse/monthly" 
+        href="https://github.com/IntersectMBO/developer-experience" 
         target="_blank" 
         rel="noopener noreferrer"
-        className={styles.pulseLink}
+        className={styles.pulseButton}
       >
-        View Full Pulse Report →
+        Visit the GitHub Repository
       </a>
     </div>
   );

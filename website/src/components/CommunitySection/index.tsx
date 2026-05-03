@@ -2,6 +2,7 @@ import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import styles from './styles.module.css';
 import MonthlyPulse from './MonthlyPulse';
+import Contributors from './Contributors';
 
 export default function CommunitySection() {
   return (
@@ -11,41 +12,21 @@ export default function CommunitySection() {
           <div className="row">
             <div className="col col--6">
               <Heading as="h2" className={styles.sectionTitle}>
-                Have Any Questions or Need Help?
+                Ask Questions or Suggest Improvements
               </Heading>
               <p className={styles.sectionDescription}>
-                Go to our GitHub repository and create a blank issue to ask, suggest, or question anything.
-                Our developer advocates and community members will be happy to assist you with your
-                Cardano development journey.
+                Create an issue in our GitHub repository so that our developer advocates and community members assist you.
               </p>
-              <div className={styles.communityStats}>
-                <div className={styles.statItem}>
-                  <div className={styles.statNumber}>GitHub</div>
-                  <div className={styles.statLabel}>Issues</div>
-                </div>
-                <div className={styles.statItem}>
-                  <div className={styles.statNumber}>Community</div>
-                  <div className={styles.statLabel}>Support</div>
-                </div>
-                <div className={styles.statItem}>
-                  <div className={styles.statNumber}>Open</div>
-                  <div className={styles.statLabel}>Source</div>
-                </div>
-              </div>
+
+              <Contributors />
+
               <div className={styles.communityActions}>
                 <Link
-                  className="button button--primary button--orange button--lg"
+                  className={styles.joinButton}
                   href="https://members.intersectmbo.org/"
                   target="_blank"
                   rel="noopener noreferrer">
                   Join Intersect
-                </Link>
-                <Link
-                  className="button button--secondary button--lg"
-                  href="https://github.com/IntersectMBO/developer-experience"
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  Visit GitHub Repository
                 </Link>
               </div>
             </div>

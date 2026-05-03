@@ -3,7 +3,7 @@
   border-radius: 20px;
   padding: 2.5rem;
   color: white;
-  box-shadow: 0 20px 40px rgba(41, 98, 255, 0.2);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,11 +12,12 @@
   margin: 0 auto;
   position: relative;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .pulseCard:hover {
   transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(41, 98, 255, 0.4);
 }
 
 .pulseCard::after {
@@ -88,7 +89,6 @@
   gap: 1.5rem;
   margin-bottom: 2.5rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   z-index: 2;
 }
@@ -116,22 +116,35 @@
   letter-spacing: 0.5px;
 }
 
-.pulseLink {
-  color: white;
+.pulseButton {
+  background: #f55521;
+  border: 1px solid #f55521;
+  color: white !important;
+  padding: 0.875rem 1.5rem;
+  border-radius: 12px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700 !important;
   font-size: 0.95rem;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  transition: opacity 0.2s ease;
+  justify-content: center;
+  transition: all 0.2s ease;
   position: relative;
   z-index: 2;
+  width: 100%;
 }
 
-.pulseLink:hover {
-  opacity: 0.8;
-  color: white;
+.pulseButton:hover {
+  background: #e0481a;
+  border-color: #e0481a;
+  color: white !important;
   text-decoration: none;
+  transform: translateY(-2px);
+}
+
+:global([data-theme='dark']) a.pulseButton,
+:global([data-theme='dark']) a.pulseButton:hover {
+  color: white !important;
 }
 
 @media (max-width: 480px) {
@@ -140,5 +153,11 @@
   }
   .statValue {
     font-size: 1.75rem;
+  }
+}
+
+@media (min-width: 997px) {
+  .pulseCard {
+    max-width: 100%;
   }
 }
