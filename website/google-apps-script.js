@@ -35,12 +35,18 @@ function doPost(e) {
         // Parse the request body
         const data = JSON.parse(e.postData.contents);
 
+        // Prefix values starting with formula characters to prevent formula injection
+        function sanitize(value) {
+            const str = String(value || '');
+            return /^[=+\-@\t\r]/.test(str) ? "'" + str : str;
+        }
+
         const newRow = [
             new Date(),
-            data.url || 'Unknown',
-            data.vote || 'Unknown',
-            data.comment || '',
-            data.userAgent || ''
+            sanitize(data.url || 'Unknown'),
+            sanitize(data.vote || 'Unknown'),
+            sanitize(data.comment || ''),
+            sanitize(data.userAgent || '')
         ];
 
         sheet.appendRow(newRow);
