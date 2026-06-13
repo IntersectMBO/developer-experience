@@ -15,6 +15,30 @@ During this quarter, onboarding efforts focused on deepening community involveme
 - **Activity:** Onboarded as an active community contributor and invited to deliver a **smart contract workshop** at the Cardano Hub Nairobi Monthly Meetup during Q2.
 - **Support:** Coordinated his involvement in the meetup, providing a platform for him to share his expertise with the broader community.
 
+**Workshop Summary — Smart Contract Working Session**
+
+Held at **Blockchain Centre Nairobi** on **29th May 2026** (CardanoHub, 2:00–3:30 PM), the session introduced attendees to smart contract development on Cardano through the lens of the eUTxO model.
+
+**eUTxO Fundamentals**
+- State lives in UTxOs (Unspent Transaction Outputs), not a global database — analogous to digital banknotes with data attached.
+- Spending a UTxO creates new ones; the contract validates the transition.
+- Validation is fully deterministic — outcomes are predictable off-chain before hitting the network, eliminating failed gas cost risks.
+
+**Validator Paradigm**
+- Contracts are passive validators, not actors — they wait to be unlocked by a valid transaction.
+- Heavy computation happens off-chain; the ledger only verifies the result.
+
+**Anatomy of a Validator**
+- **Datum** — the stored state (e.g. owner ID, secret hash)
+- **Redeemer** — user-provided input to satisfy the script
+- **Context** — full transaction snapshot (time, inputs, outputs)
+
+**Demos**
+- **Vending Machine** — validates that `Hash(Redeemer) == Datum` to release locked ADA
+- **Time-Locked Box** — UTxO unspendable until a set POSIX time; requires owner signature; useful for vesting, escrow, and treasury management
+
+**Key Resource Shared:** [aiken-lang.org](https://aiken-lang.org) — recommended starting point for writing Aiken-based validators.
+
 **Outcome:**
 Emmanuel successfully transitioned from community member to contributor and workshop facilitator, demonstrating that onboarded members are developing the confidence and capability to lead sessions independently. This marks a meaningful step toward building a self-sustaining local contributor community.
 
