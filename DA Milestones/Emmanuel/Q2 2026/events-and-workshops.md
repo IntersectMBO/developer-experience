@@ -48,8 +48,7 @@ Participants were able to:
 
 Photos and videos from the event can be viewed here:
 
-**Event Media Link:**
-[Link]
+
 
 
 # Event 2: Node Setup Event (Live Stream – Open Source Summit, Minnesota)
@@ -89,8 +88,7 @@ Participants gained practical knowledge of:
 - How to use YACI Dev Kit for lightweight local chain access
 - Practical tooling options for Cardano development environments
 
-**Workshop Recording:**
-[Link]
+
 
 
 # Key Observations
