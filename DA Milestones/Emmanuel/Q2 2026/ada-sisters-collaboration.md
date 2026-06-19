@@ -40,6 +40,12 @@ ADA Sisters representatives to attend OSC meetings as community members, partici
 
 
 
+### Strathmore University Partnership
+
+ADA Sisters is pursuing a collaboration with [Strathmore University](https://strathmore.edu) — one of Kenya's leading universities — to establish a dedicated community space on campus. This would position the ADA Sisters chapter at Strathmore as a node for broader Intersect and Cardano ecosystem engagement within the university, opening a direct channel to students, researchers, and academic institutions in East Africa.
+
+---
+
 ## Objectives
 
 - Onboard African women as active Intersect community members and contributors
@@ -77,6 +83,7 @@ ADA Sisters representatives to attend OSC meetings as community members, partici
 - Intersect dev advocate appearances at ADA Sisters events (target: 2–3 per quarter)
 - ADA Sisters representatives included in OSC meetings
 - Educational resources developed and distributed
+- Strathmore University campus space secured, enabling a permanent Intersect-aligned community node in Nairobi
 
 
 
