@@ -1,0 +1,224 @@
+---
+title: State of the Cardano Developer Experience - 2026
+description: Pain point analysis and actionable recommendations from the Intersect DevEx Working Group survey. 55 responses, June 2026.
+sidebar_position: 1
+---
+
+# State of the Cardano Developer Experience - 2026
+
+Pain points, priorities, and actionable fixes. 55 developers. June 2026.
+
+## By the numbers
+
+| Metric | Value |
+|--------|-------|
+| Total responses | 55 |
+| Active builders | 47.3% |
+| 6+ years professional dev experience | 49.1% |
+| Motivation rated 5/5 | 54.5% |
+
+These are not hobbyists. Half the respondents have over six years of professional development experience. More than half rated their motivation to build on Cardano at the maximum score. The problems they are describing are infrastructure problems, not enthusiasm problems.
+
+## Coverage status
+
+Each pain point includes a coverage check against the two main developer portals. Status values are: **Open** (nothing exists), **Partial** (something exists but gaps remain), **Addressed** (content exists and is usable).
+
+## Top 10 findings
+
+1. **No offline dev environment.** Debugging requires preview/preprod. Error messages are cryptic and often do not reflect the actual validation failure. TX3 and yaci-devkit are promising but not production-ready.
+2. **Documentation has no front door.** CF, IOG, Intersect, and individual project repos each maintain their own docs with no canonical entry point. Developers waste time searching, not building.
+3. **45.5% rate docs as neutral; 25.5% as difficult.** The missing layer is conceptual overviews between beginner intros and raw API references such as Haddock.
+4. **61.5% cited Getting Started and Tooling and Documentation as their top challenges.** eUTXO is the steepest mental model barrier, especially for Ethereum and Solana developers.
+5. **Mesh and Lucid ship no default logging.** Developers instrument every stage manually. Fees, wallet state, and signing steps are invisible by default.
+6. **Catalyst is perceived as a popularity contest.** Reviewers sometimes lack technical depth. Merit and popularity are not separated in the current process.
+7. **Community is the number one strength.** Described unprompted as collaborative, generous, and like family.
+8. **Aiken and yaci-devkit are the tooling bright spots.** Both were praised without prompting. The rest of the ecosystem is mixed.
+9. **34.5% of respondents are not Intersect members. 18.2% do not know what Intersect is.** The developer-facing value proposition is not landing.
+10. **54.5% rated motivation at 5/5.** Enthusiastic builders are being blocked by solvable infrastructure problems, not by lack of interest.
+
+## Pain points and fixes
+
+### 1. Debugging
+
+**Priority: High**
+
+| Portal | Status | Detail |
+|--------|--------|--------|
+| [DevEx Portal](https://devex.intersectmbo.org) | Open | [Tools page](/docs/resources/tools) is a placeholder. No debugging guide, no error reference, no simulator docs. |
+| [Cardano Dev Portal](https://developers.cardano.org) | Open | No dedicated debugging section, no common errors reference, no validator line feedback docs. |
+
+What developers reported:
+- No standalone offline dev environment. Preview/preprod responses are cryptic.
+- Node error messages misleading or do not reflect actual validation failures.
+- No line-level feedback on which validator line fails.
+- Unit test behaviour often differs from testnet execution.
+- Mesh and Lucid have no default logging. Developers manually instrument every stage.
+- No production-ready smart contract simulator. TX3 is promising but incomplete.
+
+Recommended actions:
+1. Fund a production-ready offline Cardano dev environment (TX3/yaci-devkit) with deterministic debug output.
+2. Working group to rewrite node/validator error messages and publish a public Common Errors Reference.
+3. Require Mesh and Lucid to ship structured opt-in debug logging covering fees, wallet state, and signing steps.
+4. Document existing UPLC debuggers.
+5. Document known unit test vs. testnet discrepancies and provide harness utilities.
+
+### 2. Documentation
+
+**Priority: High**
+
+| Portal | Status | Detail |
+|--------|--------|--------|
+| [DevEx Portal](https://devex.intersectmbo.org) | Partial | [Getting Started](/docs/getting-started) exists and points to both portals. No conceptual architecture guide, no common errors page, no freshness policy. |
+| [Cardano Dev Portal](https://developers.cardano.org) | Partial | Is the intended front door but still fragmented across CF, IOG, and project repos. No module-level conceptual overviews bridging intros and API references. |
+
+What developers reported:
+- No canonical front door. Docs split across CF, IOG, Intersect, and individual project repos.
+- Common errors not documented for quick reference.
+- No guide connecting on-chain logic, off-chain code, wallets, and infra.
+- Docs go stale with protocol upgrades. No freshness policy.
+- Core repos jump from high-level intros straight to generated API references with no conceptual middle layer.
+
+Recommended actions:
+1. Single opinionated getting-started flow anchored on one canonical front door aggregating CF, IOG, Intersect, and project docs.
+2. Community-editable page mapping known error messages to root causes and fixes.
+3. Illustrated beginner guide showing how eUTXO, validators, off-chain builders, wallets, and infra relate.
+4. Assign doc maintainers per module and add last-verified dates to every page.
+5. Every major concept should have both a written guide and a short video walkthrough.
+6. Commission "how it fits together" overviews for high-priority core repos.
+
+### 3. Onboarding
+
+**Priority: High**
+
+| Portal | Status | Detail |
+|--------|--------|--------|
+| [DevEx Portal](https://devex.intersectmbo.org) | Partial | [Getting Started](/docs/getting-started) has track-based paths. [Beginner Guides](/docs/how-to-guide/beginner/) has 3 live pages covering addresses and inputs/outputs. Intermediate content and most beginner content is marked Coming Soon. No eUTXO explainer, no browser sandbox, no persona-based journeys. |
+| [Cardano Dev Portal](https://developers.cardano.org) | Partial | Has onboarding content but it is not opinionated or scaffolded. No browser sandbox. eUTXO explainer exists but is not prominent for developers coming from Ethereum or Solana. |
+
+What developers reported:
+- 61.5% cited Getting Started and Tooling and Documentation as top challenges.
+- 53.8% cited Learning the Tech, specifically eUTXO, Plutus, and consensus.
+- eUTXO model is foreign to developers from Ethereum or Solana.
+- No scaffolded developer journey. Just a menu of options with no guidance on where to begin.
+- No browser-based playground for major contract languages. Hardware-constrained developers are blocked before writing a line of code.
+
+Recommended actions:
+1. Define 2 to 3 developer personas (backend dev, Ethereum migrant, governance builder) with tailored learning paths.
+2. Browser-based sandbox: zero to first testnet transaction in under 1 hour.
+3. Dedicated illustrated resource contrasting eUTXO with account-based models.
+4. Regular recorded live onboarding sessions hosted by experienced ecosystem members.
+5. Promote Codespaces and Gitpod as a no-setup entry point now and champion in-browser playgrounds for major contract languages as they mature.
+
+### 4. Tooling
+
+**Priority: Medium**
+
+| Portal | Status | Detail |
+|--------|--------|--------|
+| [DevEx Portal](https://devex.intersectmbo.org) | Open | [Tools page](/docs/resources/tools) explicitly says Coming Soon. No matrix, no best-practices standard, no contribution guides. |
+| [Cardano Dev Portal](https://developers.cardano.org) | Partial | Tools are listed but with no capability matrix, no comparative guidance, and no shared best-practices standard. |
+
+What developers reported:
+- Many tools solving the same problems. Lack of capability variety, not tool variety.
+- No ecosystem-level shared best practices standard.
+- Nix development environment is a barrier for many developers.
+- Contributing to core repos is unclear and difficult.
+
+Recommended actions:
+1. Published and maintained matrix of what each major tool can and cannot do.
+2. Working group to publish shared patterns for wallet integration and transaction construction.
+3. Dedicated Nix onboarding guide for macOS, Ubuntu, and Windows/WSL. Fund Nix-free alternatives where feasible.
+4. Every major repo needs a beginner-accessible CONTRIBUTING.md with clearly labelled good first issues.
+
+### 5. Funding and Opportunities
+
+**Priority: High**
+
+| Portal | Status | Detail |
+|--------|--------|--------|
+| [DevEx Portal](https://devex.intersectmbo.org) | Open | No job board, no grant overview, no monetisation guide. |
+| [Cardano Dev Portal](https://developers.cardano.org) | Open | Catalyst is linked but not explained. No centralised opportunity board. |
+
+What developers reported:
+- Catalyst process seen as a popularity contest. Reviewers sometimes lack technical depth.
+- Very few job opportunities outside the community. Low wages compared to traditional software development.
+- ADA price volatility makes income unreliable.
+- Accelerator programs not perceived as sufficiently merit-based.
+- Opportunities exist but are hard to discover. You need to know someone.
+
+Recommended actions:
+1. Centralised job and grant board with filters by skill level, tech stack, and compensation type.
+2. Structured technical review lanes in Catalyst with credentialed reviewers. Separate popularity from merit.
+3. CF and EMURGO to publish clear, objective evaluation criteria including technical benchmarks.
+4. Support stable-value payment options for developers in ecosystem grants.
+5. Plain-language overview of all current monetisation paths with honest assessments.
+
+### 6. Community and Intersect Visibility
+
+**Priority: Medium**
+
+| Portal | Status | Detail |
+|--------|--------|--------|
+| [DevEx Portal](https://devex.intersectmbo.org) | Addressed | [Community Resources](/docs/resources/community) maps Discord, forums, Stack Exchange, and events well. [Intersect Membership Guide](/docs/intersect-membership-guide) exists. Gaps: no mentorship matching, no curated newsletter. |
+| [Cardano Dev Portal](https://developers.cardano.org) | Partial | Community links exist but no Intersect-specific awareness campaign or structured mentorship. |
+
+What developers reported:
+- Community is the number one strength but opportunity access is gatekept. Insider connections required.
+- 87.3% rely on social media as their primary info source. No reliable official alternative.
+- 34.5% are not Intersect members. 18.2% do not know what Intersect is.
+- Resource scarcity in Catalyst drives unhealthy competition over collaboration.
+
+Recommended actions:
+1. Developer-targeted Intersect outreach with a concrete, visible value proposition.
+2. Opt-in mentorship matching system connecting experienced builders with newcomers.
+3. Curated technical newsletter covering tooling, funding opportunities, and protocol changes.
+4. Design incentives that reward ecosystem growth, not zero-sum competition.
+
+### 7. Language Access
+
+**Priority: Medium**
+
+| Portal | Status | Detail |
+|--------|--------|--------|
+| [DevEx Portal](https://devex.intersectmbo.org) | Open | English only. No translated pages, no localised channels listed. |
+| [Cardano Dev Portal](https://developers.cardano.org) | Open | English only. No official translation programme or regional content tracks. |
+
+What developers reported:
+- Approximately 36% want materials in languages other than English, including French, Spanish, Swahili, Japanese, and Chinese.
+- Language support rated as important by 38.2% of respondents at 5/5 importance.
+
+Recommended actions:
+1. Fund translation of 5 to 10 critical onboarding docs into French, Spanish, and Swahili as wave one.
+2. Officially support regional Discord and Telegram channels for key language communities.
+3. Partner with regional developer advocates to produce onboarding videos in priority languages.
+
+## Priority matrix
+
+| Pain point | Impact | Effort | Priority | DevEx Portal | Cardano Dev Portal |
+|---|---|---|---|---|---|
+| Debugging tooling and error messages | High | Medium | High | Open | Open |
+| Unified onboarding flow | High | Medium | High | Partial | Partial |
+| Documentation quality and freshness | High | Low | High | Partial | Partial |
+| Developer opportunity portal | High | Low | High | Open | Open |
+| SDK default logging | Medium | Low | Medium | Open | Open |
+| Intersect awareness | Medium | Low | Medium | Addressed | Partial |
+| Catalyst process reform | High | High | Medium | Open | Open |
+| Mentorship program | Medium | Medium | Medium | Open | Open |
+| Multilingual resources | Medium | Medium | Medium | Open | Open |
+| UPLC debugger documentation | Medium | High | Lower | Open | Open |
+| Nix onboarding guide | Low | Low | Lower | Open | Partial |
+
+## Ecosystem strengths
+
+| Strength | Signal |
+|---|---|
+| Community | Rated number one unprompted. Described as collaborative, generous, and like family. This is a real differentiator. |
+| Research-backed approach | Academic rigour and long-termism cited as genuine competitive advantages over other ecosystems. |
+| Aiken | Praised without prompting for making smart contract development accessible and enjoyable. |
+| yaci-devkit | Called super powerful for fast local and CI testing. A rare bright spot in the tooling landscape. |
+
+## Conclusion
+
+54.5% of respondents rated their motivation to contribute to Cardano at 5/5. These are experienced developers being held back by solvable infrastructure and process problems. The foundation is strong. The gaps are specific and fixable.
+
+Report compiled from the Intersect State of Developer Experience Survey, 2026. 55 responses. Raw data available on request through the Intersect community channels.
