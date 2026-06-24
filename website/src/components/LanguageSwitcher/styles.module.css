@@ -1,0 +1,41 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.label {
+  font-size: 0.85rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.button {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-700);
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.button:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.active {
+  border-color: var(--ifm-color-primary);
+  background-color: var(--ifm-color-primary);
+  color: #fff;
+  cursor: default;
+}
+
+.active:hover {
+  color: #fff;
+}
