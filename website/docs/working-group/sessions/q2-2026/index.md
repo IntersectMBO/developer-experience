@@ -17,6 +17,7 @@ The Developer Experience (DevEx) Working Group continues to support and empower 
 | **16** | **UI ↔ Smart Contracts: Wallets, Tx Building, and Submission** | End-to-end dApp interaction patterns + architecture trade-offs | Workshop |
 | **17** | **Default Developer Environment for Cardano** | Working-group debate on what we recommend by default to new builders | Discussion |
 | **18** | **Building a Production-Grade MCP Server for Cardano** | AI tooling for Cardano — UTxOs, governance, smart contracts via MCP | Demo + Discussion |
+| **19** | **One API Call to Understand Cardano** | Blockfrost JSON: UTxOs, submit, confirm on Preview | Demo + walkthrough |
 
 ## Session Details
 
@@ -63,6 +64,16 @@ The Developer Experience (DevEx) Working Group continues to support and empower 
   - Live demo: querying UTxOs, governance proposals, and CBOR datums from inside Claude Code
   - Lessons learned: Zod defaults, IPFS edge cases, Koios tail latencies
 - **Deliverable**: [Session Notes](./18-cardano-mcp-server/session-notes/readme.md) | [Resources](./18-cardano-mcp-server/session-resources/readme.md)
+
+### Session 19: One API Call to Understand Cardano
+- **Objective**: Use simple Blockfrost calls and dummy JSON to explain how Cardano holds value (UTxOs) and what happens when a transaction is submitted and confirmed on chain.
+- **Key Topics**:
+  - `GET /addresses/{address}/utxos` and reading lovelace in JSON
+  - Off-chain build, sign, and `POST /tx/submit` (CBOR)
+  - Mempool to block: polling `GET /txs/{hash}` until confirmed
+  - Inputs, outputs, change, and fees via `GET /txs/{hash}/utxos`
+  - Preview testnet hands-on checklist
+- **Deliverable**: [Session Notes](./19-one-api-call-blockfrost/session-notes/readme.md) | [Resources](./19-one-api-call-blockfrost/session-resources/readme.md)
 
 ## Working Group Information
 For operational details, roles, repository structure, and participation guidelines, please see the [Working Group Overview](../../readme.md).
