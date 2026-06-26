@@ -8,6 +8,7 @@ The events organized were:
 
 1. Cardano Hub Nairobi Monthly Meetup
 2. Node Setup Event (Live Stream – Open Source Summit, Minnesota)
+3. Kenya AI Challenge – Masumi and Cardano Integration Support
 
 These events were designed to support developers, encourage collaboration, and promote active contributions to the Cardano ecosystem.
 
@@ -46,7 +47,19 @@ Participants were able to:
 
 ## Event Media
 
-Photos and videos from the event can be viewed here:
+![Emmanuel hosting the Cardano Hub Nairobi meetup](images/nairobi-meetup-emmanuel-hosting.jpg)
+
+![Attendees engaging during the session](images/nairobi-meetup-attendees.jpg)
+
+![Presenter addressing the room – wada venue](images/nairobi-meetup-presentation.jpg)
+
+![Q&A segment during the meetup](images/nairobi-meetup-qa-session.jpg)
+
+![Community member speaking during discussion](images/nairobi-meetup-speaker.jpg)
+
+![Cardano Academy certifications overview on screen](images/nairobi-meetup-cardano-academy.jpg)
+
+![Blockchain Fundamentals course walkthrough](images/nairobi-meetup-blockchain-fundamentals.jpg)
 
 
 
@@ -89,6 +102,49 @@ Participants gained practical knowledge of:
 - Practical tooling options for Cardano development environments
 
 
+
+
+## Event 3: Kenya AI Challenge – Masumi and Cardano Integration Support
+
+### About the Event
+
+The **Kenya AI Challenge 2026** is a national AI competition organized by **DirectEd Development**, themed around **AI for Agriculture**. The challenge brought together student and developer teams from across Kenya to build AI-powered solutions addressing agricultural problems, with workshops, mentorship tracks, and a final showcase.
+
+The event was held on **13 June 2026** at a co-working venue in Nairobi. Partners and sponsors included Mercy Corps, Agrifin, Blockchain Collective, Lovable, Masumi, Ai Kenya, Neo4j, Featherless, and OxBridge AI.
+
+**Masumi** participated as a sponsor of the challenge. As part of that sponsorship, I attended to provide direct technical support to participating teams interested in integrating Masumi's agent monetisation infrastructure and Cardano payments into their projects.
+
+### Role at the Event
+
+My role was to support teams in understanding and implementing Masumi within their AI project prototypes. Masumi is a payment and monetisation layer for AI agents built on Cardano, allowing developers to charge for agent usage and settle payments on-chain. For teams building AI tools in the agriculture space, this opened a path toward sustainable revenue models and decentralised payment flows without relying on traditional payment rails.
+
+Support provided included:
+
+- Explaining the Masumi architecture and how it fits into AI agent workflows
+- Walking teams through how to register an agent with Masumi and expose it as a paid service
+- Demonstrating how Cardano transactions settle payments between agent consumers and providers
+- Advising teams on how to structure their projects to make integration feasible within the challenge timeline
+
+### Context: Why Masumi and Cardano at an AI Challenge
+
+The Kenya AI Challenge brought together developers who were primarily focused on machine learning and data pipelines, with limited prior exposure to blockchain or decentralised payment infrastructure. Introducing Masumi in this context served two purposes: it gave teams a practical monetisation path for their AI tools, and it exposed a new cohort of developers to Cardano and its payment capabilities in a hands-on setting.
+
+Intersect's presence on the venue sponsor wall alongside organisations like Lido Nation and AdaPay reflected the broader alignment between this event and the Cardano ecosystem's expansion into applied AI.
+
+### What Was Achieved
+
+- Direct technical engagement with AI challenge participants on Masumi and Cardano integration
+- Expanded awareness of Cardano payment infrastructure among developers outside the traditional blockchain audience
+- Strengthened the connection between the Masumi sponsorship and on-the-ground developer support
+- Positioned Cardano tooling as relevant to the AI and agriculture technology space in Kenya
+
+### Photos and Media
+
+![Kenya AI Challenge 2026 – Sponsor Banner](images/kenya-ai-challenge-banner.jpg)
+
+![Emmanuel at the Kenya AI Challenge venue](images/kenya-ai-challenge-emmanuel.jpg)
+
+![Workshop session in progress – Neo4j and Generative AI, 13 June 2026](images/kenya-ai-challenge-workshop.jpg)
 
 
 # Key Observations
