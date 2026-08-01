@@ -1,11 +1,6 @@
 # Tutorials
 
-## Coming Soon
+## Build a Local Cardano Payment Detector using Cardano Node Emulator
 
+Find the tutorial [here](./local-cardano-payment-detector.md)
 
-
-**Status**: Session materials in development
-
----
-
-*This session is part of the Q1 2025 Developer Experience Working Group: "Laying the Foundations"*

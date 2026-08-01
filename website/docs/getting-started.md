@@ -20,11 +20,16 @@ Start with our comprehensive ecosystem overview: [**Directive: Kickoff & Orienta
 
 This guide provides a complete map of the Cardano ecosystem, including core repositories, documentation resources, developer tools, and community support channels.
 
-### 3. **Ready to Build?**
-Dive into our hands-on [**Beginner Guides**](./how-to-guide/beginner/) to start building immediately:
-- Understanding Cardano addresses
-- Creating transactions
-- Working with native tokens
+### 3. **Choose Your Track**
+
+Pick the path that matches your background and goals — these are parallel tracks, not sequential stages:
+
+| Track | Starting point | Guide |
+|---|---|---|
+| **dApp / Smart Contracts** | New to Cardano, building products | [Beginner Guides](./how-to-guide/beginner/) |
+| **Infrastructure / DevOps** | Running nodes, indexers, block explorers | [Advanced Guides](./how-to-guide/advanced/) |
+| **Core Protocol (Haskell)** | Systems/PL background, want to contribute to ledger or consensus | [Core Protocol Contributor](./how-to-guide/advanced/core-protocol-contributor.md) |
+| **Core Protocol (Rust)** | Rust background, want to contribute to Pallas or Dolos | [Core Protocol Contributor](./how-to-guide/advanced/core-protocol-contributor.md) |
 
 ### 4. **Want to Contribute?**
 Join our [**Developer Experience Working Group**](./working-group/sessions/q4-2025/index.md) - a quarterly initiative focused on onboarding new developers and improving the overall developer experience.
