@@ -117,11 +117,11 @@
 }
 
 .pulseButton {
-  background: #f55521;
-  border: 1px solid #f55521;
-  color: white !important;
+  background: #ffffff;
+  border: 2px solid #ffffff;
+  color: #2962ff !important;
   padding: 0.875rem 1.5rem;
-  border-radius: 12px;
+  border-radius: 50px;
   text-decoration: none;
   font-weight: 700 !important;
   font-size: 0.95rem;
@@ -132,19 +132,28 @@
   position: relative;
   z-index: 2;
   width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .pulseButton:hover {
-  background: #e0481a;
-  border-color: #e0481a;
-  color: white !important;
+  background: #f8f9fa;
+  border-color: #ffffff;
+  color: #0039cb !important;
   text-decoration: none;
   transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
-:global([data-theme='dark']) a.pulseButton,
+:global([data-theme='dark']) a.pulseButton {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #2962ff !important;
+}
+
 :global([data-theme='dark']) a.pulseButton:hover {
-  color: white !important;
+  background: #f8f9fa;
+  border-color: #ffffff;
+  color: #0039cb !important;
 }
 
 @media (max-width: 480px) {
