@@ -1,23 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styles from './styles.module.css';
+import githubData from '@site/src/data/githubData.json';
+
+interface Contributor {
+  login: string;
+  avatar_url: string;
+  html_url: string;
+}
 
 export default function Contributors() {
-  const [contributors, setContributors] = useState<any[]>([]);
-
-  useEffect(() => {
-    const repo = 'IntersectMBO/developer-experience';
-    fetch(`https://api.github.com/repos/${repo}/contributors`)
-      .then(response => response.json())
-      .then(data => {
-        if (Array.isArray(data)) {
-          const validContributors = data.filter((user: any) => 
-            user.type !== 'Bot' && !user.login.toLowerCase().includes('dependabot')
-          );
-          setContributors(validContributors.slice(0, 15)); // Display up to 15 contributors
-        }
-      })
-      .catch(error => console.error('Error fetching contributors:', error));
-  }, []);
+  const contributors: Contributor[] = (githubData.contributors as Contributor[]) || [];
 
   if (contributors.length === 0) {
     return null;
@@ -26,7 +18,7 @@ export default function Contributors() {
   return (
     <div className={styles.contributorsContainer}>
       <div className={styles.contributorsList}>
-        {contributors.map((user: any) => (
+        {contributors.map((user: Contributor) => (
           <a
             key={user.login}
             href={user.html_url}
