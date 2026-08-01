@@ -3,7 +3,7 @@ import Head from "@docusaurus/Head";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import MeetupReminderButton from "@site/src/components/MeetupReminderButton";
 
-export default function Root({ children }) {
+export default function Root({ children }: { children: React.ReactNode }) {
   const { siteConfig } = useDocusaurusContext();
   const siteUrl = siteConfig.url;
 
