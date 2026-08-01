@@ -207,3 +207,9 @@
   height: 100%;
   object-fit: cover;
 }
+
+.fallbackText {
+  font-size: 0.95rem;
+  color: var(--ifm-color-content-secondary);
+  text-align: center;
+}

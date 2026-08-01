@@ -12,7 +12,21 @@ export default function Contributors() {
   const contributors: Contributor[] = (githubData.contributors as Contributor[]) || [];
 
   if (contributors.length === 0) {
-    return null;
+    return (
+      <div className={styles.contributorsContainer}>
+        <p className={styles.fallbackText}>
+          View our contributors on{' '}
+          <a
+            href="https://github.com/IntersectMBO/developer-experience/graphs/contributors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          .
+        </p>
+      </div>
+    );
   }
 
   return (
