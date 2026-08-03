@@ -220,8 +220,8 @@ const config: Config = {
               to: "/docs/resources/community",
             },
             {
-              label: "Tools & APIs",
-              to: "/docs/resources/tools",
+              label: "Repositories & Tools",
+              to: "/docs/resources/repositories",
             },
             {
               label: "FAQs",
