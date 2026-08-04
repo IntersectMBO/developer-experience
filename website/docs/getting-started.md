@@ -49,7 +49,7 @@ Built by the community, for the community. Join our working groups and help shap
 
 ### How-To Guides
 - **[Beginner](./how-to-guide/beginner/)** - Getting started guides for newcomers
-- **[Intermediate](./how-to-guide/intermediate/)** - Next-level guides for developers with basic knowledge  
+- **[Intermediate](./how-to-guide/beginner/)** - Next-level guides for developers with basic knowledge  
 - **Advanced** - Deep-dive technical guides for experienced developers (see [Cardano API](./how-to-guide/advanced/cardano-api.md) and [cardano-db-sync](./how-to-guide/advanced/cardano-db-sync.md))
 
 ### Tutorials
@@ -57,7 +57,7 @@ Built by the community, for the community. Join our working groups and help shap
 
 ### Resources
 - **[Repositories](./resources/repositories)** - Essential GitHub repositories and their purposes
-- **[Tools](./resources/tools)** - Development tools, APIs, and utilities
+- **[Tools](./resources/repositories)** - Development tools, APIs, and utilities
 - **[Community](./resources/community)** - Community channels, forums, and support resources
 
 ### [Working Group](./working-group/)

@@ -110,7 +110,7 @@ Yes, there are several avenues:
 <summary>How do I set up my development environment?</summary>
 
 - **New Developers**: Check our **[Beginner Guides](./how-to-guide/beginner/)**.
-- **Specific Tools**: See the **[Tools section](./resources/tools.md)**.
+- **Specific Tools**: See the **[Tools section](./resources/repositories.md)**.
 
 </details>
 
