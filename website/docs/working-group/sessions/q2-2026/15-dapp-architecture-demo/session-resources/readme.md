@@ -16,7 +16,7 @@ Curated resources and tools for building full-stack dApps on Cardano.
 
 ## Demo Project
 
-*   **[Educational dApp Demo](file:///Users/tyty/Desktop/Demos/cardano-dapp-demo)**: The source code for the architecture demonstrated in this session.
+*   **[Educational dApp Demo](https://github.com/Emmanuel-Tyty/Demos/tree/main/cardano-dapp-demo)**: The source code for the architecture demonstrated in this session.
 
 ## Further Reading
 
