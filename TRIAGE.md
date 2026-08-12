@@ -45,7 +45,7 @@ The [`stale.yml`](.github/workflows/stale.yml) workflow enforces the inactivity 
 
 - **Issues** are marked `stale` after **30 days** without activity and closed **14 days** later if still inactive.
 - **PRs** are marked `stale` after **21 days** without activity and closed **7 days** later if still inactive.
-- Items labelled `pinned` or `security` are never marked stale.
+- Items labelled `pinned` or `Security` are never marked stale.
 - Any comment or update resets the clock.
 
 ## Roles
@@ -57,4 +57,4 @@ The [`stale.yml`](.github/workflows/stale.yml) workflow enforces the inactivity 
 
 Thank you for helping make Cardano more accessible to developers worldwide! 🚀
 
-*For questions about contributing, first become a member at [Intersect](https://www.intersectmbo.org/) and register at [members.intersectmbo.org](https://members.intersectmbo.org/registration) to get voting rights and access to our Discord community's #developer-experience channel. See our [Intersect Membership Guide](docs/intersect-membership-guide.md) for all membership benefits.*
+*For questions about contributing, first become a member at [Intersect](https://www.intersectmbo.org/) and register at [members.intersectmbo.org](https://members.intersectmbo.org/registration) to get voting rights and access to our Discord community's #developer-experience channel. See our [Intersect Membership Guide](website/docs/intersect-membership-guide.md) for all membership benefits.*
