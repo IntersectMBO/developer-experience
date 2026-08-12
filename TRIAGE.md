@@ -52,3 +52,9 @@ The [`stale.yml`](.github/workflows/stale.yml) workflow enforces the inactivity 
 
 - **Triagers**: Developer Advocates and the repository maintainers listed in [CODEOWNERS](CODEOWNERS).
 - **Escalation**: Scope or priority disagreements are resolved in the weekly working-group session.
+
+---
+
+Thank you for helping make Cardano more accessible to developers worldwide! 🚀
+
+*For questions about contributing, first become a member at [Intersect](https://www.intersectmbo.org/) and register at [members.intersectmbo.org](https://members.intersectmbo.org/registration) to get voting rights and access to our Discord community's #developer-experience channel. See our [Intersect Membership Guide](docs/intersect-membership-guide.md) for all membership benefits.*
