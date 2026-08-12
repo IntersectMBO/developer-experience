@@ -50,9 +50,5 @@ The [`stale.yml`](.github/workflows/stale.yml) workflow enforces the inactivity 
 
 ## Roles
 
-- **Triagers**: Developer Advocates and repository maintainers.
-- **Escalation**: scope or priority disagreements go to the Developer Experience Working Group during its weekly session.
-
-## Reviewing this document
-
-This cadence is reviewed quarterly by the working group. Propose changes via a PR that updates this file.
+- **Triagers**: Developer Advocates and the repository maintainers listed in [CODEOWNERS](CODEOWNERS).
+- **Escalation**: Scope or priority disagreements are resolved in the weekly working-group session.
