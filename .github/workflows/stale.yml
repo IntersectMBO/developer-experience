@@ -1,0 +1,43 @@
+name: Mark stale issues and PRs
+
+# Enforces the inactivity windows defined in TRIAGE.md
+
+on:
+  schedule:
+    - cron: "17 6 * * *" # Daily at 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    name: Stale triage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mark stale items
+        uses: actions/stale@v9
+        with:
+          stale-issue-message: >
+            Is this issue abandoned? It had no activity for 30 days.
+            It has been marked stale and will be closed in 14 days if no further activity occurs.
+            Add an update to keep it open.
+            See TRIAGE.md for our triage cadence.
+          close-issue-message: >
+            This issue was automatically closed due to continued inactivity.
+          stale-pr-message: >
+            Is this pull request abandoned? It had no activity for 21 days.
+            It has been marked stale and will be closed in 7 days if no further activity occurs.
+            Add a comment or push a commit to keep it open.
+            See TRIAGE.md for our triage cadence.
+          close-pr-message: >
+            This pull request was automatically closed due to continued inactivity.
+          days-before-issue-stale: 30
+          days-before-issue-close: 14
+          days-before-pr-stale: 21
+          days-before-pr-close: 7
+          stale-issue-label: stale
+          stale-pr-label: stale
+          exempt-issue-labels: pinned,security
+          exempt-pr-labels: pinned,security
