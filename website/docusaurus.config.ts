@@ -77,6 +77,29 @@ const config: Config = {
   },
 
   plugins: [
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          {
+            from: "/docs/how-to-guide/beginner/howtocreateaddress",
+            to: "/docs/how-to-guide/beginner/address",
+          },
+          {
+            from: "/docs/resources/tools",
+            to: "/docs/resources/repositories",
+          },
+          {
+            from: "/docs/how-to-guide/intermediate",
+            to: "/docs/how-to-guide/beginner",
+          },
+          {
+            from: "/docs/tutorials/readme",
+            to: "/docs/tutorials/local-cardano-payment-detector",
+          },
+        ],
+      },
+    ],
     function suppressVscodeLspWarning() {
       return {
         name: "suppress-vscode-lsp-warning",
@@ -221,7 +244,7 @@ const config: Config = {
             },
             {
               label: "Tools & APIs",
-              to: "/docs/resources/tools",
+              to: "/docs/resources/repositories",
             },
             {
               label: "FAQs",

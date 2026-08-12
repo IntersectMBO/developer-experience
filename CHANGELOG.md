@@ -5,6 +5,46 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] - 2026-06-04
+
+Q2 2026 (Apr–Jun): application development focus — SDK/off-chain architecture, dApp design, wallet integration, default dev environment, and Cardano MCP server.
+
+### Added
+
+* Q2 2026 Working Group session plan and index (Sessions 14–18) ([8c88b3d](https://github.com/IntersectMBO/developer-experience/commit/8c88b3d))
+* Session 14: Offchain and SDK repository walkthrough (notes, recording, resources) ([fe1d93c](https://github.com/IntersectMBO/developer-experience/commit/fe1d93c))
+* Session 15: dApp Architecture from Wallet to Backend (notes, recording, resources, YouTube embed) ([a7f061d](https://github.com/IntersectMBO/developer-experience/commit/a7f061d), [4cbda6c](https://github.com/IntersectMBO/developer-experience/commit/4cbda6c))
+* Session 16: UI ↔ Smart Contracts — wallets, tx building, and submission (notes, recording, resources) ([bd7b0dd](https://github.com/IntersectMBO/developer-experience/commit/bd7b0dd), [c5d9fd6](https://github.com/IntersectMBO/developer-experience/commit/c5d9fd6))
+* Session 17: Default Developer Environment for Cardano (notes, recording, resources) ([7c2bf13](https://github.com/IntersectMBO/developer-experience/commit/7c2bf13))
+* Session 18: Building a Production-Grade MCP Server for Cardano (notes, resources, blog post) ([bceaaa0](https://github.com/IntersectMBO/developer-experience/commit/bceaaa0))
+* Advanced guide: Setup a Local Cardano Devnet with Yaci DevKit ([9c269d6](https://github.com/IntersectMBO/developer-experience/commit/9c269d6))
+* Guide: Blaze SDK + Yaci Store integration ([e1db998](https://github.com/IntersectMBO/developer-experience/commit/e1db998))
+* Tutorial: Cardano node emulator ([3b85b2d](https://github.com/IntersectMBO/developer-experience/commit/3b85b2d))
+* Q2 2026 milestone docs: developer experience pain points and solutions; language-inclusive onboarding guide
+
+### Changed
+
+* Update Q2 2026 evening DevEx session time and meet link ([cfbc989](https://github.com/IntersectMBO/developer-experience/commit/cfbc989))
+* Enhance advanced README with Yaci DevKit and default developer environment session links ([5cd2f2d](https://github.com/IntersectMBO/developer-experience/commit/5cd2f2d), [7c2bf13](https://github.com/IntersectMBO/developer-experience/commit/7c2bf13))
+* Add Yaci Store to indexing solutions in dApp architecture session notes ([2f0d79f](https://github.com/IntersectMBO/developer-experience/commit/2f0d79f))
+
+### Fixed
+
+* Resolve Dependabot security alerts (serialize-javascript, undici, svgo, minimatch, dompurify) ([8cf8312](https://github.com/IntersectMBO/developer-experience/commit/8cf8312))
+* Move DevEx Sessions floating button further left on desktop to avoid jump-to-top overlap ([9ed58c1](https://github.com/IntersectMBO/developer-experience/commit/9ed58c1))
+
+### Documentation
+
+* Session 12 Cardano Developer Pathway: interactive Mermaid diagram with fullscreen and zoom controls ([5e9414c](https://github.com/IntersectMBO/developer-experience/commit/5e9414c), [b6bac04](https://github.com/IntersectMBO/developer-experience/commit/b6bac04))
+* Open Clinic #2 session materials ([01e8270](https://github.com/IntersectMBO/developer-experience/commit/01e8270))
+* Session 7 Contributing to Intersect recording and content updates ([59214e8](https://github.com/IntersectMBO/developer-experience/commit/59214e8), [36edb4a](https://github.com/IntersectMBO/developer-experience/commit/36edb4a))
+
+### Chore
+
+* Upgrade Docusaurus packages to 3.10.0 ([8c88b3d](https://github.com/IntersectMBO/developer-experience/commit/8c88b3d))
+* Bump GitHub Actions: configure-pages 6, deploy-pages 5 ([452f577](https://github.com/IntersectMBO/developer-experience/commit/452f577), [b2f0b6e](https://github.com/IntersectMBO/developer-experience/commit/b2f0b6e))
+* Update website dependencies (TypeScript 6, mermaid 11.14, @types/node, dotenv) ([c74587e](https://github.com/IntersectMBO/developer-experience/commit/c74587e))
+
 ## [2.2.2] - 2026-03-05
 
 ### Added
