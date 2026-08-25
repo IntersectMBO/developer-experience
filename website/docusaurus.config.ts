@@ -98,7 +98,7 @@ const config: Config = {
             to: "/docs/tutorials/local-cardano-payment-detector",
           },
         ],
-        createRedirects(existingPath) {
+        createRedirects(existingPath: string) {
           const renamedSessionPaths = [
             {
               from: "/docs/working-group/q2-2026/sessions/18-ai-dev-workflow",
