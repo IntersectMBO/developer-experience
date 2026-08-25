@@ -18,6 +18,7 @@ The Developer Experience (DevEx) Working Group continues to support and empower 
 | **17** | **Default Developer Environment for Cardano** | Working-group debate on what we recommend by default to new builders | Discussion |
 | **18** | **Building a Production-Grade MCP Server for Cardano** | AI tooling for Cardano — UTxOs, governance, smart contracts via MCP | Demo + Discussion |
 | **19** | **One API Call to Understand Cardano** | Blockfrost JSON: UTxOs, submit, confirm on Preview | Demo + walkthrough |
+| **20** | **Building a Production Cardano SDK: From Validators to dApp** | End-to-end: Aiken validators, Effect-based SDK, demo dApp (DCU Toolkit case study) | Workshop |
 
 ## Session Details
 
@@ -74,6 +75,17 @@ The Developer Experience (DevEx) Working Group continues to support and empower 
   - Inputs, outputs, change, and fees via `GET /txs/{hash}/utxos`
   - Preview testnet hands-on checklist
 - **Deliverable**: [Session Notes](./19-one-api-call-blockfrost/session-notes/readme.md) | [Resources](./19-one-api-call-blockfrost/session-resources/readme.md)
+
+### Session 20: Building a Production Cardano SDK: From Validators to dApp
+- **Objective**: Walk end to end through the practices of building and shipping a production-grade offchain SDK, from real-world problem to validators, SDK, and demo dApp.
+- **Key Topics**:
+  - Why cooperative finance needs enforceable rules (documented trust failures in savings groups)
+  - Why blockchain, and why Cardano: custody without a custodian, deterministic eUTxO, predictable fees
+  - Three-layer architecture: Aiken validators, Effect-based TypeScript SDK, demo dApp
+  - CIP-68 token pairs, ProgramRunner execution modes, and typed error taxonomies
+  - Live demo: CLI account creation plus circle creation and joining on Preprod
+  - The recipe: applying the same method to your own SDK
+- **Deliverable**: [Session Notes](./20-cardano-production-sdk/session-notes/readme.md) | [Resources](./20-cardano-production-sdk/session-resources/readme.md)
 
 ## Working Group Information
 For operational details, roles, repository structure, and participation guidelines, please see the [Working Group Overview](../../readme.md).
