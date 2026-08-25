@@ -1,7 +1,7 @@
 ---
 title: "Session 18: Using AI in Your Cardano Dev Workflow - Notes"
 sidebar_label: Session Notes
-slug: /working-group/q2-2026/sessions/18-ai-dev-workflow/session-notes
+slug: /working-group/q2-2026/sessions/18-cardano-ai-dev-workflow/session-notes
 ---
 
 # Using AI in Your Cardano Dev Workflow

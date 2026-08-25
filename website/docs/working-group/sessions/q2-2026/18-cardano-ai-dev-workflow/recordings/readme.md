@@ -1,7 +1,7 @@
 ---
 title: "Session 18: Using AI in Your Cardano Dev Workflow - Recordings"
 sidebar_label: Recordings
-slug: /working-group/q2-2026/sessions/18-ai-dev-workflow/recordings
+slug: /working-group/q2-2026/sessions/18-cardano-ai-dev-workflow/recordings
 ---
 
 # Session 18: Using AI in Your Cardano Dev Workflow - Recordings

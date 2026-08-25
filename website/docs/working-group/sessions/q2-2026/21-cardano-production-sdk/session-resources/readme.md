@@ -1,10 +1,10 @@
 ---
-title: "Session 20: Building a Production Cardano SDK: From Validators to dApp - Resources"
+title: "Session 21: Building a Production Cardano SDK: From Validators to dApp - Resources"
 sidebar_label: Session Resources
-slug: /working-group/q2-2026/sessions/20-cardano-production-sdk/session-resources
+slug: /working-group/q2-2026/sessions/21-cardano-production-sdk/session-resources
 ---
 
-# Session 20: Building a Production Cardano SDK: From Validators to dApp - Resources
+# Session 21: Building a Production Cardano SDK: From Validators to dApp - Resources
 
 Resources for building production-grade offchain SDKs on Cardano, with the DCU Toolkit as the case study.
 
