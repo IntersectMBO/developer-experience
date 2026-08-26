@@ -10,13 +10,13 @@
 
 ## Description
 
-This milestone was fulfilled through Session 20 of the Q2 2026 Developer Experience Working Group series. The session presented a live technical experiment using the DCU Toolkit to demonstrate the path from Cardano validators to a production SDK and an integrated web application.
+This milestone was fulfilled through Session 21 of the Q2 2026 Developer Experience Working Group series. The session presented a live technical experiment using the DCU Toolkit to demonstrate the path from Cardano validators to a production SDK and an integrated web application.
 
 ---
 
 ## Session Details
 
-- **Session:** Session 20 – Building a Production Cardano SDK: From Validators to dApp
+- **Session:** Session 21 – Building a Production Cardano SDK: From Validators to dApp
 - **Date:** 11 June 2026
 - **Format:** Live technical walkthrough, CLI demonstration, and Preprod web application demo
 - **Presenter and Project Owner:** Harun Waweru Mwangi
@@ -59,7 +59,7 @@ The rotation and payout stage was not executed during the session because of tim
 
 **Session Recording:** [Building a Production Cardano SDK: From Validators to dApp](https://www.youtube.com/watch?v=LgtSZ8vPGPU)
 
-**Session Notes:** [devex.intersectmbo.org – Session 20](https://devex.intersectmbo.org/docs/working-group/q2-2026/sessions/20-cardano-production-sdk/session-notes)
+**Session Notes:** [devex.intersectmbo.org – Session 21](https://devex.intersectmbo.org/docs/working-group/q2-2026/sessions/21-cardano-production-sdk/session-notes)
 
 ---
 
