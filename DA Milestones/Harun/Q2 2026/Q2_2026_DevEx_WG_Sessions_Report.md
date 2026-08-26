@@ -52,6 +52,8 @@ This session used the DCU Toolkit as an end-to-end case study connecting Aiken v
 
 ## Developer Experience Pain Points
 
+Detailed evidence and proposed solutions are documented in the [Q2 2026 Developer Experience Pain Points Report](Q2_2026_Pain_Points_Report.md).
+
 ### 1. Gap Between Validators and Application Development
 
 **Solution:** Sessions 14 and 21 documented the path from compiled blueprint to SDK endpoints, CLI examples, and an integrated web interface, providing reusable patterns for projects moving beyond validator-only examples.
