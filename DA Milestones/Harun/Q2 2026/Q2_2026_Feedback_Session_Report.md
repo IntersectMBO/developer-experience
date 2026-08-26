@@ -49,8 +49,8 @@ The discussion clarified that Scalus is not limited to writing smart contracts i
 - [Scalus Q2 Project Spotlight report](../../Project%20Spotlight/Q2%202026/scalus_spotlight_q2_2026.md)
 - [Session 18 notes](https://devex.intersectmbo.org/docs/working-group/q2-2026/sessions/18-cardano-ai-dev-workflow/session-notes)
 - [Session 21 notes](https://devex.intersectmbo.org/docs/working-group/q2-2026/sessions/21-cardano-production-sdk/session-notes)
-- [Kupo security-policy issue #4](https://github.com/IntersectMBO/kupo/issues/4) – raised by Harun and closed during Q2
-- [Ogmios security-policy issue #9](https://github.com/IntersectMBO/ogmios/issues/9) – raised by Harun and closed during Q2
+- [Kupo security-policy issue #4](https://github.com/IntersectMBO/kupo/issues/4)
+- [Ogmios security-policy issue #9](https://github.com/IntersectMBO/ogmios/issues/9)
 - [Plutus security-policy issue #7813](https://github.com/IntersectMBO/plutus/issues/7813) – raised by Harun and closed after Q2
 - [`cardano-api` security-policy issue #1233](https://github.com/IntersectMBO/cardano-api/issues/1233) – raised by Harun and closed after Q2
 - [Open Source Office security-policy PR #139](https://github.com/IntersectMBO/Open-Source-Office/pull/139) – created by Harun and merged during Q2
