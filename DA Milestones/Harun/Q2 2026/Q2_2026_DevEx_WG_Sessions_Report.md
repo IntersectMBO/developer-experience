@@ -76,7 +76,7 @@ The Developer Advocates maintained a weekly Q2 session cadence using alternating
 
 - Session 14 notes, recording, and curated SDK resources published for the DevEx community.
 - Session 18 AI development workflow, recording, safety guidance, and supporting resources produced.
-- Session 21 recording published, with the complete session documentation submitted through Developer Experience PR #279.
+- Session 21 recording and complete documentation published through merged [Developer Experience PR #279](https://github.com/IntersectMBO/developer-experience/pull/279).
 - Two connected SDK learning resources produced: off-chain foundations followed by an end-to-end production integration case study.
 - A practical reference for planning, grounding, testing, and auditing AI-assisted Cardano development made available to developers.
 - Live Cardano Preprod transactions demonstrated through CLI and web application workflows.
