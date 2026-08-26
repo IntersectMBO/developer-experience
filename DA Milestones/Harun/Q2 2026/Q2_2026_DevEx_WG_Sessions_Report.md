@@ -8,7 +8,7 @@
 
 ## Summary
 
-During Q2 2026, I led or co-led three Developer Experience Working Group sessions covering off-chain SDK development, AI-assisted Cardano workflows, and production application integration. I produced the documentation for all three sessions and co-facilitated the AI session with Dan Baruka.
+During Q2 2026, I led or co-led three Developer Experience Working Group sessions covering off-chain SDK development, AI-assisted Cardano workflows, and production application integration. I maintained the session cadence, facilitated technical discussion, and produced documentation for each session on the DevEx portal.
 
 ---
 
@@ -16,7 +16,7 @@ During Q2 2026, I led or co-led three Developer Experience Working Group session
 
 ### Session 14: Repository Walkthrough – Offchain and SDK Building (2026/04/16)
 
-This session continued the Q4 2025 Payment Subscription smart contract walkthrough by moving from the Aiken validators to the off-chain SDK. It covered repository organization, extracting validators and policy IDs from `plutus.json`, building CIP-68 transactions with Lucid Evolution, aligning schemas with the on-chain specification, and testing transaction-building endpoints. The session showed how SDKs let application developers interact with contracts without implementing validator logic themselves.
+This session continued the Q4 2025 Payment Subscription walkthrough by moving from the Aiken validators to the off-chain SDK. It covered repository organization, extracting validators from `plutus.json`, building transactions with Lucid Evolution, aligning schemas, and testing SDK endpoints.
 
 **Recording:** https://devex.intersectmbo.org/docs/working-group/q2-2026/sessions/14-sdk-repo-walkthrough/recordings
 
@@ -28,7 +28,7 @@ This session continued the Q4 2025 Payment Subscription smart contract walkthrou
 
 ### Session 18: Using AI in Your Cardano Dev Workflow (2026/05/14)
 
-Co-facilitated with **Dan Baruka**, this session presented a repeatable workflow for using AI in Cardano development while keeping developers responsible for correctness and security. It covered plan-first orchestration, grounding models in `plutus.json`, pinned libraries and reference repositories, test-driven validator generation, reusable skills and rules, MCP servers for current documentation, AI verification gates for maintainers, and local models for reducing token costs.
+Co-facilitated with **Dan Baruka**, this session presented a repeatable workflow for using AI in Cardano development while keeping developers responsible for correctness and security. Topics included plan-first development, grounding AI in project files and current documentation, test-driven validator generation, reusable skills, MCP servers, and verification gates.
 
 **Recording:** https://www.youtube.com/watch?v=ckAx9WRlw_c
 
@@ -40,19 +40,13 @@ Co-facilitated with **Dan Baruka**, this session presented a repeatable workflow
 
 ### Session 21: Building a Production Cardano SDK – From Validators to dApp (2026/06/11)
 
-This session used the DCU Toolkit as an end-to-end case study connecting Aiken validators, a typed TypeScript SDK, CLI examples, and a demo web application. The live walkthrough created an account on Cardano Preprod, inspected its CIP-68 token pair, connected a Lace wallet, created a savings circle, and joined from a second wallet, increasing the pooled funds from 50 ADA to 100 ADA.
+This session used the DCU Toolkit as an end-to-end case study connecting Aiken validators, a typed TypeScript SDK, CLI examples, and a demo web application (Kyama). The live walkthrough created an account and savings circle on Cardano Preprod, then joined from a second Lace wallet.
 
 **Recording:** https://www.youtube.com/watch?v=LgtSZ8vPGPU
 
 **Session Notes:** https://devex.intersectmbo.org/docs/working-group/q2-2026/sessions/21-cardano-production-sdk/session-notes
 
 **Resources:** https://devex.intersectmbo.org/docs/working-group/q2-2026/sessions/21-cardano-production-sdk/session-resources
-
----
-
-## Working Group Progress and OSC Reporting
-
-The Developer Advocates maintained a weekly Q2 session cadence using alternating time slots. Progress, survey findings, consolidated pain points, and a phased improvement plan were recorded in the shared [Q2 2026 DevEx report to the Open Source Committee](https://github.com/IntersectMBO/developer-experience/blob/DA-milestones/DA%20Milestones/DevEx-WG-Overview/Q2-2026.md).
 
 ---
 
@@ -74,10 +68,7 @@ The Developer Advocates maintained a weekly Q2 session cadence using alternating
 
 ## Key Outcomes
 
-- Session 14 notes, recording, and curated SDK resources published for the DevEx community.
-- Session 18 AI development workflow, recording, safety guidance, and supporting resources produced.
-- Session 21 recording and complete documentation published through merged [Developer Experience PR #279](https://github.com/IntersectMBO/developer-experience/pull/279).
-- Two connected SDK learning resources produced: off-chain foundations followed by an end-to-end production integration case study.
-- A practical reference for planning, grounding, testing, and auditing AI-assisted Cardano development made available to developers.
-- Live Cardano Preprod transactions demonstrated through CLI and web application workflows.
-- Shared Q2 DevEx pain-points record and phased improvement plan available for OSC review.
+- Notes, recordings, and resources for Sessions 14, 18, and 21 published through the DevEx portal.
+- Reusable guidance produced for moving from Cardano validators to off-chain SDKs and complete applications.
+- A practical workflow for planning, grounding, testing, and reviewing AI-assisted Cardano development documented.
+- [Q2 DevEx progress, pain points, and improvement plan](https://github.com/IntersectMBO/developer-experience/blob/DA-milestones/DA%20Milestones/DevEx-WG-Overview/Q2-2026.md) available for OSC review.
