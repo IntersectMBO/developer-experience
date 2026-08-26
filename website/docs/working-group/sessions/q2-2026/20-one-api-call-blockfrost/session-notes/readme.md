@@ -1,10 +1,10 @@
 ---
-title: "Session 19: One API Call to Understand Cardano"
+title: "Session 20: One API Call to Understand Cardano"
 sidebar_label: Session Notes
-slug: /working-group/q2-2026/sessions/19-one-api-call-blockfrost/session-notes
+slug: /working-group/q2-2026/sessions/20-one-api-call-blockfrost/session-notes
 ---
 
-# Session 19: One API Call to Understand Cardano
+# Session 20: One API Call to Understand Cardano
 
 Cardano uses **UTxOs** (Unspent Transaction Outputs): discrete coins sitting at addresses. It does **not** store a single "account balance" like many other chains. One Blockfrost API call returns those coins as JSON, and that is enough to understand how value moves on Cardano.
 

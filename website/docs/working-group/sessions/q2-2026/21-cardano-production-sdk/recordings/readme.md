@@ -1,10 +1,10 @@
 ---
-title: "Session 20: Building a Production Cardano SDK: From Validators to dApp - Recordings"
+title: "Session 21: Building a Production Cardano SDK: From Validators to dApp - Recordings"
 sidebar_label: Recordings
-slug: /working-group/q2-2026/sessions/20-cardano-production-sdk/recordings
+slug: /working-group/q2-2026/sessions/21-cardano-production-sdk/recordings
 ---
 
-# Session 20: Building a Production Cardano SDK: From Validators to dApp - Recordings
+# Session 21: Building a Production Cardano SDK: From Validators to dApp - Recordings
 
 **Session date:** 11 June 2026
 
@@ -14,7 +14,7 @@ slug: /working-group/q2-2026/sessions/20-cardano-production-sdk/recordings
 
 <iframe
   src="https://www.youtube.com/embed/LgtSZ8vPGPU"
-  title="Session 20: Building a Production Cardano SDK: From Validators to dApp"
+  title="Session 21: Building a Production Cardano SDK: From Validators to dApp"
   width="100%"
   height="480"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

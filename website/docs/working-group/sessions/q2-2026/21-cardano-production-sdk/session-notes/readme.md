@@ -1,7 +1,7 @@
 ---
-title: "Session 20: Building a Production Cardano SDK: From Validators to dApp - Notes"
+title: "Session 21: Building a Production Cardano SDK: From Validators to dApp - Notes"
 sidebar_label: Session Notes
-slug: /working-group/q2-2026/sessions/20-cardano-production-sdk/session-notes
+slug: /working-group/q2-2026/sessions/21-cardano-production-sdk/session-notes
 ---
 
 # Building a Production Cardano SDK: From Validators to dApp

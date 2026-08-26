@@ -1,10 +1,10 @@
 ---
-title: "Session 18: Building a Production-Grade MCP Server for Cardano - Resources"
+title: "Session 19: Building a Production-Grade MCP Server for Cardano - Resources"
 sidebar_label: Session Resources
-slug: /working-group/q2-2026/sessions/18-cardano-mcp-server/session-resources
+slug: /working-group/q2-2026/sessions/19-cardano-mcp-server/session-resources
 ---
 
-# Session 18: Building a Production-Grade MCP Server for Cardano - Resources
+# Session 19: Building a Production-Grade MCP Server for Cardano - Resources
 
 Curated references for building and extending the Cardano MCP server: tool registration, multi-API strategy, CIP-1694 governance integration, and IPFS metadata enrichment.
 

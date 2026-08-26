@@ -16,9 +16,10 @@ The Developer Experience (DevEx) Working Group continues to support and empower 
 | **15** | **dApp Architecture: From Wallet to Backend** | Modular breakdown of full-stack dApp flow | Workshop |
 | **16** | **UI ↔ Smart Contracts: Wallets, Tx Building, and Submission** | End-to-end dApp interaction patterns + architecture trade-offs | Workshop |
 | **17** | **Default Developer Environment for Cardano** | Working-group debate on what we recommend by default to new builders | Discussion |
-| **18** | **Building a Production-Grade MCP Server for Cardano** | AI tooling for Cardano — UTxOs, governance, smart contracts via MCP | Demo + Discussion |
-| **19** | **One API Call to Understand Cardano** | Blockfrost JSON: UTxOs, submit, confirm on Preview | Demo + walkthrough |
-| **20** | **Building a Production Cardano SDK: From Validators to dApp** | End-to-end: Aiken validators, Effect-based SDK, demo dApp (DCU Toolkit case study) | Workshop |
+| **18** | **Using AI in Your Cardano Dev Workflow** | Systematic approach to AI-assisted Cardano development | Workshop |
+| **19** | **Building a Production-Grade MCP Server for Cardano** | AI tooling for Cardano — UTxOs, governance, smart contracts via MCP | Demo + Discussion |
+| **20** | **One API Call to Understand Cardano** | Blockfrost JSON: UTxOs, submit, confirm on Preview | Demo + walkthrough |
+| **21** | **Building a Production Cardano SDK: From Validators to dApp** | End-to-end: Aiken validators, Effect-based SDK, demo dApp (DCU Toolkit case study) | Workshop |
 
 ## Session Details
 
@@ -56,7 +57,17 @@ The Developer Experience (DevEx) Working Group continues to support and empower 
   - Recommended flow debate: what is the *single* environment we point new builders at?
 - **Deliverable**: [Default Developer Environment Session Notes](./17-default-developer-environment/session-notes/readme.md)
 
-### Session 18: Building a Production-Grade MCP Server for Cardano
+### Session 18: Using AI in Your Cardano Dev Workflow
+- **Objective**: Establish a repeatable, secure workflow for building Cardano applications with AI.
+- **Key Topics**:
+  - Cardano's eUTxO mental model and AI knowledge gaps
+  - Plan-first orchestration grounded in `plutus.json`, pinned SDK versions, and reference repositories
+  - MCP servers and reusable skills for current, project-specific context
+  - Test-driven validator generation and AI verification gates
+  - Local models for lower-cost supporting tasks
+- **Deliverable**: [Session Notes](./18-cardano-ai-dev-workflow/session-notes/readme.md) | [Resources](./18-cardano-ai-dev-workflow/session-resources/readme.md)
+
+### Session 19: Building a Production-Grade MCP Server for Cardano
 - **Objective**: Demonstrate how to give AI agents deep, idiomatic access to Cardano — UTxOs, native assets, smart contracts, and CIP-1694 governance — using the Model Context Protocol.
 - **Key Topics**:
   - Why Cardano needed a purpose-built MCP server (eUTxO vs account model)
@@ -64,9 +75,9 @@ The Developer Experience (DevEx) Working Group continues to support and empower 
   - CIP-1694 governance module and IPFS metadata enrichment
   - Live demo: querying UTxOs, governance proposals, and CBOR datums from inside Claude Code
   - Lessons learned: Zod defaults, IPFS edge cases, Koios tail latencies
-- **Deliverable**: [Session Notes](./18-cardano-mcp-server/session-notes/readme.md) | [Resources](./18-cardano-mcp-server/session-resources/readme.md)
+- **Deliverable**: [Session Notes](./19-cardano-mcp-server/session-notes/readme.md) | [Resources](./19-cardano-mcp-server/session-resources/readme.md)
 
-### Session 19: One API Call to Understand Cardano
+### Session 20: One API Call to Understand Cardano
 - **Objective**: Use simple Blockfrost calls and dummy JSON to explain how Cardano holds value (UTxOs) and what happens when a transaction is submitted and confirmed on chain.
 - **Key Topics**:
   - `GET /addresses/{address}/utxos` and reading lovelace in JSON
@@ -74,9 +85,9 @@ The Developer Experience (DevEx) Working Group continues to support and empower 
   - Mempool to block: polling `GET /txs/{hash}` until confirmed
   - Inputs, outputs, change, and fees via `GET /txs/{hash}/utxos`
   - Preview testnet hands-on checklist
-- **Deliverable**: [Session Notes](./19-one-api-call-blockfrost/session-notes/readme.md) | [Resources](./19-one-api-call-blockfrost/session-resources/readme.md)
+- **Deliverable**: [Session Notes](./20-one-api-call-blockfrost/session-notes/readme.md) | [Resources](./20-one-api-call-blockfrost/session-resources/readme.md)
 
-### Session 20: Building a Production Cardano SDK: From Validators to dApp
+### Session 21: Building a Production Cardano SDK: From Validators to dApp
 - **Objective**: Walk end to end through the practices of building and shipping a production-grade offchain SDK, from real-world problem to validators, SDK, and demo dApp.
 - **Key Topics**:
   - Why cooperative finance needs enforceable rules (documented trust failures in savings groups)
@@ -85,7 +96,7 @@ The Developer Experience (DevEx) Working Group continues to support and empower 
   - CIP-68 token pairs, ProgramRunner execution modes, and typed error taxonomies
   - Live demo: CLI account creation plus circle creation and joining on Preprod
   - The recipe: applying the same method to your own SDK
-- **Deliverable**: [Session Notes](./20-cardano-production-sdk/session-notes/readme.md) | [Resources](./20-cardano-production-sdk/session-resources/readme.md)
+- **Deliverable**: [Session Notes](./21-cardano-production-sdk/session-notes/readme.md) | [Resources](./21-cardano-production-sdk/session-resources/readme.md)
 
 ## Working Group Information
 For operational details, roles, repository structure, and participation guidelines, please see the [Working Group Overview](../../readme.md).
