@@ -49,15 +49,6 @@ I helped organise and present the workshop as part of the joint Developer Advoca
 
 ---
 
-## Outcomes
-
-- Delivered a jointly organised community workshop to the broader open-source audience at Open Source Summit North America.
-- Demonstrated a practical progression from local Yaci DevKit testing to a synced Cardano Preview node.
-- Introduced the roles of relay and block-producing nodes through live technical walkthroughs.
-- Connected attendees to continuing support through the DevEx portal, weekly Working Group sessions, Discord, and Developer Advocate one-on-one meetings.
-
----
-
 ## Evidence
 
 - [Session Recording: OSSummit DA Satellite](https://www.youtube.com/watch?v=LS62A4PTXMY)

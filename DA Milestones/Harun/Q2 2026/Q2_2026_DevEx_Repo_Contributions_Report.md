@@ -29,8 +29,6 @@ Added the notes, recording page, resources, and index entry for the production S
 [PR #279](https://github.com/IntersectMBO/developer-experience/pull/279) – Restore Session 18 and align Q2 session numbering _(post-quarter follow-up; merged Aug 26, 2026)_  
 Restored Harun's AI-assisted Cardano development materials as Session 18 and published his production SDK materials canonically as Session 21. The PR also applied the required structural renumbering to Sessions 19 and 20 and updated the Q2 index, changelog, blog reference, and redirects so existing links remain usable.
 
-Three pull requests were submitted during Q2, meeting the quarterly minimum. Two were merged during the quarter and the third was merged afterward. PR #279 is included as later follow-up that completed and corrected the publication of Harun's Q2 session work; it is not counted toward the Q2 minimum.
-
 ---
 
 ## Changelog

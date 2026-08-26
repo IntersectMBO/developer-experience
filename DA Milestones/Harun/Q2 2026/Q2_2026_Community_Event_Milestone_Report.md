@@ -62,9 +62,3 @@ I also met Chizaram Ucheaga, co-founder and COO of [Timon](https://www.usetimon.
 Stablecoins and their connection to existing African payment systems were the clearest themes across both events. The interest around Taran App and other payment providers showed that practical on-ramps, off-ramps, and mobile-money integration are central to regional adoption.
 
 The events also created opportunities to introduce Intersect and Cardano outside the existing ecosystem. Engagement with attendees, open-source professionals, and fintech leaders established potential relationships that can be developed through later onboarding and community work.
-
----
-
-## Conclusion
-
-Attendance at KBCC 2026 and the VALR Nairobi meetup fulfilled the Q2 community engagement requirement. Together, the events provided direct exposure to regional Web3 payment innovation and opportunities to represent Intersect, introduce Cardano, and build relationships across Nairobi's blockchain and fintech community.

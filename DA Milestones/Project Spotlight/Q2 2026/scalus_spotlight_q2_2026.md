@@ -126,9 +126,3 @@ The spotlight clarified that Scalus is not simply another smart contract languag
 - [Scalus Starter project](https://github.com/lantr-io/scalus-starter)
 - [Scalus API documentation](https://scalus.org/api/)
 - [Scalus on X](https://x.com/Scalus3)
-
----
-
-## Conclusion
-
-Scalus brings an integrated, enterprise-oriented development experience to Cardano. Its Scala and JVM foundation, full-transaction testing, cost profiling, debugging, multiplatform libraries, and deployment tooling give teams a coherent environment for building sophisticated applications while remaining compatible with the wider Cardano ecosystem.

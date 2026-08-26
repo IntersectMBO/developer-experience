@@ -54,9 +54,3 @@ Three strategic collaboration efforts were progressed during Q2 2026. Outreach t
 - [Eburnie Labs Academy](https://e-ecoles.com/)
 - [DCU Toolkit](https://github.com/tx-meta/dcu-kit)
 - [Kyama demo application](https://kyama.vercel.app/)
-
----
-
-## Conclusion
-
-The Q2 collaboration log records both completed and developing outcomes. Scalus produced a public technical session, Hydrozoa remains a documented future opportunity, and the Tx Meta–Eburnie Labs introduction is progressing toward a practical Cardano training collaboration.

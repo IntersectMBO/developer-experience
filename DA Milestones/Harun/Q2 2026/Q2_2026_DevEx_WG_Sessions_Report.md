@@ -54,23 +54,8 @@ This session used the DCU Toolkit as an end-to-end case study connecting Aiken v
 
 Detailed evidence and proposed solutions are documented in the [Q2 2026 Developer Experience Pain Points Report](Q2_2026_Pain_Points_Report.md).
 
-### 1. Gap Between Validators and Application Development
-
-**Solution:** Sessions 14 and 21 documented the path from compiled blueprint to SDK endpoints, CLI examples, and an integrated web interface, providing reusable patterns for projects moving beyond validator-only examples.
-
-### 2. AI Tools Lack Cardano-Native Context
-
-**Solution:** Session 18 documented how to ground AI in eUTxO concepts, current project files, pinned tool versions, design specifications, reference repositories, skills, and MCP servers instead of relying on stale account-model training data.
-
-### 3. Inconsistent SDK Error Handling and Testing
-
-**Solution:** Sessions 14 and 21 demonstrated typed error models, endpoint-level emulator tests, complete transaction tests, and Preprod verification, while deriving addresses and policy IDs from compiled blueprints instead of hardcoding them.
-
 ---
 
-## Key Outcomes
+## OSC Reporting
 
-- Notes, recordings, and resources for Sessions 14, 18, and 21 published through the DevEx portal.
-- Reusable guidance produced for moving from Cardano validators to off-chain SDKs and complete applications.
-- A practical workflow for planning, grounding, testing, and reviewing AI-assisted Cardano development documented.
-- [Q2 DevEx progress, pain points, and improvement plan](https://github.com/IntersectMBO/developer-experience/blob/DA-milestones/DA%20Milestones/DevEx-WG-Overview/Q2-2026.md) available for OSC review.
+[Q2 DevEx progress, pain points, and improvement plan](https://github.com/IntersectMBO/developer-experience/blob/DA-milestones/DA%20Milestones/DevEx-WG-Overview/Q2-2026.md) is available for OSC review.

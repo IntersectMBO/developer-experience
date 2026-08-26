@@ -54,9 +54,3 @@ The discussion clarified that Scalus is not limited to writing smart contracts i
 - [Plutus security-policy issue #7813](https://github.com/IntersectMBO/plutus/issues/7813) – raised by Harun and closed after Q2
 - [`cardano-api` security-policy issue #1233](https://github.com/IntersectMBO/cardano-api/issues/1233) – raised by Harun and closed after Q2
 - [Open Source Office security-policy PR #139](https://github.com/IntersectMBO/Open-Source-Office/pull/139) – created by Harun and merged during Q2
-
----
-
-## Outcome
-
-The Scalus spotlight provided a facilitated feedback session with identifiable core contributors and tested the relevance of several developer-tooling innovations. The Working Group discussions and Intersect security-policy rollout provide additional evidence that Q2 feedback was converted into documented gaps, follow-up opportunities, and repository-level action.
