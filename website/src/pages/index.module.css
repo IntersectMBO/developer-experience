@@ -314,3 +314,286 @@
     font-size: 0.95rem;
   }
 }
+/* GitHub Issues Inspiration Styles */
+.contributionContainer {
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 24px;
+  padding: 2.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.contributionHeader {
+  margin-bottom: 2rem;
+}
+
+.contributionTitle {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--ifm-font-color-base);
+  margin-bottom: 1.5rem;
+}
+
+.contributionContainer {
+  background: white;
+  border: 1px solid rgba(1, 40, 170, 0.1);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(1, 40, 170, 0.05);
+  cursor: pointer; /* Makes the whole card feel interactive */
+}
+
+.contributionContainer:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 8px 32px rgba(1, 40, 170, 0.15);
+  transform: translateY(-4px);
+}
+
+.contributionTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.issueListWrapper {
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 212, 170, 0.1); /* Matching the subtle teal/blue theme */
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownContainer {
+  position: relative;
+  display: flex;
+  justify-content: space-between; /* Space Filters and Create Issue apart */
+  align-items: center;
+  padding: 1rem 1.5rem;
+  background: rgba(1, 40, 170, 0.02);
+  border-bottom: 1px solid rgba(1, 40, 170, 0.05);
+}
+
+.filtersBtn {
+  background: transparent;
+  border: 1px solid var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 8px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+  border-radius: 20px;
+}
+
+.createIssueBtn {
+  background: var(--ifm-color-primary);
+  color: white !important;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 6px 16px;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: all 0.2s ease;
+}
+
+.createIssueBtn:hover {
+  background: var(--ifm-color-primary-dark);
+  color: white !important;
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 1.5rem; /* Align with the Filters button on the left */
+  margin-top: 8px;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-primary);
+  border-radius: 12px;
+  min-width: 180px;
+  z-index: 100;
+  box-shadow: 0 8px 32px rgba(1, 40, 170, 0.2);
+  overflow: hidden;
+}
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  color: var(--ifm-font-color-base);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.filtersBtn:hover, .dropdownItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dropdownItemActive {
+  background: var(--ifm-color-primary);
+  color: white;
+  font-weight: 600;
+}
+
+.issueItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: background 0.15s ease;
+}
+
+.issueItem:last-child {
+  border-bottom: none;
+}
+
+.issueItem:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.issueMain {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.issueDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.issueTitleInspiration {
+  font-size: 0.95rem;
+  color: var(--ifm-color-content-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.issueTag {
+  font-size: 0.55rem;
+  font-weight: 700;
+  font-family: var(--ifm-font-family-monospace);
+  margin-left: 0.5rem;
+  padding: 0px 6px;
+  border-radius: 999px;
+  border: 1px solid transparent; 
+  text-transform: lowercase;
+  white-space: nowrap;
+  line-height: normal;
+}
+
+.contributionFooter {
+  margin-top: 1rem;
+}
+
+.footerText {
+  font-size: 0.85rem;
+  color: var(--ifm-color-content-secondary);
+  line-height: 1.4;
+  opacity: 0.7;
+  padding-left: 0.5rem;
+}
+
+[data-theme='dark'] .contributionContainer {
+  background: var(--ifm-background-surface-color);
+  border-color: rgba(77, 102, 209, 0.2);
+}
+
+[data-theme='dark'] .contributionContainer:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 8px 32px rgba(77, 102, 209, 0.2);
+}
+
+[data-theme='dark'] .issueListWrapper {
+  background: rgba(0, 0, 0, 0.15);
+  border-color: rgba(77, 102, 209, 0.2);
+}
+
+[data-theme='dark'] .createIssueBtn {
+  color: white !important;
+}
+
+[data-theme='dark'] .createIssueBtn:hover {
+  background: var(--ifm-color-primary-darker);
+  transform: translateY(-2px);
+  color: white !important;
+  text-decoration: none !important;
+}
+
+[data-theme='light'] .filtersBtn {
+  border-color: var(--ifm-color-primary);
+}
+
+[data-theme='light'] .filtersBtn:hover {
+  background: rgba(1, 40, 170, 0.05);
+}
+
+[data-theme='light'] .dropdownMenu {
+  background: white;
+  border-color: rgba(1, 40, 170, 0.1);
+  box-shadow: 0 8px 32px rgba(1, 40, 170, 0.1);
+}
+
+[data-theme='light'] .dropdownItem:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+[data-theme='dark'] .issueTitleInspiration {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme='dark'] .issueTag {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme='dark'] .issueItem:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme='dark'] .contributionContainer {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .issueListWrapper {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+[data-theme='dark'] .issueTitleInspiration {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme='dark'] .issueTag {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme='dark'] .filterBtnActive {
+  background: var(--ifm-color-primary);
+  color: white;
+}

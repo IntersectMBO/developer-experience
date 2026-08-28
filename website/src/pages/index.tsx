@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
@@ -42,13 +43,181 @@ function HomepageHeader() {
   );
 }
 
+interface GitHubIssue {
+  id: number;
+  title: string;
+  html_url: string;
+  number: number;
+  user: {
+    login: string;
+  };
+  created_at: string;
+  labels: {
+    name: string;
+    color: string;
+  }[];
+  pull_request?: any;
+}
+
+function GitHubIssues() {
+  const [issues, setIssues] = useState<GitHubIssue[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [filter, setFilter] = useState('All');
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  useEffect(() => {
+    async function fetchIssues() {
+      try {
+        const response = await fetch(
+          'https://api.github.com/repos/IntersectMBO/developer-experience/issues?state=open&per_page=50'
+        );
+        if (!response.ok) throw new Error('Failed to fetch issues');
+        const data = await response.json();
+        // Filter out Pull Requests, as GitHub's /issues endpoint returns both
+        const onlyIssues = (data as GitHubIssue[]).filter(item => !item.pull_request);
+        setIssues(onlyIssues);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'An error occurred');
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchIssues();
+  }, []);
+
+  const availableLabels = useMemo(() => {
+    const labels = new Set(['All']);
+    issues.forEach(issue => {
+      issue.labels.forEach(label => labels.add(label.name));
+    });
+    return Array.from(labels).slice(0, 5); // Limit to top 5 labels for UI
+  }, [issues]);
+
+  const filteredIssues = useMemo(() => {
+    if (filter === 'All') return issues.slice(0, 5);
+    return issues.filter(issue =>
+      issue.labels.some(l => l.name === filter)
+    ).slice(0, 5);
+  }, [issues, filter]);
+
+  if (loading) {
+    return (
+      <div className={styles.loadingWrapper}>
+        <span className={styles.loader}></span>
+        <p>Loading contributions...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className={styles.errorWrapper}>
+        <p>Could not load issues. Check your connection.</p>
+        <Link className="button button--secondary" href="https://github.com/IntersectMBO/developer-experience/issues">
+          Go to GitHub
+        </Link>
+      </div>
+    );
+  }
+
+
+  return (
+    <div className={styles.contributionContainer}>
+      <Heading as="h3" className={styles.contributionTitle}>
+        Start contributing with GitHub issues
+      </Heading>
+
+      <div className={styles.issueListWrapper}>
+        <div className={styles.dropdownContainer}>
+          <button
+            className={styles.filtersBtn}
+            onClick={() => setIsFilterOpen(!isFilterOpen)}
+            aria-haspopup="true"
+            aria-expanded={isFilterOpen}
+          >
+            FILTERS
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ transform: isFilterOpen ? 'rotate(180deg)' : 'rotate(0)' }}
+            >
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          <Link 
+            href="https://github.com/IntersectMBO/developer-experience/issues/new/choose"
+            className={styles.createIssueBtn}
+            target="_blank"
+          >
+            CREATE ISSUE
+          </Link>
+
+          {isFilterOpen && (
+            <div className={styles.dropdownMenu}>
+              {availableLabels.map(label => (
+                <button
+                  key={label}
+                  className={clsx(styles.dropdownItem, filter === label && styles.dropdownItemActive)}
+                  onClick={() => {
+                    setFilter(label);
+                    setIsFilterOpen(false);
+                  }}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {filteredIssues.map((issue) => {
+          const mainLabel = issue.labels[0];
+          const labelColor = mainLabel ? `#${mainLabel.color}` : '#ccc';
+
+          return (
+            <Link key={issue.id} href={issue.html_url} className={styles.issueItem} target="_blank">
+              <div className={styles.issueMain}>
+                <div
+                  className={styles.issueDot}
+                  style={{ background: labelColor }}
+                />
+                <span className={styles.issueTitleInspiration}>{issue.title}</span>
+              </div>
+              <span
+                className={styles.issueTag}
+                style={{ color: labelColor }}
+              >
+                {mainLabel?.name || 'issue'}
+              </span>
+            </Link>
+          );
+        })}
+      </div>
+
+      <div className={styles.contributionFooter}>
+        <p className={styles.footerText}>
+          Pick up a good first issue and ship your first PR.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function CommunitySection() {
   return (
     <section className={styles.communitySection}>
       <div className="container">
         <div className={styles.communityContent}>
           <div className="row">
-            <div className="col col--6">
+            <div className="col col--12">
               <Heading as="h2" className={styles.sectionTitle}>
                 Have Any Questions or Need Help?
               </Heading>
@@ -57,44 +226,11 @@ function CommunitySection() {
                 Our developer advocates and community members will be happy to assist you with your
                 Cardano development journey.
               </p>
-              <div className={styles.communityStats}>
-                <div className={styles.statItem}>
-                  <div className={styles.statNumber}>GitHub</div>
-                  <div className={styles.statLabel}>Issues</div>
-                </div>
-                <div className={styles.statItem}>
-                  <div className={styles.statNumber}>Community</div>
-                  <div className={styles.statLabel}>Support</div>
-                </div>
-                <div className={styles.statItem}>
-                  <div className={styles.statNumber}>Open</div>
-                  <div className={styles.statLabel}>Source</div>
-                </div>
-              </div>
-              <div className={styles.communityActions}>
-                <Link
-                  className="button button--primary button--orange button--lg"
-                  href="https://members.intersectmbo.org/"
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  Join Intersect
-                </Link>
-                <Link
-                  className="button button--secondary button--lg"
-                  href="https://github.com/IntersectMBO/developer-experience"
-                  target="_blank"
-                  rel="noopener noreferrer">
-                  Visit GitHub Repository
-                </Link>
-              </div>
             </div>
-            <div className="col col--6">
-              <div className={styles.communityImage}>
-                <div className={styles.imagePlaceholder}>
-                  <Heading as="h3">GitHub Issues</Heading>
-                  <p>Ask • Suggest • Question</p>
-                </div>
-              </div>
+          </div>
+          <div className="row" style={{ marginTop: '2rem' }}>
+            <div className="col col--12">
+              <GitHubIssues />
             </div>
           </div>
         </div>
