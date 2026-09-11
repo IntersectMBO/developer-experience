@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { MeetupReminderButtonProps } from "./types";
-import { DEFAULT_SESSIONS } from "./constants";
+import { DEFAULT_SESSIONS, DEVEX_SESSIONS_ENABLED } from "./constants";
 import { useMeetupSessions } from "./hooks/useMeetupSessions";
 import { useClickOutside } from "./hooks/useClickOutside";
 import { copyToClipboard } from "./utils/calendarUtils";
@@ -19,7 +19,9 @@ const MeetupReminderButton: React.FC<MeetupReminderButtonProps> = ({
   const [selectedSession, setSelectedSession] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
-  const { sessionDates, meetingStatuses } = useMeetupSessions(sessions);
+  const { sessionDates, meetingStatuses } = useMeetupSessions(
+    DEVEX_SESSIONS_ENABLED ? sessions : [],
+  );
   const { panelRef, buttonRef } = useClickOutside({
     isOpen: isExpanded,
     onClose: () => {
@@ -53,7 +55,7 @@ const MeetupReminderButton: React.FC<MeetupReminderButtonProps> = ({
     ? meetingStatuses.get(selectedSession)
     : undefined;
 
-  if (sessionDates.size === 0) {
+  if (!DEVEX_SESSIONS_ENABLED || sessionDates.size === 0) {
     return null;
   }
 
