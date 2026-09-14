@@ -16,7 +16,7 @@ This repository serves as the comprehensive guide for developers and contributor
 **[Complete Intersect Membership Guide →](./intersect-membership-guide.md)**
 
 ### 2. **New to Cardano?**
-Start with our comprehensive ecosystem overview: [**Directive: Kickoff & Orientation**](./working-group/sessions/q4-2025/01-kickoff-orientation/session-notes/readme.md)
+Start with our comprehensive ecosystem overview: [**Directive: Kickoff & Orientation**](/docs/working-group/sessions/q4-2025/01-kickoff-orientation/session-notes/readme.md)
 
 This guide provides a complete map of the Cardano ecosystem, including core repositories, documentation resources, developer tools, and community support channels.
 
@@ -26,13 +26,13 @@ Pick the path that matches your background and goals — these are parallel trac
 
 | Track | Starting point | Guide |
 |---|---|---|
-| **dApp / Smart Contracts** | New to Cardano, building products | [Beginner Guides](./how-to-guide/beginner/) |
-| **Infrastructure / DevOps** | Running nodes, indexers, block explorers | [Advanced Guides](./how-to-guide/advanced/) |
-| **Core Protocol (Haskell)** | Systems/PL background, want to contribute to ledger or consensus | [Core Protocol Contributor](./how-to-guide/advanced/core-protocol-contributor.md) |
-| **Core Protocol (Rust)** | Rust background, want to contribute to Pallas or Dolos | [Core Protocol Contributor](./how-to-guide/advanced/core-protocol-contributor.md) |
+| **dApp / Smart Contracts** | New to Cardano, building products | [Beginner Guides](/docs/how-to-guide/beginner/) |
+| **Infrastructure / DevOps** | Running nodes, indexers, block explorers | [Advanced Guides](/docs/how-to-guide/advanced/) |
+| **Core Protocol (Haskell)** | Systems/PL background, want to contribute to ledger or consensus | [Core Protocol Contributor](/docs/how-to-guide/advanced/core-protocol-contributor.md) |
+| **Core Protocol (Rust)** | Rust background, want to contribute to Pallas or Dolos | [Core Protocol Contributor](/docs/how-to-guide/advanced/core-protocol-contributor.md) |
 
 ### 4. **Want to Contribute?**
-Join our [**Developer Experience Working Group**](./working-group/sessions/q4-2025/index.md) - a quarterly initiative focused on onboarding new developers and improving the overall developer experience.
+Join our [**Developer Experience Working Group**](/docs/working-group/sessions/q4-2025/index.md) - a quarterly initiative focused on onboarding new developers and improving the overall developer experience.
 
 ## What You'll Find Here
 
@@ -48,18 +48,18 @@ Built by the community, for the community. Join our working groups and help shap
 ## Repository Structure
 
 ### How-To Guides
-- **[Beginner](./how-to-guide/beginner/)** - Getting started guides for newcomers
-- **Advanced** - Deep-dive technical guides for experienced developers (see [Cardano API](./how-to-guide/advanced/cardano-api.md) and [cardano-db-sync](./how-to-guide/advanced/cardano-db-sync.md))
+- **[Beginner](/docs/how-to-guide/beginner/)** - Getting started guides for newcomers
+- **Advanced** - Deep-dive technical guides for experienced developers (see [Cardano API](/docs/how-to-guide/advanced/cardano-api.md) and [cardano-db-sync](/docs/how-to-guide/advanced/cardano-db-sync.md))
 
 ### Tutorials
-- **[Hands-On tutorials](./tutorials/local-cardano-payment-detector.md)** - Interactive coding tutorials and workshops
+- **[Hands-On tutorials](/docs/tutorials/local-cardano-payment-detector.md)** - Interactive coding tutorials and workshops
 
 ### Resources
-- **[Repositories](./resources/repositories)** - Essential GitHub repositories, tools, and APIs
-- **[Community](./resources/community)** - Community channels, forums, and support resources
+- **[Repositories](/docs/resources/repositories/)** - Essential GitHub repositories, tools, and APIs
+- **[Community](/docs/resources/community/)** - Community channels, forums, and support resources
 
-### [Working Group](./working-group/)
-- **[DevEx Working Group](./working-group/)** - Developer Experience Working Group materials and session content
+### [Working Group](/docs/working-group/)
+- **[DevEx Working Group](/docs/working-group/)** - Developer Experience Working Group materials and session content
 
 ## Current Focus: Q1 2026
 
@@ -73,7 +73,7 @@ Our Developer Experience Working Group is running a 12-session program designed 
 - **Provide live support** through open clinic sessions
 - **Foster contribution** to documentation and open source projects
 
-[**Join the Working Group →**](./working-group/sessions/q1-2026/index.md)
+[**Join the Working Group →**](/docs/working-group/sessions/q1-2026/index.md)
 
 ## Getting Help
 
@@ -122,11 +122,11 @@ By the end of Q1 2026, we aim to:
 
 **Step 1**: [Join Intersect - Get Your Voice in Cardano](./intersect-membership-guide.md)
 
-**Step 2**: [Directive: Kickoff & Orientation](./working-group/sessions/q4-2025/01-kickoff-orientation/session-notes/readme.md)
+**Step 2**: [Directive: Kickoff & Orientation](/docs/working-group/sessions/q4-2025/01-kickoff-orientation/session-notes/readme.md)
 
-**Step 3**: [Beginner Guides](./how-to-guide/beginner/)
+**Step 3**: [Beginner Guides](/docs/how-to-guide/beginner/)
 
-**Step 4**: [Join the Developer Experience Working Group](./working-group/)
+**Step 4**: [Join the Developer Experience Working Group](/docs/working-group/)
 
 ---
 

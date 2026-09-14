@@ -34,7 +34,7 @@ slug: /working-group/q2-2026/sessions/21-cardano-production-sdk/recordings
 - Demo dApp: creating a circle, joining from another wallet, and observing the pooled funds increase.
 - Q&A on first-recipient default risk, dispute handling, guarantor models, and future multisig governance.
 
-For the curated technical walkthrough, see the [session notes](../session-notes/readme.md). The [session resources](../session-resources/readme.md) collect the repositories, tools, and standards referenced during the session.
+For the curated technical walkthrough, see the [session notes](../session-notes/). The [session resources](../session-resources/) collect the repositories, tools, and standards referenced during the session.
 
 ---
 

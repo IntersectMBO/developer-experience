@@ -37,7 +37,7 @@ Joining Intersect is the best way to get involved in governance and decision-mak
 
 The **Developer Experience Working Group** holds weekly sessions. 
 - The schedule alternates between morning and evening slots to accommodate global time zones.
-- Use the **[Working Group Calendar](./working-group/readme.md)** or check the `#developer-experience` channel in Discord for the specific time and link for this week's meeting.
+- Use the **[Working Group Calendar](/docs/working-group/)** or check the `#developer-experience` channel in Discord for the specific time and link for this week's meeting.
 
 </details>
 
@@ -109,7 +109,7 @@ Yes, there are several avenues:
 <details>
 <summary>How do I set up my development environment?</summary>
 
-- **New Developers**: Check our **[Beginner Guides](./how-to-guide/beginner/)**.
+- **New Developers**: Check our **[Beginner Guides](/docs/how-to-guide/beginner/)**.
 - **Tools and APIs**: See the **[Repositories](./resources/repositories.md)** catalog and [developers.cardano.org](https://developers.cardano.org).
 
 </details>
