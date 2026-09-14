@@ -47,13 +47,22 @@ function BrandKitHero() {
   return (
     <header className={clsx('hero', styles.hero)}>
       <div className="container">
-        <div className={styles.heroContent}>
-          <Heading as="h1" className={styles.heroTitle}>
-            Brand kit
-          </Heading>
-          <p className={styles.heroSubtitle}>
-            Downloads, colors, typography, and usage guidelines for the Developer Experience portal and Intersect communications.
-          </p>
+        <div className={styles.heroLayout}>
+          <div className={styles.heroText}>
+            <Heading as="h1" className={styles.heroTitle}>
+              Brand kit
+            </Heading>
+            <p className={styles.heroSubtitle}>
+              Downloads, colors, typography, and usage guidelines for the Developer Experience portal and Intersect communications.
+            </p>
+          </div>
+          <div className={styles.heroVisual}>
+            <img
+              src="/img/OSC-con.png"
+              alt="Developer Experience illustration"
+              loading="eager"
+            />
+          </div>
         </div>
       </div>
     </header>
