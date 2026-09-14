@@ -4,18 +4,86 @@
  * work well for content-centric websites.
  */
 
-/* Intersect MBO Brand Colors - Custom Blue Theme */
-:root {
-  /* Primary Brand Colors - Light Theme Blue */
-  --ifm-color-primary: #2555fe;
-  --ifm-color-primary-dark: #1a43d4;
-  --ifm-color-primary-darker: #173cc5;
-  --ifm-color-primary-darkest: #1332a4;
-  --ifm-color-primary-light: #4168fe;
-  --ifm-color-primary-lighter: #4f72fe;
-  --ifm-color-primary-lightest: #7c95fe;
+/* Intersect Developer Experience — Design System Tokens */
+/* Source: .agents/skills/design-baseline/SKILL.md */
 
-  /* Secondary Colors */
+:root {
+  /* Brand roles */
+  --color-brand-primary: #2353FF;
+  --color-brand-primary-dark: #1a43d4;
+  --color-brand-primary-darker: #173cc5;
+  --color-brand-primary-darkest: #1332a4;
+  --color-brand-primary-light: #4168fe;
+  --color-brand-primary-lighter: #4f72fe;
+  --color-brand-primary-lightest: #7c95fe;
+  --color-brand-midnight: #1D1D1B;
+  --color-brand-moon: #F5F3EB;
+  --color-brand-white: #FFFFFF;
+
+  /* Accent roles */
+  --color-accent-vanilla: #FEC104;
+  --color-accent-blazing: #FF4B11;
+  --color-accent-raspberry: #F8908F;
+  --color-accent-caramel: #FCE4C6;
+  --color-accent-black: #000000;
+
+  /* Functional roles — light mode */
+  --color-text: #1D1D1B;
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #6A6A6A;
+  --color-background: #FFFFFF;
+  --color-surface: #F5F3EB;
+  --color-border: #E8E8E8;
+  --color-link: #2353FF;
+  --color-link-hover: #1D1D1B;
+
+  /* Typography scale */
+  --text-hero: 3rem;
+  --text-h1: 2.25rem;
+  --text-h2: 1.75rem;
+  --text-h3: 1.375rem;
+  --text-h4: 1.125rem;
+  --text-body: 1rem;
+  --text-body-sm: 0.875rem;
+  --text-caption: 0.75rem;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+  --space-10: 4rem;
+  --space-12: 6rem;
+
+  /* Border and radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 9999px;
+  --border-width: 1px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(29, 29, 27, 0.06);
+  --shadow-md: 0 2px 8px rgba(29, 29, 27, 0.08);
+  --shadow-lg: 0 4px 20px rgba(29, 29, 27, 0.10);
+
+  /* Layout */
+  --content-max-width: 720px;
+  --container-max-width: 1200px;
+  --sidebar-width: 300px;
+  --toc-width: 240px;
+
+  /* Map tokens to Docusaurus Infima variables */
+  --ifm-color-primary: var(--color-brand-primary);
+  --ifm-color-primary-dark: var(--color-brand-primary-dark);
+  --ifm-color-primary-darker: var(--color-brand-primary-darker);
+  --ifm-color-primary-darkest: var(--color-brand-primary-darkest);
+  --ifm-color-primary-light: var(--color-brand-primary-light);
+  --ifm-color-primary-lighter: var(--color-brand-primary-lighter);
+  --ifm-color-primary-lightest: var(--color-brand-primary-lightest);
   --ifm-color-secondary: #f8f9fa;
   --ifm-color-secondary-dark: #e9ecef;
   --ifm-color-secondary-darker: #dee2e6;
@@ -23,8 +91,6 @@
   --ifm-color-secondary-light: #ffffff;
   --ifm-color-secondary-lighter: #ffffff;
   --ifm-color-secondary-lightest: #ffffff;
-
-  /* Accent Colors */
   --ifm-color-accent: #00d4aa;
   --ifm-color-accent-dark: #00b894;
   --ifm-color-accent-darker: #00a085;
@@ -33,30 +99,44 @@
   --ifm-color-accent-lighter: #33dcc6;
   --ifm-color-accent-lightest: #66e4d4;
 
-  /* Typography */
-  --ifm-font-family-base: Inter, "Inter Fallback", system-ui, arial;
+  --ifm-font-family-base: 'Poppins', 'Helvetica Neue', Helvetica, Arial, system-ui, sans-serif;
   --ifm-font-family-monospace: 'JetBrains Mono', 'Fira Code', Consolas, 'Courier New', monospace;
-  --ifm-font-size-base: 16px;
+  --ifm-font-size-base: var(--text-body);
   --ifm-line-height-base: 1.6;
+
+  --ifm-background-color: var(--color-background);
+  --ifm-background-surface-color: var(--color-surface);
+  --ifm-font-color-base: var(--color-text);
+  --ifm-color-emphasis-300: var(--color-border);
 
   /* Code styling */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(37, 85, 254, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(35, 83, 255, 0.1);
 
   /* Spacing */
-  --ifm-spacing-horizontal: 1.5rem;
-  --ifm-spacing-vertical: 1rem;
+  --ifm-spacing-horizontal: var(--space-5);
+  --ifm-spacing-vertical: var(--space-4);
 }
 
 /* Dark Mode - Intersect Brand Colors */
 [data-theme='dark'] {
+  /* Functional roles — dark mode */
+  --color-text: #F5F3EB;
+  --color-text-secondary: #B3C4D4;
+  --color-text-muted: #9A9A9A;
+  --color-background: #1D1D1B;
+  --color-surface: #2C2B2B;
+  --color-border: #3A3A3A;
+  --color-link: #4D91FF;
+  --color-link-hover: #8CB8FF;
+
   /* Primary Brand Colors - Dark Theme Blue */
-  --ifm-color-primary: #2e7bff;
+  --ifm-color-primary: var(--color-link);
   --ifm-color-primary-dark: #2668d4;
   --ifm-color-primary-darker: #2362c5;
   --ifm-color-primary-darkest: #1d51a4;
-  --ifm-color-primary-light: #4d91ff;
-  --ifm-color-primary-lighter: #5d9bff;
+  --ifm-color-primary-light: #5d9bff;
+  --ifm-color-primary-lighter: #7cabff;
   --ifm-color-primary-lightest: #8cb8ff;
 
   /* Secondary Colors for dark mode */
@@ -1121,4 +1201,147 @@ html[data-theme='dark'] .searchBar .dropdownMenu svg {
   padding: 0.22rem 0.4rem !important;
   border-radius: 6px !important;
   max-width: 220px !important;
+}
+
+/* -------------------------------------------------- */
+/* Design System Utilities & Component Primitives     */
+/* Source: .agents/skills/design-baseline/SKILL.md    */
+/* -------------------------------------------------- */
+
+/* Typography utilities */
+.text-hero {
+  font-size: var(--text-hero);
+  line-height: 1.15;
+  font-weight: 700;
+}
+
+.text-h1 {
+  font-size: var(--text-h1);
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.text-h2 {
+  font-size: var(--text-h2);
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+.text-h3 {
+  font-size: var(--text-h3);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.text-h4 {
+  font-size: var(--text-h4);
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.text-body {
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+
+.text-body-sm {
+  font-size: var(--text-body-sm);
+  line-height: 1.5;
+}
+
+.text-caption {
+  font-size: var(--text-caption);
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+/* Spacing utilities — padding */
+.p-1 { padding: var(--space-1); }
+.p-2 { padding: var(--space-2); }
+.p-3 { padding: var(--space-3); }
+.p-4 { padding: var(--space-4); }
+.p-5 { padding: var(--space-5); }
+.p-6 { padding: var(--space-6); }
+.p-8 { padding: var(--space-8); }
+.p-10 { padding: var(--space-10); }
+
+/* Spacing utilities — margin */
+.m-1 { margin: var(--space-1); }
+.m-2 { margin: var(--space-2); }
+.m-3 { margin: var(--space-3); }
+.m-4 { margin: var(--space-4); }
+.m-5 { margin: var(--space-5); }
+.m-6 { margin: var(--space-6); }
+.m-8 { margin: var(--space-8); }
+.m-10 { margin: var(--space-10); }
+
+/* Component primitives */
+.dx-card {
+  background: var(--ifm-background-surface-color);
+  border: var(--border-width) solid var(--ifm-color-emphasis-300);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  transition: all 0.2s ease;
+}
+
+.dx-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.dx-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-pill);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.dx-button--primary {
+  background: var(--color-brand-primary);
+  color: #ffffff;
+  border: none;
+}
+
+.dx-button--primary:hover {
+  background: var(--color-brand-primary-dark);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.dx-button--secondary {
+  background: transparent;
+  color: var(--color-brand-primary);
+  border: 2px solid var(--color-brand-primary);
+}
+
+.dx-button--secondary:hover {
+  background: var(--color-brand-primary);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.dx-link {
+  color: var(--color-link);
+  text-decoration: none;
+}
+
+.dx-link:hover {
+  color: var(--color-link-hover);
+  text-decoration: underline;
+}
+
+/* Focus and accessibility */
+.dx-focus:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 2px;
+}
+
+/* Content container */
+.dx-content {
+  max-width: var(--content-max-width);
+  margin-left: auto;
+  margin-right: auto;
 }
