@@ -11,12 +11,15 @@ Q2 2026 (Apr–Jun): application development focus — SDK/off-chain architectur
 
 ### Added
 
-* Q2 2026 Working Group session plan and index (Sessions 14–18) ([8c88b3d](https://github.com/IntersectMBO/developer-experience/commit/8c88b3d))
+* Initial Q2 2026 Working Group session plan and index (Sessions 14–18) ([8c88b3d](https://github.com/IntersectMBO/developer-experience/commit/8c88b3d))
 * Session 14: Offchain and SDK repository walkthrough (notes, recording, resources) ([fe1d93c](https://github.com/IntersectMBO/developer-experience/commit/fe1d93c))
 * Session 15: dApp Architecture from Wallet to Backend (notes, recording, resources, YouTube embed) ([a7f061d](https://github.com/IntersectMBO/developer-experience/commit/a7f061d), [4cbda6c](https://github.com/IntersectMBO/developer-experience/commit/4cbda6c))
 * Session 16: UI ↔ Smart Contracts — wallets, tx building, and submission (notes, recording, resources) ([bd7b0dd](https://github.com/IntersectMBO/developer-experience/commit/bd7b0dd), [c5d9fd6](https://github.com/IntersectMBO/developer-experience/commit/c5d9fd6))
 * Session 17: Default Developer Environment for Cardano (notes, recording, resources) ([7c2bf13](https://github.com/IntersectMBO/developer-experience/commit/7c2bf13))
-* Session 18: Building a Production-Grade MCP Server for Cardano (notes, resources, blog post) ([bceaaa0](https://github.com/IntersectMBO/developer-experience/commit/bceaaa0))
+* Session 18: Using AI in Your Cardano Dev Workflow (notes, recording, resources) ([5e462af](https://github.com/IntersectMBO/developer-experience/commit/5e462af))
+* Session 19: Building a Production-Grade MCP Server for Cardano (notes, recording, resources, blog post) ([bceaaa0](https://github.com/IntersectMBO/developer-experience/commit/bceaaa0), [5708829](https://github.com/IntersectMBO/developer-experience/commit/5708829))
+* Session 20: One API Call to Understand Cardano (notes, recording page, resources) ([309d192](https://github.com/IntersectMBO/developer-experience/commit/309d192))
+* Session 21: Building a Production Cardano SDK from Validators to dApp (notes, recording, resources) ([97ac0b6](https://github.com/IntersectMBO/developer-experience/commit/97ac0b6))
 * Advanced guide: Setup a Local Cardano Devnet with Yaci DevKit ([9c269d6](https://github.com/IntersectMBO/developer-experience/commit/9c269d6))
 * Guide: Blaze SDK + Yaci Store integration ([e1db998](https://github.com/IntersectMBO/developer-experience/commit/e1db998))
 * Tutorial: Cardano node emulator ([3b85b2d](https://github.com/IntersectMBO/developer-experience/commit/3b85b2d))

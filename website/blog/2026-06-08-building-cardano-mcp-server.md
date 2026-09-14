@@ -259,4 +259,4 @@ Some governance metadata anchor URLs point to PDF documents, not CIP-100 JSON-LD
 - **Koios API**: [api.koios.rest](https://api.koios.rest)
 - **CIP-1694 spec**: [github.com/cardano-foundation/CIPs/tree/master/CIP-1694](https://github.com/cardano-foundation/CIPs/tree/master/CIP-1694)
 - **Model Context Protocol**: [modelcontextprotocol.io](https://modelcontextprotocol.io)
-- **Session Notes**: [Session 18 — Working Group](../docs/working-group/sessions/q2-2026/18-cardano-mcp-server/session-notes/readme.md)
+- **Session Notes**: [Session 19 — Working Group](../docs/working-group/sessions/q2-2026/19-cardano-mcp-server/session-notes/readme.md)

@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Session 16: UI ↔ Smart Contracts (Wallets + Tx flow) - Recordings"
 sidebar_label: Recordings
 ---
