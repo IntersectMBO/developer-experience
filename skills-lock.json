@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "skillsDirectory": ".agents/skills",
-  "lastSyncedAt": "2026-09-14T18:24:17.365Z",
+  "lastSyncedAt": "2026-09-14T18:25:43.900Z",
   "skills": [
     {
       "name": "brand-baseline",
@@ -13,13 +13,13 @@
       "name": "check-compiler-errors",
       "path": ".agents/skills/check-compiler-errors",
       "description": "Run compile and type-check commands and report failures",
-      "status": "untracked"
+      "status": "committed"
     },
     {
       "name": "commit",
       "path": ".agents/skills/commit",
       "description": "Use when the user asks to commit changes, save work, push to GitHub, or make an atomic commit. Triggers on \"commit\", \"push\", \"save my work\", \"atomic commit\", \"commit and push\".",
-      "status": "untracked"
+      "status": "committed"
     },
     {
       "name": "design-baseline",
@@ -31,13 +31,13 @@
       "name": "fix-merge-conflicts",
       "path": ".agents/skills/fix-merge-conflicts",
       "description": "Resolve merge conflicts non-interactively, validate build and tests, and finalize conflict resolution",
-      "status": "untracked"
+      "status": "committed"
     },
     {
       "name": "harun-review",
       "path": ".agents/skills/harun-review",
       "description": "Use when reviewing dependency manager choices, lockfiles, or build-tooling changes for the Developer Experience project.",
-      "status": "untracked"
+      "status": "committed"
     },
     {
       "name": "humanise-text",
@@ -49,19 +49,19 @@
       "name": "make-pr-easy-to-review",
       "path": ".agents/skills/make-pr-easy-to-review",
       "description": "Prepare PRs for review by cleaning noisy history, improving PR descriptions, and adding reviewer guidance without changing code behavior. Use for \"make this easy to review\", \"tidy this PR\", \"clean up commits\", or \"annotate the diff\".",
-      "status": "untracked"
+      "status": "committed"
     },
     {
       "name": "pr-review-canvas",
       "path": ".agents/skills/pr-review-canvas",
       "description": "Generate an interactive PR review walkthrough as an HTML page. Fetches PR data via gh API, categorizes files into core vs mechanical changes, adds reviewer annotations, and renders diffs with moved-code detection. Use when the user pastes a GitHub PR URL and asks for a review, walkthrough, or summary, or says \"review this PR\".",
-      "status": "untracked"
+      "status": "committed"
     },
     {
       "name": "thermo-nuclear-code-quality-review",
       "path": ".agents/skills/thermo-nuclear-code-quality-review",
       "description": "Run an extremely strict maintainability review for abstraction quality, giant files, and spaghetti-condition growth. Use for a thermo-nuclear code quality review, thermonuclear review, deep code quality audit, or especially harsh maintainability review.",
-      "status": "untracked"
+      "status": "committed"
     }
   ]
 }
