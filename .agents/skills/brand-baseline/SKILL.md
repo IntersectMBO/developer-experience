@@ -84,13 +84,21 @@ Use words that reinforce unity, collaboration, and intersection:
 - Headlines: bold, sentence case, leading 1.15
 - Body: medium, regular, or light depending on readability
 
+## DevEx Portal Logo and Iconography
+
+The Developer Experience portal uses its own logo and iconography in the navbar and favicon (`website/static/img/`). This is distinct from the primary Intersect logo mark.
+
+- Preserve the DevEx navbar logo and favicon as the site's identifying marks.
+- Apply the same care as the Intersect logo: do not distort, rotate, or alter them.
+- When updating the site, ensure the navbar logo and favicon remain consistent with the DevEx portal identity.
+
 ## Visual Restrictions
 
 - No gradients.
 - No transparency or blend modes.
 - Solid fills only.
 - Soft, rounded shapes; avoid sharp corners and thin lines.
-- Do not distort, rotate, or alter the Intersect logo mark.
+- Do not distort, rotate, or alter the Intersect logo mark or the DevEx portal marks.
 
 ## Mission-Aligned Framing
 

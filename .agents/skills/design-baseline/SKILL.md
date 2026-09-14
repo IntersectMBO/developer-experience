@@ -160,6 +160,14 @@ A shared reference for building or modifying the Developer Experience portal UI.
 - Touch targets: minimum 44x44px.
 - Do not rely on color alone to convey meaning.
 
+## DevEx Portal Identity
+
+The DevEx portal uses its own logo and iconography in the navbar and favicon (`website/static/img/`). When updating the site shell:
+
+- Keep the navbar logo and favicon consistent with the DevEx portal identity.
+- Do not replace them with the primary Intersect logo mark unless explicitly requested.
+- Treat the DevEx marks with the same restrictions as the Intersect logo: no distortion, rotation, or alteration.
+
 ## Implementation Notes
 
 - Map these tokens to CSS custom properties in `website/src/css/custom.css`.
