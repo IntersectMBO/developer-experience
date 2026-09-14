@@ -1,9 +1,9 @@
 ---
-title: "Session 19: One API Call to Understand Cardano - Resources"
+title: "Session 20: One API Call to Understand Cardano - Resources"
 sidebar_label: Resources
 ---
 
-# Session 19: One API Call to Understand Cardano - Resources
+# Session 20: One API Call to Understand Cardano - Resources
 
 ## Blockfrost
 

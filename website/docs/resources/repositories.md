@@ -104,7 +104,7 @@ Data access tools, indexers, and Rust protocol implementations.
 | [cardano-foundation/CIPs](https://github.com/cardano-foundation/CIPs) | Cardano Improvement Proposals: the formal process for protocol changes and standards |
 | [Liqwid-Labs/agora](https://github.com/Liqwid-Labs/agora) | On-chain governance framework for DAOs built on Cardano |
 
-> For the CIP contribution process: stages, editors, what qualifies: see the [Core Protocol Contributor Guide](../how-to-guide/advanced/core-protocol-contributor.md#how-to-contribute-a-cip).
+> For the CIP contribution process: stages, editors, what qualifies: see the [Core Protocol Contributor Guide](../how-to-guide/advanced/core-protocol-contributor.md).
 
 
 ## Developer Tools & Testing

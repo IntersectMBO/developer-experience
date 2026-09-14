@@ -1,10 +1,10 @@
 ---
-title: "Session 18: Building a Production-Grade MCP Server for Cardano - Notes"
+title: "Session 19: Building a Production-Grade MCP Server for Cardano - Notes"
 sidebar_label: Session Notes
-slug: /working-group/q2-2026/sessions/18-cardano-mcp-server/session-notes
+slug: /working-group/q2-2026/sessions/19-cardano-mcp-server/session-notes
 ---
 
-# Session 18: Building a Production-Grade MCP Server for Cardano
+# Session 19: Building a Production-Grade MCP Server for Cardano
 
 In this session we walked through **[Cardano MCP](https://github.com/lidonation/Cardano-mcp)** — a purpose-built [Model Context Protocol](https://modelcontextprotocol.io) server that gives AI assistants like Claude live, idiomatic access to the Cardano blockchain. By the end you will understand how the server is structured, how to register it in your editor, and how to query UTxOs, governance proposals, and smart contract datums without leaving your coding session.
 
