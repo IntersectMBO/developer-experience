@@ -29,7 +29,14 @@ export const useMeetupSessions = (
     const dates = new Map<string, Date>();
     sessions.forEach((session) => {
       const interval = session.recurrence?.interval || 2; // Default to bi-weekly
-      dates.set(session.id, calculateNextMeetup(session.baseDate, interval));
+      const next = calculateNextMeetup(
+        session.baseDate,
+        interval,
+        session.endDate,
+      );
+      if (next) {
+        dates.set(session.id, next);
+      }
     });
     setSessionDates(dates);
   }, [sessions]);

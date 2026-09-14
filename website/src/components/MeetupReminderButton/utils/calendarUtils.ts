@@ -11,6 +11,9 @@ export const generateGoogleCalendarUrl = (
   const endDate = new Date(startDate.getTime() + 60 * 60 * 1000); // 1 hour duration
   const dayOfWeek = getDayOfWeekCode(startDate);
   const interval = session.recurrence?.interval || 2; // Default to bi-weekly
+  const until = session.endDate
+    ? `;UNTIL=${formatGoogleDate(new Date(session.endDate))}`
+    : "";
 
   const params = {
     action: "TEMPLATE",
@@ -21,7 +24,7 @@ export const generateGoogleCalendarUrl = (
     location: encodeURIComponent(session.meetupLink),
     dates: `${formatGoogleDate(startDate)}/${formatGoogleDate(endDate)}`,
     recur: encodeURIComponent(
-      `RRULE:FREQ=WEEKLY;INTERVAL=${interval};BYDAY=${dayOfWeek}`
+      `RRULE:FREQ=WEEKLY;INTERVAL=${interval};BYDAY=${dayOfWeek}${until}`
     ),
     ctz: "UTC",
   };
