@@ -987,14 +987,15 @@ html[data-theme='dark'] .searchBar .dropdownMenu svg {
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
-/* Jump to Top — default corner placement (DevEx Sessions floating button hidden while sessions paused) */
+/* Jump to Top above DevEx Sessions (Meetup), same right alignment */
 @media (max-width: 767px) {
   .theme-back-to-top-button {
-    bottom: 1.5rem !important;
-    right: 1.5rem !important;
+    bottom: 4.9rem !important;
+    right: 1.7rem !important;
   }
 }
 
+/* Jump to Top to the left of DevEx Sessions (Meetup), same baseline */
 @media (min-width: 767px) {
   .theme-back-to-top-button {
     bottom: 2rem !important;
