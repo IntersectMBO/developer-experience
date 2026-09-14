@@ -1,13 +1,13 @@
 .hero {
   background: var(--ifm-color-primary);
   color: #ffffff;
-  padding: 4rem 0;
+  padding: var(--space-10) 0;
 }
 
 .heroLayout {
   display: flex;
   align-items: center;
-  gap: 3rem;
+  gap: var(--space-8);
 }
 
 .heroText {
@@ -28,21 +28,21 @@
 }
 
 .heroTitle {
-  font-size: 3rem;
+  font-size: var(--text-hero);
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
   color: #ffffff;
 }
 
 .heroSubtitle {
-  font-size: 1.25rem;
+  font-size: var(--text-h4);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.9);
   margin: 0;
 }
 
 .section {
-  padding: 4rem 0;
+  padding: var(--space-10) 0;
 }
 
 .sectionAlt {
@@ -50,17 +50,17 @@
 }
 
 .sectionTitle {
-  font-size: 2rem;
+  font-size: var(--text-h2);
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
   text-align: center;
 }
 
 .sectionIntro {
-  max-width: 720px;
-  margin: 0 auto 2.5rem;
+  max-width: var(--content-max-width);
+  margin: 0 auto var(--space-8);
   text-align: center;
-  font-size: 1.1rem;
+  font-size: var(--text-body);
   line-height: 1.6;
   color: var(--ifm-color-emphasis-700);
 }
@@ -68,7 +68,7 @@
 .downloadGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
+  gap: var(--space-6);
   max-width: 900px;
   margin: 0 auto;
 }
@@ -76,8 +76,8 @@
 .downloadCard {
   display: flex;
   flex-direction: column;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
+  border: var(--border-width) solid var(--ifm-color-emphasis-300);
+  border-radius: var(--radius-lg);
   background: var(--ifm-background-surface-color);
   text-decoration: none;
   transition: all 0.2s ease;
@@ -86,7 +86,7 @@
 
 .downloadCard:hover {
   border-color: var(--ifm-color-primary);
-  box-shadow: 0 4px 20px rgba(37, 85, 254, 0.1);
+  box-shadow: var(--shadow-md);
   transform: translateY(-2px);
   text-decoration: none;
 }
@@ -97,8 +97,8 @@
   justify-content: center;
   height: 160px;
   width: 100%;
-  border-bottom: 1px solid var(--ifm-color-emphasis-300);
-  padding: 1.5rem;
+  border-bottom: var(--border-width) solid var(--ifm-color-emphasis-300);
+  padding: var(--space-6);
 }
 
 .downloadPreview img {
@@ -114,18 +114,18 @@
 .downloadMeta {
   display: flex;
   flex-direction: column;
-  padding: 1.25rem;
+  padding: var(--space-5);
 }
 
 .downloadLabel {
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: var(--text-body);
   color: var(--ifm-font-color-base);
-  margin-bottom: 0.25rem;
+  margin-bottom: var(--space-1);
 }
 
 .downloadHint {
-  font-size: 0.875rem;
+  font-size: var(--text-body-sm);
   color: var(--ifm-color-primary);
   font-weight: 500;
 }
@@ -133,14 +133,14 @@
 .colorGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1.5rem;
+  gap: var(--space-6);
   max-width: 1000px;
   margin: 0 auto;
 }
 
 .colorCard {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
+  border: var(--border-width) solid var(--ifm-color-emphasis-300);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--ifm-background-surface-color);
 }
@@ -148,25 +148,25 @@
 .colorSwatch {
   height: 120px;
   width: 100%;
-  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  border-bottom: var(--border-width) solid var(--ifm-color-emphasis-300);
 }
 
 .colorMeta {
-  padding: 1rem;
+  padding: var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: var(--space-1);
 }
 
 .colorName {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: var(--text-body);
 }
 
 .colorHex,
 .colorRgb,
 .colorRole {
-  font-size: 0.875rem;
+  font-size: var(--text-body-sm);
   color: var(--ifm-color-emphasis-700);
 }
 
@@ -175,15 +175,15 @@
 }
 
 .typeCard {
-  max-width: 720px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
-  padding: 2.5rem;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
+  padding: var(--space-8);
+  border: var(--border-width) solid var(--ifm-color-emphasis-300);
+  border-radius: var(--radius-lg);
   background: var(--ifm-background-surface-color);
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: var(--space-8);
 }
 
 .typeSample {
@@ -192,42 +192,42 @@
   line-height: 1;
   margin: 0;
   color: var(--ifm-color-primary);
-  font-family: 'Poppins', var(--ifm-font-family-base);
+  font-family: var(--ifm-font-family-base);
 }
 
 .typeMeta {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  font-size: 1rem;
+  gap: var(--space-2);
+  font-size: var(--text-body);
   color: var(--ifm-font-color-base);
 }
 
 .usageCard {
-  padding: 1.5rem;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
+  padding: var(--space-6);
+  border: var(--border-width) solid var(--ifm-color-emphasis-300);
+  border-radius: var(--radius-lg);
   background: var(--ifm-background-surface-color);
   height: 100%;
 }
 
 .usageCardDont {
-  border-color: #ff4b11;
+  border-color: var(--color-accent-blazing);
 }
 
 .usageTitle {
-  font-size: 1.25rem;
+  font-size: var(--text-h4);
   font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
 }
 
 .usageList {
   margin: 0;
-  padding-left: 1.25rem;
+  padding-left: var(--space-5);
 }
 
 .usageList li {
-  margin-bottom: 0.75rem;
+  margin-bottom: var(--space-3);
   line-height: 1.5;
 }
 
@@ -235,7 +235,7 @@
   .heroLayout {
     flex-direction: column;
     text-align: center;
-    gap: 2rem;
+    gap: var(--space-6);
   }
 
   .heroVisual img {
@@ -243,7 +243,7 @@
   }
 
   .heroTitle {
-    font-size: 2.25rem;
+    font-size: var(--text-h1);
   }
 
   .typeCard {
