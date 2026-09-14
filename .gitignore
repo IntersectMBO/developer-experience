@@ -135,3 +135,7 @@ contributor-beginner/build/
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Keep vendored image-size build (security patch)
+!website/vendor/image-size/dist/
+!website/vendor/image-size/dist/**

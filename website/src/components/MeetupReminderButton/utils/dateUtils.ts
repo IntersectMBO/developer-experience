@@ -1,16 +1,24 @@
 /**
- * Calculate next occurrence from a base date with configurable interval
+ * Calculate next occurrence from a base date with configurable interval.
+ * Returns null when the series endDate has passed (no upcoming session).
  */
 export const calculateNextMeetup = (
   baseDate: string,
-  intervalWeeks: number = 2
-): Date => {
+  intervalWeeks: number = 2,
+  endDate?: string
+): Date | null => {
   const base = new Date(baseDate);
   const now = new Date();
+  const seriesEnd = endDate ? new Date(endDate) : null;
 
-  // If base date is in the future, return it
+  const withinSeries = (date: Date): boolean => {
+    if (!seriesEnd) return true;
+    return date.getTime() <= seriesEnd.getTime();
+  };
+
+  // If base date is in the future, return it when still in series
   if (base > now) {
-    return base;
+    return withinSeries(base) ? base : null;
   }
 
   const MS_PER_WEEK = 7 * 24 * 60 * 60 * 1000;
@@ -28,11 +36,12 @@ export const calculateNextMeetup = (
 
   // If the meeting hasn't ended yet, return current occurrence
   if (now.getTime() < meetingEnd) {
-    return currentOccurrence;
+    return withinSeries(currentOccurrence) ? currentOccurrence : null;
   }
 
   // If meeting has ended, return next occurrence
-  return new Date(currentOccurrence.getTime() + INTERVAL_MS);
+  const next = new Date(currentOccurrence.getTime() + INTERVAL_MS);
+  return withinSeries(next) ? next : null;
 };
 
 /**
