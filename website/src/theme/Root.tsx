@@ -2,6 +2,7 @@ import React, { useEffect, type ReactNode } from "react";
 import Head from "@docusaurus/Head";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import MeetupReminderButton from "@site/src/components/MeetupReminderButton";
+import { DEVEX_SESSIONS_ENABLED } from "@site/src/components/MeetupReminderButton/constants";
 
 export default function Root({ children }: { children: ReactNode }) {
   const { siteConfig } = useDocusaurusContext();
@@ -49,7 +50,7 @@ export default function Root({ children }: { children: ReactNode }) {
         <link rel="canonical" href={siteUrl} />
       </Head>
       {children}
-      <MeetupReminderButton />
+      {DEVEX_SESSIONS_ENABLED ? <MeetupReminderButton /> : null}
     </>
   );
 }
