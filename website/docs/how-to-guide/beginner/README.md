@@ -7,8 +7,7 @@ Welcome to the Beginner Guides section! This area contains step-by-step guides d
 ## Current Guides
 
 ### Getting Started with Cardano
-- **[Address Management](./address.md)** - Understanding Cardano addresses ([Official docs](https://docs.cardano.org/about-cardano/learn/cardano-addresses) | [Developer fundamentals](https://developers.cardano.org/docs/get-started/technical-concepts/core-blockchain-fundamentals/#addresses))
-- **[How to Create Address](./howtocreateaddress.md)** - Step-by-step address creation (Based on [PPBL 102.1](https://plutuspbl.io/))
+- **[Address Management](./address.md)** - Understanding Cardano addresses ([Official docs](https://docs.cardano.org/about-cardano/learn/cardano-addresses) | [Developer fundamentals](https://developers.cardano.org/docs/get-started/technical-concepts/core-blockchain-fundamentals/#addresses) | [PPBL 102.1](https://plutuspbl.io/))
 - **[Inputs and Outputs](./inputsandoutputs.md)** - Understanding transaction structure (See [Module 102 in Plutus PBL](https://plutuspbl.io/) for deeper understanding. For advanced understanding, consider learning basic [Category Theory](https://arxiv.org/abs/1302.6946) - types correspond to objects, functions to morphisms)
 
 ## Coming Soon
@@ -49,4 +48,4 @@ Found an issue or want to improve a guide? See our [Contributing Guidelines](htt
 
 ---
 
-*Ready to dive deeper? Check out our [Intermediate Guides](../intermediate/README.md) when you're comfortable with the basics.*
+*Ready to dive deeper? Continue with the [Advanced Guides](../advanced/README.md) or join a [Working Group session](../../working-group/readme.md).*

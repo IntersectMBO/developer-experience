@@ -70,7 +70,6 @@ Share feedback, report issues, or suggest improvements:
 - Intersect Updates - Working group progress and OSC news (subscribe via Intersect website)
 
 **YouTube**
-- [IOG Academy](https://youtube.com/@iogacademy) - Plutus tutorials and educational courses
 - [Cardano Foundation](https://youtube.com/@CardanoFoundation) - Technical explainers and event recordings
 
 **Social Media**  

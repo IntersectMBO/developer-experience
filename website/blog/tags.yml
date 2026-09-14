@@ -1,3 +1,28 @@
+cardano:
+  label: Cardano
+  permalink: /cardano
+  description: Cardano blockchain development
+
+mcp:
+  label: MCP
+  permalink: /mcp
+  description: Model Context Protocol
+
+ai:
+  label: AI
+  permalink: /ai
+  description: Artificial intelligence and AI tooling
+
+governance:
+  label: Governance
+  permalink: /governance
+  description: Cardano on-chain governance (CIP-1694)
+
+developer-tools:
+  label: Developer Tools
+  permalink: /developer-tools
+  description: Tools and utilities for Cardano developers
+
 facebook:
   label: Facebook
   permalink: /facebook

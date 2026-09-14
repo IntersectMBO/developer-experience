@@ -2,22 +2,12 @@
   "sessions": [
     {
       "id": "thursday-evening",
-      "name": "Thursday Evening Session",
-      "title": "Developer Experience Working Group - Evening",
-      "description": "Join us for our bi-weekly Thursday evening meetup to discuss Cardano development, share knowledge, and connect with the community.",
-      "baseDate": "2025-11-27T17:00:00Z",
-      "meetupLink": "https://meet.google.com/rof-jkbo-jwk",
-      "recurrence": {
-        "interval": 2
-      }
-    },
-    {
-      "id": "wednesday-morning",
-      "name": "Wednesday Morning Session",
-      "title": "Developer Experience Working Group - Morning",
-      "description": "Join us for our bi-weekly Wednesday morning meetup to discuss Cardano development, share knowledge, and connect with the community.",
-      "baseDate": "2025-11-19T07:00:00Z",
-      "meetupLink": "https://meet.google.com/rof-jkbo-jwk",
+      "name": "Developer Experience WG",
+      "title": "Developer Experience WG",
+      "description": "Bi-weekly Developer Experience Working Group call. Thursdays at 18:00 UTC, starting 17 September 2026 for one year.",
+      "baseDate": "2026-09-17T18:00:00Z",
+      "endDate": "2027-09-17T18:00:00Z",
+      "meetupLink": "https://meet.google.com/npt-phro-wja",
       "recurrence": {
         "interval": 2
       }

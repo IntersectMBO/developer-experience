@@ -77,6 +77,57 @@ const config: Config = {
   },
 
   plugins: [
+    [
+      "@docusaurus/plugin-client-redirects",
+      {
+        redirects: [
+          {
+            from: "/docs/how-to-guide/beginner/howtocreateaddress",
+            to: "/docs/how-to-guide/beginner/address",
+          },
+          {
+            from: "/docs/resources/tools",
+            to: "/docs/resources/repositories",
+          },
+          {
+            from: "/docs/how-to-guide/intermediate",
+            to: "/docs/how-to-guide/beginner",
+          },
+          {
+            from: "/docs/tutorials/readme",
+            to: "/docs/tutorials/local-cardano-payment-detector",
+          },
+        ],
+        createRedirects(existingPath: string) {
+          const renamedSessionPaths = [
+            {
+              from: "/docs/working-group/q2-2026/sessions/18-ai-dev-workflow",
+              to: "/docs/working-group/q2-2026/sessions/18-cardano-ai-dev-workflow",
+            },
+            {
+              from: "/docs/working-group/q2-2026/sessions/18-cardano-mcp-server",
+              to: "/docs/working-group/q2-2026/sessions/19-cardano-mcp-server",
+            },
+            {
+              from: "/docs/working-group/q2-2026/sessions/19-one-api-call-blockfrost",
+              to: "/docs/working-group/q2-2026/sessions/20-one-api-call-blockfrost",
+            },
+            {
+              from: "/docs/working-group/q2-2026/sessions/20-cardano-production-sdk",
+              to: "/docs/working-group/q2-2026/sessions/21-cardano-production-sdk",
+            },
+          ];
+
+          const renamedSession = renamedSessionPaths.find(
+            ({ to }) => existingPath === to || existingPath.startsWith(`${to}/`),
+          );
+
+          return renamedSession
+            ? [existingPath.replace(renamedSession.to, renamedSession.from)]
+            : undefined;
+        },
+      },
+    ],
     function suppressVscodeLspWarning() {
       return {
         name: "suppress-vscode-lsp-warning",
@@ -220,8 +271,8 @@ const config: Config = {
               to: "/docs/resources/community",
             },
             {
-              label: "Tools & APIs",
-              to: "/docs/resources/tools",
+              label: "Repositories & Tools",
+              to: "/docs/resources/repositories",
             },
             {
               label: "FAQs",

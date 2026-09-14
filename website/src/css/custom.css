@@ -1002,3 +1002,123 @@ html[data-theme='dark'] .searchBar .dropdownMenu svg {
     right: 2.5rem !important;
   }
 }
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* Mermaid Interactive Node Styles                                              */
+/* Applies to all Mermaid diagrams site-wide. Diagram nodes that have a        */
+/* `click` directive automatically get a <title> SVG element (shown by         */
+/* browsers as a native hover tooltip) and are styled below.                   */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+/* Professional card-like canvas for Mermaid diagrams */
+.docusaurus-mermaid-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0 1.25rem;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Pointer cursor on all SVG nodes */
+.docusaurus-mermaid-container svg .node {
+  cursor: pointer;
+}
+
+/* Card-like node geometry and transitions */
+.docusaurus-mermaid-container svg .node rect,
+.docusaurus-mermaid-container svg .node polygon,
+.docusaurus-mermaid-container svg .node path,
+.docusaurus-mermaid-container svg .node circle,
+.docusaurus-mermaid-container svg .node ellipse {
+  stroke-width: 2px;
+  transition: transform 0.16s ease, filter 0.16s ease, stroke-width 0.16s ease;
+}
+
+/* Improve label readability in dense diagrams */
+.docusaurus-mermaid-container svg .nodeLabel,
+.docusaurus-mermaid-container svg .label,
+.docusaurus-mermaid-container svg foreignObject div {
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.34;
+  letter-spacing: 0;
+  overflow: visible;
+}
+
+/* Prevent right-edge clipping on Mermaid HTML labels */
+.docusaurus-mermaid-container svg .label foreignObject,
+.docusaurus-mermaid-container svg .nodeLabel foreignObject {
+  overflow: visible;
+}
+
+/*
+ * Full Pathway: dense outcome node — Mermaid sets a fixed foreignObject box; padding on
+ * the inner div makes content taller than that box and clips. Keep padding minimal,
+ * slightly smaller type, and let the rectangle shape size to the label.
+ * (IDs: legacy OUTCOME, current outcomes)
+ */
+.docusaurus-mermaid-container svg g[id^='flowchart-OUTCOME'],
+.docusaurus-mermaid-container svg g[id^='flowchart-OUTCOME'] .label,
+.docusaurus-mermaid-container svg g[id^='flowchart-outcomes'],
+.docusaurus-mermaid-container svg g[id^='flowchart-outcomes'] .label {
+  overflow: visible;
+}
+
+.docusaurus-mermaid-container svg g[id^='flowchart-OUTCOME'] foreignObject,
+.docusaurus-mermaid-container svg g[id^='flowchart-outcomes'] foreignObject {
+  overflow: visible;
+}
+
+.docusaurus-mermaid-container svg g[id^='flowchart-OUTCOME'] foreignObject div,
+.docusaurus-mermaid-container svg g[id^='flowchart-outcomes'] foreignObject div {
+  padding: 0.2rem 0.45rem;
+  text-align: center;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+.docusaurus-mermaid-container svg g[id^='flowchart-OUTCOME'] .basic.label-container,
+.docusaurus-mermaid-container svg g[id^='flowchart-outcomes'] .basic.label-container {
+  rx: 18px;
+  ry: 18px;
+}
+
+/* Subtle glow + brightness shift on hover */
+.docusaurus-mermaid-container svg g.node:hover > rect,
+.docusaurus-mermaid-container svg g.node:hover > polygon,
+.docusaurus-mermaid-container svg g.node:hover > circle,
+.docusaurus-mermaid-container svg g.node:hover > ellipse,
+.docusaurus-mermaid-container svg g.node:hover > path {
+  filter: brightness(0.95) drop-shadow(0 4px 10px rgba(37, 85, 254, 0.3));
+  stroke-width: 2.4px;
+}
+
+/* Dark mode: stronger glow */
+[data-theme='dark'] .docusaurus-mermaid-container svg g.node:hover > rect,
+[data-theme='dark'] .docusaurus-mermaid-container svg g.node:hover > polygon,
+[data-theme='dark'] .docusaurus-mermaid-container svg g.node:hover > circle,
+[data-theme='dark'] .docusaurus-mermaid-container svg g.node:hover > ellipse,
+[data-theme='dark'] .docusaurus-mermaid-container svg g.node:hover > path {
+  filter: brightness(0.9) drop-shadow(0 4px 12px rgba(46, 123, 255, 0.45));
+}
+
+/* Dark mode canvas */
+[data-theme='dark'] .docusaurus-mermaid-container {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Smaller Mermaid hover tooltip */
+.mermaidTooltip {
+  font-size: 0.68rem !important;
+  line-height: 1.2 !important;
+  padding: 0.22rem 0.4rem !important;
+  border-radius: 6px !important;
+  max-width: 220px !important;
+}

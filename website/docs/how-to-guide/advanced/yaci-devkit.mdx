@@ -1,0 +1,554 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Setup a Local Cardano Devnet with Yaci DevKit
+
+A complete, copy-paste setup for a local Cardano devnet using [Yaci DevKit](https://github.com/bloxbean/yaci-devkit). You get a single-node Cardano network, a Blockfrost-compatible indexer (Yaci Store), and a browser-based explorer (Yaci Viewer) running in seconds.
+
+## Overview
+
+| Component | URL | Purpose |
+|---|---|---|
+| Cardano Node | `localhost:3001` (n2n), `localhost:3333` (n2c via socat) | Local blockchain |
+| Yaci Store API | http://localhost:8080/api/v1/ | Blockfrost-compatible indexer |
+| Yaci Store Swagger | http://localhost:8080/swagger-ui/index.html | REST docs |
+| Yaci Viewer | http://localhost:5173 | Block/tx explorer |
+| Ogmios (optional) | ws://localhost:1337 | WebSocket node API |
+| Kupo (optional) | http://localhost:1442 | UTXO indexer |
+| Submit API | http://localhost:8090 | Tx submission |
+
+Default `testnet-magic` is `42`.
+
+---
+
+## 1. Install Docker
+
+<Tabs groupId="os">
+<TabItem value="macos" label="macOS">
+
+```bash
+brew install --cask docker
+open -a Docker
+```
+
+Wait for the whale icon in the menu bar to settle, then verify:
+
+```bash
+docker info
+docker compose version
+```
+
+</TabItem>
+<TabItem value="linux" label="Linux (Ubuntu/Debian)">
+
+```bash
+sudo apt-get update
+sudo apt-get install -y ca-certificates curl gnupg
+sudo install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo chmod a+r /etc/apt/keyrings/docker.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] \
+  https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable" \
+  | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo usermod -aG docker $USER
+newgrp docker
+docker info
+```
+
+</TabItem>
+<TabItem value="windows" label="Windows (WSL2)">
+
+1. Install [Docker Desktop for Windows](https://docs.docker.com/desktop/install/windows-install/) and enable the **WSL2 backend** during setup.
+2. Install Ubuntu via the Microsoft Store, then open it.
+3. From your Ubuntu shell, verify:
+
+```bash
+docker info
+docker compose version
+```
+
+> All subsequent commands on Windows must be run from the **Ubuntu (WSL2)** shell, not PowerShell or cmd. The DevKit scripts are bash and the n2c Unix socket only works through WSL2.
+
+</TabItem>
+</Tabs>
+
+---
+
+## 2. Install Yaci DevKit
+
+Pick **one** of the three distributions. Docker zip is the most common.
+
+### Option A — Docker zip (recommended)
+
+<Tabs groupId="os">
+<TabItem value="macos" label="macOS">
+
+```bash
+cd ~
+curl -L -o yaci-devkit.zip \
+  https://github.com/bloxbean/yaci-devkit/releases/latest/download/yaci-devkit-docker.zip
+unzip yaci-devkit.zip -d yaci-devkit
+cd yaci-devkit
+chmod +x bin/devkit.sh
+```
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+```bash
+cd ~
+sudo apt-get install -y unzip curl
+curl -L -o yaci-devkit.zip \
+  https://github.com/bloxbean/yaci-devkit/releases/latest/download/yaci-devkit-docker.zip
+unzip yaci-devkit.zip -d yaci-devkit
+cd yaci-devkit
+chmod +x bin/devkit.sh
+```
+
+</TabItem>
+<TabItem value="windows" label="Windows (WSL2)">
+
+In the Ubuntu shell:
+
+```bash
+cd ~
+sudo apt-get install -y unzip curl
+curl -L -o yaci-devkit.zip \
+  https://github.com/bloxbean/yaci-devkit/releases/latest/download/yaci-devkit-docker.zip
+unzip yaci-devkit.zip -d yaci-devkit
+cd yaci-devkit
+chmod +x bin/devkit.sh
+```
+
+> Keep the install path inside the WSL2 filesystem (`~`, not `/mnt/c/...`) — Windows-mounted paths break the socket bind-mounts.
+
+</TabItem>
+</Tabs>
+
+### Option B — NPM (CI/CD-friendly)
+
+Identical on all three OSes (use the Ubuntu/WSL shell on Windows):
+
+```bash
+npm install -g @bloxbean/yaci-devkit
+yaci-devkit --help
+```
+
+### Option C — Clone the source repo
+
+Identical on all three OSes:
+
+```bash
+git clone https://github.com/bloxbean/yaci-devkit.git
+cd yaci-devkit
+chmod +x bin/devkit.sh
+```
+
+---
+
+## 3. Start the DevKit
+
+From the `yaci-devkit` directory:
+
+<Tabs groupId="os">
+<TabItem value="macos" label="macOS">
+
+```bash
+./bin/devkit.sh start
+```
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+```bash
+./bin/devkit.sh start
+```
+
+</TabItem>
+<TabItem value="windows" label="Windows (WSL2)">
+
+```bash
+# Inside the Ubuntu (WSL2) shell
+./bin/devkit.sh start
+```
+
+> Docker Desktop must be running on Windows before this works.
+
+</TabItem>
+</Tabs>
+
+You'll see the URLs banner, then drop into the interactive `yaci-cli`:
+
+```
+yaci-cli>
+```
+
+In a fresh DevKit there is **no devnet yet** — you create one with `create-node`.
+
+---
+
+## 4. Create and Start a Devnet
+
+At the `yaci-cli>` prompt (same on every OS):
+
+```bash
+# Single-node, default 1s blocks
+yaci-cli> create-node -o --start
+
+# Fast 200ms blocks (v0.11+)
+yaci-cli> create-node --block-time 0.2 --slot-length 0.2 -o --start
+
+# Multi-node cluster (rollback testing only)
+yaci-cli> create-node --enable-multi-node --block-time 2 -o --start
+```
+
+After `--start`, the prompt switches to:
+
+```
+devnet:default>
+```
+
+Verify:
+
+```bash
+devnet:default> tip
+devnet:default> info
+devnet:default> default-addresses
+```
+
+Open http://localhost:5173 — the viewer should show live blocks.
+
+---
+
+## 5. Fund Test Addresses
+
+Same on every OS:
+
+```bash
+# Top up a single address with 1000 ADA
+devnet:default> topup addr_test1qzlwg5c3mpr0cz5td0rvr5rvcgf02al05cqgd2wzv7pud6chpzk4elx4jh2f7xtftjrdxddr88wg6sfszu8r3gktpjtqrr00q9 1000
+
+# Inspect UTXOs
+devnet:default> utxos addr_test1qzlwg5c3mpr0cz5td0rvr5rvcgf02al05cqgd2wzv7pud6chpzk4elx4jh2f7xtftjrdxddr88wg6sfszu8r3gktpjtqrr00q9
+```
+
+To auto-fund on every fresh start, edit `config/env`:
+
+```properties
+topup_addresses=addr_test1...:20000,addr_test1...:10000
+```
+
+---
+
+## 6. Environment Variables (one-time setup)
+
+Set these once per shell — every subsequent host-side command uses them.
+
+<Tabs groupId="os">
+<TabItem value="macos" label="macOS / Linux / WSL2">
+
+```bash
+# Adjust HOME_YACI_DEVKIT to wherever you installed the zip / cloned the repo
+export HOME_YACI_DEVKIT=$HOME/yaci-devkit
+export NETWORK_MAGIC=42
+
+# Make them permanent in your shell rc file
+cat >> ~/.bashrc <<'EOF'
+export HOME_YACI_DEVKIT=$HOME/yaci-devkit
+export NETWORK_MAGIC=42
+EOF
+```
+
+> The `cardano-node` Unix socket lives **inside** the `yaci-cli` container at `/clusters/nodes/default/node/node.sock`. From the host, use the `./bin/devkit.sh cli ...` wrapper (it auto-injects `--testnet-magic 42` and the socket path), or `./bin/devkit.sh ssh` to drop into the container.
+
+</TabItem>
+<TabItem value="windows" label="Windows (WSL2)">
+
+```bash
+# In the Ubuntu (WSL2) shell
+export HOME_YACI_DEVKIT=$HOME/yaci-devkit
+export NETWORK_MAGIC=42
+
+cat >> ~/.bashrc <<'EOF'
+export HOME_YACI_DEVKIT=$HOME/yaci-devkit
+export NETWORK_MAGIC=42
+EOF
+```
+
+</TabItem>
+</Tabs>
+
+---
+
+## 7. Use `cardano-cli` Against the Devnet
+
+The wrapper auto-appends `--testnet-magic 42` and the socket path — so **don't pass `--testnet-magic` yourself** when using `./bin/devkit.sh cli ...`. It runs `cardano-cli` inside the container, so any `--out-file` path is **container-side**, not host-side.
+
+```bash
+cd $HOME_YACI_DEVKIT
+
+# Tip
+./bin/devkit.sh cli query tip
+
+# Protocol parameters (file written inside the container at /clusters/...)
+./bin/devkit.sh cli query protocol-parameters \
+  --out-file /clusters/nodes/default/pparams.json
+```
+
+The genesis-funded test keys live at `/clusters/nodes/default/utxo-keys/` inside the container (`utxo1`, `utxo2`, `utxo3`). They have ~3,000,000,000 ADA each and are the cleanest way to demo a transaction.
+
+```bash
+# Inspect them
+./bin/devkit.sh ssh
+# inside the container:
+ls /clusters/nodes/default/utxo-keys
+# utxo1.skey  utxo1.vkey  utxo2.skey  utxo2.vkey  utxo3.skey  utxo3.vkey
+exit
+```
+
+---
+
+## 8. Full Demo Transaction (copy-paste, end-to-end)
+
+Sends **10 ADA from `utxo1` to `utxo2`** using the DevKit's genesis-funded keys, then verifies it landed via Yaci Store. Because all file paths and the socket are inside the container, the cleanest pattern is to run the whole block via `devkit.sh ssh` with a heredoc — tested verbatim against `v0.11.0-beta1`.
+
+```bash
+cd $HOME_YACI_DEVKIT
+./bin/devkit.sh ssh <<'INNER'
+set -e
+export CARDANO_NODE_SOCKET_PATH=/clusters/nodes/default/node/node.sock
+mkdir -p /tmp/demo && cd /tmp/demo
+
+# 1. Derive sender + receiver addresses from the bundled genesis keys
+SENDER_ADDR=$(cardano-cli address build \
+  --payment-verification-key-file /clusters/nodes/default/utxo-keys/utxo1.vkey \
+  --testnet-magic 42)
+RECEIVER_ADDR=$(cardano-cli address build \
+  --payment-verification-key-file /clusters/nodes/default/utxo-keys/utxo2.vkey \
+  --testnet-magic 42)
+echo "From : $SENDER_ADDR"
+echo "To   : $RECEIVER_ADDR"
+
+# 2. Grab the first UTXO at the sender (no jq in container — use grep)
+cardano-cli query utxo --address "$SENDER_ADDR" --testnet-magic 42 --out-file utxos.json
+TX_IN=$(grep -oE '"[0-9a-f]{64}#[0-9]+"' utxos.json | head -1 | tr -d '"')
+echo "Input UTXO: $TX_IN"
+
+# 3. Build the transaction (10 ADA = 10,000,000 lovelace)
+cardano-cli conway transaction build \
+  --tx-in "$TX_IN" \
+  --tx-out "$RECEIVER_ADDR+10000000" \
+  --change-address "$SENDER_ADDR" \
+  --testnet-magic 42 \
+  --out-file tx.raw
+
+# 4. Sign with utxo1's signing key
+cardano-cli conway transaction sign \
+  --tx-body-file tx.raw \
+  --signing-key-file /clusters/nodes/default/utxo-keys/utxo1.skey \
+  --testnet-magic 42 \
+  --out-file tx.signed
+
+# 5. Submit + extract the tx hash
+cardano-cli conway transaction submit --tx-file tx.signed --testnet-magic 42
+TX_HASH=$(cardano-cli conway transaction txid --tx-file tx.signed | grep -oE '[0-9a-f]{64}')
+echo "TX_HASH=$TX_HASH"
+INNER
+```
+
+You'll see the tx hash printed. Now verify it landed in a block via the Yaci Store API on the **host**:
+
+```bash
+# Replace with the TX_HASH printed above
+TX_HASH=<paste-hash-here>
+
+# Wait a block, then look it up
+sleep 3
+curl -s "http://localhost:8080/api/v1/txs/$TX_HASH" | jq
+
+# Recompute receiver address on host and check its balance grew
+RECEIVER_ADDR=$($HOME_YACI_DEVKIT/bin/devkit.sh cli address build \
+  --payment-verification-key-file /clusters/nodes/default/utxo-keys/utxo2.vkey | tail -1)
+curl -s "http://localhost:8080/api/v1/addresses/$RECEIVER_ADDR" | jq
+```
+
+Expected: `txs/$TX_HASH` shows the tx in a block, and the receiver's `amount` includes the new 10 ADA UTXO.
+
+> If `txs/$TX_HASH` returns 404, the tx is still in the mempool — the node hasn't forged a block including it yet. On a stalled devnet (long-offline single producer) it can stay 404 forever; run `devnet:default> reset` to get fresh genesis.
+
+---
+
+## 9. Talk to Yaci Store (Blockfrost-compatible API)
+
+The indexer is on `http://localhost:8080`. The endpoints mirror Blockfrost where it makes sense.
+
+`curl` is available natively on macOS, Linux, and modern Windows — these commands work as-is in any shell. The PowerShell variants are shown only where the syntax actually differs.
+
+<Tabs groupId="os">
+<TabItem value="macos" label="macOS / Linux / WSL2">
+
+```bash
+# Latest block
+curl -s http://localhost:8080/api/v1/blocks/latest | jq
+
+# Block by number
+curl -s http://localhost:8080/api/v1/blocks/100 | jq
+
+# Latest transactions (paginated)
+curl -s "http://localhost:8080/api/v1/txs?page=1&count=10" | jq
+
+# UTXOs at an address
+curl -s "http://localhost:8080/api/v1/addresses/addr_test1.../utxos" | jq
+
+# Submit a signed CBOR transaction
+curl -s -X POST \
+  -H "Content-Type: application/cbor" \
+  --data-binary @tx.cbor \
+  http://localhost:8090/api/submit/tx
+```
+
+</TabItem>
+<TabItem value="windows" label="Windows PowerShell">
+
+```powershell
+# Latest block
+Invoke-RestMethod http://localhost:8080/api/v1/blocks/latest
+
+# Block by number
+Invoke-RestMethod http://localhost:8080/api/v1/blocks/100
+
+# Latest transactions (paginated)
+Invoke-RestMethod "http://localhost:8080/api/v1/txs?page=1&count=10"
+
+# Submit a signed CBOR transaction
+Invoke-RestMethod -Method Post `
+  -Uri http://localhost:8090/api/submit/tx `
+  -ContentType "application/cbor" `
+  -InFile tx.cbor
+```
+
+</TabItem>
+</Tabs>
+
+Full Swagger docs: http://localhost:8080/swagger-ui/index.html.
+
+### Use it from your DApp
+
+It exposes the minimum Blockfrost-compatible endpoints for tx building, so it drops in to:
+
+- **Cardano Client Lib (Java)** — Blockfrost backend pointed at `http://localhost:8080/api/v1/`
+- **MeshJS (JS/TS)** — [example](https://github.com/MeshJS/examples/blob/main/mesh/yaci-send-lovelace.ts)
+- **Lucid Evolution** — Blockfrost provider with the same base URL
+
+---
+
+## 10. Optional: Ogmios & Kupo
+
+Enable in `config/env` before starting (same file on every OS — edit with your usual editor):
+
+```properties
+ogmios_enabled=true
+kupo_enabled=true
+```
+
+Then restart:
+
+```bash
+./bin/devkit.sh stop
+./bin/devkit.sh start
+```
+
+- Ogmios: `ws://localhost:1337`
+- Kupo: `curl http://localhost:1442/matches/*` etc.
+
+---
+
+## 11. Reset, Stop, Restart
+
+Same on every OS:
+
+```bash
+# Inside yaci-cli — wipe devnet data and start over
+devnet:default> reset
+
+# From the host — stop all DevKit containers
+./bin/devkit.sh stop
+
+# Restart (containers + interactive yaci-cli)
+./bin/devkit.sh start
+```
+
+If the node was offline for hours and `query tip` shows `syncProgress` stuck below 100, run `reset` — a single-producer devnet doesn't catch up across large wall-clock gaps. Fresh genesis is faster.
+
+---
+
+## 12. Rollback Testing (Multi-node Only)
+
+```bash
+# Start a 3-node cluster
+yaci-cli> create-node --enable-multi-node --block-time 2 -o --start
+
+# Partition the network
+devnet:default> create-forks
+
+# Submit txs on the partitioned side
+devnet:default> topup addr_test1... 1000
+
+# Heal the partition — the shorter chain rolls back
+devnet:default> join-forks
+```
+
+Useful for testing how your indexer or DApp handles reorgs.
+
+---
+
+## Troubleshooting
+
+<Tabs groupId="os">
+<TabItem value="macos" label="macOS">
+
+| Symptom | Fix |
+|---|---|
+| `Cannot connect to the Docker daemon` | `open -a Docker` and wait for the whale to settle |
+| Port already in use (8080, 5173, 3001…) | Edit `config/env` `HOST_*_PORT` values |
+| Viewer shows 500 / "Waiting for live data" | `docker logs node1-yaci-cli-1` — the in-container `cardano-node` must be running. After a Docker restart, re-run `./bin/devkit.sh start` then `create-node -o --start` (or `reset`) |
+| `query tip` returns the same slot forever | Devnet stalled after long offline gap → `reset` |
+| Apple Silicon image issues | DevKit ships `arm64` images — check `config/version` matches your release |
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+| Symptom | Fix |
+|---|---|
+| `Cannot connect to the Docker daemon` | `sudo systemctl start docker`; verify `docker info` works without sudo (re-login after `usermod -aG docker`) |
+| Port already in use (8080, 5173, 3001…) | Edit `config/env` `HOST_*_PORT` values |
+| Permission denied on `bin/devkit.sh` | `chmod +x bin/devkit.sh` |
+| Viewer shows 500 / "Waiting for live data" | `docker logs node1-yaci-cli-1` — the in-container `cardano-node` must be running. After a Docker restart, re-run `./bin/devkit.sh start` then `create-node -o --start` (or `reset`) |
+| `query tip` returns the same slot forever | Devnet stalled after long offline gap → `reset` |
+
+</TabItem>
+<TabItem value="windows" label="Windows (WSL2)">
+
+| Symptom | Fix |
+|---|---|
+| `Cannot connect to the Docker daemon` | Start Docker Desktop; ensure WSL2 integration is enabled for your Ubuntu distro (Settings → Resources → WSL Integration) |
+| `./bin/devkit.sh: /bin/bash^M: bad interpreter` | Repo was cloned with CRLF — `sed -i 's/\r$//' bin/devkit.sh scripts/*.sh` |
+| Port already in use (8080, 5173, 3001…) | Edit `config/env` `HOST_*_PORT` values |
+| Viewer shows 500 / "Waiting for live data" | In Ubuntu WSL2: `docker logs node1-yaci-cli-1`. After a Docker Desktop restart, re-run `./bin/devkit.sh start` then `create-node -o --start` (or `reset`) |
+| `query tip` returns the same slot forever | Devnet stalled after long offline gap → `reset` |
+| File-permission errors on the zip | Don't install under `/mnt/c/...` — install inside the WSL2 filesystem (`~`) |
+
+</TabItem>
+</Tabs>
+
+---
+
+## References
+
+- DevKit repo: https://github.com/bloxbean/yaci-devkit
+- DevKit docs: https://devkit.yaci.xyz
+- Yaci Store: https://github.com/bloxbean/yaci-store
+- CI integration guide: https://devkit.yaci.xyz/ci-integration
+- Sample CI project: https://github.com/bloxbean/devkit-npm-ci-test

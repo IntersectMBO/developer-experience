@@ -1,210 +1,199 @@
-<div align="center">
+# Intersect MBO Developer Experience
 
-# Developer Experience Working Group
+<p align="center">
+  <a href="https://github.com/IntersectMBO/developer-experience/stargazers"><img src="https://img.shields.io/github/stars/IntersectMBO/developer-experience?style=flat-square&logo=github&label=Stars&color=24292f" alt="GitHub stars"></a>
+  <a href="https://github.com/IntersectMBO/developer-experience/network/members"><img src="https://img.shields.io/github/forks/IntersectMBO/developer-experience?style=flat-square&logo=github&label=Forks&color=24292f" alt="GitHub forks"></a>
+  <a href="https://github.com/IntersectMBO/developer-experience/issues"><img src="https://img.shields.io/github/issues/IntersectMBO/developer-experience?style=flat-square&logo=github&label=Issues&color=24292f" alt="Open issues"></a>
+  <a href="https://github.com/IntersectMBO/developer-experience/graphs/contributors"><img src="https://img.shields.io/github/contributors/IntersectMBO/developer-experience?style=flat-square&logo=github&label=Contributors&color=24292f" alt="Contributors"></a>
+</p>
 
-**Making Cardano development more accessible, efficient, and rewarding**
+<p align="center">
+  <a href="https://devex.intersectmbo.org"><img src="https://img.shields.io/badge/Website-devex.intersectmbo.org-0033AD?style=flat-square&logo=cardano&logoColor=white" alt="Developer Experience website"></a>
+  <a href="https://github.com/IntersectMBO/developer-experience/actions/workflows/deploy.yml"><img src="https://img.shields.io/github/actions/workflow/status/IntersectMBO/developer-experience/deploy.yml?branch=main&style=flat-square&label=Deploy&logo=githubactions&logoColor=white" alt="Deploy status"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-009688?style=flat-square&logo=apache&logoColor=white" alt="Apache 2.0 License"></a>
+  <a href="website/package.json"><img src="https://img.shields.io/badge/Node.js-%3E%3D20-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js 20+"></a>
+  <a href="website/package.json"><img src="https://img.shields.io/badge/Docusaurus-3.10-2ECC71?style=flat-square&logo=docusaurus&logoColor=white" alt="Docusaurus"></a>
+</p>
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Cardano](https://img.shields.io/badge/Cardano-Ecosystem-0033AD?logo=cardano)](https://cardano.org)
-[![Intersect MBO](https://img.shields.io/badge/Intersect-MBO-00B4D8)](https://www.intersectmbo.org/)
-[![Documentation](https://img.shields.io/badge/docs-Docusaurus-2E7D32)](https://devex.intersectmbo.org/)
+Documentation, guides, and working-group resources for developers building on [Cardano](https://cardano.org/). This repository powers the [Developer Experience portal](https://devex.intersectmbo.org) and hosts session materials for the Intersect MBO Developer Experience Working Group.
 
-**[Website](https://devex.intersectmbo.org/)** · **[Report an issue](https://github.com/IntersectMBO/developer-experience/issues)** · **[Discussions](https://github.com/IntersectMBO/developer-experience/discussions)**
+## Overview
 
-</div>
+The **Developer Experience (DevEx) Working Group** is a community of Developer Advocates from [Intersect MBO](https://www.intersectmbo.org/) focused on making Cardano more accessible, efficient, and rewarding to build on.
 
----
+We identify pain points in the ecosystem, improve tooling and documentation, and run collaborative workshops for developers at every level.
 
-## Project overview
+**Key focus areas:**
 
-The **Developer Experience (DevEx) Working Group** is a community of Developer Advocates from **Intersect MBO** focused on improving how developers build on Cardano. We identify pain points, improve tooling and documentation, and foster collaboration across the ecosystem so that onboarding and day-to-day development are clearer and faster.
+| Area | What we work on |
+| --- | --- |
+| Onboarding & documentation | Guides, tutorials, and structured learning paths |
+| Tooling & workflows | Dev environments, SDKs, and developer tooling |
+| Community & collaboration | Working-group sessions, feedback loops, knowledge sharing |
+| Inclusive onboarding | Multi-language support and the Developer Thriving Framework |
 
-| Aspect | Description |
-|--------|-------------|
-| **Mission** | Enhance developer experience in the Cardano ecosystem so more people can build successfully. |
-| **Scope** | Documentation, tooling, workflows, onboarding, and the human side of developer experience. |
-| **Output** | This repo: docs, guides, working group materials, and a [Docusaurus documentation site](https://devex.intersectmbo.org/). |
+**Live site:** [devex.intersectmbo.org](https://devex.intersectmbo.org)
 
-> **Who is this for?** Developers (new or experienced), project maintainers, and anyone who wants to contribute to or improve Cardano’s developer experience.
+## Developer Advocates
 
----
+Connect with the current cohort for mentorship, session planning, or contribution guidance.
 
-## What we do
+### Current Cohort
 
-- **Identify and prioritize** developer experience issues in the Cardano ecosystem.
-- **Propose and implement** improvements to tooling, documentation, and workflows.
-- **Foster collaboration** between developers, projects, and stakeholders.
-- **Support multi-language** integration and learning paths.
-- **Develop a Developer Thriving Framework** to address social barriers and engagement.
-- **Focus on the human side** of developer experience, not only docs and tech.
-- **Run collaborative workshops** to gather perspectives and build shared understanding.
-- **Address pain points** that block newcomers and growth.
-- **Build trust and reduce silos** across the developer community.
+| Advocate | Links | Schedule a call |
+| --- | --- | --- |
+| **Uche** | [LinkedIn](https://www.linkedin.com/in/thisisobate) · Discord: `@obate` | [Book a call](https://calendar.app.google/6HC9yHfTHrQ1dfcB9) |
+| **Emmanuel** | [LinkedIn](https://www.linkedin.com/in/emmanuel-shikuku-devops/) · [X](https://x.com/Emmanuel_tyty) · Discord: `@emmanueltyty` | [Book a call](https://calendar.app.google/3LGaFshgi7q9fsQD8) |
+| **Dan** | [LinkedIn](https://www.linkedin.com/in/danbaruka/) · [X](https://x.com/danamphred) · Discord: `@danamphred` | [Book a call](https://calendar.app.google/T1BuH5EnRDyMTsyV8) |
+| **Harun** | [LinkedIn](https://www.linkedin.com/in/harunslinked/) · Discord: `@wesh09` | [Book a call](https://calendly.com/harunm28/30min) |
 
----
-
-## Focus areas
-
-| Area | Description |
-|------|-------------|
-| **Onboarding & documentation** | Clear getting-started guides and up-to-date references. |
-| **Tooling & workflows** | Better dev tools and day-to-day workflows. |
-| **Collaboration** | Working with other developers and projects in the ecosystem. |
-| **Feedback** | Collecting and acting on developer feedback. |
-| **Community & knowledge sharing** | Support channels and shared learning. |
-
----
-
-## Get involved
-
-| Channel | Link |
-|---------|------|
-| **Calendar** | [Intersect Event calendar](https://calendar.google.com/calendar/u/1?cid=Y19iMGMyODE3NWE2NTBkOGUwNzIwNTM2ZGU4OWE0NDMxMjFiYTcxYTVkMDgxYmRiOWU1NGRiZTU2NjI1NGY5ZGUwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20) — weekly DevEx sessions. |
-| **GitHub** | [Issues](https://github.com/IntersectMBO/developer-experience/issues) · [Pull requests](https://github.com/IntersectMBO/developer-experience/pulls) · [Discussions](https://github.com/IntersectMBO/developer-experience/discussions). |
-| **Membership** | [Become an Intersect member](https://members.intersectmbo.org/registration). |
-| **Discord** | [DevEx WG channel](https://discord.com/channels/1136727663583698984/1250047836339306526). |
-| **Feedback** | Share ideas and pain points in Discord or via GitHub issues. |
-
----
-
-## Developer advocates
-
-Connect with current and past advocates for help, calls, or questions.
-
-### Current cohort
-
-| Advocate | LinkedIn | Schedule a call | X | Discord |
-|----------|----------|-----------------|---|--------|
-| **Uche** | [Profile](https://www.linkedin.com/in/thisisobate) | [Book](https://calendar.app.google/6HC9yHfTHrQ1dfcB9) | - | @obate. |
-| **Emmanuel** | [Profile](https://www.linkedin.com/in/emmanuel-shikuku-devops/) | [Book](https://calendar.app.google/3LGaFshgi7q9fsQD8) | [@Emmanuel_tyty](https://x.com/Emmanuel_tyty) | @emmanueltyty |
-| **Dan** | [Profile](https://www.linkedin.com/in/danbaruka/) | [Book](https://calendar.app.google/T1BuH5EnRDyMTsyV8) | [@danamphred](https://x.com/danamphred) | @danamphred |
-| **Harun** | [Profile](https://www.linkedin.com/in/harunslinked/) | [Book](https://calendly.com/harunm28/30min) | - | @wesh09 |
-
-### Past cohort
+### Past Cohort
 
 | Advocate | Interview | LinkedIn | Discord |
-|----------|-----------|----------|---------|
-| **Alex** | [Watch](https://www.youtube.com/watch?v=U-cGNG3rzPg) | [Profile](https://www.linkedin.com/in/alex-seregin/) | alexeusgr |
-| **Bernand** | [Watch](https://www.youtube.com/watch?v=grbX5DAaW5Q) | [Profile](https://www.linkedin.com/in/bernard-sibanda-954563243/) | wims5274 |
-| **Suganya** | [Watch](https://www.youtube.com/watch?v=o8a6gTcE50w) | [Profile](https://www.linkedin.com/in/suganya-raju/) | suganya1607 |
-| **Udai** | [Watch](https://www.youtube.com/watch?v=UDXshRpVA6M) | [Profile](https://www.linkedin.com/in/solanki/) | thecoder0001 |
+| --- | --- | --- | --- |
+| Alex | [Watch](https://www.youtube.com/watch?v=U-cGNG3rzPg) | [Profile](https://www.linkedin.com/in/alex-seregin/) | `alexeusgr` |
+| Bernand | [Watch](https://www.youtube.com/watch?v=grbX5DAaW5Q) | [Profile](https://www.linkedin.com/in/bernard-sibanda-954563243/) | `wims5274` |
+| Suganya | [Watch](https://www.youtube.com/watch?v=o8a6gTcE50w) | [Profile](https://www.linkedin.com/in/suganya-raju/) | `suganya1607` |
+| Udai | [Watch](https://www.youtube.com/watch?v=UDXshRpVA6M) | [Profile](https://www.linkedin.com/in/solanki/) | `thecoder0001` |
 
----
+## Quick Start
 
-## Quick start
-
-Get the documentation site running locally in a few minutes.
-
-**Prerequisites:** [Node.js](https://nodejs.org/) (v18+ recommended), npm or yarn, Git.
+Get the documentation site running locally in under 5 minutes:
 
 ```bash
-# Clone the repository
+# 1. Clone the repository
 git clone https://github.com/IntersectMBO/developer-experience.git
 cd developer-experience/website
 
-# Install dependencies
+# 2. Install dependencies (Node.js 20+ required)
 npm install
 
-# Start the dev server (hot reload)
+# 3. Start the development server with hot reload
 npm run start:dev
 ```
 
-Then open **http://localhost:3000** in your browser. You should see the DevEx site; edits under `website/docs` will reload automatically.
+Open [http://localhost:3000](http://localhost:3000) in your browser. Edits to files under `website/docs/` reload automatically.
 
-| Goal | Command |
-|------|--------|
-| **Develop with live reload** | `npm run start:dev` |
-| **Production build** | `npm run build` |
-| **Serve production build** | `npm run serve` |
+## Installation and Setup
 
+### Prerequisites
+
+| Requirement | Version |
+| --- | --- |
+| [Node.js](https://nodejs.org/) | 20 or higher |
+| npm | Bundled with Node.js |
+| Git | Any recent version |
+
+### Step-by-step setup
+
+See the [Contributing Guide](./CONTRIBUTING.md) for full setup, development, and submission instructions.
+
+## Usage
+
+### Edit documentation
+
+Documentation lives in `website/docs/`. Create or edit Markdown (`.md`) or MDX (`.mdx`) files:
+
+```markdown
+---
+sidebar_position: 2
 ---
 
-## Installation & setup
+# My New Guide
 
-### Step 1: Clone and enter the website
+Brief introduction for developers.
 
-```bash
-git clone https://github.com/IntersectMBO/developer-experience.git
-cd developer-experience/website
+## Prerequisites
+
+- A Cardano wallet
+- Node.js 20+
+
+## Steps
+
+1. Install the CLI tool.
+2. Run your first command.
 ```
 
-### Step 2: Install dependencies
+### Add a working-group session
 
-```bash
-npm install
+Session materials follow a quarter-based layout under `website/docs/working-group/sessions/`:
+
+```
+website/docs/working-group/sessions/
+└── q2-2026/
+    └── 18-my-session/
+        ├── _category_.json
+        ├── session-notes/
+        │   └── readme.md
+        └── session-resources/
+            └── readme.md
 ```
 
-### Step 3: Run the site
+See existing sessions (for example `q4-2025/01-kickoff-orientation/`) for the established pattern.
 
-- **Development (recommended):** `npm run start:dev` - starts Docusaurus with hot reload.
-- **Production-style:** `npm run build && npm run serve` - build and serve the static site.
-
-### Step 4: Edit content
-
-- **Docs:** `website/docs/` - add or edit Markdown/MDX files; structure follows the sidebar.
-- **Config:** `website/docusaurus.config.ts` - site title, theme, nav, footer.
-- **Homepage:** `website/src/pages/index.tsx` (and related components).
-
-### Requirements
-
-| Requirement | Notes |
-|-------------|--------|
-| **Node.js** | v18 or higher (LTS recommended). |
-| **npm or yarn** | For installing dependencies. |
-| **Git** | For cloning and contributing. |
-
----
-
-## Project structure
+## Project Structure
 
 ```
 developer-experience/
-├── README.md                 # This file
-├── CONTRIBUTING.md            # How to contribute (issues, PRs, style)
-├── LICENSE                    # Apache-2.0
-│
-├── website/                   # Docusaurus documentation site
-│   ├── docs/                  # All documentation (Markdown/MDX)
-│   │   ├── resources/         # Repos, tools, community, pathway
-│   │   ├── working-group/     # Working group sessions & materials
-│   │   └── ...                # Guides, how-tos, getting started
-│   ├── src/                   # Custom React components, CSS, pages
-│   ├── static/                # Static assets
-│   ├── docusaurus.config.ts   # Site configuration
-│   └── package.json           # Scripts: start:dev, build, serve
-│
-└── .github/                   # PR/issue templates, workflows
+├── website/                    # Docusaurus documentation site
+│   ├── docs/                   # Documentation content (Markdown / MDX)
+│   │   ├── getting-started.md  # Main onboarding guide
+│   │   ├── how-to-guide/       # Beginner, intermediate, and advanced guides
+│   │   ├── tutorials/          # Hands-on tutorials
+│   │   ├── resources/          # Tools, repos, and community links
+│   │   └── working-group/      # DevEx WG session materials
+│   ├── src/                    # React components and custom theme
+│   ├── static/                 # Static assets (images, CNAME)
+│   └── docusaurus.config.ts    # Site configuration
+├── DA Milestones/              # Developer Advocate milestone reports
+├── scripts/                    # Utility scripts (e.g. changelog)
+├── CONTRIBUTING.md             # Contribution guidelines
+├── CODE-OF-CONDUCT.md          # Community standards
+└── LICENSE                     # Apache 2.0
 ```
 
----
+## Documentation
+
+| Resource | Description |
+| --- | --- |
+| [Getting Started](website/docs/getting-started.md) | Onboarding paths for new Cardano developers |
+| [How-To Guides](website/docs/how-to-guide/) | Step-by-step guides by skill level |
+| [Working Group](website/docs/working-group/readme.md) | Session plans, notes, and recordings |
+| [FAQ](website/docs/faq.md) | Answers to common questions |
+| [Intersect Membership Guide](website/docs/intersect-membership-guide.md) | How to join Intersect and access Discord |
+
+## Get Involved
+
+- **Meetings** — Join weekly DevEx working-group sessions via the [Intersect Event calendar](https://calendar.google.com/calendar/u/1?cid=Y19iMGMyODE3NWE2NTBkOGUwNzIwNTM2ZGU4OWE0NDMxMjFiYTcxYTVkMDgxYmRiOWU1NGRiZTU2NjI1NGY5ZGUwQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20).
+- **GitHub** — Report problems in [Issues](https://github.com/IntersectMBO/developer-experience/issues), propose fixes in [Pull Requests](https://github.com/IntersectMBO/developer-experience/pulls), and join [Discussions](https://github.com/IntersectMBO/developer-experience/discussions).
+- **Intersect membership** — [Become a member](https://members.intersectmbo.org/registration) to participate in governance and access the Discord community.
+- **Discord** — DevEx WG channel: [#developer-experience](https://discord.com/channels/1136727663583698984/1250047836339306526).
 
 ## Contributing
 
-We welcome contributions from all skill levels and backgrounds.
+We welcome contributions from all skill levels. Before you start:
 
-1. **Read** [CONTRIBUTING.md](./CONTRIBUTING.md) for full guidelines (setup, style, PR process).
-2. **Check** [existing issues](https://github.com/IntersectMBO/developer-experience/issues) before opening new ones.
-3. **Use** the issue and PR templates; provide clear descriptions.
-4. **Be respectful and constructive** in discussions and reviews.
+1. Read [CONTRIBUTING.md](./CONTRIBUTING.md) for the full workflow.
+2. Review the [Code of Conduct](./CODE-OF-CONDUCT.md).
+3. Check [existing issues](https://github.com/IntersectMBO/developer-experience/issues) before opening a new one.
+4. Open an issue to discuss significant changes, then submit a pull request linked to that issue.
 
-Quick contribution flow: fork → branch → edit (e.g. under `website/docs/`) → test locally (`npm run start:dev`) → open a PR.
-
----
+Typical contributions include documentation fixes, new guides, code examples, and working-group session materials.
 
 ## Contact
 
 | Channel | Link |
-|---------|------|
-| **GitHub Discussions** | [Developer Experience WG](https://github.com/IntersectMBO/developer-experience/discussions) |
-| **Discord** | [OSC Working Groups](https://discord.com/channels/1136727663583698984/1239886460266479696) |
-| **Email** | [Open Source Office](mailto:oso@intersectmbo.org) |
+| --- | --- |
+| GitHub Discussions | [developer-experience/discussions](https://github.com/IntersectMBO/developer-experience/discussions) |
+| Discord (OSC Working Groups) | [Join channel](https://discord.com/channels/1136727663583698984/1239886460266479696) |
+| Email | [oso@intersectmbo.org](mailto:oso@intersectmbo.org) |
 
 ---
 
-<div align="center">
+This working group is community-driven and supported by Intersect MBO. We welcome contributions from all skill levels and backgrounds.
 
-**This working group is community-driven and supported by Intersect MBO.**
+**Disclaimer:** Content reflects community efforts and may evolve as the Cardano ecosystem grows. Report outdated information via [GitHub Issues](https://github.com/IntersectMBO/developer-experience/issues).
 
-*We welcome contributions from all skill levels and backgrounds.*
+## License
 
-</div>
+This project is licensed under the [Apache License 2.0](LICENSE).

@@ -1,0 +1,309 @@
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* CardanoToolGrid — component-scoped styles                                   */
+/* Colour tokens mirror the existing diagram classDef palette in session notes */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+/* ── Wrapper ─────────────────────────────────────────────────────────────── */
+.wrapper {
+  margin: 1.5rem 0 2rem;
+}
+
+/* ── Section heading ─────────────────────────────────────────────────────── */
+.heading {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  opacity: 0.75;
+  margin-bottom: 0.85rem;
+}
+
+/* ── Category filter tabs ────────────────────────────────────────────────── */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.tab {
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(37, 85, 254, 0.22);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: transparent;
+  color: var(--ifm-font-color-base);
+  transition: all 0.15s ease;
+  line-height: 1.4;
+}
+
+.tab:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  background: rgba(37, 85, 254, 0.06);
+}
+
+.tabActive {
+  background: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  color: #fff !important;
+}
+
+/* ── Card grid ───────────────────────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+}
+
+/* ── Individual card ─────────────────────────────────────────────────────── */
+.card {
+  border: 1.5px solid rgba(37, 85, 254, 0.12);
+  border-radius: 10px;
+  padding: 1rem 1.1rem 0.9rem;
+  cursor: pointer;
+  background: var(--ifm-background-surface-color);
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  position: relative;
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: var(--ifm-color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(37, 85, 254, 0.12);
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.cardExpanded {
+  border-color: var(--ifm-color-primary);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ── Card inner layout ───────────────────────────────────────────────────── */
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.cardName {
+  font-size: 0.93rem;
+  font-weight: 700;
+  color: var(--ifm-font-color-base);
+  line-height: 1.3;
+}
+
+.cardTagline {
+  font-size: 0.76rem;
+  color: var(--ifm-font-color-secondary);
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.cardStats {
+  font-size: 0.72rem;
+  color: var(--ifm-color-primary);
+  opacity: 0.8;
+  font-weight: 500;
+  margin-top: 0.3rem;
+}
+
+/* Expand caret */
+.caret {
+  font-size: 0.65rem;
+  color: var(--ifm-color-primary);
+  opacity: 0.55;
+  flex-shrink: 0;
+  margin-top: 2px;
+  transition: transform 0.2s ease;
+}
+
+.caretOpen {
+  transform: rotate(180deg);
+}
+
+/* ── Status badges ───────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  flex-shrink: 0;
+}
+
+/* active → green (mirrors classDef fe palette) */
+.badgeActive {
+  background: #e1f5ee;
+  color: #0f6e56;
+}
+
+/* incubation / new → amber (mirrors classDef marlowe) */
+.badgeIncubation,
+.badgeNew {
+  background: #faeeda;
+  color: #854f0b;
+}
+
+/* beta → blue (mirrors classDef learn) */
+.badgeBeta {
+  background: #e6f1fb;
+  color: #185fa5;
+}
+
+/* deprecated → red (mirrors classDef outcome) */
+.badgeDeprecated {
+  background: #fbeaf0;
+  color: #993556;
+}
+
+/* ── Expand panel ────────────────────────────────────────────────────────── */
+.expandPanel {
+  grid-column: 1 / -1;
+  border: 1.5px solid var(--ifm-color-primary);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  padding: 1.25rem 1.4rem 1.3rem;
+  background: var(--ifm-background-surface-color);
+  animation: slideDown 0.18s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.expandDescription {
+  font-size: 0.87rem;
+  line-height: 1.65;
+  color: var(--ifm-font-color-base);
+  margin-bottom: 0.9rem;
+}
+
+.expandStats {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  background: rgba(37, 85, 254, 0.07);
+  border-radius: 6px;
+  padding: 0.4rem 0.7rem;
+  margin-bottom: 0.9rem;
+  display: inline-block;
+}
+
+.expandLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.32rem 0.85rem;
+  border-radius: 6px;
+  border: 1.5px solid var(--ifm-color-primary);
+  font-size: 0.79rem;
+  font-weight: 500;
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none !important;
+  transition: all 0.14s ease;
+  background: transparent;
+  line-height: 1.4;
+}
+
+.linkButton:hover {
+  background: var(--ifm-color-primary);
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.linkArrow {
+  font-size: 0.65rem;
+  opacity: 0.7;
+}
+
+/* ── Dark mode adjustments ───────────────────────────────────────────────── */
+[data-theme='dark'] .card {
+  border-color: rgba(99, 142, 255, 0.18);
+  background: var(--ifm-background-surface-color);
+}
+
+[data-theme='dark'] .card:hover,
+[data-theme='dark'] .card:focus-visible {
+  border-color: var(--ifm-color-primary-light);
+  box-shadow: 0 4px 20px rgba(46, 123, 255, 0.2);
+}
+
+[data-theme='dark'] .badgeActive {
+  background: #0d3d2b;
+  color: #4ecb96;
+}
+
+[data-theme='dark'] .badgeIncubation,
+[data-theme='dark'] .badgeNew {
+  background: #3d2900;
+  color: #f0a93a;
+}
+
+[data-theme='dark'] .badgeBeta {
+  background: #0d2240;
+  color: #5baef7;
+}
+
+[data-theme='dark'] .badgeDeprecated {
+  background: #3d0d1d;
+  color: #f76b8e;
+}
+
+[data-theme='dark'] .expandPanel {
+  border-color: var(--ifm-color-primary-light);
+}
+
+[data-theme='dark'] .expandStats {
+  background: rgba(99, 142, 255, 0.12);
+}
+
+/* ── Mobile ──────────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tabs {
+    gap: 0.35rem;
+  }
+
+  .tab {
+    font-size: 0.73rem;
+    padding: 0.28rem 0.7rem;
+  }
+}

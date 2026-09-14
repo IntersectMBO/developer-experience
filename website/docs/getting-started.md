@@ -20,11 +20,16 @@ Start with our comprehensive ecosystem overview: [**Directive: Kickoff & Orienta
 
 This guide provides a complete map of the Cardano ecosystem, including core repositories, documentation resources, developer tools, and community support channels.
 
-### 3. **Ready to Build?**
-Dive into our hands-on [**Beginner Guides**](./how-to-guide/beginner/) to start building immediately:
-- Understanding Cardano addresses
-- Creating transactions
-- Working with native tokens
+### 3. **Choose Your Track**
+
+Pick the path that matches your background and goals — these are parallel tracks, not sequential stages:
+
+| Track | Starting point | Guide |
+|---|---|---|
+| **dApp / Smart Contracts** | New to Cardano, building products | [Beginner Guides](./how-to-guide/beginner/) |
+| **Infrastructure / DevOps** | Running nodes, indexers, block explorers | [Advanced Guides](./how-to-guide/advanced/) |
+| **Core Protocol (Haskell)** | Systems/PL background, want to contribute to ledger or consensus | [Core Protocol Contributor](./how-to-guide/advanced/core-protocol-contributor.md) |
+| **Core Protocol (Rust)** | Rust background, want to contribute to Pallas or Dolos | [Core Protocol Contributor](./how-to-guide/advanced/core-protocol-contributor.md) |
 
 ### 4. **Want to Contribute?**
 Join our [**Developer Experience Working Group**](./working-group/sessions/q4-2025/index.md) - a quarterly initiative focused on onboarding new developers and improving the overall developer experience.
@@ -44,15 +49,13 @@ Built by the community, for the community. Join our working groups and help shap
 
 ### How-To Guides
 - **[Beginner](./how-to-guide/beginner/)** - Getting started guides for newcomers
-- **[Intermediate](./how-to-guide/intermediate/)** - Next-level guides for developers with basic knowledge  
 - **Advanced** - Deep-dive technical guides for experienced developers (see [Cardano API](./how-to-guide/advanced/cardano-api.md) and [cardano-db-sync](./how-to-guide/advanced/cardano-db-sync.md))
 
 ### Tutorials
-- **Hands-On** - Interactive coding tutorials and workshops
+- **[Hands-On tutorials](./tutorials/local-cardano-payment-detector.md)** - Interactive coding tutorials and workshops
 
 ### Resources
-- **[Repositories](./resources/repositories)** - Essential GitHub repositories and their purposes
-- **[Tools](./resources/tools)** - Development tools, APIs, and utilities
+- **[Repositories](./resources/repositories)** - Essential GitHub repositories, tools, and APIs
 - **[Community](./resources/community)** - Community channels, forums, and support resources
 
 ### [Working Group](./working-group/)

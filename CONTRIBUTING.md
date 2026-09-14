@@ -150,6 +150,8 @@ Brief description of changes made.
 3. Address any feedback or requested changes
 4. Once approved, your PR will be merged
 
+Issues and PRs are triaged on a regular cadence — see [TRIAGE.md](TRIAGE.md) for the schedule, labels, response-time expectations, and stale-item policy.
+
 ## Content Guidelines
 
 ### Documentation Structure
