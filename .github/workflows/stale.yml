@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Mark stale items
-        uses: actions/stale@v9
+        uses: actions/stale@v11
         with:
           stale-issue-message: >
             Is this issue abandoned? It had no activity for 30 days.
