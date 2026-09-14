@@ -271,7 +271,7 @@ const config: Config = {
               to: "/docs/resources/community",
             },
             {
-              label: "Tools & APIs",
+              label: "Repositories & Tools",
               to: "/docs/resources/repositories",
             },
             {
