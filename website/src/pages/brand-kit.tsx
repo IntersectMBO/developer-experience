@@ -18,27 +18,26 @@ const COLORS = [
 
 const DOWNLOADS = [
   {
-    label: 'DevEx logo (PNG)',
-    path: '/img/intersect-logo.png',
+    label: 'Intersect logo (PNG)',
+    path: '/img/intersect-logo-large.png',
     filename: 'intersect-logo.png',
-    preview: '/img/intersect-logo.png',
-    previewBg: '#1D1D1B',
-    previewClass: styles.downloadPreviewSmall,
+    preview: '/img/intersect-logo-large.png',
+    previewBg: '#ffffff',
   },
   {
-    label: 'Favicon (PNG)',
-    path: '/img/favicon.png',
-    filename: 'favicon.png',
-    preview: '/img/favicon.png',
-    previewBg: '#1D1D1B',
-    previewClass: styles.downloadPreviewSmall,
-  },
-  {
-    label: 'Intersect mark (SVG)',
+    label: 'Intersect logo (SVG)',
     path: '/img/IntersectMBO.svg',
     filename: 'IntersectMBO.svg',
     preview: '/img/IntersectMBO.svg',
     previewBg: '#ffffff',
+  },
+  {
+    label: 'DevEx navbar icon (PNG)',
+    path: '/img/intersect-logo.png',
+    filename: 'intersect-navbar-icon.png',
+    preview: '/img/intersect-logo.png',
+    previewBg: '#1D1D1B',
+    previewClass: styles.downloadPreviewSmall,
   },
 ];
 
