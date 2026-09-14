@@ -18,13 +18,6 @@ const COLORS = [
 
 const DOWNLOADS = [
   {
-    label: 'Intersect logo (SVG)',
-    path: '/img/IntersectMBO.svg',
-    filename: 'IntersectMBO.svg',
-    preview: '/img/IntersectMBO.svg',
-    previewBg: '#ffffff',
-  },
-  {
     label: 'DevEx navbar icon (PNG)',
     path: '/img/intersect-logo.png',
     filename: 'intersect-navbar-icon.png',
