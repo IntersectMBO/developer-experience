@@ -7,6 +7,7 @@
     "start": "npm run build && npm run serve",
     "start:dev": "docusaurus start",
     "start:with-search": "npm run build && npm run serve",
+    "prebuild": "node ../scripts/fetch-github-data.js",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
