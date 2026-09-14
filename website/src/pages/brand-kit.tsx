@@ -18,13 +18,6 @@ const COLORS = [
 
 const DOWNLOADS = [
   {
-    label: 'Intersect logo (PNG)',
-    path: '/img/intersect-logo-large.png',
-    filename: 'intersect-logo.png',
-    preview: '/img/intersect-logo-large.png',
-    previewBg: '#ffffff',
-  },
-  {
     label: 'Intersect logo (SVG)',
     path: '/img/IntersectMBO.svg',
     filename: 'IntersectMBO.svg',
