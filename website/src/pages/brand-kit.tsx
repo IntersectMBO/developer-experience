@@ -17,10 +17,29 @@ const COLORS = [
 ];
 
 const DOWNLOADS = [
-  { label: 'DevEx logo (PNG)', path: '/img/intersect-logo.png', filename: 'intersect-logo.png' },
-  { label: 'Favicon (PNG)', path: '/img/favicon.png', filename: 'favicon.png' },
-  { label: 'Intersect mark (SVG)', path: '/img/IntersectMBO.svg', filename: 'IntersectMBO.svg' },
-  { label: 'Full brand book (PDF)', path: '/brandbook.pdf', filename: 'intersect-brandbook.pdf' },
+  {
+    label: 'DevEx logo (PNG)',
+    path: '/img/intersect-logo.png',
+    filename: 'intersect-logo.png',
+    preview: '/img/intersect-logo.png',
+    previewBg: '#1D1D1B',
+    previewClass: styles.downloadPreviewSmall,
+  },
+  {
+    label: 'Favicon (PNG)',
+    path: '/img/favicon.png',
+    filename: 'favicon.png',
+    preview: '/img/favicon.png',
+    previewBg: '#1D1D1B',
+    previewClass: styles.downloadPreviewSmall,
+  },
+  {
+    label: 'Intersect mark (SVG)',
+    path: '/img/IntersectMBO.svg',
+    filename: 'IntersectMBO.svg',
+    preview: '/img/IntersectMBO.svg',
+    previewBg: '#ffffff',
+  },
 ];
 
 const DOS = [
@@ -71,8 +90,15 @@ function DownloadSection() {
               href={item.path}
               download={item.filename}
               className={styles.downloadCard}>
-              <span className={styles.downloadLabel}>{item.label}</span>
-              <span className={styles.downloadHint}>Download</span>
+              <div
+                className={clsx(styles.downloadPreview, item.previewClass)}
+                style={{ backgroundColor: item.previewBg }}>
+                <img src={item.preview} alt={item.label} loading="lazy" />
+              </div>
+              <div className={styles.downloadMeta}>
+                <span className={styles.downloadLabel}>{item.label}</span>
+                <span className={styles.downloadHint}>Download</span>
+              </div>
             </a>
           ))}
         </div>

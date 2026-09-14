@@ -59,13 +59,12 @@
 .downloadCard {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 1.5rem;
   border: 1px solid var(--ifm-color-emphasis-300);
   border-radius: 12px;
   background: var(--ifm-background-surface-color);
   text-decoration: none;
   transition: all 0.2s ease;
+  overflow: hidden;
 }
 
 .downloadCard:hover {
@@ -75,11 +74,37 @@
   text-decoration: none;
 }
 
+.downloadPreview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 160px;
+  width: 100%;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  padding: 1.5rem;
+}
+
+.downloadPreview img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.downloadPreviewSmall img {
+  transform: scale(2.5);
+}
+
+.downloadMeta {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+}
+
 .downloadLabel {
   font-weight: 600;
   font-size: 1.1rem;
   color: var(--ifm-font-color-base);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .downloadHint {
