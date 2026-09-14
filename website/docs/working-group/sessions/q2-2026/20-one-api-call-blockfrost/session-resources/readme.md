@@ -1,6 +1,7 @@
 ---
 title: "Session 20: One API Call to Understand Cardano - Resources"
 sidebar_label: Resources
+slug: /working-group/q2-2026/sessions/20-one-api-call-blockfrost/session-resources
 ---
 
 # Session 20: One API Call to Understand Cardano - Resources

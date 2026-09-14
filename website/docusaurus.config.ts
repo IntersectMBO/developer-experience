@@ -14,8 +14,9 @@ const config: Config = {
   title: "Cardano Developer Experience",
   tagline: "Community-driven developer experience initiatives at Intersect MBO",
   favicon: "img/favicon.png",
-  // GitHub Pages adds a trailing slash by default that I don't want
-  trailingSlash: false,
+  // GitHub Pages serves directories with a trailing slash; align Docusaurus output
+  // so relative links from directory indexes (readme.md) resolve correctly.
+  trailingSlash: true,
 
   // Add Google Fonts
   stylesheets: [

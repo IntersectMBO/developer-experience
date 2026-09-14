@@ -1,6 +1,7 @@
 ---
 title: "Session 17: Default Developer Environment for Cardano - Resources"
 sidebar_label: Resources
+slug: /working-group/q2-2026/sessions/17-default-developer-environment/session-resources
 ---
 
 # Session 17: Default Developer Environment for Cardano - Resources
