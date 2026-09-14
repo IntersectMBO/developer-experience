@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "skillsDirectory": ".agents/skills",
-  "lastSyncedAt": "2026-09-14T18:17:23.030Z",
+  "lastSyncedAt": "2026-09-14T18:24:17.365Z",
   "skills": [
     {
       "name": "brand-baseline",
@@ -31,6 +31,12 @@
       "name": "fix-merge-conflicts",
       "path": ".agents/skills/fix-merge-conflicts",
       "description": "Resolve merge conflicts non-interactively, validate build and tests, and finalize conflict resolution",
+      "status": "untracked"
+    },
+    {
+      "name": "harun-review",
+      "path": ".agents/skills/harun-review",
+      "description": "Use when reviewing dependency manager choices, lockfiles, or build-tooling changes for the Developer Experience project.",
       "status": "untracked"
     },
     {
