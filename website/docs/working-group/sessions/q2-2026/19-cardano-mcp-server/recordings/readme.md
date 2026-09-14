@@ -8,7 +8,7 @@ slug: /working-group/q2-2026/sessions/19-cardano-mcp-server/recordings
 
 In this session we built and walked through [Cardano MCP](https://github.com/lidonation/Cardano-mcp), a purpose-built Model Context Protocol server that gives AI assistants like Claude live, idiomatic access to the Cardano blockchain. The session covers the eUTxO model, the 6-module 38-tool server architecture, multi-API routing across Blockfrost, Koios, Maestro and Kupo, CIP-1694 governance queries, and a full React demo app.
 
-For the full breakdown, architecture overview, and setup instructions, see the [Session Notes](../session-notes/readme.md).
+For the full breakdown, architecture overview, and setup instructions, see the [Session Notes](../session-notes/).
 
 ## Session 1
 

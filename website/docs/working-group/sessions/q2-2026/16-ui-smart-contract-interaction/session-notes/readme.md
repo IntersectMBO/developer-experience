@@ -194,7 +194,7 @@ You can mix-and-match, but pick one “lane” and standardize:
 
 ## Next steps
 
-See the curated links in [Resources](../session-resources/readme.md). If you already have an Aiken validator repo, this session pairs well with creating a minimal off-chain “tx composer” and wiring it to a UI.
+See the curated links in [Resources](../session-resources/). If you already have an Aiken validator repo, this session pairs well with creating a minimal off-chain “tx composer” and wiring it to a UI.
 
 ---
 

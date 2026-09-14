@@ -18,8 +18,8 @@ Resources for building production-grade offchain SDKs on Cardano, with the DCU T
 
 ## Session Materials
 
-- **[Session notes](../session-notes/readme.md)**: curated explanation of the architecture, SDK patterns, live walkthrough, and open design problems
-- **[Recording page](../recordings/readme.md)**: recording status and session highlights
+- **[Session notes](../session-notes/)**: curated explanation of the architecture, SDK patterns, live walkthrough, and open design problems
+- **[Recording page](../recordings/)**: recording status and session highlights
 
 ## Core Tooling
 
@@ -36,7 +36,7 @@ Resources for building production-grade offchain SDKs on Cardano, with the DCU T
 
 - **ROSCAs (Rotating Savings and Credit Associations)**: the cooperative finance model (Chamas, SACCOs, Tontines) the toolkit digitizes
 - **Cardano Testnets Faucet** (for following along on Preprod): [docs.cardano.org/cardano-testnets/tools/faucet](https://docs.cardano.org/cardano-testnets/tools/faucet)
-- **Related sessions**: [Session 14: Repository Walkthrough: Offchain and SDK building](../../14-sdk-repo-walkthrough/session-notes/readme.md), [Session 15: dApp Architecture](../../15-dapp-architecture-demo/session-notes/readme.md)
+- **Related sessions**: [Session 14: Repository Walkthrough: Offchain and SDK building](../../14-sdk-repo-walkthrough/session-notes/), [Session 15: dApp Architecture](../../15-dapp-architecture-demo/session-notes/)
 
 ---
 

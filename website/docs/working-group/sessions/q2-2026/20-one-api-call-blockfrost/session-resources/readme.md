@@ -16,7 +16,7 @@ sidebar_label: Resources
 ## Cardano basics (companion reading)
 
 - **DevEx getting started**: [getting-started.md](../../../../../getting-started.md)
-- **Session 16 (UI and tx flow)**: [session notes](../../16-ui-smart-contract-interaction/session-notes/readme.md)
+- **Session 16 (UI and tx flow)**: [session notes](../../16-ui-smart-contract-interaction/session-notes/)
 - **Cardano Developer Portal**: [developers.cardano.org](https://developers.cardano.org)
 
 ## Testnet tools

@@ -243,11 +243,11 @@ This is a starting point for debate, not a decree. The point of the session is t
 
 ## Related sessions
 
-- [Session 14: SDK Repo Walkthrough](../../14-sdk-repo-walkthrough/session-notes/readme.md)
-- [Session 15: dApp Architecture](../../15-dapp-architecture-demo/session-notes/readme.md)
-- [Session 16: UI ↔ Smart Contracts](../../16-ui-smart-contract-interaction/session-notes/readme.md)
+- [Session 14: SDK Repo Walkthrough](../../14-sdk-repo-walkthrough/session-notes/)
+- [Session 15: dApp Architecture](../../15-dapp-architecture-demo/session-notes/)
+- [Session 16: UI ↔ Smart Contracts](../../16-ui-smart-contract-interaction/session-notes/)
 
-See the curated links in [Resources](../session-resources/readme.md).
+See the curated links in [Resources](../session-resources/).
 
 ---
 

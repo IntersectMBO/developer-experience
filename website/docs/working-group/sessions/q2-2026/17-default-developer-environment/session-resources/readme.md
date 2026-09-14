@@ -62,9 +62,9 @@ Pick one lane per project and standardize.
 
 ## Prior sessions worth re-reading before this one
 
-- [Session 14: SDK Repo Walkthrough](../../14-sdk-repo-walkthrough/session-notes/readme.md)
-- [Session 15: dApp Architecture](../../15-dapp-architecture-demo/session-notes/readme.md)
-- [Session 16: UI ↔ Smart Contracts](../../16-ui-smart-contract-interaction/session-notes/readme.md)
+- [Session 14: SDK Repo Walkthrough](../../14-sdk-repo-walkthrough/session-notes/)
+- [Session 15: dApp Architecture](../../15-dapp-architecture-demo/session-notes/)
+- [Session 16: UI ↔ Smart Contracts](../../16-ui-smart-contract-interaction/session-notes/)
 
 ---
 
