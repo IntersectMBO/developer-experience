@@ -275,6 +275,10 @@ const config: Config = {
               to: "/docs/resources/repositories",
             },
             {
+              label: "Brand Kit",
+              to: "/brand-kit",
+            },
+            {
               label: "FAQs",
               to: "/docs/faq",
             },
