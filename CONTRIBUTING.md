@@ -59,6 +59,12 @@ Thank you for your interest in contributing to the Cardano Developer Experience 
    - Edit files in the `docs/` directory
    - Changes are reflected in real-time
 
+5. **Validate Before Submitting**
+   Docusaurus fails the build on broken Markdown links and anchors. Run a production build to catch issues early:
+   ```bash
+   npm run build
+   ```
+
 ### Documentation File Structure
 
 ```
