@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "skillsDirectory": ".agents/skills",
-  "lastSyncedAt": "2026-09-14T18:42:45.016Z",
+  "lastSyncedAt": "2026-09-15T09:01:42.427Z",
   "skills": [
     {
       "name": "brand-baseline",
@@ -25,6 +25,12 @@
       "name": "design-baseline",
       "path": ".agents/skills/design-baseline",
       "description": "Use when building or modifying UI components, layouts, styles, or design tokens for the Intersect Developer Experience portal. Enforces spacing, typography, color roles, and component primitives from the project design system.",
+      "status": "committed"
+    },
+    {
+      "name": "docusaurus-linking",
+      "path": ".agents/skills/docusaurus-linking",
+      "description": "Use when writing or reviewing Markdown/MDX links, Docusaurus config links, or navigation URLs in the Developer Experience portal.",
       "status": "committed"
     },
     {
