@@ -37,6 +37,7 @@ const config: Config = {
   projectName, // Usually your repo name.
 
   onBrokenLinks: "throw",
+  onBrokenAnchors: "throw",
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
