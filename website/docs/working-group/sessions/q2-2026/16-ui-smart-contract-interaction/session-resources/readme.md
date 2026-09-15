@@ -1,6 +1,7 @@
 ---
 title: "Session 16: UI ↔ Smart Contracts (Wallets + Tx flow) - Resources"
 sidebar_label: Resources
+slug: /working-group/q2-2026/sessions/16-ui-smart-contract-interaction/session-resources
 ---
 
 # Session 16: UI ↔ Smart Contracts (Wallets + Tx flow) - Resources

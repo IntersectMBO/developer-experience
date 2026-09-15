@@ -32,7 +32,7 @@ slug: /working-group/q2-2026/sessions/18-cardano-ai-dev-workflow/recordings
 - Test-driven validator development and AI verification gates.
 - Local models as an option for reducing token costs.
 
-For the curated technical walkthrough, see the [session notes](../session-notes/readme.md). The [session resources](../session-resources/readme.md) collect the tools and references discussed during the session.
+For the curated technical walkthrough, see the [session notes](../session-notes/). The [session resources](../session-resources/) collect the tools and references discussed during the session.
 
 ---
 

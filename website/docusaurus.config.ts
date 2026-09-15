@@ -14,8 +14,9 @@ const config: Config = {
   title: "Cardano Developer Experience",
   tagline: "Community-driven developer experience initiatives at Intersect MBO",
   favicon: "img/favicon.png",
-  // GitHub Pages adds a trailing slash by default that I don't want
-  trailingSlash: false,
+  // GitHub Pages serves directories with a trailing slash; align Docusaurus output
+  // so relative links from directory indexes (readme.md) resolve correctly.
+  trailingSlash: true,
 
   // Add Google Fonts
   stylesheets: [
@@ -84,47 +85,47 @@ const config: Config = {
         redirects: [
           {
             from: "/docs/how-to-guide/beginner/howtocreateaddress",
-            to: "/docs/how-to-guide/beginner/address",
+            to: "/docs/how-to-guide/beginner/address/",
           },
           {
             from: "/docs/resources/tools",
-            to: "/docs/resources/repositories",
+            to: "/docs/resources/repositories/",
           },
           {
             from: "/docs/how-to-guide/intermediate",
-            to: "/docs/how-to-guide/beginner",
+            to: "/docs/how-to-guide/beginner/",
           },
           {
             from: "/docs/tutorials/readme",
-            to: "/docs/tutorials/local-cardano-payment-detector",
+            to: "/docs/tutorials/local-cardano-payment-detector/",
           },
         ],
         createRedirects(existingPath: string) {
           const renamedSessionPaths = [
             {
               from: "/docs/working-group/q2-2026/sessions/18-ai-dev-workflow",
-              to: "/docs/working-group/q2-2026/sessions/18-cardano-ai-dev-workflow",
+              to: "/docs/working-group/q2-2026/sessions/18-cardano-ai-dev-workflow/",
             },
             {
               from: "/docs/working-group/q2-2026/sessions/18-cardano-mcp-server",
-              to: "/docs/working-group/q2-2026/sessions/19-cardano-mcp-server",
+              to: "/docs/working-group/q2-2026/sessions/19-cardano-mcp-server/",
             },
             {
               from: "/docs/working-group/q2-2026/sessions/19-one-api-call-blockfrost",
-              to: "/docs/working-group/q2-2026/sessions/20-one-api-call-blockfrost",
+              to: "/docs/working-group/q2-2026/sessions/20-one-api-call-blockfrost/",
             },
             {
               from: "/docs/working-group/q2-2026/sessions/20-cardano-production-sdk",
-              to: "/docs/working-group/q2-2026/sessions/21-cardano-production-sdk",
+              to: "/docs/working-group/q2-2026/sessions/21-cardano-production-sdk/",
             },
           ];
 
           const renamedSession = renamedSessionPaths.find(
-            ({ to }) => existingPath === to || existingPath.startsWith(`${to}/`),
+            ({ to }) => existingPath === to || existingPath.startsWith(to),
           );
 
           return renamedSession
-            ? [existingPath.replace(renamedSession.to, renamedSession.from)]
+            ? [existingPath.replace(renamedSession.to, `${renamedSession.from}/`)]
             : undefined;
         },
       },
@@ -190,11 +191,11 @@ const config: Config = {
           items: [
             {
               label: "Getting Started",
-              to: "/docs/getting-started",
+              to: "/docs/getting-started/",
             },
             {
               label: "How-to Guides",
-              to: "/docs/how-to-guide/beginner",
+              to: "/docs/how-to-guide/beginner/",
             },
             {
               label: "Working Groups",
@@ -204,7 +205,7 @@ const config: Config = {
         },
         {
           label: "FAQs",
-          to: "/docs/faq",
+          to: "/docs/faq/",
           position: "left",
         },
         {
@@ -231,11 +232,11 @@ const config: Config = {
           items: [
             {
               label: "Getting Started",
-              to: "/docs/getting-started",
+              to: "/docs/getting-started/",
             },
             {
               label: "How-to Guides",
-              to: "/docs/how-to-guide/beginner",
+              to: "/docs/how-to-guide/beginner/",
             },
             {
               label: "Working Groups",
@@ -269,11 +270,11 @@ const config: Config = {
             },
             {
               label: "Community Resources",
-              to: "/docs/resources/community",
+              to: "/docs/resources/community/",
             },
             {
               label: "Repositories & Tools",
-              to: "/docs/resources/repositories",
+              to: "/docs/resources/repositories/",
             },
             {
               label: "Brand Kit",
@@ -281,7 +282,7 @@ const config: Config = {
             },
             {
               label: "FAQs",
-              to: "/docs/faq",
+              to: "/docs/faq/",
             },
           ],
         },

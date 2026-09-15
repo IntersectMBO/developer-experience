@@ -53,8 +53,8 @@ Curated references for building and extending the Cardano MCP server: tool regis
 
 ## Prior Sessions
 
-- [Session 16: UI ↔ Smart Contracts](../../16-ui-smart-contract-interaction/session-notes/readme.md)
-- [Session 17: Default Developer Environment](../../17-default-developer-environment/session-notes/readme.md)
+- [Session 16: UI ↔ Smart Contracts](../../16-ui-smart-contract-interaction/session-notes/)
+- [Session 17: Default Developer Environment](../../17-default-developer-environment/session-notes/)
 
 ---
 

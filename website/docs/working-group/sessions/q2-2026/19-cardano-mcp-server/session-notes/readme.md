@@ -264,10 +264,10 @@ Koios is free and usually fast, but under load response times can spike past 8 s
 
 ## Related sessions
 
-- [Session 16: UI ↔ Smart Contracts](../../16-ui-smart-contract-interaction/session-notes/readme.md)
-- [Session 17: Default Developer Environment](../../17-default-developer-environment/session-notes/readme.md)
+- [Session 16: UI ↔ Smart Contracts](../../16-ui-smart-contract-interaction/session-notes/)
+- [Session 17: Default Developer Environment](../../17-default-developer-environment/session-notes/)
 
-See the curated links in [Resources](../session-resources/readme.md).
+See the curated links in [Resources](../session-resources/).
 
 ---
 
