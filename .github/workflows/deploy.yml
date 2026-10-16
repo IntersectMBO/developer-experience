@@ -48,7 +48,6 @@ jobs:
       - name: Build website
         run: npm run build
         env:
-          GOOGLE_SCRIPT_URL: ${{ secrets.GOOGLE_SCRIPT_URL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload Build Artifact

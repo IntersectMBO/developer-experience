@@ -292,10 +292,6 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
-
-  customFields: {
-    googleScriptUrl: process.env.GOOGLE_SCRIPT_URL,
-  },
 };
 
 export default config;
