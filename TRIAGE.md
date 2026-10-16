@@ -48,6 +48,15 @@ The [`stale.yml`](.github/workflows/stale.yml) workflow enforces the inactivity 
 - Items labelled `pinned` or `Security` are never marked stale.
 - Any comment or update resets the clock.
 
+## Security scanning
+
+Two automated scanners run on this repository, and their findings are triaged in the same weekly session as issues and PRs:
+
+- **Dependabot** (`.github/dependabot.yml`) — checks npm dependencies in `website/` and the GitHub Actions used by the workflows, weekly on Mondays. Alerts and update PRs appear under **Security → Dependabot** and as `dependencies`-labelled PRs.
+- **CodeQL** (`.github/workflows/codeql.yml`) — static analysis (SAST) of the JavaScript/TypeScript sources on every push and pull request to `main`, plus a weekly scheduled run on Mondays. Results appear under **Security → Code scanning**.
+
+Items labelled `Security` are never marked stale (see automation above), so a scanning alert stays visible until a maintainer closes it as fixed or dismissed with a reason.
+
 ## Roles
 
 - **Triagers**: Developer Advocates and the repository maintainers listed in [CODEOWNERS](CODEOWNERS).
