@@ -36,6 +36,13 @@ jobs:
             # JavaScript/TypeScript is extracted directly from source, so no
             # build step is needed (the Docusaurus site in website/ included).
             build-mode: none
+          - language: actions
+            # The Actions extractor reads the workflow YAML under
+            # .github/workflows/ directly, so no build step is needed either.
+            # These are the highest-privilege files in the repo (deploy.yml
+            # holds pages: write and id-token: write), so they get the same
+            # SAST coverage as the website sources.
+            build-mode: none
 
     steps:
       - name: Checkout repository
