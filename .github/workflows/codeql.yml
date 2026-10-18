@@ -56,6 +56,11 @@ jobs:
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
+          # Settled by the comparison run recorded on #341: on this tree
+          # security-extended runs 103 javascript-typescript rules and 23
+          # actions rules (default: 87 and 17) and still reports 0 results
+          # for both languages, so the wider suite costs no alert noise.
+          queries: security-extended
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
