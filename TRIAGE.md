@@ -53,9 +53,23 @@ The [`stale.yml`](.github/workflows/stale.yml) workflow enforces the inactivity 
 Two automated scanners run on this repository, and their findings are triaged in the same weekly session as issues and PRs:
 
 - **Dependabot** (`.github/dependabot.yml`) — checks npm dependencies in `website/` and the GitHub Actions used by the workflows, weekly on Mondays. Alerts and update PRs appear under **Security → Dependabot** and as `dependencies`-labelled PRs.
-- **CodeQL** (`.github/workflows/codeql.yml`) — static analysis (SAST) of the JavaScript/TypeScript sources on every push and pull request to `main`, plus a weekly scheduled run on Mondays. Results appear under **Security → Code scanning**. CodeQL reads source only: workflow and configuration files under `.github/` are not covered by this scan and stay a manual review item.
+- **CodeQL** (`.github/workflows/codeql.yml`) — static analysis (SAST) of the JavaScript/TypeScript sources and, via the `actions` language, of the workflow files under `.github/workflows/`, on every push and pull request to `main`, plus a weekly scheduled run on Mondays. Results appear under **Security → Code scanning**.
 
 Items labelled `Security` are never marked stale (see automation above), so a scanning alert stays visible until a maintainer closes it as fixed or dismissed with a reason.
+
+### Dismissing a code scanning alert
+
+Only a maintainer (a triager listed under [Roles](#roles) with write access) may dismiss a code scanning alert. Contributors can propose a dismissal in a comment, but the dismissal itself is a maintainer action.
+
+Acceptable dismissal reasons — use the matching GitHub reason code:
+
+| Reason code | When it applies |
+| --- | --- |
+| `false positive` | The flagged pattern cannot occur as written — e.g. the value CodeQL tracks is a constant, or the sink is unreachable in this code. The dismissal comment must say why. |
+| `won't fix` | The finding is real but the risk is accepted — e.g. a low-severity pattern in a build script that never handles untrusted input. The comment must record the reasoning and who accepted the risk. |
+| `used in tests` | The flagged code exists only in test fixtures or test helpers and never ships or runs against real input. |
+
+Not acceptable: dismissing an alert because fixing it is inconvenient, because the deadline is close, or without a comment explaining the case. If none of the three reason codes honestly fits, the alert stays open and gets fixed. Dismissals are revisited in the monthly stale-item review; a dismissal whose reasoning no longer holds is reopened.
 
 ## Roles
 
