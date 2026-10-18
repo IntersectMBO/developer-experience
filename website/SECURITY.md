@@ -54,4 +54,4 @@ npm install
 npm run build
 ```
 
-Commit `package.json`, `package-lock.json`, and `yarn.lock` together so the two lockfiles do not drift.
+Commit `package.json` and `package-lock.json` together — `website/package-lock.json` is the only tracked lockfile, so the two cannot drift apart.
