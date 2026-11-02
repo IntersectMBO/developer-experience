@@ -40,7 +40,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           cache-dependency-path: ./website/package-lock.json
-          node-version: 22
+          node-version: 22.23.4
           cache: npm
 
       - name: Install dependencies

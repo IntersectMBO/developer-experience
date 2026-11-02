@@ -55,3 +55,15 @@ npm run build
 ```
 
 Commit `package.json`, `package-lock.json`, and `yarn.lock` together so the two lockfiles do not drift.
+
+## 6. Node.js runtime
+
+GitHub Actions and `.nvmrc` pin Node.js 22.23.4. That release is the floor for the HTTP/2 fixes on the 22 line (`CVE-2026-56846`, `CVE-2026-56848`, first shipped in 22.23.2) and for the 21 October 2026 security release. A bare `22` is not enough: `actions/setup-node` can still install an older 22.x.
+
+`engines.node` is `>=22.23.4`. That floor applies to local installs. The workflow `node-version` and `.nvmrc` choose the binary CI and `nvm use` actually run.
+
+These scan rows stay informational. They do not select the runtime:
+
+- `website/package-lock.json` stays lockfileVersion 3.
+- `packageManager` still declares Yarn 1.22.22. CI installs with npm.
+- `website/vendor/image-size` keeps `engines.node` of `>=16.x`. That range belongs to the vendored package.
