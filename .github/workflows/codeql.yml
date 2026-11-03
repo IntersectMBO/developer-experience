@@ -36,6 +36,13 @@ jobs:
             # JavaScript/TypeScript is extracted directly from source, so no
             # build step is needed (the Docusaurus site in website/ included).
             build-mode: none
+          - language: actions
+            # The Actions extractor reads the workflow YAML under
+            # .github/workflows/ directly, so no build step is needed either.
+            # These are the highest-privilege files in the repo (deploy.yml
+            # holds pages: write and id-token: write), so they get the same
+            # SAST coverage as the website sources.
+            build-mode: none
 
     steps:
       - name: Checkout repository
@@ -49,6 +56,11 @@ jobs:
         with:
           languages: ${{ matrix.language }}
           build-mode: ${{ matrix.build-mode }}
+          # Settled by the comparison run recorded on #341: on this tree
+          # security-extended runs 103 javascript-typescript rules and 23
+          # actions rules (default: 87 and 17) and still reports 0 results
+          # for both languages, so the wider suite costs no alert noise.
+          queries: security-extended
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v4
