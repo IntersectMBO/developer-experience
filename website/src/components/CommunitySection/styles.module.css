@@ -1,6 +1,6 @@
 /* Community Section Styles */
 .communitySection {
-  padding: 6rem 0;
+  padding: var(--space-12) 0;
   background: var(--ifm-background-color);
 }
 
@@ -9,21 +9,44 @@
   margin: 0 auto;
 }
 
+.sectionHead {
+  margin-bottom: var(--space-8);
+}
+
+.sectionIndex {
+  display: inline;
+  margin-right: var(--space-3);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
 .sectionTitle {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--ifm-color-primary);
-  margin-bottom: 1.5rem;
+  display: inline;
+  font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
   line-height: 1.2;
-  text-align: center;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.sectionNote {
+  display: block;
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary);
+  max-width: 62ch;
 }
 
 .sectionDescription {
-  font-size: 1.125rem;
-  color: var(--ifm-color-content-secondary);
+  font-size: var(--text-body);
+  color: var(--color-text-secondary);
   line-height: 1.6;
-  margin-bottom: 2rem;
-  text-align: center;
+  margin-bottom: var(--space-5);
+  max-width: 46ch;
 }
 
 .communityStats {
@@ -127,12 +150,12 @@
 .contributorsContainer {
   margin-bottom: 2rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .contributorsList {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   padding-left: 14px; /* Offset for negative margin */
 }
