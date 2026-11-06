@@ -3,18 +3,14 @@
 
 /* ---------- shared section frame ---------- */
 
+/* Band separators are the headings, not rules.
+   Every band opens with its index and title, so a hairline across the boundary
+   repeats a marker the reader already has, and it makes the stack read as a
+   table. The page's rule language is two devices and this was neither: 1px
+   --color-border divides items inside a band (cards, the session card), 2px
+   midnight groups the library's topics. Nothing at band level. */
 .section {
   padding: var(--space-12) 0;
-  border-bottom: 1px solid var(--color-border);
-}
-
-/* The stack ends against the footer, which paints a different surface. There the
-   colour change is already the separator, so the hairline is removed: a rule
-   between two different colours reads as a table border and does no work. Every
-   other boundary joins two bands on the same canvas, and the rule stays because
-   nothing else marks where one section ends. */
-.section:last-of-type {
-  border-bottom: 0;
 }
 
 .sectionHead {
@@ -49,7 +45,6 @@
    bands read as one value rather than four. */
 .hero {
   padding: var(--space-12) 0;
-  border-bottom: 1px solid var(--color-border);
 }
 
 .heroGrid {
