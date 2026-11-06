@@ -253,28 +253,37 @@
 }
 
 .panel {
+  position: relative;
   display: flex;
   flex: 0 0 3rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--color-surface);
   overflow: hidden;
-  transition: flex-basis 0.35s ease, background-color 0.2s ease;
+  /* flex-grow, not flex-basis: grow is a number, so 0 -> 1 interpolates and the
+     width follows it smoothly. Animating to `flex: auto` jumps, because `auto`
+     has no length to interpolate from. */
+  transition: flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s ease;
+  will-change: flex-grow;
 }
 
 .panelActive {
-  flex: 1 1 auto;
+  flex-grow: 1;
   flex-direction: column;
   background: var(--color-background);
 }
 
 .panelTab {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
   width: 100%;
-  padding: 1rem 0;
+  /* Extra room at the visual top (layout bottom, the tab is rotated) so the
+     rotated label never runs into the plus. */
+  padding: 1rem 0 2.5rem;
   border: none;
   background: transparent;
   color: var(--color-text);
@@ -299,13 +308,6 @@
   cursor: default;
 }
 
-.tabIndex {
-  font-size: var(--text-caption);
-  font-weight: 600;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: 0.08em;
-}
-
 .tabStrip {
   font-size: 0.9375rem;
   font-weight: 600;
@@ -318,6 +320,25 @@
   text-transform: uppercase;
 }
 
+/* The invitation to click, sitting at the foot of every closed strip. */
+.tabPlus {
+  position: absolute;
+  bottom: 0.9rem;
+  left: 50%;
+  display: inline-flex;
+  transform: translateX(-50%);
+  color: var(--color-text-muted);
+  transition: color 0.15s ease;
+}
+
+.panelTab:hover .tabPlus {
+  color: var(--ifm-color-primary);
+}
+
+.panelActive .tabPlus {
+  display: none;
+}
+
 /* A closed panel shows the track name on the strip; the open one shows its
    stage there instead, with the name as the heading below. */
 .panelActive .tabStrip,
@@ -326,6 +347,10 @@
 }
 
 .panelBody {
+  /* A fixed measure, so the copy is revealed by the growing panel instead of
+     re-wrapping on every frame of the transition. */
+  width: 30rem;
+  max-width: 100%;
   padding: 0 var(--space-5) var(--space-5);
 }
 
@@ -517,6 +542,12 @@
     justify-content: flex-start;
     padding: var(--space-4) var(--space-5);
     writing-mode: horizontal-tb;
+    transform: none;
+  }
+
+  .tabPlus {
+    position: static;
+    margin-left: auto;
     transform: none;
   }
 }

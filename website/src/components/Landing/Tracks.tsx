@@ -36,10 +36,19 @@ export default function Tracks(): ReactNode {
                   aria-expanded={isActive}
                   aria-controls={`track-panel-${index}`}
                 >
-                  <span className={styles.tabIndex}>{track.index}</span>
-                  {/* Strip shows the track name; the open panel shows its stage. */}
+                  {/* Closed strips show the track name; the open panel shows its stage. */}
                   <span className={styles.tabStrip}>{track.title}</span>
                   <span className={styles.tabHead}>{track.stage}</span>
+                  <span className={styles.tabPlus} aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <path
+                        d="M6 1.5v9M1.5 6h9"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+                  </span>
                 </button>
 
                 <div
