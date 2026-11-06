@@ -207,7 +207,9 @@
   grid-template-columns: 1.25rem minmax(0, 1fr) auto;
   gap: var(--space-3);
   align-items: baseline;
-  padding: var(--space-4) 0;
+  /* Tighter than the page's 16px rhythm: three rows of a menu read as one block, and
+     the hairline between them already does the separating. */
+  padding: 0.75rem 0;
   color: var(--color-text) !important;
   text-decoration: none;
 }
@@ -221,8 +223,11 @@
 }
 
 .quickstartIndex {
-  font-size: var(--text-caption);
-  color: var(--color-text-muted);
+  /* A step number is a marker, not small print: 600 weight and text colour so it
+     reads as the row's ordinal instead of a stray digit. */
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text);
   font-variant-numeric: tabular-nums;
 }
 
@@ -239,14 +244,17 @@
 }
 
 .quickstartDetail {
-  font-size: var(--text-body-sm);
-  line-height: 1.5;
+  /* 13px, not the 14 of body copy: the card already carries a 15px title, and a
+     1px step between two greys is not a hierarchy, it is a wobble. */
+  font-size: 0.8125rem;
+  line-height: 1.45;
   color: var(--color-text-secondary);
 }
 
 .quickstartMeta {
   font-size: var(--text-caption);
   color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
