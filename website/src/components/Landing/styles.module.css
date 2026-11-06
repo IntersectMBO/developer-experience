@@ -454,17 +454,101 @@
 
 /* ---------- sessions ---------- */
 
-.gridSessions {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+/* A head row that can carry controls on the right: the archive link and, when
+   there is more to see than fits, the arrows. */
+.sectionHeadRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
+}
+
+.sectionHeadRow .sectionHead {
+  margin-bottom: 0;
+}
+
+.headActions {
+  display: flex;
+  align-items: center;
   gap: var(--space-5);
 }
 
+.arrows {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.arrow {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+}
+
+.arrow:hover:not(:disabled) {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+/* A dead arrow at either end says where the track ends without moving it. */
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ---------- sessions: horizontal track ---------- */
+
+.track {
+  display: flex;
+  gap: var(--space-4);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.track:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 6px;
+}
+
+/* Snapping is the only scroll animation on the page and it is opt-in: with the
+   preference set, dragging and the arrows both jump. */
+@media (prefers-reduced-motion: no-preference) {
+  .track {
+    scroll-behavior: smooth;
+  }
+}
+
+.trackItem {
+  display: flex;
+  flex: 0 0 clamp(15rem, 26vw, 19rem);
+  scroll-snap-align: start;
+}
+
 .sessionCard {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  min-height: 11rem;
+  min-height: 8.5rem;
   padding: var(--space-5);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -498,7 +582,6 @@
   display: flex;
   justify-content: space-between;
   gap: var(--space-3);
-  margin-top: auto;
   font-size: var(--text-caption);
   color: var(--color-text-muted);
 }
@@ -513,10 +596,6 @@
 
   .gridTopic {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .gridSessions {
-    grid-template-columns: minmax(0, 1fr);
   }
 
   .title {
@@ -583,6 +662,10 @@
 
   .actions .textLink {
     align-self: flex-start;
+  }
+
+  .arrows {
+    display: none;
   }
 
   .primary,

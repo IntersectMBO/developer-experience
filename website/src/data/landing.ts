@@ -29,13 +29,6 @@ export type Topic = {
   links: { label: string; href: string }[];
 };
 
-export type Session = {
-  number: string;
-  title: string;
-  quarter: string;
-  href: string;
-};
-
 export const hero = {
   title: 'Build on Cardano.',
   subtitle:
@@ -200,23 +193,6 @@ export const topics: Topic[] = [
   },
 ];
 
-export const sessions: Session[] = [
-  {
-    number: '22',
-    title: 'AI-Ready Cardano Repositories',
-    quarter: 'Q4 2026',
-    href: '/docs/working-group/q4-2026/sessions/22-ai-ready-cardano-repos/session-notes/',
-  },
-  {
-    number: '21',
-    title: 'Building a Production Cardano SDK',
-    quarter: 'Q2 2026',
-    href: '/docs/working-group/q2-2026/sessions/21-cardano-production-sdk/session-notes/',
-  },
-  {
-    number: '20',
-    title: 'One API Call to Understand Cardano',
-    quarter: 'Q2 2026',
-    href: '/docs/working-group/q2-2026/sessions/20-one-api-call-blockfrost/session-notes/',
-  },
-];
+// The session list is not curated here: src/data/sessions.json is generated from
+// docs/working-group by scripts/generate-sessions.js on every build, so the page
+// cannot drift from the archive.
