@@ -314,17 +314,41 @@
 }
 
 .footer__title {
-  color: var(--ifm-color-primary-light);
+  /* Brand blue on this gradient is 4.02 at its dark end and 2.95 at its light end,
+     so the headings were the least legible thing in a footer whose links now pass. */
+  color: var(--color-brand-moon);
   font-weight: 600;
 }
 
-.footer__link-item {
-  color: var(--ifm-color-secondary-lighter);
+/* The footer paints the same dark gradient in both themes, so its links are set
+   once instead of once per theme with !important fighting itself.
+   Blazing itself is 4.87 at the gradient's dark end but 3.58 at its light end, so
+   links take a lightened blazing: 6.33 and 4.65. Before this they were #4F72FE at
+   4.02 and 2.95, which failed AA at both ends of its own gradient. */
+.footer__link-item,
+.footer__copyright a,
+.footer__bottom a {
+  color: #FF7A50 !important;
   transition: color 0.2s ease;
 }
 
-.footer__link-item:hover {
-  color: var(--ifm-color-primary-light);
+.footer__link-item:hover,
+.footer__copyright a:hover,
+.footer__bottom a:hover {
+  color: #FF8F6B !important;
+}
+
+/* Same reasoning: white at 80% in both themes, because the surface below it never
+   changes. The old rule only applied in dark mode, leaving light mode dark text on
+   a dark gradient. */
+.footer__copyright,
+.footer__copyright *,
+.footer__bottom,
+.footer__bottom *,
+.footer__text,
+.footer p,
+.footer div[class*='copyright'] {
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 /* Hero section styling */
@@ -817,16 +841,6 @@ a:hover {
   color: var(--ifm-color-primary-light);
 }
 
-/* Footer link fixes */
-.footer__link-item {
-  color: var(--ifm-color-secondary-lighter) !important;
-  transition: color 0.2s ease;
-}
-
-.footer__link-item:hover {
-  color: var(--ifm-color-primary-light) !important;
-}
-
 [data-theme] .navbar .clean-btn[title*="dark"],
 [data-theme] .navbar .clean-btn[title*="light"],
 [data-theme] .navbar button[aria-label*="color mode"],
@@ -842,37 +856,6 @@ a:hover {
 [data-theme] .navbar button[aria-label*="Toggle color mode"] svg {
   fill: #ffffff !important;
   stroke: #ffffff !important;
-}
-
-[data-theme='dark'] .footer__link-item {
-  color: var(--ifm-color-secondary-lighter) !important;
-}
-
-[data-theme='dark'] .footer__link-item:hover {
-  color: var(--ifm-color-primary-light) !important;
-}
-
-/* Footer copyright visibility in dark mode */
-[data-theme='dark'] .footer__copyright,
-[data-theme='dark'] .footer__copyright *,
-[data-theme='dark'] .footer__bottom,
-[data-theme='dark'] .footer__bottom *,
-[data-theme='dark'] .footer__text,
-[data-theme='dark'] .footer p,
-[data-theme='dark'] .footer div[class*="copyright"] {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-
-[data-theme='dark'] .footer__copyright a,
-[data-theme='dark'] .footer__bottom a,
-[data-theme='dark'] .footer a {
-  color: rgba(255, 255, 255, 0.9) !important;
-}
-
-[data-theme='dark'] .footer__copyright a:hover,
-[data-theme='dark'] .footer__bottom a:hover,
-[data-theme='dark'] .footer a:hover {
-  color: white !important;
 }
 
 /* Loading and transition effects */
