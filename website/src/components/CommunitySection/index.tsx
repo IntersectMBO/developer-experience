@@ -40,7 +40,7 @@ export default function CommunitySection() {
               <Link className={page.primary} href={NEW_ISSUE}>
                 Open an issue
               </Link>
-              <Link className={page.secondary} href={OPEN_ISSUES}>
+              <Link className={page.textLink} href={OPEN_ISSUES}>
                 Browse open issues
               </Link>
             </div>

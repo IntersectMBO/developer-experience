@@ -26,6 +26,7 @@
 .actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--space-3);
   margin-top: var(--space-5);
 }
@@ -173,5 +174,9 @@
   .actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .actions a[class*='textLink'] {
+    align-self: flex-start;
   }
 }

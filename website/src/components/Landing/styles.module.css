@@ -87,12 +87,12 @@
 .actions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: var(--space-3);
   margin-top: var(--space-6);
 }
 
-.primary,
-.secondary {
+.primary {
   display: inline-flex;
   align-items: center;
   padding: 0.8rem 1.3rem;
@@ -117,16 +117,28 @@
   text-decoration: none;
 }
 
-.secondary {
-  border: 1px solid var(--color-border);
-  color: var(--color-text) !important;
-  background: transparent;
+/* A navigational aside sitting beside a button. The border used to give it button
+   parity it had not earned: two bordered buttons in one row means two things of
+   equal weight, and only one of them is the action. The arrow is the affordance
+   the border was doing. */
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none;
+  transition: color 0.15s ease;
 }
 
-.secondary:hover {
-  border-color: var(--color-text);
-  color: var(--color-text) !important;
-  text-decoration: none;
+.textLink::after {
+  content: '→';
+}
+
+.textLink:hover {
+  color: var(--color-brand-primary-dark) !important;
+  text-decoration: underline;
 }
 
 /* ---------- hero quickstart card ---------- */
@@ -560,6 +572,10 @@
   .actions {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .actions .textLink {
+    align-self: flex-start;
   }
 
   .primary,

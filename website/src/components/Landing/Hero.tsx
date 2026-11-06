@@ -20,7 +20,7 @@ export default function Hero(): ReactNode {
             <Link className={styles.primary} to={hero.primary.href}>
               {hero.primary.label}
             </Link>
-            <Link className={styles.secondary} to={hero.secondary.href}>
+            <Link className={styles.textLink} to={hero.secondary.href}>
               {hero.secondary.label}
             </Link>
           </div>
