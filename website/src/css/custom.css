@@ -309,18 +309,18 @@ html[data-theme='dark'] {
   padding: 0.3rem 0;
 }
 
-/* The bar's contents line up with the page's, not with the window's. Infima runs the
-   navbar full width with its own 1rem padding, so the lockup started at 24 while the
-   hero's first column starts at 87, and the octocat ended 62px past the content's right
-   edge. Same container width as the page, centred, and the two edges coincide. */
+/* The bar is full width, with 24px of inset, rather than capped to the page container.
+   Capping it at 1140 lined its items up with the page's columns, but on a wide window that
+   turned the blue bar into a band with empty blue either side, which reads as the bar
+   being squeezed. The 1440 cap only engages past 1440, so the bar looks edge to edge at
+   every common width and does not stretch to the corners on an ultrawide. */
 @media (min-width: 997px) {
   .navbar__inner {
-    max-width: var(--ifm-container-width, 1140px);
-    margin-inline: auto;
-    padding-inline: var(--ifm-spacing-horizontal, 1rem);
+    /* No max-width: any cap, even a wide one, turns the bar back into a centred band on a
+       large monitor, which is the thing this rule exists to stop. */
+    max-width: none;
   }
 }
-
 /* The local-search plugin reserves 12px on its container and 16px on the field, so the
    pill's visible edge sat 38px from the repo chip (10 of flex gap plus 28 of dead space)
    while every other pair in the cluster was 10. Zeroed here so the cluster's own gap is
