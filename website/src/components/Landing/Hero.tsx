@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
+import ThemedImage from '@theme/ThemedImage';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import { hero } from '@site/src/data/landing';
@@ -19,9 +20,16 @@ export default function Hero(): ReactNode {
     <section className={styles.hero}>
       <div className={clsx('container', styles.heroGrid)}>
         <div className={styles.heroMedia}>
-          <img
-            src="/img/devex-hero.png"
+          {/* Two inks of the same drawing. The dark one is the light one with the navy
+              body remapped to moon, so the laptop's edges read against #1D1D1B instead
+              of disappearing into it at 1.05:1. Same pixel size, so the swap cannot
+              shift the layout. */}
+          <ThemedImage
             alt="A laptop showing code brackets, the Developer Experience illustration"
+            sources={{
+              light: '/img/devex-hero.png',
+              dark: '/img/devex-hero-dark.png',
+            }}
             width={1120}
             height={917}
             loading="eager"
