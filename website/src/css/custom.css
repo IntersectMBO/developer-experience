@@ -165,8 +165,8 @@
 
 /* Navbar styling */
 .navbar {
-  background: #2555fe;
-  box-shadow: 0 2px 8px rgba(37, 85, 254, 0.15);
+  background: var(--color-brand-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .navbar__brand {
@@ -847,6 +847,56 @@ a:hover {
   fill: var(--ifm-color-primary) !important;
   stroke: var(--ifm-color-primary) !important;
   opacity: 1 !important;
+}
+
+/* ---------- Search control ----------
+   The local-search plugin leaves this on Infima defaults: #EBEDF0 fill, Arial
+   input, a #444950 magnifier and a #BEC3C9 label plus shortcut hints, which is
+   1.51:1 on that fill. The navbar is brand blue in both themes, so this control
+   stays a white rounded rect in both: the colours below are literal, not
+   theme tokens, because they sit on white either way. */
+
+.navbar__search-input,
+.navbar__search input {
+  width: 200px;
+  height: 36px;
+  padding: 0 0.75rem 0 2.25rem;
+  font-family: var(--ifm-font-family-base);
+  font-size: var(--text-body-sm);
+  color: #1D1D1B;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%236A6A6A' stroke-width='1.5' stroke-linecap='round'%3E%3Ccircle cx='7' cy='7' r='4.5'/%3E%3Cpath d='M10.6 10.6 14 14'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.7rem center;
+  background-size: 16px 16px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  outline: none;
+}
+
+.navbar__search-input::placeholder,
+.navbar__search input::placeholder {
+  color: #6A6A6A;
+  opacity: 1;
+}
+
+.navbar__search-input:focus,
+.navbar__search input:focus {
+  border-color: var(--color-brand-primary);
+  box-shadow: 0 0 0 3px rgba(29, 29, 27, 0.12);
+}
+
+/* Shortcut hints: the plugin ships them at 3.2px radius in its own grey. */
+.navbar__search kbd {
+  padding: 0.1rem 0.3rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: #6A6A6A;
+  /* Literal, not --color-surface: these sit on the white pill in both themes. */
+  background: #F5F3EB;
+  border: 1px solid #E8E8E8;
+  border-radius: var(--radius-sm);
 }
 
 /* Target plugin's CSS module classes and ensure all DocSearch elements are light in dark theme */
