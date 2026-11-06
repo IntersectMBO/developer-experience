@@ -215,11 +215,6 @@ const config: Config = {
           label: "GitHub",
           position: "right",
         },
-        {
-          href: "https://intersectmbo.org",
-          label: "Intersect MBO",
-          position: "right",
-        },
       ],
     },
     footer: {

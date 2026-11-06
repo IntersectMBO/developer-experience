@@ -236,7 +236,8 @@ html[data-theme='dark'] {
 
 .navbar__brand {
   font-weight: 600;
-  font-size: 1.25rem;
+  /* 17px against 15px items: a name and its menu, not two near-identical sizes. */
+  font-size: 1.0625rem;
   color: white !important;
   transition: all 0.2s ease;
   position: relative;
@@ -285,15 +286,48 @@ html[data-theme='dark'] {
 .navbar__link {
   color: white !important;
   font-weight: 500;
+  font-size: 0.9375rem;
+  /* Vertical padding only: the row's spacing comes from one gap value, not from
+     three items carrying 12px padding while two carry none. */
+  padding: 0.3rem 0;
 }
 
-.navbar__link:hover {
-  color: rgba(255, 255, 255, 0.8) !important;
+/* One rhythm across the bar. Infima gives items their own padding, so mixing padded
+   and unpadded items produced optical gaps of 14px, 26px and 14px in the same row. */
+.navbar__items {
+  gap: 1.5rem;
 }
 
-.navbar__link--active {
-  color: white !important;
-  font-weight: 600;
+.navbar__items--right {
+  gap: 1rem;
+}
+
+/* Infima ships `.navbar__item.dropdown .navbar__link` at a heavier weight than a bare
+   `.navbar__link`, so the menu toggles kept 16px and 12px padding while the plain links
+   took 15px and none. Same ruler for both, or the row reads hand-placed. */
+.navbar__item.dropdown .navbar__link {
+  font-size: 0.9375rem;
+  padding: 0.3rem 0;
+}
+
+/* Current section and hover: a 2px underline sitting 6px under the baseline. Drawn with
+   text-decoration rather than a pseudo-element, because Infima draws the dropdown caret
+   with `.navbar__link::after` and an absolute bar there replaced the caret with a box. */
+@media (min-width: 997px) {
+  .navbar__link:hover,
+  .navbar__link--active {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+  }
+
+  .navbar__link:hover {
+    text-decoration-color: #B3C4D4;
+  }
+
+  .navbar__link--active {
+    text-decoration-color: var(--color-brand-moon);
+  }
 }
 
 /* Dropdown menu styling */
