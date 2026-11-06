@@ -5,7 +5,7 @@ import { topics } from '@site/src/data/landing';
 
 export default function Library(): ReactNode {
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} ${styles.bandDark}`}>
       <div className="container">
         <div className={styles.sectionHead}>
           <span className={styles.sectionIndex}>03</span>

@@ -36,6 +36,23 @@
   --card-bg: var(--color-background);
 }
 
+/* A band that goes dark. Not the dark theme, a colour field: the page's own tokens are
+   re-pointed for this section only, so every component inside follows without knowing it
+   is sitting on a dark surface. Blue lightens to the dark-theme link blue, because the
+   brand blue on midnight is 2.07:1. */
+.bandDark {
+  --band-bg: var(--color-brand-midnight);
+  --card-bg: #262625;
+  --color-text: var(--color-brand-moon);
+  --color-text-secondary: #B3C4D4;
+  --color-text-muted: #9A9A9A;
+  --color-border: #3A3A3A;
+  --color-surface: #262625;
+  --color-background: var(--color-brand-midnight);
+  --ifm-color-primary: #4D91FF;
+  --ifm-color-primary-dark: #3C82F5;
+}
+
 .sectionHead {
   margin-bottom: var(--space-8);
 }
@@ -607,6 +624,7 @@
   gap: var(--space-3);
   min-height: 8.5rem;
   padding: var(--space-5);
+  background: var(--card-bg, var(--color-surface));
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   color: var(--color-text) !important;

@@ -58,7 +58,7 @@ export default function Sessions(): ReactNode {
   };
 
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} ${styles.bandDark}`}>
       <div className="container">
         <div className={styles.sectionHeadRow}>
           <div className={styles.sectionHead}>
