@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from 'react';
+import { useState, type CSSProperties, type ReactNode } from 'react';
 import Link from '@docusaurus/Link';
 import styles from './styles.module.css';
 import { tracks } from '@site/src/data/landing';
@@ -27,6 +27,7 @@ export default function Tracks(): ReactNode {
               <div
                 key={track.href}
                 className={`${styles.panel} ${isActive ? styles.panelActive : ''}`}
+                style={{ '--track-accent': `var(--track-${track.accent})` } as CSSProperties}
               >
                 <button
                   type="button"

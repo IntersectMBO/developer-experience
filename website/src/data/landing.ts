@@ -17,6 +17,8 @@ export type Track = {
   index: string;
   /** Where a builder is when this track makes sense, not what the track covers. */
   stage: string;
+  /** Which --track-* token colours this track's rail stripe and plus glyph. */
+  accent: 'dapp' | 'infra' | 'haskell' | 'rust' | 'go';
   title: string;
   blurb: string;
   href: string;
@@ -75,6 +77,7 @@ export const quickStartTotalMinutes = quickStarts.reduce((total, item) => {
 export const tracks: Track[] = [
   {
     index: '01',
+    accent: 'dapp',
     stage: 'New to Cardano',
     title: 'dApp and smart contracts',
     blurb: 'Payments first, then validators. No Haskell required to start.',
@@ -83,6 +86,7 @@ export const tracks: Track[] = [
   },
   {
     index: '02',
+    accent: 'infra',
     stage: 'Running a node',
     title: 'Infrastructure and DevOps',
     blurb: 'cardano-api, db-sync and a devnet you can tear down.',
@@ -91,6 +95,7 @@ export const tracks: Track[] = [
   },
   {
     index: '03',
+    accent: 'haskell',
     stage: 'Reading the ledger',
     title: 'Core protocol, Haskell',
     blurb: 'Ledger and consensus, written by people working on it.',
@@ -99,6 +104,7 @@ export const tracks: Track[] = [
   },
   {
     index: '04',
+    accent: 'rust',
     stage: 'Contributing in Rust',
     title: 'Core protocol, Rust',
     blurb: 'Pallas and Dolos. There is a Go track beside this one.',
@@ -107,6 +113,7 @@ export const tracks: Track[] = [
   },
   {
     index: '05',
+    accent: 'go',
     stage: 'Contributing in Go',
     title: 'Core protocol, Go',
     blurb: 'Dingo and gouroboros, on testnets. The simplest setup of the three.',

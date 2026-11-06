@@ -271,6 +271,9 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   background: var(--card-bg, var(--color-surface));
+  /* The track's identity, drawn on the tab's leading edge. A 3px stripe survives
+     the accordion, where the label rotates and the plus is the only other cue. */
+  box-shadow: inset 3px 0 0 var(--track-accent, transparent);
   overflow: hidden;
   /* flex-grow, not flex-basis: grow is a number, so 0 -> 1 interpolates and the
      width follows it smoothly. Animating to `flex: auto` jumps, because `auto`
@@ -329,12 +332,10 @@
 
 .railPlus {
   display: inline-flex;
-  color: var(--color-text-muted);
+  /* The second identity cue, and the one that survives at 3rem wide: a coloured
+     plus per tab is distinguishable at a glance where a rotated label is not. */
+  color: var(--track-accent, var(--color-text-muted));
   transition: color 0.15s ease;
-}
-
-.panelRail:hover .railPlus {
-  color: var(--ifm-color-primary);
 }
 
 /* Out of flow: the panel's width is driven only by flex-grow, and the copy is

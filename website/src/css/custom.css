@@ -27,6 +27,20 @@
   --color-accent-caramel: #FCE4C6;
   --color-accent-black: #000000;
 
+  /* Track marks. Stripes and glyphs only, never text and never fills.
+     Three of these are the languages' own hues (Go cyan, Rust orange, Haskell
+     purple), because a colour a developer already associates with the language is
+     worth more than one we invented. The dApp track takes brand blue and the
+     infrastructure track takes our raspberry, darkened so it clears 3:1 on the
+     white tab where the accent itself only reaches 2.24:1.
+     Every value below clears 3:1 against the white tab it sits on; every dark
+     value clears the same against the dark tab. */
+  --track-dapp: #2353FF;
+  --track-infra: #C2185B;
+  --track-haskell: #5D4E8C;
+  --track-rust: #CE422B;
+  --track-go: #0B87AD;
+
   /* Functional roles — light mode */
   --color-text: #1D1D1B;
   --color-text-secondary: #4A4A4A;
@@ -129,6 +143,14 @@
   --color-border: #3A3A3A;
   --color-link: #4D91FF;
   --color-link-hover: #8CB8FF;
+
+  /* Track marks, lightened for a dark tab: the same five hues, none of them the
+     light value, because purple on #1D1D1B is 1.97:1 and would vanish. */
+  --track-dapp: #4D91FF;
+  --track-infra: #F8908F;
+  --track-haskell: #A794DE;
+  --track-rust: #F0764F;
+  --track-go: #45C4E6;
 
   /* Primary Brand Colors - Dark Theme Blue */
   --ifm-color-primary: var(--color-link);
