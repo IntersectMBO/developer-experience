@@ -115,27 +115,26 @@
 /* ---------- cropped wordmark ---------- */
 
 .wordmarkWrap {
-  /* The crop is the whole point: the visible slice is 0.35em, roughly half the cap
-     height, cut at the footer's own bottom edge, so the mark can be enormous
-     without ever becoming something to read. Height is in em so the slice scales
-     with the type at every width. */
-  overflow: hidden;
   margin-top: var(--space-8);
-  font-size: clamp(5rem, 37vw, 28rem);
-  /* A third of the cap height. The word is legible at 45% and then it competes with
-     the links above it; at a third the eye files it as a horizon. */
-  height: 0.26em;
-  display: flex;
-  align-items: flex-start;
+  /* The wrapper is the container, and the span inside it is what is sized in cqw:
+     container units resolve against the nearest ANCESTOR container, so setting
+     font-size in cqw on the container itself falls back to the viewport. */
+  container-type: inline-size;
+  overflow: hidden;
 }
 
 .wordmark {
-  font-size: 1em;
-  font-weight: 700;
-  /* The line box carries ascender space above the caps, so without this the slice
-     starts in empty blue and shows a half plus a strip. Pulling it up by the same
-     amount makes the crop begin at the cap line. */
+  display: block;
+  /* 1cqw is 1% of the wrapper's width and "DevEx" at -0.05em tracking measures
+     2.85em, so 34.4cqw sets the word to about 98% of the column at every width. A
+     vw-based size fit desktop but cut the x on wide screens. */
+  font-size: 34.4cqw;
+  /* The crop: a third of the cap height, and the negative margin cancels the
+     ascender space so the slice starts at the cap line rather than in empty blue. */
+  height: 0.26em;
   margin-top: -0.045em;
+  overflow: hidden;
+  font-weight: 700;
   line-height: 0.78;
   letter-spacing: -0.05em;
   /* One step lighter than the footer surface, the way the reference tints its mark:
