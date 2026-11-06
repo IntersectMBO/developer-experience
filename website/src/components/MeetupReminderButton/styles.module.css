@@ -1,62 +1,82 @@
 /* Container for the entire component */
 .container {
   position: fixed;
-  bottom: 1rem;
+  /* 24px inset from both edges, the usual place for a floating action. */
+  bottom: 1.5rem;
   right: 1.5rem;
 
-  z-index: 9999;
+  /* Above page content, below anything modal. */
+  z-index: 1000;
   font-family: var(--ifm-font-family-base);
 }
 
-/* Floating Button */
+/* Floating action: an extended FAB on desktop, a circular icon FAB on phones.
+   Brand blue is fixed across themes so the white label holds its 5.6:1 in dark
+   mode too, and matches the primary button the home page already uses. */
 .floatingButton {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
-  padding: 0.7rem 1.25rem;
-  background: var(--ifm-color-primary);
-  color: white;
+  height: 3.5rem;
+  padding: 0 1.25rem;
+  background: var(--color-brand-primary);
+  color: #ffffff;
   border: none;
-  border-radius: 50px;
-  box-shadow: 0 4px 12px rgba(37, 85, 254, 0.3);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-lg);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  outline: none;
+  line-height: 1;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .floatingButton:hover {
-  background: var(--ifm-color-primary-dark);
-  box-shadow: 0 6px 16px rgba(37, 85, 254, 0.4);
-  transform: translateY(-2px);
+  background: var(--color-brand-primary-dark);
 }
 
 .floatingButton:focus-visible {
-  outline: 2px solid var(--ifm-color-primary);
+  outline: 2px solid var(--color-text);
   outline-offset: 3px;
 }
 
-.floatingButton:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(37, 85, 254, 0.3);
-}
-
 .floatingButton.expanded {
-  background: var(--ifm-color-primary-dark);
+  background: var(--color-brand-primary-dark);
 }
 
 /* Button Icon */
 .icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
 }
 
 /* Button Text */
 .buttonText {
   font-weight: 600;
-  letter-spacing: 0.025em;
+  letter-spacing: 0;
+}
+
+@media (max-width: 767px) {
+  .container {
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  .floatingButton {
+    width: 3.5rem;
+    padding: 0;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .buttonText {
+    display: none;
+  }
 }
 
 /* Expandable Panel */
@@ -576,11 +596,11 @@
 }
 
 
-/* Desktop (≥768px): DevEx Sessions (Meetup) shifted left from the right edge, same baseline as Jump to Top */
+/* Desktop (≥768px): 24px inset from both edges, the standard FAB corner. */
 @media (min-width: 768px) {
   .container {
-    right: 6rem;
-    bottom: 2rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
   }
 }
 
@@ -592,8 +612,8 @@
   }
 
   .floatingButton {
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
+    width: 3.5rem;
+    padding: 0;
   }
 
   .buttonText {
@@ -631,21 +651,21 @@
 
 @media (max-width: 480px) {
   .container {
-    bottom: 0.75rem;
-    right: 1.5rem;
+    bottom: 1rem;
+    right: 1rem;
   }
 
   .floatingButton {
-    padding: 0.625rem;
+    padding: 0;
   }
 
   .icon {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
 
   .panel {
-    bottom: 4rem;
+    bottom: 4.5rem;
   }
 
   .panelHeader {
