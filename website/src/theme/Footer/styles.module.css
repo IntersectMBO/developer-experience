@@ -122,7 +122,9 @@
   overflow: hidden;
   margin-top: var(--space-8);
   font-size: clamp(5rem, 37vw, 28rem);
-  height: 0.35em;
+  /* A third of the cap height. The word is legible at 45% and then it competes with
+     the links above it; at a third the eye files it as a horizon. */
+  height: 0.26em;
   display: flex;
   align-items: flex-start;
 }
@@ -130,6 +132,10 @@
 .wordmark {
   font-size: 1em;
   font-weight: 700;
+  /* The line box carries ascender space above the caps, so without this the slice
+     starts in empty blue and shows a half plus a strip. Pulling it up by the same
+     amount makes the crop begin at the cap line. */
+  margin-top: -0.045em;
   line-height: 0.78;
   letter-spacing: -0.05em;
   /* One step lighter than the footer surface, the way the reference tints its mark:
