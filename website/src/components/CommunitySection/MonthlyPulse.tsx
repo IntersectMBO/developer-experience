@@ -31,26 +31,26 @@ export default function MonthlyPulse() {
   const isStale = (githubData as { stale?: boolean }).stale === true;
 
   return (
-    <div className={styles.pulseCard}>
-      <div className={styles.pulseHeader}>
-        <h3>All-Time Overview</h3>
-      </div>
-      <p className={styles.pulseDescription}>Recent repository activity</p>
+    <aside className={styles.pulseCard} aria-labelledby="repo-pulse">
+      <h3 id="repo-pulse" className={styles.pulseLabel}>
+        All-time overview
+      </h3>
+      <p className={styles.pulseDescription}>Pull requests and issues across the repository.</p>
 
-      <div className={styles.pulseGrid}>
+      <dl className={styles.pulseGrid}>
         <div className={styles.pulseStat}>
-          <span className={styles.statValue}>{stats.mergedPRs}</span>
-          <span className={styles.statLabel}>Merged PRs</span>
+          <dt className={styles.statLabel}>Merged PRs</dt>
+          <dd className={styles.statValue}>{stats.mergedPRs}</dd>
         </div>
         <div className={styles.pulseStat}>
-          <span className={styles.statValue}>{stats.closedIssues}</span>
-          <span className={styles.statLabel}>Closed Issues</span>
+          <dt className={styles.statLabel}>Closed issues</dt>
+          <dd className={styles.statValue}>{stats.closedIssues}</dd>
         </div>
         <div className={styles.pulseStat}>
-          <span className={styles.statValue}>{stats.openIssues}</span>
-          <span className={styles.statLabel}>New Issues</span>
+          <dt className={styles.statLabel}>Open issues</dt>
+          <dd className={styles.statValue}>{stats.openIssues}</dd>
         </div>
-      </div>
+      </dl>
 
       {snapshotDate && (
         <p className={styles.dataAge}>
@@ -58,6 +58,6 @@ export default function MonthlyPulse() {
           {isStale ? ' — GitHub API unavailable at build time' : ''}
         </p>
       )}
-    </div>
+    </aside>
   );
 }
