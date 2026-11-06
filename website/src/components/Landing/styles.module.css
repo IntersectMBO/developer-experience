@@ -53,6 +53,23 @@
   --ifm-color-primary-dark: #3C82F5;
 }
 
+/* In the dark theme the page is already midnight, so a midnight band is no field at all
+   and the rhythm disappears. The class means "the inverted field", not "black": in light
+   mode that inverts to midnight, in dark mode it inverts to moon. Same rule, both themes,
+   and every component inside flips with it because it reads the same tokens. */
+html[data-theme='dark'] .bandDark {
+  --band-bg: var(--color-brand-moon);
+  --card-bg: #FFFFFF;
+  --color-text: var(--color-brand-midnight);
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #6A6A6A;
+  --color-border: #DCD9CD;
+  --color-surface: #FFFFFF;
+  --color-background: var(--color-brand-moon);
+  --ifm-color-primary: #2353FF;
+  --ifm-color-primary-dark: #1B45DE;
+}
+
 .sectionHead {
   margin-bottom: var(--space-8);
 }
