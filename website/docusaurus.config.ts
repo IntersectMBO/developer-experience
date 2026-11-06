@@ -224,6 +224,15 @@ const config: Config = {
     },
     footer: {
       style: "dark",
+      // The same mark the navbar carries, so the footer closes the page with the
+      // site's identity rather than starting cold with a column heading.
+      logo: {
+        alt: "Developer Experience",
+        src: "img/intersect-logo.png",
+        href: "/",
+        width: 32,
+        height: 32,
+      },
       links: [
         {
           title: "Documentation",

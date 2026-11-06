@@ -1,0 +1,128 @@
+/* The footer is brand blue in both themes, the way the navbar is: the page opens
+   and closes on the same surface, and no band underneath can collide with it.
+
+   Colour roles inside it: white for links and headings (5.6:1 on #2353FF), moon for
+   secondary copy (5.04:1), and the brand's own lighter blue #4F72FE for the rule,
+   which is a hairline and needs no contrast of its own. Orange does not appear
+   here: blazing on this blue is 1.67:1, so the footer's accent is its surface. */
+.footer {
+  background: var(--color-brand-primary);
+  color: var(--color-brand-white);
+  padding: var(--space-12) 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr));
+  gap: var(--space-8) var(--space-6);
+  align-items: start;
+}
+
+/* ---------- brand zone ---------- */
+
+.mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--color-brand-white) !important;
+  text-decoration: none;
+}
+
+.mark img {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.name {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.copy {
+  margin: 0;
+  font-size: var(--text-caption);
+  line-height: 1.6;
+  color: var(--color-brand-moon);
+}
+
+.brand .copy:first-of-type {
+  margin-top: var(--space-4);
+}
+
+/* ---------- link columns ---------- */
+
+.heading {
+  margin: 0 0 var(--space-4);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-brand-white);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li + li {
+  margin-top: var(--space-3);
+}
+
+.link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  font-size: 0.9375rem;
+  color: var(--color-brand-white) !important;
+  /* The reference underlines its links. On a coloured field an underline is what
+     separates a link from a label without relying on weight. */
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+.link:hover {
+  color: var(--color-brand-moon) !important;
+  text-decoration-thickness: 2px;
+}
+
+.arrow {
+  font-size: 0.8em;
+  text-decoration: none;
+}
+
+/* ---------- bottom line ---------- */
+
+.rule {
+  height: 1px;
+  margin: var(--space-8) 0 var(--space-5);
+  background: var(--ifm-color-primary-light);
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+}
+
+/* ---------- responsive ---------- */
+
+@media screen and (max-width: 996px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

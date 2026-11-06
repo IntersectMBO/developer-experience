@@ -22,7 +22,12 @@
   padding: 0;
   background: var(--color-brand-primary);
   color: #ffffff;
+  /* The footer is brand blue now, so a blue control sitting over it needs a rim to
+     exist at all. On the white and moon bands the rim is invisible, which is the
+     point: it only appears where it is needed. */
   border: none;
+  outline: 2px solid var(--color-brand-moon);
+  outline-offset: -2px;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   cursor: pointer;
