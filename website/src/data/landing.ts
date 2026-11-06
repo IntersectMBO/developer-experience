@@ -42,19 +42,19 @@ export const hero = {
 export const quickStarts: QuickStart[] = [
   {
     title: 'Read a real transaction',
-    detail: 'Addresses, inputs and outputs, with the same payloads you will parse in code.',
+    detail: 'Addresses, inputs and outputs, in real payloads.',
     meta: '~15 min',
     href: '/docs/how-to-guide/beginner/inputsandoutputs/',
   },
   {
     title: 'Run a local devnet',
-    detail: 'Spin up yaci-devkit, submit something, reset it and do it again.',
+    detail: 'Spin up yaci-devkit, submit, reset, repeat.',
     meta: '~20 min',
     href: '/docs/how-to-guide/advanced/yaci-devkit/',
   },
   {
     title: 'Watch a payment land on-chain',
-    detail: 'A working detector that watches an address and reports confirmations.',
+    detail: 'A working detector that reports confirmations.',
     meta: '~30 min',
     href: '/docs/tutorials/local-cardano-payment-detector/',
   },
