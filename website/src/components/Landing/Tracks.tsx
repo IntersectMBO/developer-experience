@@ -15,7 +15,10 @@ export default function Tracks(): ReactNode {
         <div className={styles.grid}>
           {tracks.map((track) => (
             <Link key={track.href} className={styles.card} to={track.href}>
-              <span className={styles.cardIndex}>{track.index}</span>
+              <span className={styles.cardHead}>
+                <span className={styles.cardIndex}>{track.index}</span>
+                <span className={styles.cardStage}>{track.stage}</span>
+              </span>
               <h3 className={styles.cardTitle}>{track.title}</h3>
               <p className={styles.cardBlurb}>{track.blurb}</p>
               <span className={styles.cardCta}>{track.cta}</span>

@@ -269,11 +269,26 @@
   text-decoration: none;
 }
 
+.cardHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem var(--space-3);
+}
+
 .cardIndex {
   font-size: var(--text-caption);
   font-weight: 600;
   color: var(--color-text-muted);
   font-variant-numeric: tabular-nums;
+}
+
+/* Where the builder is, not what the track covers. */
+.cardStage {
+  font-size: var(--text-caption);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
 .cardTitle {
@@ -322,6 +337,19 @@
   font-weight: 600;
   color: var(--color-text) !important;
   text-decoration: none;
+}
+
+/* A two-line reserve keeps the blurbs, and the library's link lists, on one
+   baseline across a row. It only earns its keep where columns sit side by side,
+   so single-column layouts do not pay for it in dead space. */
+@media screen and (min-width: 641px) {
+  .cardTitle {
+    min-height: 2.6em;
+  }
+
+  .topicTitle {
+    min-height: 3.2em;
+  }
 }
 
 .topicTitle:hover {

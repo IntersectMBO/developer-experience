@@ -18,6 +18,8 @@ export type QuickStart = {
 
 export type Track = {
   index: string;
+  /** Where a builder is when this track makes sense, not what the track covers. */
+  stage: string;
   title: string;
   blurb: string;
   href: string;
@@ -76,6 +78,7 @@ export const quickStarts: QuickStart[] = [
 export const tracks: Track[] = [
   {
     index: '01',
+    stage: 'New to Cardano',
     title: 'dApp and smart contracts',
     blurb: 'Payments first, then validators. No Haskell required to start.',
     href: '/docs/how-to-guide/beginner/',
@@ -83,6 +86,7 @@ export const tracks: Track[] = [
   },
   {
     index: '02',
+    stage: 'Running a node',
     title: 'Infrastructure and DevOps',
     blurb: 'cardano-api, db-sync and a devnet you can tear down.',
     href: '/docs/how-to-guide/advanced/',
@@ -90,6 +94,7 @@ export const tracks: Track[] = [
   },
   {
     index: '03',
+    stage: 'Reading the ledger',
     title: 'Core protocol, Haskell',
     blurb: 'Ledger and consensus, written by people working on it.',
     href: '/docs/how-to-guide/advanced/haskell-core-contributor/',
@@ -97,6 +102,7 @@ export const tracks: Track[] = [
   },
   {
     index: '04',
+    stage: 'Contributing in Rust',
     title: 'Core protocol, Rust',
     blurb: 'Pallas and Dolos. There is a Go track beside this one.',
     href: '/docs/how-to-guide/advanced/rust-core-contributor/',
@@ -115,7 +121,7 @@ export const topics: Topic[] = [
     ],
   },
   {
-    title: 'Fundamentals',
+    title: 'Addresses and transactions',
     href: '/docs/how-to-guide/beginner/',
     links: [
       { label: 'Addresses', href: '/docs/how-to-guide/beginner/address/' },
@@ -123,7 +129,7 @@ export const topics: Topic[] = [
     ],
   },
   {
-    title: 'Node and data',
+    title: 'Running a node',
     href: '/docs/how-to-guide/advanced/',
     links: [
       { label: 'cardano-api', href: '/docs/how-to-guide/advanced/cardano-api/' },
@@ -132,7 +138,7 @@ export const topics: Topic[] = [
     ],
   },
   {
-    title: 'Tutorials',
+    title: 'Guided tutorials',
     href: '/docs/category/tutorials/',
     links: [
       {
@@ -142,7 +148,7 @@ export const topics: Topic[] = [
     ],
   },
   {
-    title: 'Integrations',
+    title: 'Backend integration',
     href: '/docs/category/integration-guides/',
     links: [
       {
@@ -152,7 +158,7 @@ export const topics: Topic[] = [
     ],
   },
   {
-    title: 'Core contributors',
+    title: 'Contributing to core',
     href: '/docs/how-to-guide/advanced/haskell-core-contributor/',
     links: [
       {
@@ -164,7 +170,7 @@ export const topics: Topic[] = [
     ],
   },
   {
-    title: 'Working group',
+    title: 'The working group',
     href: '/docs/working-group/',
     links: [
       { label: 'Session archive', href: '/docs/working-group/' },
@@ -172,7 +178,7 @@ export const topics: Topic[] = [
     ],
   },
   {
-    title: 'Repositories and community',
+    title: 'Repositories and help',
     href: '/docs/resources/repositories/',
     links: [
       { label: 'Repositories and tools', href: '/docs/resources/repositories/' },
