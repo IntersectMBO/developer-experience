@@ -1004,19 +1004,21 @@ html[data-theme='dark'] .searchBar .dropdownMenu svg {
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
-/* Jump to Top above DevEx Sessions (Meetup), same right alignment */
-@media (max-width: 767px) {
+/* Docusaurus ships its own back-to-top arrow (48px, z-index 199) that appears
+   after an upward scroll. On desktop the floating sessions control owns that
+   corner, so the arrow stacks above it; on phones the sessions control lives in
+   the navbar and the corner is free again. */
+@media (max-width: 768px) {
   .theme-back-to-top-button {
-    bottom: 4.9rem !important;
-    right: 1.7rem !important;
+    bottom: 1.5rem !important;
+    right: 1.5rem !important;
   }
 }
 
-/* Jump to Top to the left of DevEx Sessions (Meetup), same baseline */
-@media (min-width: 767px) {
+@media (min-width: 769px) {
   .theme-back-to-top-button {
-    bottom: 2rem !important;
-    right: 2.5rem !important;
+    bottom: 5.75rem !important; /* 24px inset + 56px control + 12px gap */
+    right: 1.5rem !important;
   }
 }
 /* ─────────────────────────────────────────────────────────────────────────── */
