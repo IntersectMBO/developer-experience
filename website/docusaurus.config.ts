@@ -220,13 +220,13 @@ const config: Config = {
           position: "right",
         },
         {
-          type: "search",
-          position: "right",
-        },
-        {
           type: "custom-githubIcon",
           href: "https://github.com/IntersectMBO/developer-experience",
           label: "GitHub",
+          position: "right",
+        },
+        {
+          type: "search",
           position: "right",
         },
       ],

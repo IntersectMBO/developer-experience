@@ -1,4 +1,10 @@
 {
+  "repo": {
+    "stars": 13,
+    "forks": 24,
+    "fullName": "IntersectMBO/developer-experience",
+    "url": "https://github.com/IntersectMBO/developer-experience"
+  },
   "contributors": [
     {
       "login": "danbaruka",

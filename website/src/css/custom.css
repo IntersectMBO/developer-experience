@@ -321,6 +321,23 @@ html[data-theme='dark'] {
   }
 }
 
+/* The repo chip: mark, stars, forks, with the counts read as one group rather than three
+   separate things. Tabular figures so 13 and 24 line up at the same width. */
+.repoChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.repoChip__count {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
 /* One rhythm across the bar. Infima gives items their own padding, so mixing padded
    and unpadded items produced optical gaps of 14px, 26px and 14px in the same row. */
 .navbar__items {
