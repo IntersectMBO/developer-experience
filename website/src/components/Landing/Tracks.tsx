@@ -16,7 +16,7 @@ export default function Tracks(): ReactNode {
       <div className="container">
         <div className={styles.sectionHead}>
           <span className={styles.sectionIndex}>02</span>
-          <h2 className={styles.sectionTitle}>Pick a track</h2>
+          <h2 className={styles.sectionTitle}>Pathways</h2>
         </div>
 
         <div className={styles.stack}>

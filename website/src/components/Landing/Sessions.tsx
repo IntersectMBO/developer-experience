@@ -63,7 +63,7 @@ export default function Sessions(): ReactNode {
         <div className={styles.sectionHeadRow}>
           <div className={styles.sectionHead}>
             <span className={styles.sectionIndex}>05</span>
-            <h2 className={styles.sectionTitle}>Latest from the working group</h2>
+            <h2 className={styles.sectionTitle}>Latest Updates</h2>
           </div>
 
           <div className={styles.headActions}>

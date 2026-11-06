@@ -9,7 +9,7 @@ export default function Library(): ReactNode {
       <div className="container">
         <div className={styles.sectionHead}>
           <span className={styles.sectionIndex}>03</span>
-          <h2 className={styles.sectionTitle}>Everything in the library</h2>
+          <h2 className={styles.sectionTitle}>Explore Cardano</h2>
         </div>
 
         <div className={styles.gridTopic}>

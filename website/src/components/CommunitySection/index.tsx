@@ -25,7 +25,7 @@ export default function CommunitySection() {
         <div className={page.sectionHead}>
           <span className={page.sectionIndex}>04</span>
           <Heading as="h2" className={page.sectionTitle}>
-            Get help and contribute
+            Become a Contributor
           </Heading>
         </div>
 

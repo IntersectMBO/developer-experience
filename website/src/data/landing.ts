@@ -34,7 +34,7 @@ export type Topic = {
 export const hero = {
   title: 'Build on Cardano.',
   subtitle:
-    'Five tracks, real guides and the session archive from the Developer Experience group at Intersect.',
+    'Five tracks, real guides and the session archive from the Developer Experience Working Group at Intersect.',
   primary: { label: 'Start building', href: '/docs/getting-started/' },
   secondary: { label: 'Browse the session archive', href: '/docs/working-group/' },
 };
