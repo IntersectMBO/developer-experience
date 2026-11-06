@@ -129,10 +129,10 @@
      2.85em, so 34.4cqw sets the word to about 98% of the column at every width. A
      vw-based size fit desktop but cut the x on wide screens. */
   font-size: 34.4cqw;
-  /* The crop: half the cap height (0.35em of a 0.70em cap), and the negative margin
-     cancels the ascender space so the slice starts at the cap line, not in empty
-     blue. */
-  height: 0.35em;
+  /* The crop: about two thirds of the cap height (0.45em against a 0.70em cap),
+     which sits between half and three quarters. The negative margin cancels the
+     ascender space so the slice starts at the cap line, not in empty blue. */
+  height: 0.45em;
   margin-top: -0.045em;
   overflow: hidden;
   font-weight: 700;
@@ -162,11 +162,6 @@
     grid-template-columns: minmax(0, 1fr);
   }
 
-  /* Half of a 118px cap is a 36px sliver, which reads as a smudge rather than a
-     mark. The crop deepens to 0.5em here: the whole word stays inside the column,
-     and about 70% of the cap shows, so the phone gets letterforms instead of an
-     edge. */
-  .wordmark {
-    height: 0.5em;
-  }
+  /* The same 0.45em holds at this width: 53px of band, which is 64% of the cap, so
+     the phone needs no override of its own. */
 }
