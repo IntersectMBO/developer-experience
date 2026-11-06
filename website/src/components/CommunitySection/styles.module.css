@@ -1,18 +1,12 @@
-/* Section 04.
+/* Section 03.
    The frame (section, head, buttons) is imported from the Landing component's
    stylesheet so this block cannot drift away from sections 01-03 again. Only
    what is unique to this block lives here. */
 
-.communityGrid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: var(--space-12);
-  align-items: start;
-}
-
 .support {
   display: flex;
   flex-direction: column;
+  max-width: 62ch;
 }
 
 .supportCopy {
@@ -90,17 +84,6 @@
 }
 
 /* ---------- responsive ---------- */
-
-@media screen and (max-width: 996px) {
-  .communityGrid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: var(--space-8);
-  }
-
-  .supportCopy {
-    max-width: 62ch;
-  }
-}
 
 /* Match the hero: below 640px the two buttons stack and fill the column rather
    than wrapping into a ragged pair of different widths. */
