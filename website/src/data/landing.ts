@@ -75,6 +75,20 @@ export const quickStarts: QuickStart[] = [
   },
 ];
 
+/**
+ * Sum of the per-step estimates, so the card can price the whole session. Derived
+ * from `meta` rather than stored twice: adding a step updates the total, and a
+ * `meta` that stops carrying a number fails the build instead of silently
+ * under-reporting.
+ */
+export const quickStartTotalMinutes = quickStarts.reduce((total, item) => {
+  const minutes = Number(item.meta.match(/\d+/)?.[0]);
+  if (!Number.isFinite(minutes)) {
+    throw new Error(`quickStarts: "${item.title}" has no duration in meta ("${item.meta}")`);
+  }
+  return total + minutes;
+}, 0);
+
 export const tracks: Track[] = [
   {
     index: '01',

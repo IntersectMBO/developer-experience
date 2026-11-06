@@ -192,8 +192,13 @@
 }
 
 .quickstartNote {
+  /* The session total, so it carries the weight of a column total rather than the
+     weight of the caption it replaced. */
   font-size: var(--text-caption);
-  color: var(--color-text-muted);
+  font-weight: 600;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
 .quickstartList {

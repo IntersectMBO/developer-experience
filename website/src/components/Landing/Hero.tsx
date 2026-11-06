@@ -3,7 +3,7 @@ import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import clsx from 'clsx';
 import styles from './styles.module.css';
-import { hero, heroStats, quickStarts } from '@site/src/data/landing';
+import { hero, heroStats, quickStarts, quickStartTotalMinutes } from '@site/src/data/landing';
 
 export default function Hero(): ReactNode {
   return (
@@ -42,7 +42,9 @@ export default function Hero(): ReactNode {
             <h2 id="start-here" className={styles.quickstartTitle}>
               Start here
             </h2>
-            <span className={styles.quickstartNote}>First session, in order</span>
+            {/* The numerals already say "in order"; what the header can add is the
+                cost of the whole session, so it carries the sum of the row estimates. */}
+            <span className={styles.quickstartNote}>~{quickStartTotalMinutes} min</span>
           </div>
 
           <ol className={styles.quickstartList}>
