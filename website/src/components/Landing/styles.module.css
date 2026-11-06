@@ -106,7 +106,9 @@
 }
 
 .primary {
-  background: var(--ifm-color-primary);
+  /* The brand blue is fixed across themes: theming the CTA lightened it to
+     #4D91FF in dark mode, which left white label text barely readable. */
+  background: var(--color-brand-primary);
   color: #fff !important;
 }
 

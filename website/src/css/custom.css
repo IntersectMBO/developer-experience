@@ -738,25 +738,30 @@
   }
 }
 
-/* Link visibility fixes */
+/* Link visibility fixes.
+   These stay UN-important on purpose: with !important, a bare `a` selector
+   outranks every component's own colour rule (a CSS-module class is only one
+   class, while `[data-theme='dark'] a` is a class plus an element), which is
+   what made the home-page buttons render blue-on-blue in dark mode. Infima
+   already colours prose links via `.markdown a`, so this is only a default. */
 a {
-  color: var(--ifm-color-primary) !important;
+  color: var(--ifm-color-primary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: var(--ifm-color-primary-dark) !important;
+  color: var(--ifm-color-primary-dark);
   text-decoration: underline;
 }
 
 /* Dark mode link fixes */
 [data-theme='dark'] a {
-  color: var(--ifm-color-primary) !important;
+  color: var(--ifm-color-primary);
 }
 
 [data-theme='dark'] a:hover {
-  color: var(--ifm-color-primary-light) !important;
+  color: var(--ifm-color-primary-light);
 }
 
 /* Footer link fixes */
