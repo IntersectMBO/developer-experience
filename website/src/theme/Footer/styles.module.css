@@ -101,11 +101,12 @@
   background: var(--ifm-color-primary-light);
 }
 
-.bottom {
+/* The reference centres its legal row under the rule and stops there. */
+.legal {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  justify-content: space-between;
+  justify-content: center;
   gap: var(--space-3) var(--space-6);
 }
 

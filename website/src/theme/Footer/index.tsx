@@ -5,6 +5,22 @@ import { useThemeConfig } from '@docusaurus/theme-common';
 
 import styles from './styles.module.css';
 
+/** The Intersect legal pages, in the order intersectmbo.org lists them. */
+const LEGAL_LINKS = [
+  {
+    label: 'Cookie Policy',
+    href: 'https://docs.intersectmbo.org/intersect-knowledge-base/legal/policies-and-conditions/intersect-internal-policies/cookie-policy',
+  },
+  {
+    label: 'Privacy Policy',
+    href: 'https://docs.intersectmbo.org/intersect-knowledge-base/legal/policies-and-conditions/intersect-internal-policies/privacy-policy',
+  },
+  {
+    label: 'Terms of Use',
+    href: 'https://docs.intersectmbo.org/intersect-knowledge-base/legal/policies-and-conditions/intersect-internal-policies/terms-of-use',
+  },
+];
+
 type FooterLink = { label: string; to?: string; href?: string };
 type FooterColumn = { title: string; items: FooterLink[] };
 
@@ -39,6 +55,7 @@ export default function Footer(): ReactNode {
             </Link>
             <p className={styles.copy}>Copyright © {new Date().getFullYear()} Intersect MBO.</p>
             <p className={styles.copy}>All rights reserved.</p>
+            <p className={styles.copy}>Built with Docusaurus.</p>
           </div>
 
           {columns.map((column) => (
@@ -72,20 +89,22 @@ export default function Footer(): ReactNode {
 
         <div className={styles.rule} />
 
-        <div className={styles.bottom}>
-          <p className={styles.copy}>Built with Docusaurus.</p>
-          <Link
-            className={styles.link}
-            href="https://github.com/IntersectMBO/developer-experience"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Edit this site on GitHub
-            <span className={styles.arrow} aria-hidden="true">
-              ↗
-            </span>
-          </Link>
-        </div>
+        <nav className={styles.legal} aria-label="Legal">
+          {LEGAL_LINKS.map((item) => (
+            <Link
+              key={item.label}
+              className={styles.link}
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {item.label}
+              <span className={styles.arrow} aria-hidden="true">
+                ↗
+              </span>
+            </Link>
+          ))}
+        </nav>
       </div>
     </footer>
   );
