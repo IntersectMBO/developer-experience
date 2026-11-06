@@ -138,9 +138,11 @@
 }
 
 /* No transform: a hover that moves a row is motion. The border change carries the
-   hover instead. */
+   hover instead, and it is blazing rather than brand blue: the ring is a 3px
+   graphic on a moon band, where blazing measures 3.02:1, and it keeps blue for
+   links and buttons on the same band. */
 .contributorAvatar:hover {
-  border-color: var(--ifm-color-primary);
+  border-color: var(--color-accent-blazing);
 }
 
 .contributorAvatar img {
