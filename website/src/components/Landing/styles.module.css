@@ -8,6 +8,15 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+/* The stack ends against the footer, which paints a different surface. There the
+   colour change is already the separator, so the hairline is removed: a rule
+   between two different colours reads as a table border and does no work. Every
+   other boundary joins two bands on the same canvas, and the rule stays because
+   nothing else marks where one section ends. */
+.section:last-of-type {
+  border-bottom: 0;
+}
+
 .sectionHead {
   margin-bottom: var(--space-8);
 }

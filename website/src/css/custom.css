@@ -269,10 +269,11 @@
   transform: translateY(-2px);
 }
 
-/* Footer styling */
+/* The footer's surface is a different colour from the page, so it needs no rule
+   to announce the band boundary: the change of surface is the boundary. The 3px
+   brand bar that used to sit here was still a divider doing the same job twice. */
 .footer {
   background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-  border-top: 3px solid var(--ifm-color-primary);
 }
 
 .footer__title {
