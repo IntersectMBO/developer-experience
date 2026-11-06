@@ -37,8 +37,7 @@ export type Session = {
 };
 
 export const hero = {
-  eyebrow: 'Cardano developer experience',
-  title: 'Build on Cardano. Start where you actually are.',
+  title: 'Build on Cardano.',
   subtitle:
     'Five tracks, real guides and the session archive from the Developer Experience group at Intersect.',
   primary: { label: 'Start building', href: '/docs/getting-started/' },

@@ -10,8 +10,6 @@ export default function Hero(): ReactNode {
     <section className={styles.hero}>
       <div className={clsx('container', styles.heroGrid)}>
         <div className={styles.copy}>
-          <p className={styles.eyebrow}>{hero.eyebrow}</p>
-
           <Heading as="h1" className={styles.title}>
             {hero.title}
           </Heading>

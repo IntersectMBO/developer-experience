@@ -62,20 +62,12 @@
 }
 
 .copy {
-  padding-top: var(--space-2);
-}
-
-.eyebrow {
-  margin: 0;
-  font-size: var(--text-caption);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+  /* No top padding: the h1's box sets the shared top edge with the card beside it. */
+  min-width: 0;
 }
 
 .title {
-  margin: var(--space-4) 0 var(--space-5);
+  margin: 0 0 var(--space-5);
   font-size: clamp(2.05rem, 3.4vw, 3rem);
   font-weight: 600;
   line-height: 1.06;
