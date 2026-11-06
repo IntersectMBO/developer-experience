@@ -327,22 +327,16 @@ html[data-theme='dark'] {
   padding: 0.3rem 0;
 }
 
-/* Current section and hover: a 2px underline sitting 6px under the baseline. Drawn with
-   text-decoration rather than a pseudo-element, because Infima draws the dropdown caret
-   with `.navbar__link::after` and an absolute bar there replaced the caret with a box. */
+/* Current section only: a 2px moon underline 6px under the baseline. Hover keeps its own
+   cue, the link lightening to 80% white, and two cues per link was one too many. Drawn
+   with text-decoration rather than a pseudo-element, because Infima draws the dropdown
+   caret with `.navbar__link::after` and an absolute bar there replaced the carets with
+   boxes. Desktop only, so the drawer is untouched. */
 @media (min-width: 997px) {
-  .navbar__link:hover,
   .navbar__link--active {
     text-decoration: underline;
     text-decoration-thickness: 2px;
     text-underline-offset: 6px;
-  }
-
-  .navbar__link:hover {
-    text-decoration-color: #B3C4D4;
-  }
-
-  .navbar__link--active {
     text-decoration-color: var(--color-brand-moon);
   }
 }
