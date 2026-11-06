@@ -10,9 +10,6 @@ export default function Sessions(): ReactNode {
         <div className={styles.sectionHead}>
           <span className={styles.sectionIndex}>03</span>
           <h2 className={styles.sectionTitle}>Latest from the working group</h2>
-          <p className={styles.sectionNote}>
-            Notes, code and recordings from the sessions builders show up to.
-          </p>
         </div>
 
         <div className={styles.gridSessions}>

@@ -32,14 +32,6 @@
   color: var(--color-text);
 }
 
-.sectionNote {
-  display: block;
-  margin: var(--space-2) 0 0;
-  font-size: var(--text-body-sm);
-  color: var(--color-text-secondary);
-  max-width: 62ch;
-}
-
 /* ---------- hero ---------- */
 
 .hero {

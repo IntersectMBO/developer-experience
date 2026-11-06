@@ -17,9 +17,6 @@ export default function CommunitySection() {
           <Heading as="h2" className={page.sectionTitle}>
             Get help and contribute
           </Heading>
-          <p className={page.sectionNote}>
-            Open an issue and a developer advocate picks it up.
-          </p>
         </div>
 
         <div className={styles.communityGrid}>

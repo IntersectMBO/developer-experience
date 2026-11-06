@@ -10,9 +10,6 @@ export default function Library(): ReactNode {
         <div className={styles.sectionHead}>
           <span className={styles.sectionIndex}>02</span>
           <h2 className={styles.sectionTitle}>Everything in the library</h2>
-          <p className={styles.sectionNote}>
-            Eight topics. If it is not here, open an issue and we will write it.
-          </p>
         </div>
 
         <div className={styles.gridTopic}>

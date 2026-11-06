@@ -10,9 +10,6 @@ export default function Tracks(): ReactNode {
         <div className={styles.sectionHead}>
           <span className={styles.sectionIndex}>01</span>
           <h2 className={styles.sectionTitle}>Pick a track</h2>
-          <p className={styles.sectionNote}>
-            Four paths, each starting from running code rather than a glossary.
-          </p>
         </div>
 
         <div className={styles.grid}>
