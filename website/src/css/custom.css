@@ -271,9 +271,12 @@
 
 /* The footer's surface is a different colour from the page, so it needs no rule
    to announce the band boundary: the change of surface is the boundary. The 3px
-   brand bar that used to sit here was still a divider doing the same job twice. */
+   brand bar that used to sit here was still a divider doing the same job twice.
+   It pays the same --space-12 top and bottom as the bands above, so the footer is
+   part of the stack rather than a strip bolted under it. */
 .footer {
   background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  padding: var(--space-12) 0;
 }
 
 .footer__title {

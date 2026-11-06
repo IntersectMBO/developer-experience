@@ -43,8 +43,12 @@
 
 /* ---------- hero ---------- */
 
+/* One rhythm for the whole stack: every band pays --space-12 top and bottom, the
+   footer included. Section padding is set in .section, the hero here, the footer
+   in custom.css; nothing else is allowed to set band padding, so the gaps between
+   bands read as one value rather than four. */
 .hero {
-  padding: var(--space-10) 0 var(--space-12);
+  padding: var(--space-12) 0;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -513,17 +517,9 @@
 /* ---------- responsive ---------- */
 
 @media screen and (max-width: 996px) {
-  .hero {
-    padding: var(--space-8) 0 var(--space-10);
-  }
-
   .heroGrid {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-8);
-  }
-
-  .section {
-    padding: var(--space-10) 0;
   }
 
   .gridTopic {
