@@ -40,17 +40,17 @@
   background: var(--card-bg, var(--color-surface));
 }
 
-/* The page's one warm accent, and it means one thing: this is scheduled.
-   Vanilla cannot be text on a light canvas (1.64:1 against white), so it is a
-   fill with midnight on top, which measures 10.33:1. Nothing else on the page
-   takes a colour that is not brand blue or midnight. */
+/* The page's one warm accent, and it means one thing: this is live, not archived.
+   Blazing Amber, not Vanilla, because the badge is a now-state rather than a highlight;
+   vanilla stays available for the page's own buttons. Midnight on blazing measures
+   5.04:1, and it is the only pairing here that does: white on blazing is 3.35:1. */
 .sessionLabel {
   display: inline-flex;
   align-items: center;
   margin: 0 0 var(--space-3);
   padding: 0.2rem 0.5rem;
   border-radius: var(--radius-sm);
-  background: var(--color-accent-vanilla);
+  background: var(--color-accent-blazing);
   color: var(--color-brand-midnight);
   font-size: var(--text-caption);
   font-weight: 600;
