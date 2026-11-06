@@ -339,7 +339,12 @@ html[data-theme='dark'] {
    It pays the same --space-12 top and bottom as the bands above, so the footer is
    part of the stack rather than a strip bolted under it. */
 .footer {
-  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  /* Shadow from the deck. The #1a202c to #2d3748 gradient is gone: the brand
+     baseline says solid fills only. Shadow rather than Midnight because in dark
+     mode the page is already #1D1D1B, and this sits one step above it, the same
+     1.2:1 step the alternating bands use.
+     Measured here: links #FF7A50 at 5.48, headings moon at 12.71. */
+  background: #2C2B2B;
   padding: var(--space-12) 0;
 }
 
@@ -389,13 +394,6 @@ html[data-theme='dark'] {
 .footer p,
 .footer div[class*='copyright'] {
   color: rgba(255, 255, 255, 0.8) !important;
-}
-
-/* Hero section styling */
-.hero {
-  background: linear-gradient(135deg, rgba(37, 85, 254, 0.03) 0%, rgba(0, 212, 170, 0.03) 100%);
-  padding: 6rem 0 4rem 0;
-  border-bottom: 1px solid rgba(37, 85, 254, 0.1);
 }
 
 .hero__title {
