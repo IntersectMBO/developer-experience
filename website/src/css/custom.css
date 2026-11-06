@@ -870,7 +870,7 @@ a:hover {
   background-position: 0.7rem center;
   background-size: 16px 16px;
   border: 1px solid transparent;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   outline: none;
 }
 
