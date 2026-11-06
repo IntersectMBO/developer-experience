@@ -321,6 +321,18 @@ html[data-theme='dark'] {
   }
 }
 
+/* The local-search plugin reserves 12px on its container and 16px on the field, so the
+   pill's visible edge sat 38px from the repo chip (10 of flex gap plus 28 of dead space)
+   while every other pair in the cluster was 10. Zeroed here so the cluster's own gap is
+   the only space, and the pill's border is what the eye measures. */
+[class*='navbarSearchContainer'] {
+  padding-left: 0 !important;
+}
+
+.navbar__search {
+  margin-left: 0 !important;
+}
+
 /* The repo chip: mark, stars, forks, with the counts read as one group rather than three
    separate things. Tabular figures so 13 and 24 line up at the same width. */
 .repoChip {
