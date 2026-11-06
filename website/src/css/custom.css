@@ -309,6 +309,18 @@ html[data-theme='dark'] {
   padding: 0.3rem 0;
 }
 
+/* The bar's contents line up with the page's, not with the window's. Infima runs the
+   navbar full width with its own 1rem padding, so the lockup started at 24 while the
+   hero's first column starts at 87, and the octocat ended 62px past the content's right
+   edge. Same container width as the page, centred, and the two edges coincide. */
+@media (min-width: 997px) {
+  .navbar__inner {
+    max-width: var(--ifm-container-width, 1140px);
+    margin-inline: auto;
+    padding-inline: var(--ifm-spacing-horizontal, 1rem);
+  }
+}
+
 /* One rhythm across the bar. Infima gives items their own padding, so mixing padded
    and unpadded items produced optical gaps of 14px, 26px and 14px in the same row. */
 .navbar__items {
@@ -316,7 +328,9 @@ html[data-theme='dark'] {
 }
 
 .navbar__items--right {
-  gap: 1rem;
+  /* 10px, not 16: beside a 240px search pill the wider gap read as three separate
+     controls rather than one cluster. */
+  gap: 0.625rem;
 }
 
 /* Infima ships `.navbar__item.dropdown .navbar__link` at a heavier weight than a bare
