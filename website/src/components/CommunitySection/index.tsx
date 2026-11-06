@@ -13,7 +13,7 @@ export default function CommunitySection() {
     <section className={page.section}>
       <div className="container">
         <div className={page.sectionHead}>
-          <span className={page.sectionIndex}>04</span>
+          <span className={page.sectionIndex}>03</span>
           <Heading as="h2" className={page.sectionTitle}>
             Get help and contribute
           </Heading>

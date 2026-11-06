@@ -16,8 +16,8 @@ export default function Home(): ReactNode {
         <Hero />
         <Tracks />
         <Library />
-        <Sessions />
         <CommunitySection />
+        <Sessions />
       </main>
     </Layout>
   );

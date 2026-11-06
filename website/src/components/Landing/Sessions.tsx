@@ -8,7 +8,7 @@ export default function Sessions(): ReactNode {
     <section className={styles.section}>
       <div className="container">
         <div className={styles.sectionHead}>
-          <span className={styles.sectionIndex}>03</span>
+          <span className={styles.sectionIndex}>04</span>
           <h2 className={styles.sectionTitle}>Latest from the working group</h2>
         </div>
 
