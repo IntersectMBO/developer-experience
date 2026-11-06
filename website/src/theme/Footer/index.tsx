@@ -105,6 +105,13 @@ export default function Footer(): ReactNode {
             </Link>
           ))}
         </nav>
+
+        {/* Cropped wordmark: a few chars at display size, cut by the footer's own
+            bottom edge. It reads as texture rather than content because only the
+            top half of the glyphs exists, and it is `aria-hidden` for that reason. */}
+        <div className={styles.wordmarkWrap} aria-hidden="true">
+          <span className={styles.wordmark}>DevEx</span>
+        </div>
       </div>
     </footer>
   );

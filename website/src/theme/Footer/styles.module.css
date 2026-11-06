@@ -8,7 +8,9 @@
 .footer {
   background: var(--color-brand-primary);
   color: var(--color-brand-white);
-  padding: var(--space-12) 0;
+  /* No bottom padding: the cropped wordmark runs to the footer's own edge, so the
+     cut happens at the page boundary rather than floating above it. */
+  padding: var(--space-12) 0 0;
 }
 
 .grid {
@@ -108,6 +110,33 @@
   align-items: baseline;
   justify-content: center;
   gap: var(--space-3) var(--space-6);
+}
+
+/* ---------- cropped wordmark ---------- */
+
+.wordmarkWrap {
+  /* The crop is the whole point: the visible slice is 0.35em, roughly half the cap
+     height, cut at the footer's own bottom edge, so the mark can be enormous
+     without ever becoming something to read. Height is in em so the slice scales
+     with the type at every width. */
+  overflow: hidden;
+  margin-top: var(--space-8);
+  font-size: clamp(5rem, 37vw, 28rem);
+  height: 0.35em;
+  display: flex;
+  align-items: flex-start;
+}
+
+.wordmark {
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 0.78;
+  letter-spacing: -0.05em;
+  /* One step lighter than the footer surface, the way the reference tints its mark:
+     #4F72FE against #2353FF is 1.38:1, texture rather than text. */
+  color: var(--ifm-color-primary-light);
+  white-space: nowrap;
+  user-select: none;
 }
 
 /* ---------- responsive ---------- */
