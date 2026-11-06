@@ -3,10 +3,16 @@
    stylesheet so this block cannot drift away from sections 01-03 again. Only
    what is unique to this block lives here. */
 
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-12);
+  align-items: start;
+}
+
 .support {
   display: flex;
   flex-direction: column;
-  max-width: 62ch;
 }
 
 .supportCopy {
@@ -22,6 +28,24 @@
   flex-wrap: wrap;
   gap: var(--space-3);
   margin-top: var(--space-5);
+}
+
+/* Right column: the faces are the answer to "will anyone pick this up?", so the
+   label says that rather than naming the component. */
+.people {
+  padding-top: var(--space-1);
+}
+
+.peopleLabel {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-caption);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.people .contributors {
+  margin-top: 0;
 }
 
 /* ---------- contributors ---------- */
@@ -84,6 +108,13 @@
 }
 
 /* ---------- responsive ---------- */
+
+@media screen and (max-width: 996px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+}
 
 /* Match the hero: below 640px the two buttons stack and fill the column rather
    than wrapping into a ragged pair of different widths. */
