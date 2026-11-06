@@ -100,3 +100,12 @@
     max-width: 62ch;
   }
 }
+
+/* Match the hero: below 640px the two buttons stack and fill the column rather
+   than wrapping into a ragged pair of different widths. */
+@media screen and (max-width: 640px) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
