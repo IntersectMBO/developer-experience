@@ -23,7 +23,7 @@
   background: var(--color-brand-primary);
   color: #ffffff;
   border: none;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   cursor: pointer;
   font-size: 0.9375rem;
