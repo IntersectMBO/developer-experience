@@ -10,13 +10,15 @@
    --color-border divides items inside a band (cards, the session card), 2px
    midnight groups the library's topics. Nothing at band level.
 
-   Padding is top-only so the space between two bands is --space-12, not twice
-   it. With a rule on the boundary the doubled gap read as a seam; with the rule
-   gone it read as a hole, which is what 192px of white between a card and the
-   next heading looks like. The footer keeps both edges because nothing follows
-   it to pay the bottom one. */
+   Each band pays both edges now that bands alternate. Top-only padding worked
+   while every band was the same white: the gap between two bands was one token
+   and belonged to nobody. With a surface behind a band, that band is visible
+   pixels, and top-only padding ended it on its last line of text, so the beige
+   or the white stopped dead under a caption and the space that followed read as
+   the next band's. Two tokens, one paid by each band, is the banded layout's
+   standard: the colour change separates, and each band gets its own margin. */
 .section {
-  padding: var(--space-12) 0 0;
+  padding: var(--space-12) 0;
   /* Every band declares the pair it uses: --band-bg for the band itself, --card-bg
      for the cards and closed panels sitting on it. An alternating band swaps the
      pair, so its cards flip to the page colour instead of dissolving into it. */
@@ -32,13 +34,6 @@
 .bandAlt {
   --band-bg: var(--color-surface);
   --card-bg: var(--color-background);
-}
-
-/* The last band pays its bottom edge too, like the footer: nothing follows it to
-   pay the space, and what follows is a dark surface, so without this the cards end
-   exactly where the footer begins. */
-.section:last-of-type {
-  padding-bottom: var(--space-12);
 }
 
 .sectionHead {
@@ -67,13 +62,12 @@
 
 /* ---------- hero ---------- */
 
-/* One rhythm for the whole stack: every band pays --space-12 at its top edge, the
-   footer included; bottom edges pay nothing, because the next band's top edge is
-   the gap. The hero is the exception: its last element is a card, and on a band
-   that alternates to the same colour the two would meet and read as one shape,
-   so it pays its bottom edge as well. */
+/* One rhythm for the whole stack: every band pays --space-12 top and bottom, the
+   footer included. Padding is set in .section, the hero here, the footer in
+   custom.css; nothing else is allowed to set band padding, so every band's margin
+   is the same value whether or not it carries a surface. */
 .hero {
-  padding: var(--space-12) 0 var(--space-12);
+  padding: var(--space-12) 0;
 }
 
 .heroGrid {
