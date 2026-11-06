@@ -29,7 +29,17 @@
   font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1;
-  transition: width 0.18s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  transition: width 0.18s ease, background-color 0.15s ease, box-shadow 0.15s ease,
+    opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+}
+
+/* Steps out of the way on a downward scroll. visibility, not just opacity, so
+   a hidden control cannot take keyboard focus. */
+.hiddenWhileScrolling {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.5rem);
+  pointer-events: none;
 }
 
 .floatingButton:hover {
@@ -83,6 +93,32 @@
   }
 }
 
+/* Phones: the control moves into the navbar and borrows the search chip's
+   shape, so it never covers a line of text. The search container is absolutely
+   positioned at right:24px, so this is too, one chip further left. */
+.navTrigger {
+  position: absolute;
+  right: 4.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: none;
+  color: #ffffff;
+}
+
+.navTrigger:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.navTrigger .icon {
+  width: 18px;
+  height: 18px;
+}
+
 @media (max-width: 767px) {
   .container {
     bottom: 1rem;
@@ -103,6 +139,19 @@
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+}
+
+/* Opened from the navbar on phones: a sheet under the bar, full width. */
+.panel.panelInNav {
+  position: fixed;
+  top: calc(var(--ifm-navbar-height) + 0.5rem);
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: auto;
+  width: auto;
+  max-width: none;
+  max-height: calc(100dvh - var(--ifm-navbar-height) - 1.5rem);
+  overflow: auto;
 }
 
 @keyframes slideUp {

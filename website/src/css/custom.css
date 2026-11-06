@@ -175,6 +175,21 @@
   color: white !important;
   transition: all 0.2s ease;
   position: relative;
+  /* Let the wordmark truncate instead of running under the navbar chips. */
+  min-width: 0;
+}
+
+.navbar__title {
+  min-width: 0;
+}
+
+/* The search container and the sessions chip are both absolutely positioned, so
+   they take no flow space: reserve it on the left group so the wordmark
+   truncates instead of running underneath them. */
+@media (max-width: 996px) {
+  .navbar__items:not(.navbar__items--right) {
+    padding-right: 7rem;
+  }
 }
 
 .navbar__brand:hover {
