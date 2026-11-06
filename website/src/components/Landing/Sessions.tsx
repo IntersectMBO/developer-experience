@@ -58,11 +58,11 @@ export default function Sessions(): ReactNode {
   };
 
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} ${styles.bandAlt}`}>
       <div className="container">
         <div className={styles.sectionHeadRow}>
           <div className={styles.sectionHead}>
-            <span className={styles.sectionIndex}>04</span>
+            <span className={styles.sectionIndex}>05</span>
             <h2 className={styles.sectionTitle}>Latest from the working group</h2>
           </div>
 

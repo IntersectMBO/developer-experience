@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import Layout from '@theme/Layout';
 import Hero from '@site/src/components/Landing/Hero';
+import StartHere from '@site/src/components/Landing/StartHere';
 import Tracks from '@site/src/components/Landing/Tracks';
 import Library from '@site/src/components/Landing/Library';
 import Sessions from '@site/src/components/Landing/Sessions';
@@ -14,6 +15,7 @@ export default function Home(): ReactNode {
     >
       <main>
         <Hero />
+        <StartHere />
         <Tracks />
         <Library />
         <CommunitySection />

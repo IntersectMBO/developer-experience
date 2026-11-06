@@ -12,10 +12,10 @@ export default function Tracks(): ReactNode {
   const [active, setActive] = useState(0);
 
   return (
-    <section className={`${styles.section} ${styles.bandAlt}`}>
+    <section className={styles.section}>
       <div className="container">
         <div className={styles.sectionHead}>
-          <span className={styles.sectionIndex}>01</span>
+          <span className={styles.sectionIndex}>02</span>
           <h2 className={styles.sectionTitle}>Pick a track</h2>
         </div>
 

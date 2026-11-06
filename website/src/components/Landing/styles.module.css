@@ -70,11 +70,28 @@
   padding: var(--space-12) 0;
 }
 
+/* Two equal columns with the media first, after docs.logos.co: their hero is 530 of
+   image, 48 of gutter, 530 of copy, and the copy block is centred against the image
+   rather than top-aligned. */
 .heroGrid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  gap: var(--space-12);
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.heroMedia {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroMedia img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 32rem;
 }
 
 .copy {
@@ -157,105 +174,81 @@
   text-decoration: underline;
 }
 
-/* ---------- hero quickstart card ---------- */
+/* ---------- start here: three step cards ---------- */
 
-.quickstart {
-  background: var(--card-bg, var(--color-surface));
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  padding: var(--space-5) var(--space-5) var(--space-2);
+.startGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.quickstartHead {
+.startGrid li {
+  display: flex;
+}
+
+.startCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  /* Reads the band pair, so the card stays a card on whichever band it lands. */
+  background: var(--card-bg, var(--color-surface));
+  color: var(--color-text) !important;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.startCard:hover {
+  border-color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.startTop {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: var(--space-3);
+  margin-bottom: var(--space-1);
 }
 
-.quickstartTitle {
-  margin: 0;
-  font-size: var(--text-caption);
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-text);
-}
-
-.quickstartNote {
-  /* The session total, so it carries the weight of a column total rather than the
-     weight of the caption it replaced. */
-  font-size: var(--text-caption);
-  font-weight: 600;
-  color: var(--color-text);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
-}
-
-.quickstartList {
-  list-style: none;
-  margin: var(--space-4) 0 0;
-  padding: 0;
-}
-
-.quickstartItem {
-  border-top: 1px solid var(--color-border);
-}
-
-.quickstartLink {
-  display: grid;
-  grid-template-columns: 1.25rem minmax(0, 1fr) auto;
-  gap: var(--space-3);
-  align-items: baseline;
-  /* Tighter than the page's 16px rhythm: three rows of a menu read as one block, and
-     the hairline between them already does the separating. */
-  padding: 0.75rem 0;
-  color: var(--color-text) !important;
-  text-decoration: none;
-}
-
-.quickstartLink:hover {
-  text-decoration: none;
-}
-
-.quickstartLink:hover .quickstartItemTitle {
-  color: var(--ifm-color-primary) !important;
-}
-
-.quickstartIndex {
-  /* A step number is a marker, not small print: 600 weight and text colour so it
-     reads as the row's ordinal instead of a stray digit. */
+/* The step is the card's ordinal, so it is set like one rather than like small print. */
+.startIndex {
   font-size: 0.8125rem;
   font-weight: 600;
   color: var(--color-text);
   font-variant-numeric: tabular-nums;
 }
 
-.quickstartBody {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
+.startMeta {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
 }
 
-.quickstartItemTitle {
+.startTitle {
   font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1.35;
 }
 
-.quickstartDetail {
-  /* 13px, not the 14 of body copy: the card already carries a 15px title, and a
-     1px step between two greys is not a hierarchy, it is a wobble. */
+.startDetail {
   font-size: 0.8125rem;
   line-height: 1.45;
   color: var(--color-text-secondary);
 }
 
-.quickstartMeta {
+.startHereNote {
+  margin: 0;
   font-size: var(--text-caption);
   color: var(--color-text-muted);
   font-variant-numeric: tabular-nums;
-  white-space: nowrap;
 }
 
 /* ---------- tracks: expanding panels ---------- */
@@ -628,6 +621,20 @@
 /* ---------- responsive ---------- */
 
 @media screen and (max-width: 996px) {
+  /* Stacked, the message comes first: the illustration is a full screen on a phone,
+     and a reader who lands on a picture has to scroll to find the sentence. */
+  .heroMedia {
+    order: 2;
+  }
+
+  .copy {
+    order: 1;
+  }
+
+  .startGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .heroGrid {
     grid-template-columns: minmax(0, 1fr);
     gap: var(--space-8);

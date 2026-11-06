@@ -3,12 +3,31 @@ import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import clsx from 'clsx';
 import styles from './styles.module.css';
-import { hero, quickStarts, quickStartTotalMinutes } from '@site/src/data/landing';
+import { hero } from '@site/src/data/landing';
 
+/**
+ * Media on the left, copy on the right, after the shape of docs.logos.co: the
+ * illustration carries one column, and the other is a short stack of heading, one
+ * line of support and the action.
+ *
+ * The three-step start-here card that used to sit in this column is now its own band
+ * below (StartHere.tsx). It could not stay here: the media takes the second column,
+ * and a card beside a card would have made the hero three things deep.
+ */
 export default function Hero(): ReactNode {
   return (
     <section className={styles.hero}>
       <div className={clsx('container', styles.heroGrid)}>
+        <div className={styles.heroMedia}>
+          <img
+            src="/img/devex-hero.png"
+            alt="A laptop showing code brackets, the Developer Experience illustration"
+            width={1120}
+            height={917}
+            loading="eager"
+          />
+        </div>
+
         <div className={styles.copy}>
           <Heading as="h1" className={styles.title}>
             {hero.title}
@@ -24,37 +43,7 @@ export default function Hero(): ReactNode {
               {hero.secondary.label}
             </Link>
           </div>
-
-          {/* Three counts of this site used to sit here: tracks, sessions, pages.
-              Two of them restated the band directly below and the third measured
-              publishing rather than anything a reader gets, so they went. */}
         </div>
-
-        <aside className={styles.quickstart} aria-labelledby="start-here">
-          <div className={styles.quickstartHead}>
-            <h2 id="start-here" className={styles.quickstartTitle}>
-              Start here
-            </h2>
-            {/* The numerals already say "in order"; what the header can add is the
-                cost of the whole session, so it carries the sum of the row estimates. */}
-            <span className={styles.quickstartNote}>~{quickStartTotalMinutes} min</span>
-          </div>
-
-          <ol className={styles.quickstartList}>
-            {quickStarts.map((item, index) => (
-              <li key={item.href} className={styles.quickstartItem}>
-                <Link className={styles.quickstartLink} to={item.href}>
-                  <span className={styles.quickstartIndex}>{index + 1}</span>
-                  <span className={styles.quickstartBody}>
-                    <span className={styles.quickstartItemTitle}>{item.title}</span>
-                    <span className={styles.quickstartDetail}>{item.detail}</span>
-                  </span>
-                  <span className={styles.quickstartMeta}>{item.meta}</span>
-                </Link>
-              </li>
-            ))}
-          </ol>
-        </aside>
       </div>
     </section>
   );
