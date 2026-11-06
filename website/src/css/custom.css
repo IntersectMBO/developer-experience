@@ -51,6 +51,21 @@
   --color-link: #2353FF;
   --color-link-hover: #1D1D1B;
 
+  /* Warning callouts, retinted to blazing. Infima ships #ffba00, which is 2.12:1 on
+     white: the worst contrast on the site, in the one block that tells you to be
+     careful. Solid fills only, per the brand baseline, so the panel is a mixed
+     solid rather than an alpha layer, and the label is a darkened blazing at 5.42:1
+     against white and 9.51:1 against its own panel. */
+  --ifm-color-warning: #C13A0B;
+  --ifm-color-warning-dark: #B8390D;
+  --ifm-color-warning-darker: #A3330C;
+  --ifm-color-warning-darkest: #8A2B0A;
+  --ifm-color-warning-light: #FF7A50;
+  --ifm-color-warning-lighter: #FF8F6B;
+  --ifm-color-warning-lightest: #FFC4AE;
+  --ifm-color-warning-contrast-background: #FCE9E1;
+  --ifm-color-warning-contrast-foreground: #6B2408;
+
   /* Typography scale */
   --text-hero: 3rem;
   --text-h1: 2.25rem;
@@ -132,8 +147,11 @@
   --ifm-spacing-vertical: var(--space-4);
 }
 
-/* Dark Mode - Intersect Brand Colors */
-[data-theme='dark'] {
+/* Dark Mode - Intersect Brand Colors
+   html[...] rather than [...]: Infima declares its own dark tokens on
+   html[data-theme='dark'], which outranks a bare attribute selector, so a plain
+   [data-theme='dark'] block here would silently lose every contested token. */
+html[data-theme='dark'] {
   /* Functional roles — dark mode */
   --color-text: #F5F3EB;
   --color-text-secondary: #B3C4D4;
@@ -143,6 +161,18 @@
   --color-border: #3A3A3A;
   --color-link: #4D91FF;
   --color-link-hover: #8CB8FF;
+
+  /* Warning callouts on a dark page: the same hue, inverted for a dark panel.
+     11.37:1 for the label, 5.33:1 for the border. */
+  --ifm-color-warning: #FF8F6B;
+  --ifm-color-warning-dark: #F0764F;
+  --ifm-color-warning-darker: #E2683F;
+  --ifm-color-warning-darkest: #C95733;
+  --ifm-color-warning-light: #FFB59B;
+  --ifm-color-warning-lighter: #FFCBB8;
+  --ifm-color-warning-lightest: #FFDFD2;
+  --ifm-color-warning-contrast-background: #38201A;
+  --ifm-color-warning-contrast-foreground: #FFD7C7;
 
   /* Track marks, lightened for a dark tab: the same five hues, none of them the
      light value, because purple on #1D1D1B is 1.97:1 and would vanish. */
@@ -311,6 +341,16 @@
 .footer {
   background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
   padding: var(--space-12) 0;
+}
+
+/* Infima gives the warning alert an rgba highlight for its own hovers. Alpha is
+   out per the brand baseline, so it becomes a solid one step off the panel. */
+.alert--warning {
+  --ifm-alert-background-color-highlight: #F6D9CB;
+}
+
+[data-theme='dark'] .alert--warning {
+  --ifm-alert-background-color-highlight: #4A2A20;
 }
 
 .footer__title {
