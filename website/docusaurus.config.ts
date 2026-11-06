@@ -167,6 +167,14 @@ const config: Config = {
   ],
 
   themeConfig: {
+    // The toggle is a navbar item (src/theme/NavbarItem/ComponentTypes.tsx), placed before
+    // the search field. Docusaurus appends its own after every right-hand item, so it has
+    // to be switched off here or the bar shows two.
+    colorMode: {
+      defaultMode: "light",
+      disableSwitch: true,
+      respectPrefersColorScheme: false,
+    },
     metadata: [
       { name: "keywords", content: "Cardano, developer experience, blockchain, smart contracts, DeFi, Intersect MBO" },
       { name: "author", content: "Intersect MBO Developer Experience Working Group" },
@@ -208,10 +216,15 @@ const config: Config = {
           })),
         },
         {
+          type: "custom-colorModeToggle",
+          position: "right",
+        },
+        {
           type: "search",
           position: "right",
         },
         {
+          type: "custom-githubIcon",
           href: "https://github.com/IntersectMBO/developer-experience",
           label: "GitHub",
           position: "right",

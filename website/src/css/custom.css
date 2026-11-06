@@ -309,16 +309,6 @@ html[data-theme='dark'] {
   padding: 0.3rem 0;
 }
 
-/* The toggle reads before the search field. Infima appends it after the configured
-   right-hand items, so this is `order` rather than a config change: the DOM keeps its
-   sequence and its tab order, and only the row moves. Desktop only, because below 997
-   the right cluster also holds the menu button. */
-@media (min-width: 997px) {
-  .navbar__items--right > div[class*='colorModeToggle'] {
-    order: -1;
-  }
-}
-
 /* One rhythm across the bar. Infima gives items their own padding, so mixing padded
    and unpadded items produced optical gaps of 14px, 26px and 14px in the same row. */
 .navbar__items {
