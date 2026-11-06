@@ -43,13 +43,13 @@ export const hero = {
   eyebrow: 'Cardano developer experience',
   title: 'Build on Cardano. Start where you actually are.',
   subtitle:
-    'Four tracks, real guides and the session archive from the Developer Experience group at Intersect.',
+    'Five tracks, real guides and the session archive from the Developer Experience group at Intersect.',
   primary: { label: 'Start building', href: '/docs/getting-started/' },
   secondary: { label: 'Browse the session archive', href: '/docs/working-group/' },
 };
 
 export const heroStats = [
-  { value: '4', label: 'builder tracks' },
+  { value: '5', label: 'builder tracks' },
   { value: '22', label: 'sessions archived' },
   { value: '89', label: 'pages' },
 ];
@@ -106,6 +106,14 @@ export const tracks: Track[] = [
     title: 'Core protocol, Rust',
     blurb: 'Pallas and Dolos. There is a Go track beside this one.',
     href: '/docs/how-to-guide/advanced/rust-core-contributor/',
+    cta: 'Contributor guide',
+  },
+  {
+    index: '05',
+    stage: 'Contributing in Go',
+    title: 'Core protocol, Go',
+    blurb: 'Dingo and gouroboros, on testnets. The simplest setup of the three.',
+    href: '/docs/how-to-guide/advanced/go-core-contributor/',
     cta: 'Contributor guide',
   },
 ];
