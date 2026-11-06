@@ -54,11 +54,12 @@
   border: 3px solid var(--color-background);
   background: var(--color-surface);
   overflow: hidden;
-  transition: transform 0.15s ease, border-color 0.15s ease;
+  transition: border-color 0.15s ease;
 }
 
+/* No transform: a hover that moves a row is motion. The border change carries the
+   hover instead. */
 .contributorAvatar:hover {
-  transform: translateY(-2px);
   border-color: var(--ifm-color-primary);
 }
 

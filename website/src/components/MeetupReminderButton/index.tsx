@@ -19,32 +19,6 @@ const MeetupReminderButton: React.FC<MeetupReminderButtonProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedSession, setSelectedSession] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
-  const [isScrollingDown, setIsScrollingDown] = useState(false);
-
-  // A fixed control over full-bleed content covers whatever it sits on, so it
-  // steps out of the way on a downward scroll and returns on any upward one.
-  useEffect(() => {
-    let lastY = window.scrollY;
-    let queued = false;
-
-    const read = () => {
-      queued = false;
-      const y = window.scrollY;
-      const delta = y - lastY;
-      if (Math.abs(delta) < 8) return;
-      setIsScrollingDown(delta > 0 && y > 160);
-      lastY = y;
-    };
-
-    const onScroll = () => {
-      if (queued) return;
-      queued = true;
-      window.requestAnimationFrame(read);
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   // On phones the control moves into the navbar: a fixed button over full-bleed
   // text always covers a word or a number, and no offset fixes that. Desktop
@@ -106,15 +80,11 @@ const MeetupReminderButton: React.FC<MeetupReminderButtonProps> = ({
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      setIsScrollingDown(false);
       setIsExpanded(!isExpanded);
     }
   };
 
   const toggleExpanded = () => {
-    // Interacting with it should surface it again: closing the panel mid-page
-    // must not leave the reader with no visible control.
-    setIsScrollingDown(false);
     setIsExpanded(!isExpanded);
   };
 
@@ -141,9 +111,6 @@ const MeetupReminderButton: React.FC<MeetupReminderButtonProps> = ({
     styles.floatingButton,
     isExpanded ? styles.expanded : "",
     usesNavbar ? styles.navTrigger : "",
-    !usesNavbar && isScrollingDown && !isExpanded
-      ? styles.hiddenWhileScrolling
-      : "",
   ]
     .filter(Boolean)
     .join(" ");

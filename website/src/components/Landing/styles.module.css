@@ -604,7 +604,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .panel {
+  /* What is left is state feedback, not entrance: the panel still snaps to its
+     new width, it just does not ease into it. */
+  .panel,
+  .panelBody,
+  .panelRail {
     transition: none;
   }
 }

@@ -163,6 +163,19 @@
 
 /* Custom Intersect Branding Styles */
 
+/* ---------- Motion policy ----------
+   The page ships its final state in the markup and the first paint is the
+   finished page: no scroll reveals, no entrance staggers, no word-by-word text,
+   no element that drifts or breathes on its own. Nothing here is slowed down or
+   shortened; the motion was removed, and with it the keyframes and the scroll
+   listener that drove it.
+
+   What remains is feedback for an action the reader just took: a hover colour, a
+   focus ring, a control that expands to show its label, a panel that widens to
+   show the track that was clicked. That is a property change on an interaction,
+   not an animation that plays at the page. Every one of those is disabled under
+   prefers-reduced-motion. */
+
 /* Navbar styling */
 .navbar {
   background: var(--color-brand-primary);
@@ -194,7 +207,6 @@
 
 .navbar__brand:hover {
   color: rgb(237, 237, 237) !important;
-  transform: translateY(-1px);
 }
 
 .navbar__logo {

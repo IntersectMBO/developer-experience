@@ -29,17 +29,7 @@
   font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1;
-  transition: width 0.18s ease, background-color 0.15s ease, box-shadow 0.15s ease,
-    opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
-}
-
-/* Steps out of the way on a downward scroll. visibility, not just opacity, so
-   a hidden control cannot take keyboard focus. */
-.hiddenWhileScrolling {
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(0.5rem);
-  pointer-events: none;
+  transition: width 0.18s ease, background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .floatingButton:hover {
@@ -137,7 +127,6 @@
   border: 1px solid var(--ifm-color-emphasis-200);
   border-radius: 16px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
 
@@ -152,18 +141,6 @@
   max-width: none;
   max-height: calc(100dvh - var(--ifm-navbar-height) - 1.5rem);
   overflow: auto;
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Panel Header */
@@ -300,17 +277,12 @@
   background: var(--ifm-color-primary-darker);
   color: #ffffff !important;
   text-decoration: none;
-  transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .linkButton:focus-visible {
   outline: 2px solid var(--ifm-color-primary);
   outline-offset: 2px;
-}
-
-.linkButton:active {
-  transform: translateY(0);
 }
 
 .linkButton.copied {
@@ -373,7 +345,6 @@
 .sessionOption:hover {
   /* background: var(--ifm-color-primary-lightest); */
   border-color: var(--ifm-color-primary);
-  transform: translateX(4px);
 }
 
 .sessionOption:hover .sessionOptionTitle {
@@ -427,7 +398,6 @@
 
 .backButton:hover {
   background: var(--ifm-color-emphasis-100);
-  transform: translateX(-2px);
 }
 
 .backButton:focus-visible {
@@ -466,7 +436,6 @@
 
 .calendarButton:hover {
   background: var(--ifm-color-primary-dark);
-  transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(37, 85, 254, 0.3);
 }
 
@@ -476,7 +445,6 @@
 }
 
 .calendarButton:active {
-  transform: translateY(0);
   box-shadow: 0 2px 8px rgba(37, 85, 254, 0.2);
 }
 
@@ -776,20 +744,5 @@
   .closeButton,
   .panel {
     transition: none;
-  }
-
-  @keyframes slideUp {
-
-    from,
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .floatingButton:hover,
-  .linkButton:hover,
-  .calendarButton:hover {
-    transform: none;
   }
 }
