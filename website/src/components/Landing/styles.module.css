@@ -252,6 +252,17 @@
 
 /* ---------- tracks: expanding panels ---------- */
 
+/* A tint that reads as a pale wash on white is only a suggestion on a dark tab, so
+   the dark theme mixes harder: 24% closed, 14% for the open panel, which keeps the
+   same relationship between tab and field. */
+:global([data-theme='dark']) .panel:not(.panelActive) {
+  background: color-mix(in srgb, var(--track-accent) 24%, var(--card-bg, var(--color-surface)));
+}
+
+:global([data-theme='dark']) .panelActive {
+  background: color-mix(in srgb, var(--track-accent) 14%, var(--band-bg, var(--color-background)));
+}
+
 /* After privy.io/neobanks "Build your banking stack": one track open, the rest
    standing as vertical tabs you click to switch. Panels stack into an accordion
    below 769px, where a rotated label has nowhere to go. */
@@ -270,9 +281,15 @@
   min-height: 14rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
+  /* Track identity as a wash, the way the reference does it: the tab is a tinted
+     field, not a neutral field with a coloured mark. The fallback line is the
+     plain card colour, so a browser without color-mix gets the neutral tab back
+     rather than an unstyled one. Type stays midnight on the tint, which is what
+     makes a 14% lavender readable. */
   background: var(--card-bg, var(--color-surface));
-  /* The track's identity, drawn on the tab's leading edge. A 3px stripe survives
-     the accordion, where the label rotates and the plus is the only other cue. */
+  background: color-mix(in srgb, var(--track-accent) 14%, var(--card-bg, var(--color-surface)));
+  /* The rail stripe stays: on a tinted tab it is the crisp edge that says which
+     colour this tab is, where a 14% wash alone reads as a suggestion. */
   box-shadow: inset 3px 0 0 var(--track-accent, transparent);
   overflow: hidden;
   /* flex-grow, not flex-basis: grow is a number, so 0 -> 1 interpolates and the
@@ -285,7 +302,11 @@
 
 .panelActive {
   flex-grow: 1;
+  /* The open panel takes its track's tint at the same strength as the closed tabs,
+     so the active track is the colour you are looking at, not a paler cousin of it.
+     Body copy stays midnight on the wash, which keeps its contrast above 12:1. */
   background: var(--band-bg, var(--color-background));
+  background: color-mix(in srgb, var(--track-accent) 12%, var(--band-bg, var(--color-background)));
 }
 
 /* The rail is one object in both states: a vertical strip that fades. Flipping
