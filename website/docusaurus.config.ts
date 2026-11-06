@@ -4,7 +4,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 import dotenv from 'dotenv';
 // One source for the five tracks: the navbar's Your Path menu and band 02 read the
 // same list, so a renamed track cannot appear in one place and not the other.
-import { tracks } from './src/data/landing';
+import { topics, tracks } from './src/data/landing';
 
 dotenv.config({ path: '.env' });
 
@@ -179,9 +179,14 @@ const config: Config = {
         src: "img/intersect-logo.png",
       },
       items: [
-        // The Documentation slot leads with the reader's stage instead of their file
-        // type: the five tracks are the same five answers the landing page gives, so
-        // the navbar and band 02 cannot drift apart.
+        // Four things, two menus, one meaning each, after docs.logos.co: the entry
+        // point, intent, and surface. Both menus read the landing page's own data, so
+        // the bar and bands 02 and 03 cannot drift apart.
+        {
+          label: "Get started",
+          to: "/docs/getting-started/",
+          position: "left",
+        },
         {
           type: "dropdown",
           label: "Your Path",
@@ -193,27 +198,13 @@ const config: Config = {
         },
         {
           type: "dropdown",
-          label: "Resources",
+          label: "Explore",
           position: "left",
-          items: [
-            {
-              label: "Getting Started",
-              to: "/docs/getting-started/",
-            },
-            {
-              label: "How-to Guides",
-              to: "/docs/how-to-guide/beginner/",
-            },
-            {
-              label: "Working Groups",
-              to: "/docs/working-group/",
-            },
-          ],
-        },
-        {
-          label: "FAQs",
-          to: "/docs/faq/",
-          position: "left",
+          // The eight library topics from band 03, in the band's order.
+          items: topics.map((topic) => ({
+            label: topic.title,
+            to: topic.href,
+          })),
         },
         {
           type: "search",
