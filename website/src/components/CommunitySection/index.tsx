@@ -32,8 +32,8 @@ export default function CommunitySection() {
         <div className={styles.grid}>
           <div className={styles.support}>
             <p className={styles.supportCopy}>
-              Create an issue in our GitHub repository so that our developer advocates and community
-              members assist you.
+              Create an issue. Do a code review. Ship a Pull Request. Our developer advocates and
+              community members will assist you when you get stuck :)
             </p>
 
             <div className={styles.actions}>
