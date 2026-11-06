@@ -2,6 +2,9 @@ import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import dotenv from 'dotenv';
+// One source for the five tracks: the navbar's Your Path menu and band 02 read the
+// same list, so a renamed track cannot appear in one place and not the other.
+import { tracks } from './src/data/landing';
 
 dotenv.config({ path: '.env' });
 
@@ -176,11 +179,17 @@ const config: Config = {
         src: "img/intersect-logo.png",
       },
       items: [
+        // The Documentation slot leads with the reader's stage instead of their file
+        // type: the five tracks are the same five answers the landing page gives, so
+        // the navbar and band 02 cannot drift apart.
         {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          type: "dropdown",
+          label: "Your Path",
           position: "left",
-          label: "Documentation",
+          items: tracks.map((track) => ({
+            label: track.title,
+            to: track.href,
+          })),
         },
         {
           type: "dropdown",
