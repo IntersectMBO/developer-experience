@@ -17,9 +17,9 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  width: 3.5rem;
   height: 3.5rem;
-  padding: 0 1.25rem;
+  padding: 0;
   background: var(--color-brand-primary);
   color: #ffffff;
   border: none;
@@ -29,7 +29,7 @@
   font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1;
-  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+  transition: width 0.18s ease, background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .floatingButton:hover {
@@ -52,30 +52,41 @@
   flex-shrink: 0;
 }
 
-/* Button Text */
+/* Button Text — collapsed to nothing until the control is hovered or focused.
+   Kept in the DOM so the label is still announced by a screen reader. */
 .buttonText {
+  max-width: 0;
+  margin-left: 0;
+  overflow: hidden;
+  opacity: 0;
+  white-space: nowrap;
   font-weight: 600;
   letter-spacing: 0;
+  transition: max-width 0.18s ease, margin-left 0.18s ease, opacity 0.14s ease;
+}
+
+/* Expand to a pill on hover, and on keyboard focus. Gated on width only: an
+   environment can report `hover: none` while still having a mouse, and then the
+   label would never be reachable. Below 769px the label is display:none, so
+   touch devices keep the icon-only control. */
+@media (min-width: 769px) {
+  .floatingButton:hover,
+  .floatingButton:focus-visible {
+    width: 11.5rem;
+  }
+
+  .floatingButton:hover .buttonText,
+  .floatingButton:focus-visible .buttonText {
+    max-width: 11rem;
+    margin-left: 0.5rem;
+    opacity: 1;
+  }
 }
 
 @media (max-width: 767px) {
   .container {
     bottom: 1rem;
     right: 1rem;
-  }
-
-  .floatingButton {
-    width: 3.5rem;
-    padding: 0;
-  }
-
-  .icon {
-    width: 24px;
-    height: 24px;
-  }
-
-  .buttonText {
-    display: none;
   }
 }
 
@@ -611,11 +622,12 @@
     bottom: 4.5rem;
   }
 
-  .floatingButton {
-    width: 3.5rem;
-    padding: 0;
+  .icon {
+    width: 24px;
+    height: 24px;
   }
 
+  /* Touch has no hover, so the label never expands: keep it out of the button. */
   .buttonText {
     display: none;
   }
@@ -709,6 +721,7 @@
 @media (prefers-reduced-motion: reduce) {
 
   .floatingButton,
+  .floatingButton .buttonText,
   .linkButton,
   .calendarButton,
   .closeButton,
