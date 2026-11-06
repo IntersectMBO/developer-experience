@@ -12,7 +12,7 @@ export default function Tracks(): ReactNode {
   const [active, setActive] = useState(0);
 
   return (
-    <section className={styles.section}>
+    <section className={`${styles.section} ${styles.bandAlt}`}>
       <div className="container">
         <div className={styles.sectionHead}>
           <span className={styles.sectionIndex}>01</span>

@@ -17,6 +17,21 @@
    it to pay the bottom one. */
 .section {
   padding: var(--space-12) 0 0;
+  /* Every band declares the pair it uses: --band-bg for the band itself, --card-bg
+     for the cards and closed panels sitting on it. An alternating band swaps the
+     pair, so its cards flip to the page colour instead of dissolving into it. */
+  --band-bg: var(--color-background);
+  --card-bg: var(--color-surface);
+  background: var(--band-bg);
+}
+
+/* The second and fourth bands sit on the warm surface. With a surface behind it,
+   the heading and the 96px rhythm are the whole separator, so no rule is needed
+   and the page gets a horizontal rhythm that survives dark mode (where the two
+   surfaces differ by 1.2:1 rather than 1.11:1). */
+.bandAlt {
+  --band-bg: var(--color-surface);
+  --card-bg: var(--color-background);
 }
 
 /* The last band pays its bottom edge too, like the footer: nothing follows it to
@@ -54,11 +69,11 @@
 
 /* One rhythm for the whole stack: every band pays --space-12 at its top edge, the
    footer included; bottom edges pay nothing, because the next band's top edge is
-   the gap. Section padding is set in .section, the hero here, the footer in
-   custom.css; nothing else is allowed to set band padding, so the gaps between
-   bands read as one value rather than four. */
+   the gap. The hero is the exception: its last element is a card, and on a band
+   that alternates to the same colour the two would meet and read as one shape,
+   so it pays its bottom edge as well. */
 .hero {
-  padding: var(--space-12) 0 0;
+  padding: var(--space-12) 0 var(--space-12);
 }
 
 .heroGrid {
@@ -151,7 +166,7 @@
 /* ---------- hero quickstart card ---------- */
 
 .quickstart {
-  background: var(--color-surface);
+  background: var(--card-bg, var(--color-surface));
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: var(--space-5) var(--space-5) var(--space-2);
@@ -261,7 +276,7 @@
   min-height: 14rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background: var(--color-surface);
+  background: var(--card-bg, var(--color-surface));
   overflow: hidden;
   /* flex-grow, not flex-basis: grow is a number, so 0 -> 1 interpolates and the
      width follows it smoothly. Animating to `flex: auto` jumps, because `auto`
@@ -273,7 +288,7 @@
 
 .panelActive {
   flex-grow: 1;
-  background: var(--color-background);
+  background: var(--band-bg, var(--color-background));
 }
 
 /* The rail is one object in both states: a vertical strip that fades. Flipping

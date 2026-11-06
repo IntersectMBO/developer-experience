@@ -20,7 +20,7 @@ const OPEN_ISSUES = 'https://github.com/IntersectMBO/developer-experience/issues
  */
 export default function CommunitySection() {
   return (
-    <section className={page.section}>
+    <section className={`${page.section} ${page.bandAlt}`}>
       <div className="container">
         <div className={page.sectionHead}>
           <span className={page.sectionIndex}>03</span>

@@ -37,7 +37,7 @@
   padding: var(--space-5);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  background: var(--color-surface);
+  background: var(--card-bg, var(--color-surface));
 }
 
 /* The page's one warm accent, and it means one thing: this is scheduled.
