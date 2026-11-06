@@ -923,8 +923,8 @@ a:hover {
 }
 
 /* Narrow screens collapse the input to an icon; centre the magnifier in that
-   chip, hide the placeholder that would otherwise sit under it, and put both
-   back as soon as the field takes focus and expands. */
+   chip, hide the placeholder and the shortcut hints that would otherwise sit
+   outside it, and restore all three once the field takes focus and expands. */
 @media (max-width: 996px) {
   .navbar__search:not(:focus-within) input {
     width: 36px; /* a square icon chip rather than a 32px narrow one */
@@ -934,6 +934,10 @@ a:hover {
 
   .navbar__search:not(:focus-within) input::placeholder {
     color: transparent;
+  }
+
+  .navbar__search:not(:focus-within) kbd {
+    display: none;
   }
 }
 
