@@ -19,6 +19,13 @@
   padding: var(--space-12) 0 0;
 }
 
+/* The last band pays its bottom edge too, like the footer: nothing follows it to
+   pay the space, and what follows is a dark surface, so without this the cards end
+   exactly where the footer begins. */
+.section:last-of-type {
+  padding-bottom: var(--space-12);
+}
+
 .sectionHead {
   margin-bottom: var(--space-8);
 }
