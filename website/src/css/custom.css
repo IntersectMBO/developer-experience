@@ -8,6 +8,9 @@
 /* Source: .agents/skills/design-baseline/SKILL.md */
 
 :root {
+  /* 72px, up from Infima's 60, so a 44px lockup sits with 14px of air above and below.
+     Sidebars and the table of contents offset from this token, so they follow. */
+  --ifm-navbar-height: 4.5rem;
   /* Brand roles */
   --color-brand-primary: #2353FF;
   --color-brand-primary-dark: #1a43d4;
@@ -250,11 +253,22 @@ html[data-theme='dark'] {
 }
 
 /* The search container and the sessions chip are both absolutely positioned, so
-   they take no flow space: reserve it on the left group so the wordmark
-   truncates instead of running underneath them. */
+   they take no flow space: reserve it on the left group so the brand keeps clear of
+   them. The lockup also steps down, because at 44px it is 221px wide and a phone has
+   about 250 to give once that reserve is paid. */
 @media (max-width: 996px) {
   .navbar__items:not(.navbar__items--right) {
     padding-right: 7rem;
+  }
+
+  .navbar__logo {
+    height: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar__logo {
+    height: 28px;
   }
 }
 
@@ -263,7 +277,10 @@ html[data-theme='dark'] {
 }
 
 .navbar__logo {
-  height: 32px;
+  /* The lockup is 5:1 (mark plus wordmark), so a fixed height sets its width: 44px tall
+     is 220px wide, which is what makes it read as the page's name rather than an icon
+     with a caption beside it. */
+  height: 44px;
   width: auto;
   transition: all 0.2s ease;
 }

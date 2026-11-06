@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useThemeConfig } from '@docusaurus/theme-common';
 
 import styles from './styles.module.css';
@@ -35,10 +34,11 @@ type FooterColumn = { title: string; items: FooterLink[] };
  * code change.
  */
 export default function Footer(): ReactNode {
-  const { siteConfig } = useDocusaurusContext();
-  const { footer, navbar } = useThemeConfig();
-  // The navbar shortens the site title; the footer has to say the same thing.
-  const name = (navbar as { title?: string }).title ?? siteConfig.title;
+  const { footer } = useThemeConfig();
+  // Not read from siteConfig or navbar.title: the bar's lockup carries the wordmark and
+  // the navbar title is now empty, and the site title is the longer "Cardano Developer
+  // Experience". The footer draws the mark itself, so it needs the short name.
+  const name = 'Developer Experience';
   if (!footer) return null;
 
   const logo = footer.logo;

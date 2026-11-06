@@ -173,10 +173,11 @@ const config: Config = {
     ],
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "Developer Experience",
+      // The lockup carries the wordmark, so the bar renders no text beside it.
+      title: "",
       logo: {
-        alt: "Intersect MBO Logo",
-        src: "img/intersect-logo.png",
+        alt: "Developer Experience",
+        src: "img/devex-logo-lockup.png",
       },
       items: [
         // Four things, two menus, one meaning each, after docs.logos.co: the entry
