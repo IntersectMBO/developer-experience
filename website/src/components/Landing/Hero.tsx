@@ -1,7 +1,7 @@
 import type { ReactNode } from 'react';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
-import ThemedImage from '@theme/ThemedImage';
+
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import { hero } from '@site/src/data/landing';
@@ -20,26 +20,14 @@ export default function Hero(): ReactNode {
     <section className={styles.hero}>
       <div className={clsx('container', styles.heroGrid)}>
         <div className={styles.heroMedia}>
-          {/* Two inks of the same drawing. The dark one is the light one with the navy
-              body remapped to moon, so the laptop's edges read against #1D1D1B instead
-              of disappearing into it at 1.05:1. Same pixel size, so the swap cannot
-              shift the layout.
-
-              WebP at 84: 71KB and 76KB, against 320KB and 324KB as PNG, with no visible
-              difference at the 512px the hero renders them. No PNG fallback: the page
-              already depends on color-mix and container queries. */}
-          <ThemedImage
+          {/* One ink, because the hero surface is one colour in both themes. WebP at
+              84 keeps it at 72KB; it is the first thing on the page, so eager. */}
+          <img
+            src="/img/devex-hero.webp"
             alt="A laptop showing code brackets, the Developer Experience illustration"
-            sources={{
-              light: '/img/devex-hero.webp',
-              dark: '/img/devex-hero-dark.webp',
-            }}
             width={1120}
             height={917}
-            /* ThemedImage keeps both inks in the DOM and hides one, so both would be
-               fetched. Lazy deferral keeps the hidden one out of the network: the
-               visible variant is in the first screen and loads anyway. */
-            loading="lazy"
+            loading="eager"
           />
         </div>
 

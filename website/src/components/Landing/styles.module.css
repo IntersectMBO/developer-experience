@@ -65,9 +65,34 @@
 /* One rhythm for the whole stack: every band pays --space-12 top and bottom, the
    footer included. Padding is set in .section, the hero here, the footer in
    custom.css; nothing else is allowed to set band padding, so every band's margin
-   is the same value whether or not it carries a surface. */
+   is the same value whether or not it carries a surface.
+
+   The hero carries Caramel in BOTH themes. It is the only surface that separates the
+   illustration's two inks at once, navy at 14.4:1 and its blue screen at 4.54:1, which
+   no dark surface does, and because it does not change with the theme the drawing does
+   not need a second ink. The cost is that nothing in here may use a theme token: in
+   dark mode --color-text is moon, which is 1.11:1 on caramel. */
 .hero {
   padding: var(--space-12) 0;
+  background: var(--color-accent-caramel);
+}
+
+.hero .title {
+  color: var(--color-brand-midnight);
+}
+
+.hero .subtitle {
+  color: #4A4A4A;
+}
+
+/* Brand blue, not --ifm-color-primary: the dark theme re-points that to #4D91FF, which
+   drops to 3.0:1 on caramel. */
+.hero .textLink {
+  color: var(--color-brand-primary) !important;
+}
+
+.hero .textLink:hover {
+  color: var(--color-brand-primary-dark) !important;
 }
 
 /* Two equal columns with the media first, after docs.logos.co: their hero is 530 of

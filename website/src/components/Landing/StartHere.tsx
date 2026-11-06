@@ -14,7 +14,7 @@ import { quickStarts, quickStartTotalMinutes } from '@site/src/data/landing';
  */
 export default function StartHere(): ReactNode {
   return (
-    <section className={`${styles.section} ${styles.bandAlt}`}>
+    <section className={styles.section}>
       <div className="container">
         <div className={styles.sectionHeadRow}>
           <div className={styles.sectionHead}>
