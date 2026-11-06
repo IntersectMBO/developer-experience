@@ -239,78 +239,121 @@
   white-space: nowrap;
 }
 
-/* ---------- tracks and library grids ---------- */
+/* ---------- tracks: expanding panels ---------- */
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px;
-  background: var(--color-border);
+/* After privy.io/neobanks "Build your banking stack": one track open, the rest
+   standing as vertical tabs you click to switch. Panels stack into an accordion
+   below 769px, where a rotated label has nowhere to go. */
+.stack {
+  display: flex;
+  gap: 0.75rem;
+  /* Tall enough for the longest rotated label; the open panel sets the height
+     from its own copy. */
+  min-height: 14rem;
+}
+
+.panel {
+  display: flex;
+  flex: 0 0 3rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
-  min-height: 12.5rem;
-  padding: var(--space-5) var(--space-5) var(--space-5);
-  background: var(--color-background);
-  color: var(--color-text) !important;
-  text-decoration: none;
-  transition: background-color 0.15s ease;
-}
-
-.card:hover {
   background: var(--color-surface);
-  color: var(--color-text) !important;
-  text-decoration: none;
+  overflow: hidden;
+  transition: flex-basis 0.35s ease, background-color 0.2s ease;
 }
 
-.cardHead {
+.panelActive {
+  flex: 1 1 auto;
+  flex-direction: column;
+  background: var(--color-background);
+}
+
+.panelTab {
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 0;
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  transition: color 0.15s ease;
+}
+
+.panelTab:hover {
+  color: var(--ifm-color-primary);
+}
+
+.panelActive .panelTab {
+  justify-content: flex-start;
   align-items: baseline;
-  gap: 0.25rem var(--space-3);
+  padding: var(--space-5) var(--space-5) var(--space-3);
+  writing-mode: horizontal-tb;
+  transform: none;
+  color: var(--color-text-muted);
+  cursor: default;
 }
 
-.cardIndex {
+.tabIndex {
   font-size: var(--text-caption);
   font-weight: 600;
-  color: var(--color-text-muted);
   font-variant-numeric: tabular-nums;
-}
-
-/* Where the builder is, not what the track covers. */
-.cardStage {
-  font-size: var(--text-caption);
   letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
 }
 
-.cardTitle {
-  margin: 0;
-  font-size: 1.0625rem;
+.tabStrip {
+  font-size: 0.9375rem;
   font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  white-space: nowrap;
 }
 
-.cardBlurb {
-  margin: 0;
+.tabHead {
+  font-size: var(--text-caption);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* A closed panel shows the track name on the strip; the open one shows its
+   stage there instead, with the name as the heading below. */
+.panelActive .tabStrip,
+.panel:not(.panelActive) .tabHead {
+  display: none;
+}
+
+.panelBody {
+  padding: 0 var(--space-5) var(--space-5);
+}
+
+.panelTitle {
+  margin: 0 0 var(--space-3);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.panelBlurb {
+  margin: 0 0 var(--space-5);
+  max-width: 42ch;
   font-size: var(--text-body-sm);
-  line-height: 1.55;
+  line-height: 1.6;
   color: var(--color-text-secondary);
 }
 
-.cardCta {
-  margin-top: auto;
+.panelCta {
   font-size: var(--text-body-sm);
   font-weight: 600;
   color: var(--ifm-color-primary) !important;
+  text-decoration: none;
+}
+
+.panelCta:hover {
+  text-decoration: underline;
 }
 
 /* ---------- library topics ---------- */
@@ -444,10 +487,6 @@
     padding: var(--space-10) 0;
   }
 
-  .grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
   .gridTopic {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -461,8 +500,28 @@
   }
 }
 
+/* Below 769px the panels become an accordion: every tab reads as its own row,
+   only the open one carries its copy. */
+@media screen and (max-width: 768px) {
+  .stack {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .panel {
+    flex: 0 0 auto;
+    flex-direction: column;
+  }
+
+  .panelTab {
+    justify-content: flex-start;
+    padding: var(--space-4) var(--space-5);
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+}
+
 @media screen and (max-width: 640px) {
-  .grid,
   .gridTopic {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -480,5 +539,11 @@
   .primary,
   .secondary {
     justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .panel {
+    transition: none;
   }
 }
