@@ -4,10 +4,7 @@
  * Everything the home page renders lives here so a maintainer can change copy or
  * swap a link without touching a component. Links are site-absolute and must
  * resolve: the site builds with onBrokenLinks: 'throw'.
- *
- * Numbers in `heroStats` are counts of what the archive holds today. Update them
- * when a quarter closes.
- */
+ * */
 
 export type QuickStart = {
   title: string;
@@ -47,12 +44,6 @@ export const hero = {
   primary: { label: 'Start building', href: '/docs/getting-started/' },
   secondary: { label: 'Browse the session archive', href: '/docs/working-group/' },
 };
-
-export const heroStats = [
-  { value: '5', label: 'builder tracks' },
-  { value: '22', label: 'sessions archived' },
-  { value: '89', label: 'pages' },
-];
 
 export const quickStarts: QuickStart[] = [
   {

@@ -3,7 +3,7 @@ import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
 import clsx from 'clsx';
 import styles from './styles.module.css';
-import { hero, heroStats, quickStarts, quickStartTotalMinutes } from '@site/src/data/landing';
+import { hero, quickStarts, quickStartTotalMinutes } from '@site/src/data/landing';
 
 export default function Hero(): ReactNode {
   return (
@@ -27,14 +27,9 @@ export default function Hero(): ReactNode {
             </Link>
           </div>
 
-          <dl className={styles.stats}>
-            {heroStats.map((stat) => (
-              <div key={stat.label} className={styles.stat}>
-                <dt className={styles.statLabel}>{stat.label}</dt>
-                <dd className={styles.statValue}>{stat.value}</dd>
-              </div>
-            ))}
-          </dl>
+          {/* Three counts of this site used to sit here: tracks, sessions, pages.
+              Two of them restated the band directly below and the third measured
+              publishing rather than anything a reader gets, so they went. */}
         </div>
 
         <aside className={styles.quickstart} aria-labelledby="start-here">
