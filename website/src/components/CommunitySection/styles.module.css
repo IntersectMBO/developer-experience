@@ -40,12 +40,22 @@
   background: var(--color-surface);
 }
 
+/* The page's one warm accent, and it means one thing: this is scheduled.
+   Vanilla cannot be text on a light canvas (1.64:1 against white), so it is a
+   fill with midnight on top, which measures 10.33:1. Nothing else on the page
+   takes a colour that is not brand blue or midnight. */
 .sessionLabel {
+  display: inline-flex;
+  align-items: center;
   margin: 0 0 var(--space-3);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-vanilla);
+  color: var(--color-brand-midnight);
   font-size: var(--text-caption);
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
 }
 
 .sessionTitle {
