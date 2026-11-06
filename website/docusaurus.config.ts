@@ -216,7 +216,7 @@ const config: Config = {
           })),
         },
         {
-          type: "custom-colorModeToggle",
+          type: "search",
           position: "right",
         },
         {
@@ -226,7 +226,9 @@ const config: Config = {
           position: "right",
         },
         {
-          type: "search",
+          // Last, at the corner: the one control with no label and no count, in the
+          // place a mode switch sits on every operating system.
+          type: "custom-colorModeToggle",
           position: "right",
         },
       ],
