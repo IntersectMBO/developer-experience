@@ -23,16 +23,23 @@ export default function Hero(): ReactNode {
           {/* Two inks of the same drawing. The dark one is the light one with the navy
               body remapped to moon, so the laptop's edges read against #1D1D1B instead
               of disappearing into it at 1.05:1. Same pixel size, so the swap cannot
-              shift the layout. */}
+              shift the layout.
+
+              WebP at 84: 71KB and 76KB, against 320KB and 324KB as PNG, with no visible
+              difference at the 512px the hero renders them. No PNG fallback: the page
+              already depends on color-mix and container queries. */}
           <ThemedImage
             alt="A laptop showing code brackets, the Developer Experience illustration"
             sources={{
-              light: '/img/devex-hero.png',
-              dark: '/img/devex-hero-dark.png',
+              light: '/img/devex-hero.webp',
+              dark: '/img/devex-hero-dark.webp',
             }}
             width={1120}
             height={917}
-            loading="eager"
+            /* ThemedImage keeps both inks in the DOM and hides one, so both would be
+               fetched. Lazy deferral keeps the hidden one out of the network: the
+               visible variant is in the first screen and loads anyway. */
+            loading="lazy"
           />
         </div>
 
