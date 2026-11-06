@@ -8,9 +8,15 @@
    repeats a marker the reader already has, and it makes the stack read as a
    table. The page's rule language is two devices and this was neither: 1px
    --color-border divides items inside a band (cards, the session card), 2px
-   midnight groups the library's topics. Nothing at band level. */
+   midnight groups the library's topics. Nothing at band level.
+
+   Padding is top-only so the space between two bands is --space-12, not twice
+   it. With a rule on the boundary the doubled gap read as a seam; with the rule
+   gone it read as a hole, which is what 192px of white between a card and the
+   next heading looks like. The footer keeps both edges because nothing follows
+   it to pay the bottom one. */
 .section {
-  padding: var(--space-12) 0;
+  padding: var(--space-12) 0 0;
 }
 
 .sectionHead {
@@ -39,12 +45,13 @@
 
 /* ---------- hero ---------- */
 
-/* One rhythm for the whole stack: every band pays --space-12 top and bottom, the
-   footer included. Section padding is set in .section, the hero here, the footer
-   in custom.css; nothing else is allowed to set band padding, so the gaps between
+/* One rhythm for the whole stack: every band pays --space-12 at its top edge, the
+   footer included; bottom edges pay nothing, because the next band's top edge is
+   the gap. Section padding is set in .section, the hero here, the footer in
+   custom.css; nothing else is allowed to set band padding, so the gaps between
    bands read as one value rather than four. */
 .hero {
-  padding: var(--space-12) 0;
+  padding: var(--space-12) 0 0;
 }
 
 .heroGrid {
