@@ -308,8 +308,134 @@ html[data-theme='dark'] {
    them. The lockup also steps down, because at 44px it is 221px wide and a phone has
    about 250 to give once that reserve is paid. */
 @media (max-width: 996px) {
-  .navbar__items:not(.navbar__items--right) {
-    padding-right: 7rem;
+  /* On a phone the bar is three chips on the right: search, sessions, theme. They used to be
+     a mixture of absolutes: the search field was pinned to the bar's right edge, and the
+     sessions chip 4.5rem in, which put the search underneath whatever item came last. Here
+     that was the theme toggle, so search was unreachable on every phone. In flow they
+     cannot collide. */
+  .navbar__items--right {
+    gap: 8px;
+    align-items: center;
+  }
+
+  /* The plugin's own stylesheet loads after this one and matches at the same specificity,
+     which is why position needs !important here as well as the padding. */
+  .navbar [class*='navbarSearchContainer'] {
+    position: static !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    order: 1;
+  }
+
+  .navbar__search {
+    margin: 0 !important;
+  }
+
+  /* A focused field opens over the bar instead of squeezing the lockup out of it. */
+  .navbar [class*='navbarSearchContainer']:focus-within {
+    position: absolute !important;
+    right: var(--ifm-navbar-padding-horizontal);
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  .navbar__items--right [class*='navTrigger'] {
+    position: static;
+    transform: none;
+    order: 2;
+    width: 36px;
+    height: 36px;
+  }
+
+  .navbar__items--right [class*='navTrigger']:active {
+    transform: scale(0.92);
+  }
+
+  /* One chip family: 36px square, 1px rim, 8px radius. The toggle was a bare 32px circle
+     with no border, which made it read as a different kind of control entirely. */
+  /* Three chips and the wordmark do not fit a narrow phone, so below 480 the theme switch
+     moves to the drawer, where it is already rendered, and the bar keeps search and
+     sessions. Wider phones and tablets have the room for all three. */
+  .navbar__items--right > [class^='toggle_'] {
+    order: 3;
+  }
+
+  .navbar__brand {
+    margin-left: 8px;
+  }
+
+  .navbar__items--right [class*='toggleButton'] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+  }
+
+  .navbar__items--right [class*='toggleButton']:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* The lockup yields before anything else: it shrinks to whatever the chips leave. */
+  /* The drawer header is the bar continued: same blue, so the white lockup, the close
+     button and the white rim on the toggle all keep working. On a white header the lockup
+     was white on white in light mode. */
+  .navbar-sidebar__brand {
+    background: var(--color-brand-primary);
+  }
+
+  .navbar-sidebar__close {
+    color: #ffffff !important;
+  }
+
+  /* In the drawer the toggle is a bare icon dropped into the menu list, so it sat under the
+     last link with no row of its own. It gets the same row metrics as a menu link. */
+  .navbar-sidebar .menu__list > [class^='toggle_'] {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
+    border-radius: var(--ifm-global-radius);
+  }
+
+  .navbar-sidebar .menu__list > [class^='toggle_']:hover {
+    background: var(--ifm-menu-color-background-hover);
+  }
+
+  /* The button inherits the bar's white, which is invisible on the drawer, and fills the
+     row, which centred the icon. It takes the menu colour and sits at the row's start.
+     !important because a white-on-the-bar rule above wins at equal specificity. */
+  .navbar-sidebar .menu__list > [class^='toggle_'] button {
+    width: auto;
+    justify-content: flex-start;
+    color: var(--ifm-menu-color) !important;
+  }
+
+  /* The lockup yields to the chips rather than running under them: the brand box owns the
+     width, and the image fills it. */
+  .navbar__logo {
+    width: calc(100vw - 260px);
+    max-width: 140px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 479px) {
+    .navbar__items--right > [class^='toggle_'] {
+      display: none;
+    }
+
+    .navbar__logo {
+      width: calc(100vw - 206px);
+    }
+  }
+
+  .navbar__logo img {
+    width: 100%;
+    height: auto;
   }
 
   .navbar__logo {
@@ -986,19 +1112,22 @@ a:hover {
   color: var(--ifm-color-primary-light);
 }
 
-[data-theme] .navbar .clean-btn[title*="dark"],
-[data-theme] .navbar .clean-btn[title*="light"],
-[data-theme] .navbar button[aria-label*="color mode"],
-[data-theme] .navbar button[aria-label*="Color mode"],
-[data-theme] .navbar button[aria-label*="Toggle color mode"] {
+/* Scoped to the bar's own cluster, not to `.navbar`. Written as `.navbar button[...]` this
+   also matched the toggle in the mobile drawer, which sits inside the navbar, and forced
+   the icon white there: white on a cream drawer, invisible. */
+[data-theme] .navbar__items--right .clean-btn[title*="dark"],
+[data-theme] .navbar__items--right .clean-btn[title*="light"],
+[data-theme] .navbar__items--right button[aria-label*="color mode"],
+[data-theme] .navbar__items--right button[aria-label*="Color mode"],
+[data-theme] .navbar__items--right button[aria-label*="Toggle color mode"] {
   color: #ffffff !important;
 }
 
-[data-theme] .navbar .clean-btn[title*="dark"] svg,
-[data-theme] .navbar .clean-btn[title*="light"] svg,
-[data-theme] .navbar button[aria-label*="color mode"] svg,
-[data-theme] .navbar button[aria-label*="Color mode"] svg,
-[data-theme] .navbar button[aria-label*="Toggle color mode"] svg {
+[data-theme] .navbar__items--right .clean-btn[title*="dark"] svg,
+[data-theme] .navbar__items--right .clean-btn[title*="light"] svg,
+[data-theme] .navbar__items--right button[aria-label*="color mode"] svg,
+[data-theme] .navbar__items--right button[aria-label*="Color mode"] svg,
+[data-theme] .navbar__items--right button[aria-label*="Toggle color mode"] svg {
   fill: #ffffff !important;
   stroke: #ffffff !important;
 }
