@@ -1686,21 +1686,3 @@ html[data-theme='dark'] .searchBar .dropdownMenu svg {
   margin-left: auto;
   margin-right: auto;
 }
-.navbar__link {
-  color: white !important;
-  font-weight: 500;
-}
-.navbar__link:hover {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-[data-theme='dark'] .navbar__link:hover {
-  color: white !important;
-  opacity: 0.8;
-}
-[data-theme] .navbar button[aria-label*="Toggle color mode"] {
-  color: #ffffff !important;
-}
-[data-theme] .navbar button[aria-label*="Toggle color mode"] svg {
-  fill: #ffffff !important;
-  stroke: #ffffff !important;
-}
