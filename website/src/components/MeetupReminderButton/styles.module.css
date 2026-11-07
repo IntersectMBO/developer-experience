@@ -58,7 +58,9 @@
 }
 
 .floatingButton:focus-visible {
-  outline: 2px solid var(--color-text);
+  /* Not --color-text: in light mode that is midnight, and the control floats over the
+     midnight bands, so the ring vanished exactly where it was needed. */
+  outline: 2px solid var(--focus-ring);
   outline-offset: 3px;
 }
 

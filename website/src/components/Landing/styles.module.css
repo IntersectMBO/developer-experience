@@ -51,6 +51,7 @@
   --color-background: var(--color-brand-midnight);
   --ifm-color-primary: #4D91FF;
   --ifm-color-primary-dark: #3C82F5;
+  --focus-ring: #4D91FF;
 }
 
 /* In the dark theme the page is already midnight, so a midnight band is no field at all
@@ -68,6 +69,7 @@ html[data-theme='dark'] .bandDark {
   --color-background: var(--color-brand-moon);
   --ifm-color-primary: #2353FF;
   --ifm-color-primary-dark: #1B45DE;
+  --focus-ring: var(--color-brand-primary);
 }
 
 .sectionHead {
@@ -109,6 +111,9 @@ html[data-theme='dark'] .bandDark {
 .hero {
   padding: var(--space-12) 0;
   background: var(--color-accent-caramel);
+  /* The hero stays caramel in both themes, so its ring stays brand blue in both: the
+     dark-theme light blue is 2.5 against caramel, which is not a focus indicator. */
+  --focus-ring: var(--color-brand-primary);
 }
 
 .hero .title {
@@ -224,7 +229,7 @@ html[data-theme='dark'] .bandDark {
 }
 
 .primary:focus-visible {
-  outline: 2px solid var(--color-brand-primary);
+  outline: 2px solid var(--focus-ring);
   outline-offset: 3px;
 }
 
