@@ -24,9 +24,13 @@
   color: #ffffff;
   /* The footer is brand blue now, so a blue control sitting over it needs a rim to
      exist at all. On the white and moon bands the rim is invisible, which is the
-     point: it only appears where it is needed. */
+     point: it only appears where it is needed.
+
+     The rim is the page's own surface, not a fixed cream. Pinned to moon it vanished in
+     light mode as intended and turned into a bright white ring in dark mode, which is the
+     opposite of the job: it should separate the button from whatever is behind it. */
   border: none;
-  outline: 2px solid var(--color-brand-moon);
+  outline: 2px solid var(--color-background);
   outline-offset: -2px;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
