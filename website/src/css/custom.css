@@ -363,17 +363,11 @@ html[data-theme='dark'] {
     width: 100%;
   }
 
+  /* The sessions chip leaves the bar for the whole phone range: with it on the right against a
+     single menu button on the left, a centred lockup sat 50px off the middle of the bar. The
+     menu carries a DevEx Sessions row instead, and the floating control returns above 768. */
   .navbar__items--right [class*='navTrigger'] {
-    position: static;
-    transform: none;
-    order: 2;
-    width: 36px;
-    height: 36px;
-    /* The floating button carries a 2px rim of the page colour so a blue control can sit
-       over the blue footer. In the bar it is a chip like the others, and that rim read as a
-       brighter, thicker border than the search chip beside it. */
-    outline: none;
-    box-shadow: none;
+    display: none;
   }
 
   .navbar__items--right [class*='navTrigger']:active {
@@ -390,11 +384,11 @@ html[data-theme='dark'] {
     display: none;
   }
 
-  /* Three chips and the wordmark do not fit a narrow phone, so below 480 the theme switch
-     moves to the drawer, where it is already rendered, and the bar keeps search and
-     sessions. Wider phones and tablets have the room for all three. */
+  /* The theme switch is a row in the menu for the whole phone range, not a chip in the bar.
+     Three chips on the right against one button on the left pushed a centred lockup 94px off
+     the middle of the bar; two chips halve that, and the switch is one tap away either way. */
   .navbar__items--right > [class^='toggle_'] {
-    order: 3;
+    display: none;
   }
 
   .navbar__brand {
@@ -506,25 +500,24 @@ html[data-theme='dark'] {
     position: absolute;
     left: 50%;
     margin: 0;
-    transform: translateX(-50%);
+    /* The flanks differ by 6px: a 30px menu button plus its padding against a 36px chip plus
+       its padding. The lockup is shifted 3px left so the space either side of it is equal,
+       which is what reads as centred; the arithmetic centre is 3px to its right. */
+    transform: translateX(calc(-50% - 3px));
   }
 
+  /* One chip on the right and one button on the left, so the lockup gets what is left once a
+     14px gap each side of it is reserved: 2 × (36 of chip + 24 of padding) + 28. */
   .navbar__logo {
-    width: calc(100vw - 296px);
+    width: calc(100vw - 148px);
     max-width: 180px;
     margin-right: 0; /* Infima's 8px pushes the image 4px off centre inside a centred box */
     overflow: hidden;
   }
 
   @media (max-width: 479px) {
-    .navbar__items--right > [class^='toggle_'] {
-      display: none;
-    }
 
-    /* Two chips below 480, so the cap relaxes: 80 on the right against 36 on the left. */
-    .navbar__logo {
-      width: calc(100vw - 208px);
-    }
+
   }
 
   .navbar__logo img {
