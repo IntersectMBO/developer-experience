@@ -112,12 +112,14 @@
      gradients, and the brand fill is fixed. Depth here comes from the edges, not the fill. */
   --btn-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.28),
-    0 1px 2px rgba(29, 29, 27, 0.12),
-    0 8px 24px -6px rgba(53, 83, 255, 0.45);
+    0 1px 2px rgba(29, 29, 27, 0.14),
+    0 3px 8px -2px rgba(29, 29, 27, 0.10),
+    0 6px 14px -6px rgba(53, 83, 255, 0.16);
   --btn-shadow-hover:
     inset 0 1px 0 rgba(255, 255, 255, 0.32),
-    0 2px 4px rgba(29, 29, 27, 0.14),
-    0 12px 26px -6px rgba(53, 83, 255, 0.55);
+    0 2px 4px rgba(29, 29, 27, 0.16),
+    0 5px 12px -2px rgba(29, 29, 27, 0.10),
+    0 12px 26px -6px rgba(53, 83, 255, 0.40);
   /* The press inverts the recipe: the outside light goes, and a dark inset takes its
      place, so the face reads as pushed into the page rather than merely smaller. */
   --btn-shadow-active:
@@ -191,12 +193,14 @@ html[data-theme='dark'] {
      nothing, so dark mode pays for its depth with darkening plus a stronger blue lift. */
   --btn-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    0 2px 3px rgba(0, 0, 0, 0.45),
-    0 10px 28px -6px rgba(53, 83, 255, 0.50);
+    0 1px 2px rgba(0, 0, 0, 0.50),
+    0 4px 10px -2px rgba(0, 0, 0, 0.35),
+    0 8px 18px -6px rgba(53, 83, 255, 0.22);
   --btn-shadow-hover:
     inset 0 1px 0 rgba(255, 255, 255, 0.26),
-    0 3px 6px rgba(0, 0, 0, 0.50),
-    0 14px 32px -6px rgba(53, 83, 255, 0.60);
+    0 2px 4px rgba(0, 0, 0, 0.55),
+    0 6px 14px -2px rgba(0, 0, 0, 0.35),
+    0 14px 30px -6px rgba(53, 83, 255, 0.45);
   --btn-shadow-active:
     inset 0 2px 5px rgba(0, 0, 0, 0.55),
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
