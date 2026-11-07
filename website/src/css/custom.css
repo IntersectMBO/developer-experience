@@ -102,13 +102,28 @@
   --shadow-md: 0 2px 8px rgba(29, 29, 27, 0.08);
   --shadow-lg: 0 4px 20px rgba(29, 29, 27, 0.10);
 
-  /* Button depth, one set for every solid control. Two shadows rather than one: a tight
-     contact shadow that reads as the edge touching the page, and a wider tinted one that
-     reads as lift. The tint is brand blue so the shadow belongs to the button, not to the
-     surface it happens to sit on. */
-  --btn-shadow: 0 1px 2px rgba(29, 29, 27, 0.10), 0 2px 6px rgba(53, 83, 255, 0.16);
-  --btn-shadow-hover: 0 2px 4px rgba(29, 29, 27, 0.12), 0 6px 18px rgba(53, 83, 255, 0.24);
-  --btn-shadow-active: 0 1px 1px rgba(29, 29, 27, 0.14), 0 1px 3px rgba(53, 83, 255, 0.12);
+  /* Button depth. Four layers, adapted from the four-shadow recipe: a lit top edge, a
+     contact shadow, and a tinted lift whose -6px spread keeps the glow hugging the button
+     instead of fogging the band. The recipe's second layer, a 2px dark inset along the
+     bottom, is deliberately left out: it is the bevel that makes this look like 2013, and
+     a 1px lit edge is enough to say "milled" rather than "printed".
+
+     The gradient fill the recipe starts with is also left out: the palette holds no
+     gradients, and the brand fill is fixed. Depth here comes from the edges, not the fill. */
+  --btn-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 1px 2px rgba(29, 29, 27, 0.12),
+    0 8px 24px -6px rgba(53, 83, 255, 0.45);
+  --btn-shadow-hover:
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    0 2px 4px rgba(29, 29, 27, 0.14),
+    0 12px 26px -6px rgba(53, 83, 255, 0.55);
+  /* The press inverts the recipe: the outside light goes, and a dark inset takes its
+     place, so the face reads as pushed into the page rather than merely smaller. */
+  --btn-shadow-active:
+    inset 0 2px 4px rgba(0, 0, 0, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10),
+    0 1px 1px rgba(29, 29, 27, 0.10);
   --btn-lift: -1px;
   --btn-press: 0.985;
 
@@ -174,9 +189,18 @@ html[data-theme='dark'] {
 
   /* The contact shadow has to be black here: a midnight shadow on a midnight page is
      nothing, so dark mode pays for its depth with darkening plus a stronger blue lift. */
-  --btn-shadow: 0 1px 2px rgba(0, 0, 0, 0.40), 0 2px 8px rgba(53, 83, 255, 0.28);
-  --btn-shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.45), 0 8px 22px rgba(53, 83, 255, 0.36);
-  --btn-shadow-active: 0 1px 1px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(53, 83, 255, 0.20);
+  --btn-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 2px 3px rgba(0, 0, 0, 0.45),
+    0 10px 28px -6px rgba(53, 83, 255, 0.50);
+  --btn-shadow-hover:
+    inset 0 1px 0 rgba(255, 255, 255, 0.26),
+    0 3px 6px rgba(0, 0, 0, 0.50),
+    0 14px 32px -6px rgba(53, 83, 255, 0.60);
+  --btn-shadow-active:
+    inset 0 2px 5px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 1px 1px rgba(0, 0, 0, 0.45);
   --color-border: #3A3A3A;
   --color-link: #4D91FF;
   --color-link-hover: #8CB8FF;

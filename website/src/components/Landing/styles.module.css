@@ -215,12 +215,12 @@ html[data-theme='dark'] .bandDark {
   text-decoration: none;
 }
 
-/* 1px down and 1.5% smaller: the face drops back into the page and the shadow tightens.
-   On a control this size that is the whole press, and it is the only motion here that is
-   not decoration. */
+/* The press travels 1px past rest rather than shrinking. Scale resampled the label and
+   made it look soft at this size; a translate keeps the text crisp while the inset shadow
+   does the work of saying the face has been pushed in. */
 .primary:active {
   box-shadow: var(--btn-shadow-active);
-  transform: translateY(0) scale(var(--btn-press));
+  transform: translateY(1px);
 }
 
 .primary:focus-visible {

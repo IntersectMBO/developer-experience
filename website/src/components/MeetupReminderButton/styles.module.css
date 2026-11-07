@@ -54,7 +54,7 @@
 
 .floatingButton:active {
   box-shadow: var(--btn-shadow-active);
-  transform: translateY(0) scale(0.94);
+  transform: translateY(1px) scale(0.96);
 }
 
 .floatingButton:focus-visible {
