@@ -1,0 +1,254 @@
+/* The phone menu: a full-height sheet in the page's own surface and type, not a panel. */
+
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 700;
+  display: flex;
+  flex-direction: column;
+  /* The sheet is the scroll surface: one scroll for paths, library, GitHub and theme. */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--color-background);
+  color: var(--color-text);
+  -webkit-overflow-scrolling: touch;
+  opacity: 0;
+  transform: translateY(-10px);
+  visibility: hidden;
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s 0.18s;
+}
+
+.open {
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+/* ---------- header ---------- */
+
+.header {
+  flex: none;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  padding: 0 16px;
+  background: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Centred on the sheet, the way it sits centred in the bar. */
+.lockup {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 28px;
+  width: auto;
+}
+
+.lockupOnLight {
+  display: block;
+}
+
+.lockupOnDark {
+  display: none;
+}
+
+:global(html[data-theme='dark']) .lockupOnLight {
+  display: none;
+}
+
+:global(html[data-theme='dark']) .lockupOnDark {
+  display: block;
+}
+
+.close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+
+.close:hover {
+  border-color: var(--color-text-muted);
+}
+
+.close:active {
+  transform: scale(0.94);
+}
+
+/* ---------- search hand-off ---------- */
+
+/* Looks like the bar's field and behaves like a door: tapping it closes the sheet and puts
+   the bar's own search under the keyboard. flex: none because the sheet is a flex column
+   whose content is taller than the screen, and a child with a fixed height will shrink
+   before the rows with a min-height do: this came out at 25 instead of 48. */
+.search {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  margin: 16px;
+  padding: 0 14px;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-family: inherit;
+  font-size: 15px;
+  cursor: text;
+}
+
+/* ---------- sections ---------- */
+
+.body {
+  padding: 0 16px;
+}
+
+.label {
+  margin: 24px 0 4px;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* 56px: the thumb target the sheet is built around. */
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-height: 56px;
+  padding: 8px 0;
+  /* border: none first: these rows are <button>s too, and overriding only the bottom edge
+     leaves the UA's default inset border drawn on the other three sides. That was the black
+     box around the Theme row. */
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text) !important;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: left;
+  text-decoration: none;
+  background: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.aside {
+  flex: 0 0 auto;
+  color: var(--color-text-muted);
+  font-size: 13px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.withIcon {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* A topic is a label with its links under it, so the library is laid out rather than folded
+   behind a caret. */
+.topic {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 12px 0 4px;
+  color: var(--color-text) !important;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.subRow {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 4px 0 4px 14px;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text-secondary) !important;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.row:active,
+.subRow:active,
+.topic:active {
+  color: var(--ifm-color-primary) !important;
+}
+
+/* ---------- footer ---------- */
+
+.footer {
+  flex: none;
+  margin-top: 24px;
+  padding: 0 16px 32px;
+}
+
+.footer .row {
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet,
+  .open {
+    transition: none;
+  }
+}
+
+/* The sheet is a phone and tablet surface only; the bar's own items take over above 996. */
+@media (min-width: 997px) {
+  .sheet {
+    display: none;
+  }
+}
+
+/* ---------- focus ---------- */
+
+/* The sheet had no focus styling, so the browser drew its default black box around the theme
+   row. One ring for every interactive thing here, in the page's own focus colour, and no
+   flash of highlight on tap. */
+.sheet :is(.row, .subRow, .topic, .search, .close):focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: -2px;
+  border-radius: 8px;
+}
+
+.sheet :is(.row, .subRow, .topic, .search, .close):focus:not(:focus-visible) {
+  outline: none;
+}
+
+.sheet {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* At 320 the stage label and the title cannot share a line, and the title wrapping to two
+   lines makes every row a different height. The stage is the expendable one. */
+@media (max-width: 359px) {
+  .aside {
+    display: none;
+  }
+}
+
+.sheet:focus {
+  outline: none;
+}
