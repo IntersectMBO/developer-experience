@@ -354,6 +354,14 @@ html[data-theme='dark'] {
 
   /* One chip family: 36px square, 1px rim, 8px radius. The toggle was a bare 32px circle
      with no border, which made it read as a different kind of control entirely. */
+  /* Infima hides .navbar__item below 997, but .repoChip sets display: inline-flex at the
+     same specificity and later in the cascade, so it survived and the phone bar carried
+     four controls: the chip slid in under the lockup and the wordmark ran under it. The chip
+     stays in the drawer, where it is a useful row, and out of the bar. */
+  .navbar__items--right > .repoChip {
+    display: none;
+  }
+
   /* Three chips and the wordmark do not fit a narrow phone, so below 480 the theme switch
      moves to the drawer, where it is already rendered, and the bar keeps search and
      sessions. Wider phones and tablets have the room for all three. */
@@ -491,6 +499,22 @@ html[data-theme='dark'] {
    turned the blue bar into a band with empty blue either side, which reads as the bar
    being squeezed. The 1440 cap only engages past 1440, so the bar looks edge to edge at
    every common width and does not stretch to the corners on an ultrawide. */
+/* Between 997 and 1100 the bar is at its tightest: brand, three links, search, chip and
+   toggle touch edge to edge with no gap at all. The chip is the most expendable thing in
+   the row, so it steps out there and returns when there is room. */
+@media (min-width: 997px) and (max-width: 1100px) {
+  .navbar__items--right > .repoChip {
+    display: none;
+  }
+}
+
+/* A flex item will fold rather than push, so "Get started" wrapped to two lines at 997. It
+   keeps its line now. */
+.navbar__items:not(.navbar__items--right) > .navbar__item {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
 @media (min-width: 997px) {
   .navbar__inner {
     /* No max-width: any cap, even a wide one, turns the bar back into a centred band on a

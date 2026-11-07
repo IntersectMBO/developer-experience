@@ -122,6 +122,19 @@
   padding-left: 12px; /* offset for the first avatar's negative margin */
 }
 
+/* A nowrap strip of eight avatars has a 264px min-content, which is wider than a 200px
+   viewport can give. Because the strip could not shrink, the browser widened the whole
+   document to 288 and every narrow layout inherited the overflow: folded phones and
+   watch-sized screens scrolled sideways. Wrapping keeps every avatar and lets the band
+   narrow to whatever it is given. */
+@media (max-width: 480px) {
+  .contributorsList {
+    flex-wrap: wrap;
+    row-gap: 6px;
+    padding-left: 8px;
+  }
+}
+
 .contributorAvatar {
   flex: 0 0 auto;
   display: inline-flex;
