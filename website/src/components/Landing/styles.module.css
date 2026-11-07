@@ -193,7 +193,11 @@ html[data-theme='dark'] .bandDark {
   font-weight: 600;
   line-height: 1;
   text-decoration: none;
-  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  box-shadow: var(--btn-shadow);
+  /* Transform on the button, not on a child, so the shadow travels with the face and the
+     press reads as the same object moving. */
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease,
+    box-shadow 0.15s ease, transform 0.12s ease;
 }
 
 .primary {
@@ -206,7 +210,30 @@ html[data-theme='dark'] .bandDark {
 .primary:hover {
   background: var(--color-brand-primary-dark);
   color: #fff !important;
+  box-shadow: var(--btn-shadow-hover);
+  transform: translateY(var(--btn-lift));
   text-decoration: none;
+}
+
+/* 1px down and 1.5% smaller: the face drops back into the page and the shadow tightens.
+   On a control this size that is the whole press, and it is the only motion here that is
+   not decoration. */
+.primary:active {
+  box-shadow: var(--btn-shadow-active);
+  transform: translateY(0) scale(var(--btn-press));
+}
+
+.primary:focus-visible {
+  outline: 2px solid var(--color-brand-primary);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary,
+  .primary:hover,
+  .primary:active {
+    transform: none;
+  }
 }
 
 /* A navigational aside sitting beside a button. The border used to give it button

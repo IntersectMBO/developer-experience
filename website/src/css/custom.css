@@ -102,6 +102,16 @@
   --shadow-md: 0 2px 8px rgba(29, 29, 27, 0.08);
   --shadow-lg: 0 4px 20px rgba(29, 29, 27, 0.10);
 
+  /* Button depth, one set for every solid control. Two shadows rather than one: a tight
+     contact shadow that reads as the edge touching the page, and a wider tinted one that
+     reads as lift. The tint is brand blue so the shadow belongs to the button, not to the
+     surface it happens to sit on. */
+  --btn-shadow: 0 1px 2px rgba(29, 29, 27, 0.10), 0 2px 6px rgba(53, 83, 255, 0.16);
+  --btn-shadow-hover: 0 2px 4px rgba(29, 29, 27, 0.12), 0 6px 18px rgba(53, 83, 255, 0.24);
+  --btn-shadow-active: 0 1px 1px rgba(29, 29, 27, 0.14), 0 1px 3px rgba(53, 83, 255, 0.12);
+  --btn-lift: -1px;
+  --btn-press: 0.985;
+
   /* Layout */
   --content-max-width: 720px;
   --container-max-width: 1200px;
@@ -161,6 +171,12 @@ html[data-theme='dark'] {
   --color-text-muted: #9A9A9A;
   --color-background: #1D1D1B;
   --color-surface: #2C2B2B;
+
+  /* The contact shadow has to be black here: a midnight shadow on a midnight page is
+     nothing, so dark mode pays for its depth with darkening plus a stronger blue lift. */
+  --btn-shadow: 0 1px 2px rgba(0, 0, 0, 0.40), 0 2px 8px rgba(53, 83, 255, 0.28);
+  --btn-shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.45), 0 8px 22px rgba(53, 83, 255, 0.36);
+  --btn-shadow-active: 0 1px 1px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(53, 83, 255, 0.20);
   --color-border: #3A3A3A;
   --color-link: #4D91FF;
   --color-link-hover: #8CB8FF;

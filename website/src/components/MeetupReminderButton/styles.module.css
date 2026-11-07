@@ -33,16 +33,28 @@
   outline: 2px solid var(--color-background);
   outline-offset: -2px;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
+  /* Same depth set as the page's primary buttons: contact shadow plus a blue lift, so the
+     floating control belongs to the same object family as the CTAs it sits above. */
+  box-shadow: var(--btn-shadow);
   cursor: pointer;
   font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1;
-  transition: width 0.18s ease, background-color 0.15s ease, box-shadow 0.15s ease;
+  transition: width 0.18s ease, background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.12s ease;
 }
 
 .floatingButton:hover {
   background: var(--color-brand-primary-dark);
+  box-shadow: var(--btn-shadow-hover);
+  /* Two pixels, not one: a floating control has nothing behind it to register a single
+     pixel of movement against. */
+  transform: translateY(-2px);
+}
+
+.floatingButton:active {
+  box-shadow: var(--btn-shadow-active);
+  transform: translateY(0) scale(0.94);
 }
 
 .floatingButton:focus-visible {
@@ -106,11 +118,31 @@
   border: 1px solid rgba(255, 255, 255, 0.4);
   box-shadow: none;
   color: #ffffff;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
 }
 
 .navTrigger:hover {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* The chip is vertically centred with a translate, so the press has to keep it: a bare
+   scale here would drop the control 50% out of the bar. */
+.navTrigger:active {
+  transform: translateY(-50%) scale(0.92);
+}
+
+/* Movement is feedback, not decoration, but a reader who has asked for less motion gets
+   the colour and shadow change without the travel. */
+@media (prefers-reduced-motion: reduce) {
+  .floatingButton:hover,
+  .floatingButton:active {
+    transform: none;
+  }
+
+  .navTrigger:active {
+    transform: translateY(-50%);
+  }
 }
 
 .navTrigger .icon {
