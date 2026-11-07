@@ -39,7 +39,7 @@
     "@docusaurus/module-type-aliases": "^3.10.2",
     "@docusaurus/tsconfig": "^3.10.2",
     "@docusaurus/types": "^3.10.2",
-    "@types/node": "^25.5.2",
+    "@types/node": "^26.6.6",
     "@types/react-dom": "^18.3.7",
     "dotenv": "^18.0.7",
     "patch-package": "^8.0.0",
