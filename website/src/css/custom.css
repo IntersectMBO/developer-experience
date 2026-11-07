@@ -346,6 +346,11 @@ html[data-theme='dark'] {
     order: 2;
     width: 36px;
     height: 36px;
+    /* The floating button carries a 2px rim of the page colour so a blue control can sit
+       over the blue footer. In the bar it is a chip like the others, and that rim read as a
+       brighter, thicker border than the search chip beside it. */
+    outline: none;
+    box-shadow: none;
   }
 
   .navbar__items--right [class*='navTrigger']:active {
@@ -417,6 +422,45 @@ html[data-theme='dark'] {
   /* The button inherits the bar's white, which is invisible on the drawer, and fills the
      row, which centred the icon. It takes the menu colour and sits at the row's start.
      !important because a white-on-the-bar rule above wins at equal specificity. */
+  /* GitHub in the drawer. Infima hides .navbar__item below 997, which took the chip with it,
+     and when it was visible it kept the bar's white and sat as a bare icon with two numbers.
+     Here it is a menu row: menu ink, link metrics, a label, and the counts to their right. */
+  .navbar-sidebar .menu__list > .repoChip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
+    border-radius: var(--ifm-global-radius);
+    color: var(--ifm-menu-color) !important;
+  }
+
+  .navbar-sidebar .menu__list > .repoChip:hover {
+    background: var(--ifm-menu-color-background-hover);
+  }
+
+  .navbar-sidebar .menu__list > .repoChip svg {
+    fill: currentColor;
+    stroke: currentColor;
+  }
+
+  .navbar-sidebar .menu__list > .repoChip .repoChip__label {
+    display: inline;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* Counts to the far end, the way a value reads beside a label. The label is a span too, so
+     :first-of-type would have hit the label; the adjacent sibling is the actual count. */
+  .navbar-sidebar .menu__list > .repoChip .repoChip__label + .repoChip__count {
+    margin-left: auto;
+  }
+
+  .navbar-sidebar .menu__list > .repoChip .repoChip__count {
+    font-size: 0.8125rem;
+    color: var(--ifm-menu-color);
+  }
+
   .navbar-sidebar .menu__list > [class^='toggle_'] button {
     width: auto;
     justify-content: flex-start;
@@ -425,9 +469,14 @@ html[data-theme='dark'] {
 
   /* The lockup yields to the chips rather than running under them: the brand box owns the
      width, and the image fills it. */
+  /* Imposing, not timid: the lockup takes what the row leaves, up to 180px. At 390 that is
+     a 36px-tall mark in a 72px bar instead of a 28px one. */
+  /* The width formula is the row minus everything fixed in it: 24 of padding either side,
+     30 for the menu button, 8 of brand margin, 8 before the first chip, and 124 for three
+     36px chips with their gaps. Below 480 the theme chip is gone, so it is 206. */
   .navbar__logo {
-    width: calc(100vw - 260px);
-    max-width: 140px;
+    width: calc(100vw - 258px);
+    max-width: 180px;
     overflow: hidden;
   }
 
@@ -437,7 +486,7 @@ html[data-theme='dark'] {
     }
 
     .navbar__logo {
-      width: calc(100vw - 206px);
+      width: calc(100vw - 214px);
     }
   }
 
@@ -540,6 +589,10 @@ html[data-theme='dark'] {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+.repoChip__label {
+  display: none;
 }
 
 .repoChip__count {
