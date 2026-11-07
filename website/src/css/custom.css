@@ -346,10 +346,14 @@ html[data-theme='dark'] {
      at the right edge and landed across the wordmark, which left a half-covered "De" beside a
      search box. Now it spans from the menu button to the right padding, so nothing peeks out
      from behind it. */
+  /* Offsets are measured against .navbar__inner's box, not the viewport: 38px clears the
+     30px menu button plus its gap, and 0 lands on the inner's right edge, which is where the
+     chips end. Written as padding + 62 earlier, the field started 24 late and stopped 24
+     short, leaving a sliver of the calendar chip showing beside it. */
   .navbar [class*='navbarSearchContainer']:focus-within {
     position: absolute !important;
-    left: calc(var(--ifm-navbar-padding-horizontal) + 38px);
-    right: var(--ifm-navbar-padding-horizontal);
+    left: 38px;
+    right: 0;
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
@@ -490,12 +494,25 @@ html[data-theme='dark'] {
      width, and the image fills it. */
   /* Imposing, not timid: the lockup takes what the row leaves, up to 180px. At 390 that is
      a 36px-tall mark in a 72px bar instead of a 28px one. */
-  /* The width formula is the row minus everything fixed in it: 24 of padding either side,
-     30 for the menu button, 8 of brand margin, 8 before the first chip, and 124 for three
-     36px chips with their gaps. Below 480 the theme chip is gone, so it is 206. */
+  /* The lockup is centred on the bar, not parked between the menu button and the chips. It
+     comes out of the left group's flow and sits on the bar's midline, so the space either
+     side is the same whatever the nav items do. Its cap is what is left after the widest of
+     the two flanks: 36 for the menu button on the left, 124 for three chips on the right. */
+  .navbar__inner {
+    position: relative;
+  }
+
+  .navbar__brand {
+    position: absolute;
+    left: 50%;
+    margin: 0;
+    transform: translateX(-50%);
+  }
+
   .navbar__logo {
-    width: calc(100vw - 258px);
+    width: calc(100vw - 296px);
     max-width: 180px;
+    margin-right: 0; /* Infima's 8px pushes the image 4px off centre inside a centred box */
     overflow: hidden;
   }
 
@@ -504,8 +521,9 @@ html[data-theme='dark'] {
       display: none;
     }
 
+    /* Two chips below 480, so the cap relaxes: 80 on the right against 36 on the left. */
     .navbar__logo {
-      width: calc(100vw - 214px);
+      width: calc(100vw - 208px);
     }
   }
 
