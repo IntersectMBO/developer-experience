@@ -1,18 +1,25 @@
 import type { ReactNode } from 'react';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import HomepageFeatures from '@site/src/components/HomepageFeatures';
+import Hero from '@site/src/components/Landing/Hero';
+import StartHere from '@site/src/components/Landing/StartHere';
+import Tracks from '@site/src/components/Landing/Tracks';
+import Library from '@site/src/components/Landing/Library';
+import Sessions from '@site/src/components/Landing/Sessions';
 import CommunitySection from '@site/src/components/CommunitySection';
 
 export default function Home(): ReactNode {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
-      title={`${siteConfig.title}`}
-      description="Join the Developer Experience Working Group at Intersect MBO. Connect with developer advocates, access comprehensive Cardano resources, and participate in community-driven initiatives to enhance the developer ecosystem.">
+      title="Build on Cardano"
+      description="Four builder tracks, hands-on guides and the session archive from the Cardano Developer Experience working group at Intersect MBO."
+    >
       <main>
-        <HomepageFeatures />
+        <Hero />
+        <StartHere />
+        <Tracks />
+        <Library />
         <CommunitySection />
+        <Sessions />
       </main>
     </Layout>
   );

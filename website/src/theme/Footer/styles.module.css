@@ -1,0 +1,173 @@
+/* The footer is brand blue in both themes, the way the navbar is: the page opens
+   and closes on the same surface, and no band underneath can collide with it.
+
+   Colour roles inside it: white for links and headings (5.6:1 on #2353FF), moon for
+   secondary copy (5.04:1), and the brand's own lighter blue #4F72FE for the rule,
+   which is a hairline and needs no contrast of its own. Orange does not appear
+   here: blazing on this blue is 1.67:1, so the footer's accent is its surface. */
+.footer {
+  background: var(--color-brand-primary);
+  color: var(--color-brand-white);
+  /* No bottom padding: the cropped wordmark runs to the footer's own edge, so the
+     cut happens at the page boundary rather than floating above it. */
+  padding: var(--space-12) 0 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, minmax(0, 1fr));
+  gap: var(--space-8) var(--space-6);
+  align-items: start;
+}
+
+/* ---------- brand zone ---------- */
+
+.mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--color-brand-white) !important;
+  text-decoration: none;
+}
+
+.mark img {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+.name {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.copy {
+  margin: 0;
+  font-size: var(--text-caption);
+  line-height: 1.6;
+  color: var(--color-brand-moon);
+}
+
+.brand .copy:first-of-type {
+  margin-top: var(--space-4);
+}
+
+/* ---------- link columns ---------- */
+
+.heading {
+  margin: 0 0 var(--space-4);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-brand-white);
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.list li + li {
+  margin-top: var(--space-3);
+}
+
+.link {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  font-size: 0.9375rem;
+  color: var(--color-brand-white) !important;
+  /* The reference underlines its links. On a coloured field an underline is what
+     separates a link from a label without relying on weight. */
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+.link:hover {
+  color: var(--color-brand-moon) !important;
+  text-decoration-thickness: 2px;
+}
+
+.arrow {
+  font-size: 0.8em;
+  text-decoration: none;
+}
+
+/* ---------- bottom line ---------- */
+
+.rule {
+  height: 1px;
+  margin: var(--space-8) 0 var(--space-5);
+  background: var(--color-brand-primary-lighter);
+}
+
+/* The reference centres its legal row under the rule and stops there. */
+.legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: var(--space-3) var(--space-6);
+}
+
+/* ---------- cropped wordmark ---------- */
+
+.wordmarkWrap {
+  margin-top: var(--space-8);
+  /* Full footer width, because it is a child of the footer rather than the container. */
+  /* The wrapper is the container, and the span inside it is what is sized in cqw:
+     container units resolve against the nearest ANCESTOR container, so setting
+     font-size in cqw on the container itself falls back to the viewport. */
+  container-type: inline-size;
+  overflow: hidden;
+}
+
+.wordmark {
+  display: block;
+  /* 1cqw is 1% of the wrapper's width, and "DevEx" at -0.05em tracking measures
+     2.848em, so 35cqw lands the word at about 99.7% of the footer's full width: flush
+     left, a few pixels of blue at the right, never clipped. A vw-based size fitted one
+     screen and cut the x on the others, which is why this is in container units. */
+  font-size: 35cqw;
+  /* The crop: about two thirds of the cap height (0.45em against a 0.70em cap),
+     which sits between half and three quarters. The negative margin cancels the
+     ascender space so the slice starts at the cap line, not in empty blue. */
+  height: 0.45em;
+  margin-top: -0.045em;
+  overflow: hidden;
+  font-weight: 700;
+  line-height: 0.78;
+  letter-spacing: -0.05em;
+  /* One step lighter than the footer surface, the way the reference tints its mark:
+     #4F72FE against #2353FF is 1.38:1, texture rather than text.
+
+     A brand token, not --ifm-color-primary-light: the footer stays blue in both themes,
+     so its mark must stay the same blue too. A themed token would change the wordmark's
+     colour in dark mode while its background refused to move. */
+  color: var(--color-brand-primary-lighter);
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* ---------- responsive ---------- */
+
+@media screen and (max-width: 996px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* The same 0.45em holds at this width: 53px of band, which is 64% of the cap, so
+     the phone needs no override of its own. */
+}

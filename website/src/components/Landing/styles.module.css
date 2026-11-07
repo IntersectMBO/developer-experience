@@ -1,0 +1,823 @@
+/* Landing page: hero, tracks, library and session blocks.
+   All colour and spacing comes from the tokens in src/css/custom.css. */
+
+/* ---------- shared section frame ---------- */
+
+/* Band separators are the headings, not rules.
+   Every band opens with its index and title, so a hairline across the boundary
+   repeats a marker the reader already has, and it makes the stack read as a
+   table. The page's rule language is two devices and this was neither: 1px
+   --color-border divides items inside a band (cards, the session card), 2px
+   midnight groups the library's topics. Nothing at band level.
+
+   Each band pays both edges now that bands alternate. Top-only padding worked
+   while every band was the same white: the gap between two bands was one token
+   and belonged to nobody. With a surface behind a band, that band is visible
+   pixels, and top-only padding ended it on its last line of text, so the beige
+   or the white stopped dead under a caption and the space that followed read as
+   the next band's. Two tokens, one paid by each band, is the banded layout's
+   standard: the colour change separates, and each band gets its own margin. */
+.section {
+  padding: var(--space-12) 0;
+  /* Every band declares the pair it uses: --band-bg for the band itself, --card-bg
+     for the cards and closed panels sitting on it. An alternating band swaps the
+     pair, so its cards flip to the page colour instead of dissolving into it. */
+  --band-bg: var(--color-background);
+  --card-bg: var(--color-surface);
+  background: var(--band-bg);
+}
+
+/* The second and fourth bands sit on the warm surface. With a surface behind it,
+   the heading and the 96px rhythm are the whole separator, so no rule is needed
+   and the page gets a horizontal rhythm that survives dark mode (where the two
+   surfaces differ by 1.2:1 rather than 1.11:1). */
+.bandAlt {
+  --band-bg: var(--color-surface);
+  --card-bg: var(--color-background);
+}
+
+/* A band that goes dark. Not the dark theme, a colour field: the page's own tokens are
+   re-pointed for this section only, so every component inside follows without knowing it
+   is sitting on a dark surface. Blue lightens to the dark-theme link blue, because the
+   brand blue on midnight is 2.07:1. */
+.bandDark {
+  --band-bg: var(--color-brand-midnight);
+  --card-bg: #262625;
+  --color-text: var(--color-brand-moon);
+  --color-text-secondary: #B3C4D4;
+  --color-text-muted: #9A9A9A;
+  --color-border: #3A3A3A;
+  --color-surface: #262625;
+  --color-background: var(--color-brand-midnight);
+  --ifm-color-primary: #4D91FF;
+  --ifm-color-primary-dark: #3C82F5;
+  --focus-ring: #4D91FF;
+}
+
+/* In the dark theme the page is already midnight, so a midnight band is no field at all
+   and the rhythm disappears. The class means "the inverted field", not "black": in light
+   mode that inverts to midnight, in dark mode it inverts to moon. Same rule, both themes,
+   and every component inside flips with it because it reads the same tokens. */
+html[data-theme='dark'] .bandDark {
+  --band-bg: var(--color-brand-moon);
+  --card-bg: #FFFFFF;
+  --color-text: var(--color-brand-midnight);
+  --color-text-secondary: #4A4A4A;
+  --color-text-muted: #6A6A6A;
+  --color-border: #DCD9CD;
+  --color-surface: #FFFFFF;
+  --color-background: var(--color-brand-moon);
+  --ifm-color-primary: #2353FF;
+  --ifm-color-primary-dark: #1B45DE;
+  --focus-ring: var(--color-brand-primary);
+}
+
+.sectionHead {
+  margin-bottom: var(--space-8);
+}
+
+.sectionIndex {
+  display: inline;
+  margin-right: var(--space-3);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.sectionTitle {
+  display: inline;
+  font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0;
+  color: var(--color-text);
+}
+
+/* ---------- hero ---------- */
+
+/* One rhythm for the whole stack: every band pays --space-12 top and bottom, the
+   footer included. Padding is set in .section, the hero here, the footer in
+   custom.css; nothing else is allowed to set band padding, so every band's margin
+   is the same value whether or not it carries a surface.
+
+   The hero carries Caramel in BOTH themes. It is the only surface that separates the
+   illustration's two inks at once, navy at 14.4:1 and its blue screen at 4.54:1, which
+   no dark surface does, and because it does not change with the theme the drawing does
+   not need a second ink. The cost is that nothing in here may use a theme token: in
+   dark mode --color-text is moon, which is 1.11:1 on caramel. */
+.hero {
+  padding: var(--space-12) 0;
+  background: var(--color-accent-caramel);
+  /* The hero stays caramel in both themes, so its ring stays brand blue in both: the
+     dark-theme light blue is 2.5 against caramel, which is not a focus indicator. */
+  --focus-ring: var(--color-brand-primary);
+}
+
+.hero .title {
+  color: var(--color-brand-midnight);
+}
+
+.hero .subtitle {
+  color: #4A4A4A;
+}
+
+/* Brand blue, not --ifm-color-primary: the dark theme re-points that to #4D91FF, which
+   drops to 3.0:1 on caramel. */
+.hero .textLink {
+  color: var(--color-brand-primary) !important;
+}
+
+.hero .textLink:hover {
+  color: var(--color-brand-primary-dark) !important;
+}
+
+/* Two equal columns with the media first, after docs.logos.co: their hero is 530 of
+   image, 48 of gutter, 530 of copy, and the copy block is centred against the image
+   rather than top-aligned. */
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.heroMedia {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroMedia img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 32rem;
+}
+
+.copy {
+  /* No top padding: the h1's box sets the shared top edge with the card beside it. */
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 var(--space-5);
+  font-size: clamp(2.05rem, 3.4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+  color: var(--color-text);
+  max-width: 22ch;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  max-width: 48ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.3rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: var(--btn-shadow);
+  /* Transform on the button, not on a child, so the shadow travels with the face and the
+     press reads as the same object moving. */
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease,
+    box-shadow 0.15s ease, transform 0.12s ease;
+}
+
+.primary {
+  /* The brand blue is fixed across themes: theming the CTA lightened it to
+     #4D91FF in dark mode, which left white label text barely readable. */
+  background: var(--color-brand-primary);
+  color: #fff !important;
+}
+
+.primary:hover {
+  background: var(--color-brand-primary-dark);
+  color: #fff !important;
+  box-shadow: var(--btn-shadow-hover);
+  transform: translateY(var(--btn-lift));
+  text-decoration: none;
+}
+
+/* The press travels 1px past rest rather than shrinking. Scale resampled the label and
+   made it look soft at this size; a translate keeps the text crisp while the inset shadow
+   does the work of saying the face has been pushed in. */
+.primary:active {
+  box-shadow: var(--btn-shadow-active);
+  transform: translateY(1px);
+}
+
+.primary:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary,
+  .primary:hover,
+  .primary:active {
+    transform: none;
+  }
+}
+
+/* A navigational aside sitting beside a button. The border used to give it button
+   parity it had not earned: two bordered buttons in one row means two things of
+   equal weight, and only one of them is the action. The arrow is the affordance
+   the border was doing. */
+.textLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.textLink::after {
+  content: '→';
+}
+
+.textLink:hover {
+  color: var(--color-brand-primary-dark) !important;
+  text-decoration: underline;
+}
+
+/* ---------- start here: three step cards ---------- */
+
+.startGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.startGrid li {
+  display: flex;
+}
+
+.startCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  /* Reads the band pair, so the card stays a card on whichever band it lands. */
+  background: var(--card-bg, var(--color-surface));
+  color: var(--color-text) !important;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.startCard:hover {
+  border-color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.startTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-1);
+}
+
+/* The step is the card's ordinal, so it is set like one rather than like small print. */
+.startIndex {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.startMeta {
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.startTitle {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.startDetail {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+}
+
+.startHereNote {
+  margin: 0;
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- tracks: expanding panels ---------- */
+
+/* A tint that reads as a pale wash on white is only a suggestion on a dark tab, so
+   the dark theme mixes harder: 24% closed, 14% for the open panel, which keeps the
+   same relationship between tab and field. */
+:global([data-theme='dark']) .panel:not(.panelActive) {
+  background: color-mix(in srgb, var(--track-accent) 24%, var(--card-bg, var(--color-surface)));
+}
+
+:global([data-theme='dark']) .panelActive {
+  background: color-mix(in srgb, var(--track-accent) 14%, var(--band-bg, var(--color-background)));
+}
+
+/* After privy.io/neobanks "Build your banking stack": one track open, the rest
+   standing as vertical tabs you click to switch. Panels stack into an accordion
+   below 769px, where a rotated label has nowhere to go. */
+.stack {
+  display: flex;
+  gap: 0.75rem;
+  /* Tall enough for the longest rotated label; the open panel sets the height
+     from its own copy. */
+  min-height: 14rem;
+}
+
+.panel {
+  position: relative;
+  display: flex;
+  flex: 0 0 3rem;
+  min-height: 14rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  /* Track identity as a wash, the way the reference does it: the tab is a tinted
+     field, not a neutral field with a coloured mark. The fallback line is the
+     plain card colour, so a browser without color-mix gets the neutral tab back
+     rather than an unstyled one. Type stays midnight on the tint, which is what
+     makes a 14% lavender readable. */
+  background: var(--card-bg, var(--color-surface));
+  background: color-mix(in srgb, var(--track-accent) 14%, var(--card-bg, var(--color-surface)));
+  /* The rail stripe stays: on a tinted tab it is the crisp edge that says which
+     colour this tab is, where a 14% wash alone reads as a suggestion. */
+  box-shadow: inset 3px 0 0 var(--track-accent, transparent);
+  overflow: hidden;
+  /* flex-grow, not flex-basis: grow is a number, so 0 -> 1 interpolates and the
+     width follows it smoothly. Animating to `flex: auto` jumps, because `auto`
+     has no length to interpolate from. */
+  transition: flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s ease;
+  will-change: flex-grow;
+}
+
+.panelActive {
+  flex-grow: 1;
+  /* The open panel takes its track's tint at the same strength as the closed tabs,
+     so the active track is the colour you are looking at, not a paler cousin of it.
+     Body copy stays midnight on the wash, which keeps its contrast above 12:1. */
+  background: var(--band-bg, var(--color-background));
+  background: color-mix(in srgb, var(--track-accent) 12%, var(--band-bg, var(--color-background)));
+}
+
+/* The rail is one object in both states: a vertical strip that fades. Flipping
+   its writing mode on click is what made the panels jump, because the switch
+   landed while the panel was still at its old width. */
+.panelRail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex: 0 0 3rem;
+  width: 3rem;
+  padding: 2.5rem 0 1rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.panelRail:hover {
+  color: var(--ifm-color-primary);
+}
+
+/* Gone the instant the panel opens, so its label cannot sit on top of the copy
+   being revealed. Coming back, it waits until the panel has narrowed. */
+.panelActive .panelRail {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.panel:not(.panelActive) .panelRail {
+  transition: opacity 0.2s ease 0.16s, color 0.15s ease, visibility 0s 0.16s;
+}
+
+.railLabel {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.railPlus {
+  display: inline-flex;
+  /* The second identity cue, and the one that survives at 3rem wide: a coloured
+     plus per tab is distinguishable at a glance where a rotated label is not. */
+  color: var(--track-accent, var(--color-text-muted));
+  transition: color 0.15s ease;
+}
+
+/* Out of flow: the panel's width is driven only by flex-grow, and the copy is
+   revealed as it widens instead of re-wrapping on every frame. No max-width:
+   a fixed measure that the panel clips is the whole point. */
+.panelBody {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30rem;
+  height: 100%;
+  padding: var(--space-5);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  /* Closing: gone before the panel gets narrow enough to re-wrap it. */
+  transition: opacity 0.12s ease, visibility 0.12s;
+}
+
+.panelActive .panelBody {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  /* Opening: waits a beat, so it lands on a panel that is already widening. */
+  transition: opacity 0.18s ease 0.1s, visibility 0.18s;
+}
+
+.panelStage {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-caption);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.panelTitle {
+  margin: 0 0 var(--space-3);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.panelBlurb {
+  margin: 0 0 var(--space-5);
+  max-width: 42ch;
+  font-size: var(--text-body-sm);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+.panelCta {
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none;
+}
+
+.panelCta:hover {
+  text-decoration: underline;
+}
+
+/* ---------- library topics ---------- */
+
+.gridTopic {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-8) var(--space-6);
+  border: none;
+  background: none;
+  overflow: visible;
+  border-radius: 0;
+}
+
+.topic {
+  border-top: 2px solid var(--color-text);
+  padding-top: var(--space-4);
+}
+
+.topicTitle {
+  display: block;
+  margin-bottom: var(--space-3);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text) !important;
+  text-decoration: none;
+}
+
+/* A two-line reserve keeps the blurbs, and the library's link lists, on one
+   baseline across a row. It only earns its keep where columns sit side by side,
+   so single-column layouts do not pay for it in dead space. */
+@media screen and (min-width: 641px) {
+  .cardTitle {
+    min-height: 2.6em;
+  }
+
+  .topicTitle {
+    min-height: 3.2em;
+  }
+}
+
+.topicTitle:hover {
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none;
+}
+
+.topicLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.topicLinks a {
+  font-size: var(--text-body-sm);
+  color: var(--color-text-secondary) !important;
+  text-decoration: none;
+}
+
+.topicLinks a:hover {
+  color: var(--ifm-color-primary) !important;
+  text-decoration: underline;
+}
+
+/* ---------- sessions ---------- */
+
+/* A head row that can carry controls on the right: the archive link and, when
+   there is more to see than fits, the arrows. */
+.sectionHeadRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-4) var(--space-6);
+}
+
+.sectionHeadRow .sectionHead {
+  margin-bottom: 0;
+}
+
+.headActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.arrows {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.arrow {
+  width: 2.25rem;
+  height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+}
+
+.arrow:hover:not(:disabled) {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+}
+
+/* A dead arrow at either end says where the track ends without moving it. */
+.arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* ---------- sessions: horizontal track ---------- */
+
+.track {
+  display: flex;
+  gap: var(--space-4);
+  margin: var(--space-6) 0 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.track::-webkit-scrollbar {
+  display: none;
+}
+
+.track:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 6px;
+}
+
+/* Snapping is the only scroll animation on the page and it is opt-in: with the
+   preference set, dragging and the arrows both jump. */
+@media (prefers-reduced-motion: no-preference) {
+  .track {
+    scroll-behavior: smooth;
+  }
+}
+
+.trackItem {
+  display: flex;
+  flex: 0 0 clamp(15rem, 26vw, 19rem);
+  scroll-snap-align: start;
+}
+
+.sessionCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  min-height: 8.5rem;
+  padding: var(--space-5);
+  background: var(--card-bg, var(--color-surface));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text) !important;
+  text-decoration: none;
+  transition: border-color 0.15s ease;
+}
+
+.sessionCard:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--color-text) !important;
+  text-decoration: none;
+}
+
+.sessionNumber {
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.sessionTitle {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.sessionMeta {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+}
+
+/* ---------- responsive ---------- */
+
+@media screen and (max-width: 996px) {
+  /* Stacked, the message comes first: the illustration is a full screen on a phone,
+     and a reader who lands on a picture has to scroll to find the sentence. */
+  .heroMedia {
+    order: 2;
+  }
+
+  .copy {
+    order: 1;
+  }
+
+  .startGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .heroGrid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+
+  .gridTopic {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .title {
+    max-width: none;
+  }
+}
+
+/* Below 769px the panels become an accordion: every tab reads as its own row,
+   only the open one carries its copy. */
+@media screen and (max-width: 768px) {
+  .stack {
+    flex-direction: column;
+    min-height: 0;
+  }
+
+  .panel {
+    flex: 0 0 auto;
+    min-height: 0;
+    flex-direction: column;
+  }
+
+  .panelRail {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: var(--space-4) var(--space-5);
+    writing-mode: horizontal-tb;
+    transform: none;
+    justify-content: flex-start;
+  }
+
+  .railPlus {
+    margin-left: auto;
+  }
+
+  /* The open row is the body: the rail would repeat its heading. */
+  .panelActive .panelRail {
+    display: none;
+  }
+
+  .panelBody {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: var(--space-5);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .panel:not(.panelActive) .panelBody {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .gridTopic {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions .textLink {
+    align-self: flex-start;
+  }
+
+  .arrows {
+    display: none;
+  }
+
+  .primary,
+  .secondary {
+    justify-content: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* What is left is state feedback, not entrance: the panel still snaps to its
+     new width, it just does not ease into it. */
+  .panel,
+  .panelBody,
+  .panelRail {
+    transition: none;
+  }
+}

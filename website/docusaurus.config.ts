@@ -2,6 +2,9 @@ import { themes as prismThemes } from "prism-react-renderer";
 import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 import dotenv from 'dotenv';
+// One source for the five tracks: the navbar's Your Path menu and band 02 read the
+// same list, so a renamed track cannot appear in one place and not the other.
+import { topics, tracks } from './src/data/landing';
 
 dotenv.config({ path: '.env' });
 
@@ -164,66 +167,83 @@ const config: Config = {
   ],
 
   themeConfig: {
+    // The toggle is a navbar item (src/theme/NavbarItem/ComponentTypes.tsx), placed before
+    // the search field. Docusaurus appends its own after every right-hand item, so it has
+    // to be switched off here or the bar shows two.
+    colorMode: {
+      defaultMode: "light",
+      disableSwitch: true,
+      respectPrefersColorScheme: false,
+    },
     metadata: [
       { name: "keywords", content: "Cardano, developer experience, blockchain, smart contracts, DeFi, Intersect MBO" },
       { name: "author", content: "Intersect MBO Developer Experience Working Group" },
     ],
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "Developer Experience",
+      // The lockup carries the wordmark, so the bar renders no text beside it.
+      title: "",
       logo: {
-        alt: "Intersect MBO Logo",
-        src: "img/intersect-logo.png",
+        alt: "Developer Experience",
+        src: "img/devex-logo-lockup.png",
       },
       items: [
+        // Four things, two menus, one meaning each, after docs.logos.co: the entry
+        // point, intent, and surface. Both menus read the landing page's own data, so
+        // the bar and bands 02 and 03 cannot drift apart.
         {
-          type: "docSidebar",
-          sidebarId: "tutorialSidebar",
+          label: "Get started",
+          to: "/docs/getting-started/",
           position: "left",
-          label: "Documentation",
         },
         {
           type: "dropdown",
-          label: "Resources",
+          label: "Your Path",
           position: "left",
-          items: [
-            {
-              label: "Getting Started",
-              to: "/docs/getting-started/",
-            },
-            {
-              label: "How-to Guides",
-              to: "/docs/how-to-guide/beginner/",
-            },
-            {
-              label: "Working Groups",
-              to: "/docs/working-group/",
-            },
-          ],
+          items: tracks.map((track) => ({
+            label: track.title,
+            to: track.href,
+          })),
         },
         {
-          label: "FAQs",
-          to: "/docs/faq/",
+          type: "dropdown",
+          label: "Explore",
           position: "left",
+          // The eight library topics from band 03, in the band's order.
+          items: topics.map((topic) => ({
+            label: topic.title,
+            to: topic.href,
+          })),
         },
         {
           type: "search",
           position: "right",
         },
         {
+          type: "custom-githubIcon",
           href: "https://github.com/IntersectMBO/developer-experience",
           label: "GitHub",
           position: "right",
         },
         {
-          href: "https://intersectmbo.org",
-          label: "Intersect MBO",
+          // Last, at the corner: the one control with no label and no count, in the
+          // place a mode switch sits on every operating system.
+          type: "custom-colorModeToggle",
           position: "right",
         },
       ],
     },
     footer: {
       style: "dark",
+      // The same mark the navbar carries, so the footer closes the page with the
+      // site's identity rather than starting cold with a column heading.
+      logo: {
+        alt: "Developer Experience",
+        src: "img/intersect-logo.png",
+        href: "/",
+        width: 32,
+        height: 32,
+      },
       links: [
         {
           title: "Documentation",
