@@ -394,6 +394,32 @@ html[data-theme='dark'] {
   font-variant-numeric: tabular-nums;
 }
 
+/* Theme switching. The global 200ms colour transition is right for hover and wrong for a
+   theme change: it runs on every element at once, each from its own colour, so the
+   inverted bands jump in their own frame while the page around them is still light and the
+   page passes through flat grey. During a switch the element transitions are off and a
+   view transition cross-fades one snapshot against the next, so the whole page moves
+   together. */
+.theme-switching,
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition: none !important;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
 /* One rhythm across the bar. Infima gives items their own padding, so mixing padded
    and unpadded items produced optical gaps of 14px, 26px and 14px in the same row. */
 .navbar__items {
