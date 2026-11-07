@@ -331,13 +331,32 @@ html[data-theme='dark'] {
     margin: 0 !important;
   }
 
-  /* A focused field opens over the bar instead of squeezing the lockup out of it. */
+  /* The result rows carry a return arrow on the right that costs a fifth of a phone row's
+     width, which is what turned every title into "Wallet Integration & Develop...". The whole
+     row is the tap target, so the arrow is decoration the phone cannot afford. */
+  [class*='searchBar'] [class*='hitAction'] {
+    display: none;
+  }
+
+  [class*='searchBar'] [class*='hitWrapper'] {
+    margin: 0 4px;
+  }
+
+  /* A focused field takes the bar over rather than perching on it. Before, it grew to 200px
+     at the right edge and landed across the wordmark, which left a half-covered "De" beside a
+     search box. Now it spans from the menu button to the right padding, so nothing peeks out
+     from behind it. */
   .navbar [class*='navbarSearchContainer']:focus-within {
     position: absolute !important;
+    left: calc(var(--ifm-navbar-padding-horizontal) + 38px);
     right: var(--ifm-navbar-padding-horizontal);
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
+  }
+
+  .navbar [class*='navbarSearchContainer']:focus-within .navbar__search-input {
+    width: 100%;
   }
 
   .navbar__items--right [class*='navTrigger'] {
