@@ -269,27 +269,282 @@ html[data-theme='dark'] {
 
 /* Custom Intersect Branding Styles */
 
+/* ---------- Motion policy ----------
+   The page ships its final state in the markup and the first paint is the
+   finished page: no scroll reveals, no entrance staggers, no word-by-word text,
+   no element that drifts or breathes on its own. Nothing here is slowed down or
+   shortened; the motion was removed, and with it the keyframes and the scroll
+   listener that drove it.
+
+   What remains is feedback for an action the reader just took: a hover colour, a
+   focus ring, a control that expands to show its label, a panel that widens to
+   show the track that was clicked. That is a property change on an interaction,
+   not an animation that plays at the page. Every one of those is disabled under
+   prefers-reduced-motion. */
+
 /* Navbar styling */
 .navbar {
-  background: #2555fe;
-  box-shadow: 0 2px 8px rgba(37, 85, 254, 0.15);
+  background: var(--color-brand-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 .navbar__brand {
   font-weight: 600;
-  font-size: 1.25rem;
+  /* 17px against 15px items: a name and its menu, not two near-identical sizes. */
+  font-size: 1.0625rem;
   color: white !important;
   transition: all 0.2s ease;
   position: relative;
+  /* Let the wordmark truncate instead of running under the navbar chips. */
+  min-width: 0;
+}
+
+.navbar__title {
+  min-width: 0;
+}
+
+/* The search container and the sessions chip are both absolutely positioned, so
+   they take no flow space: reserve it on the left group so the brand keeps clear of
+   them. The lockup also steps down, because at 44px it is 221px wide and a phone has
+   about 250 to give once that reserve is paid. */
+@media (max-width: 996px) {
+  /* On a phone the bar is three chips on the right: search, sessions, theme. They used to be
+     a mixture of absolutes: the search field was pinned to the bar's right edge, and the
+     sessions chip 4.5rem in, which put the search underneath whatever item came last. Here
+     that was the theme toggle, so search was unreachable on every phone. In flow they
+     cannot collide. */
+  .navbar__items--right {
+    gap: 8px;
+    align-items: center;
+  }
+
+  /* The plugin's own stylesheet loads after this one and matches at the same specificity,
+     which is why position needs !important here as well as the padding. */
+  .navbar [class*='navbarSearchContainer'] {
+    position: static !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    order: 1;
+  }
+
+  .navbar__search {
+    margin: 0 !important;
+  }
+
+  /* The result rows carry a return arrow on the right that costs a fifth of a phone row's
+     width, which is what turned every title into "Wallet Integration & Develop...". The whole
+     row is the tap target, so the arrow is decoration the phone cannot afford. */
+  [class*='searchBar'] [class*='hitAction'] {
+    display: none;
+  }
+
+  [class*='searchBar'] [class*='hitWrapper'] {
+    margin: 0 4px;
+  }
+
+  /* A focused field takes the bar over rather than perching on it. Before, it grew to 200px
+     at the right edge and landed across the wordmark, which left a half-covered "De" beside a
+     search box. Now it spans from the menu button to the right padding, so nothing peeks out
+     from behind it. */
+  /* Offsets are measured against .navbar__inner's box, not the viewport: 38px clears the
+     30px menu button plus its gap, and 0 lands on the inner's right edge, which is where the
+     chips end. Written as padding + 62 earlier, the field started 24 late and stopped 24
+     short, leaving a sliver of the calendar chip showing beside it. */
+  .navbar [class*='navbarSearchContainer']:focus-within {
+    position: absolute !important;
+    left: 38px;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+  }
+
+  .navbar [class*='navbarSearchContainer']:focus-within .navbar__search-input {
+    width: 100%;
+  }
+
+  /* The sessions chip leaves the bar for the whole phone range: with it on the right against a
+     single menu button on the left, a centred lockup sat 50px off the middle of the bar. The
+     menu carries a DevEx Sessions row instead, and the floating control returns above 768. */
+  .navbar__items--right [class*='navTrigger'] {
+    display: none;
+  }
+
+  .navbar__items--right [class*='navTrigger']:active {
+    transform: scale(0.92);
+  }
+
+  /* One chip family: 36px square, 1px rim, 8px radius. The toggle was a bare 32px circle
+     with no border, which made it read as a different kind of control entirely. */
+  /* Infima hides .navbar__item below 997, but .repoChip sets display: inline-flex at the
+     same specificity and later in the cascade, so it survived and the phone bar carried
+     four controls: the chip slid in under the lockup and the wordmark ran under it. The chip
+     stays in the drawer, where it is a useful row, and out of the bar. */
+  .navbar__items--right > .repoChip {
+    display: none;
+  }
+
+  /* The theme switch is a row in the menu for the whole phone range, not a chip in the bar.
+     Three chips on the right against one button on the left pushed a centred lockup 94px off
+     the middle of the bar; two chips halve that, and the switch is one tap away either way. */
+  .navbar__items--right > [class^='toggle_'] {
+    display: none;
+  }
+
+  .navbar__brand {
+    margin-left: 8px;
+  }
+
+  .navbar__items--right [class*='toggleButton'] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 8px;
+  }
+
+  .navbar__items--right [class*='toggleButton']:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+
+  /* The lockup yields before anything else: it shrinks to whatever the chips leave. */
+  /* The drawer header is the bar continued: same blue, so the white lockup, the close
+     button and the white rim on the toggle all keep working. On a white header the lockup
+     was white on white in light mode. */
+  .navbar-sidebar__brand {
+    background: var(--color-brand-primary);
+  }
+
+  .navbar-sidebar__close {
+    color: #ffffff !important;
+  }
+
+  /* In the drawer the toggle is a bare icon dropped into the menu list, so it sat under the
+     last link with no row of its own. It gets the same row metrics as a menu link. */
+  .navbar-sidebar .menu__list > [class^='toggle_'] {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
+    border-radius: var(--ifm-global-radius);
+  }
+
+  .navbar-sidebar .menu__list > [class^='toggle_']:hover {
+    background: var(--ifm-menu-color-background-hover);
+  }
+
+  /* The button inherits the bar's white, which is invisible on the drawer, and fills the
+     row, which centred the icon. It takes the menu colour and sits at the row's start.
+     !important because a white-on-the-bar rule above wins at equal specificity. */
+  /* GitHub in the drawer. Infima hides .navbar__item below 997, which took the chip with it,
+     and when it was visible it kept the bar's white and sat as a bare icon with two numbers.
+     Here it is a menu row: menu ink, link metrics, a label, and the counts to their right. */
+  .navbar-sidebar .menu__list > .repoChip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: var(--ifm-menu-link-padding-vertical) var(--ifm-menu-link-padding-horizontal);
+    border-radius: var(--ifm-global-radius);
+    color: var(--ifm-menu-color) !important;
+  }
+
+  .navbar-sidebar .menu__list > .repoChip:hover {
+    background: var(--ifm-menu-color-background-hover);
+  }
+
+  .navbar-sidebar .menu__list > .repoChip svg {
+    fill: currentColor;
+    stroke: currentColor;
+  }
+
+  .navbar-sidebar .menu__list > .repoChip .repoChip__label {
+    display: inline;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  /* Counts to the far end, the way a value reads beside a label. The label is a span too, so
+     :first-of-type would have hit the label; the adjacent sibling is the actual count. */
+  .navbar-sidebar .menu__list > .repoChip .repoChip__label + .repoChip__count {
+    margin-left: auto;
+  }
+
+  .navbar-sidebar .menu__list > .repoChip .repoChip__count {
+    font-size: 0.8125rem;
+    color: var(--ifm-menu-color);
+  }
+
+  .navbar-sidebar .menu__list > [class^='toggle_'] button {
+    width: auto;
+    justify-content: flex-start;
+    color: var(--ifm-menu-color) !important;
+  }
+
+  /* The lockup yields to the chips rather than running under them: the brand box owns the
+     width, and the image fills it. */
+  /* Imposing, not timid: the lockup takes what the row leaves, up to 180px. At 390 that is
+     a 36px-tall mark in a 72px bar instead of a 28px one. */
+  /* The lockup is centred on the bar, not parked between the menu button and the chips. It
+     comes out of the left group's flow and sits on the bar's midline, so the space either
+     side is the same whatever the nav items do. Its cap is what is left after the widest of
+     the two flanks: 36 for the menu button on the left, 124 for three chips on the right. */
+  .navbar__inner {
+    position: relative;
+  }
+
+  .navbar__brand {
+    position: absolute;
+    left: 50%;
+    margin: 0;
+    /* The flanks differ by 6px: a 30px menu button plus its padding against a 36px chip plus
+       its padding. The lockup is shifted 3px left so the space either side of it is equal,
+       which is what reads as centred; the arithmetic centre is 3px to its right. */
+    transform: translateX(calc(-50% - 3px));
+  }
+
+  /* One chip on the right and one button on the left, so the lockup gets what is left once a
+     14px gap each side of it is reserved: 2 × (36 of chip + 24 of padding) + 28. */
+  .navbar__logo {
+    width: calc(100vw - 148px);
+    max-width: 180px;
+    margin-right: 0; /* Infima's 8px pushes the image 4px off centre inside a centred box */
+    overflow: hidden;
+  }
+
+  @media (max-width: 479px) {
+
+
+  }
+
+  .navbar__logo img {
+    width: 100%;
+    height: auto;
+  }
+
+  .navbar__logo {
+    height: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .navbar__logo {
+    height: 28px;
+  }
 }
 
 .navbar__brand:hover {
   color: rgb(237, 237, 237) !important;
-  transform: translateY(-1px);
 }
 
 .navbar__logo {
-  height: 32px;
+  /* The lockup is 5:1 (mark plus wordmark), so a fixed height sets its width: 44px tall
+     is 220px wide, which is what makes it read as the page's name rather than an icon
+     with a caption beside it. */
+  height: 44px;
   width: auto;
   transition: all 0.2s ease;
 }
@@ -312,15 +567,131 @@ html[data-theme='dark'] {
 .navbar__link {
   color: white !important;
   font-weight: 500;
+  font-size: 0.9375rem;
+  /* Vertical padding only: the row's spacing comes from one gap value, not from
+     three items carrying 12px padding while two carry none. */
+  padding: 0.3rem 0;
 }
 
-.navbar__link:hover {
-  color: rgba(255, 255, 255, 0.8) !important;
+/* The bar is full width, with 24px of inset, rather than capped to the page container.
+   Capping it at 1140 lined its items up with the page's columns, but on a wide window that
+   turned the blue bar into a band with empty blue either side, which reads as the bar
+   being squeezed. The 1440 cap only engages past 1440, so the bar looks edge to edge at
+   every common width and does not stretch to the corners on an ultrawide. */
+/* Between 997 and 1100 the bar is at its tightest: brand, three links, search, chip and
+   toggle touch edge to edge with no gap at all. The chip is the most expendable thing in
+   the row, so it steps out there and returns when there is room. */
+@media (min-width: 997px) and (max-width: 1100px) {
+  .navbar__items--right > .repoChip {
+    display: none;
+  }
 }
 
-.navbar__link--active {
-  color: white !important;
-  font-weight: 600;
+/* A flex item will fold rather than push, so "Get started" wrapped to two lines at 997. It
+   keeps its line now. */
+.navbar__items:not(.navbar__items--right) > .navbar__item {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+@media (min-width: 997px) {
+  .navbar__inner {
+    /* No max-width: any cap, even a wide one, turns the bar back into a centred band on a
+       large monitor, which is the thing this rule exists to stop. */
+    max-width: none;
+  }
+}
+/* The local-search plugin reserves 12px on its container and 16px on the field, so the
+   pill's visible edge sat 38px from the repo chip (10 of flex gap plus 28 of dead space)
+   while every other pair in the cluster was 10. Zeroed here so the cluster's own gap is
+   the only space, and the pill's border is what the eye measures. */
+[class*='navbarSearchContainer'] {
+  padding-left: 0 !important;
+}
+
+.navbar__search {
+  margin-left: 0 !important;
+}
+
+/* The repo chip: mark, stars, forks, with the counts read as one group rather than three
+   separate things. Tabular figures so 13 and 24 line up at the same width. */
+.repoChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.repoChip__label {
+  display: none;
+}
+
+.repoChip__count {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Theme switching. The global 200ms colour transition is right for hover and wrong for a
+   theme change: it runs on every element at once, each from its own colour, so the
+   inverted bands jump in their own frame while the page around them is still light and the
+   page passes through flat grey. During a switch the element transitions are off and a
+   view transition cross-fades one snapshot against the next, so the whole page moves
+   together. */
+.theme-switching,
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition: none !important;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+}
+
+/* One rhythm across the bar. Infima gives items their own padding, so mixing padded
+   and unpadded items produced optical gaps of 14px, 26px and 14px in the same row. */
+.navbar__items {
+  gap: 1.5rem;
+}
+
+.navbar__items--right {
+  /* 10px, not 16: beside a 240px search pill the wider gap read as three separate
+     controls rather than one cluster. */
+  gap: 0.625rem;
+}
+
+/* Infima ships `.navbar__item.dropdown .navbar__link` at a heavier weight than a bare
+   `.navbar__link`, so the menu toggles kept 16px and 12px padding while the plain links
+   took 15px and none. Same ruler for both, or the row reads hand-placed. */
+.navbar__item.dropdown .navbar__link {
+  font-size: 0.9375rem;
+  padding: 0.3rem 0;
+}
+
+/* Current section only: a 2px moon underline 6px under the baseline. Hover keeps its own
+   cue, the link lightening to 80% white, and two cues per link was one too many. Drawn
+   with text-decoration rather than a pseudo-element, because Infima draws the dropdown
+   caret with `.navbar__link::after` and an absolute bar there replaced the carets with
+   boxes. Desktop only, so the drawer is untouched. */
+@media (min-width: 997px) {
+  .navbar__link--active {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+    text-decoration-color: var(--color-brand-moon);
+  }
 }
 
 /* Dropdown menu styling */
@@ -360,32 +731,10 @@ html[data-theme='dark'] {
   transform: translateY(-2px);
 }
 
-/* Footer styling */
-.footer {
-  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-  border-top: 3px solid var(--ifm-color-primary);
-}
-
-.footer__title {
-  color: var(--ifm-color-primary-light);
-  font-weight: 600;
-}
-
-.footer__link-item {
-  color: var(--ifm-color-secondary-lighter);
-  transition: color 0.2s ease;
-}
-
-.footer__link-item:hover {
-  color: var(--ifm-color-primary-light);
-}
-
-/* Hero section styling */
-.hero {
-  background: linear-gradient(135deg, rgba(37, 85, 254, 0.03) 0%, rgba(0, 212, 170, 0.03) 100%);
-  padding: 6rem 0 4rem 0;
-  border-bottom: 1px solid rgba(37, 85, 254, 0.1);
-}
+/* The footer is a swizzled component (src/theme/Footer) so it can use the layout of
+   intersectmbo.org's footer: mark and copyright on the left, link columns beside
+   them, one rule above a short bottom line. Its colours live in that component's
+   stylesheet, so no global footer rules remain here. */
 
 .hero__title {
   font-size: 3.5rem;
@@ -844,83 +1193,50 @@ html[data-theme='dark'] {
   }
 }
 
-/* Link visibility fixes */
+/* Link visibility fixes.
+   These stay UN-important on purpose: with !important, a bare `a` selector
+   outranks every component's own colour rule (a CSS-module class is only one
+   class, while `[data-theme='dark'] a` is a class plus an element), which is
+   what made the home-page buttons render blue-on-blue in dark mode. Infima
+   already colours prose links via `.markdown a`, so this is only a default. */
 a {
-  color: var(--ifm-color-primary) !important;
+  color: var(--ifm-color-primary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: var(--ifm-color-primary-dark) !important;
+  color: var(--ifm-color-primary-dark);
   text-decoration: underline;
 }
 
 /* Dark mode link fixes */
 [data-theme='dark'] a {
-  color: var(--ifm-color-primary) !important;
+  color: var(--ifm-color-primary);
 }
 
 [data-theme='dark'] a:hover {
-  color: var(--ifm-color-primary-light) !important;
+  color: var(--ifm-color-primary-light);
 }
 
-/* Footer link fixes */
-.footer__link-item {
-  color: var(--ifm-color-secondary-lighter) !important;
-  transition: color 0.2s ease;
-}
-
-.footer__link-item:hover {
-  color: var(--ifm-color-primary-light) !important;
-}
-
-[data-theme] .navbar .clean-btn[title*="dark"],
-[data-theme] .navbar .clean-btn[title*="light"],
-[data-theme] .navbar button[aria-label*="color mode"],
-[data-theme] .navbar button[aria-label*="Color mode"],
-[data-theme] .navbar button[aria-label*="Toggle color mode"] {
+/* Scoped to the bar's own cluster, not to `.navbar`. Written as `.navbar button[...]` this
+   also matched the toggle in the mobile drawer, which sits inside the navbar, and forced
+   the icon white there: white on a cream drawer, invisible. */
+[data-theme] .navbar__items--right .clean-btn[title*="dark"],
+[data-theme] .navbar__items--right .clean-btn[title*="light"],
+[data-theme] .navbar__items--right button[aria-label*="color mode"],
+[data-theme] .navbar__items--right button[aria-label*="Color mode"],
+[data-theme] .navbar__items--right button[aria-label*="Toggle color mode"] {
   color: #ffffff !important;
 }
 
-[data-theme] .navbar .clean-btn[title*="dark"] svg,
-[data-theme] .navbar .clean-btn[title*="light"] svg,
-[data-theme] .navbar button[aria-label*="color mode"] svg,
-[data-theme] .navbar button[aria-label*="Color mode"] svg,
-[data-theme] .navbar button[aria-label*="Toggle color mode"] svg {
+[data-theme] .navbar__items--right .clean-btn[title*="dark"] svg,
+[data-theme] .navbar__items--right .clean-btn[title*="light"] svg,
+[data-theme] .navbar__items--right button[aria-label*="color mode"] svg,
+[data-theme] .navbar__items--right button[aria-label*="Color mode"] svg,
+[data-theme] .navbar__items--right button[aria-label*="Toggle color mode"] svg {
   fill: #ffffff !important;
   stroke: #ffffff !important;
-}
-
-[data-theme='dark'] .footer__link-item {
-  color: var(--ifm-color-secondary-lighter) !important;
-}
-
-[data-theme='dark'] .footer__link-item:hover {
-  color: var(--ifm-color-primary-light) !important;
-}
-
-/* Footer copyright visibility in dark mode */
-[data-theme='dark'] .footer__copyright,
-[data-theme='dark'] .footer__copyright *,
-[data-theme='dark'] .footer__bottom,
-[data-theme='dark'] .footer__bottom *,
-[data-theme='dark'] .footer__text,
-[data-theme='dark'] .footer p,
-[data-theme='dark'] .footer div[class*="copyright"] {
-  color: rgba(255, 255, 255, 0.8) !important;
-}
-
-[data-theme='dark'] .footer__copyright a,
-[data-theme='dark'] .footer__bottom a,
-[data-theme='dark'] .footer a {
-  color: rgba(255, 255, 255, 0.9) !important;
-}
-
-[data-theme='dark'] .footer__copyright a:hover,
-[data-theme='dark'] .footer__bottom a:hover,
-[data-theme='dark'] .footer a:hover {
-  color: white !important;
 }
 
 /* Loading and transition effects */
@@ -948,6 +1264,98 @@ a:hover {
   fill: var(--ifm-color-primary) !important;
   stroke: var(--ifm-color-primary) !important;
   opacity: 1 !important;
+}
+
+/* ---------- Search control ----------
+   Ghost at rest, solid on focus. The navbar is brand blue in both themes, so
+   the control has to work against #2353FF rather than against the page: a white
+   block at rest outweighed the nav links beside it, while a translucent fill
+   (white at 12-20%) would put the label at 1.4-2:1. Hairline white border and
+   white label hold 4.96:1 against the bar, and the field turns into the solid
+   white input the moment it takes focus, so typing never happens on a ghost.
+
+   Colours here are literal, not theme tokens: they sit on the bar either way. */
+
+.navbar__search-input,
+.navbar__search input {
+  width: 200px;
+  height: 36px;
+  padding: 0 0.75rem 0 2.25rem;
+  font-family: var(--ifm-font-family-base);
+  font-size: var(--text-body-sm);
+  color: #1D1D1B;
+  background-color: transparent;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23FFFFFF' stroke-opacity='0.92' stroke-width='1.5' stroke-linecap='round'%3E%3Ccircle cx='7' cy='7' r='4.5'/%3E%3Cpath d='M10.6 10.6 14 14'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0.7rem center;
+  background-size: 16px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.navbar__search-input::placeholder,
+.navbar__search input::placeholder {
+  color: rgba(255, 255, 255, 0.92); /* 4.96:1 on the bar */
+  opacity: 1;
+}
+
+.navbar__search:hover .navbar__search-input,
+.navbar__search:hover input {
+  border-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Focus: the solid field, with the icon and label back to the muted grey. */
+.navbar__search:focus-within .navbar__search-input,
+.navbar__search:focus-within input {
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%236A6A6A' stroke-width='1.5' stroke-linecap='round'%3E%3Ccircle cx='7' cy='7' r='4.5'/%3E%3Cpath d='M10.6 10.6 14 14'/%3E%3C/svg%3E");
+  border-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.35);
+}
+
+.navbar__search:focus-within input::placeholder {
+  color: #6A6A6A;
+}
+
+/* Shortcut hints: white on the bar at rest, plugin-grey once the field is solid. */
+.navbar__search kbd {
+  padding: 0.1rem 0.3rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.92);
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-sm);
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.navbar__search:focus-within kbd {
+  color: #6A6A6A;
+  background: #F5F3EB;
+  border-color: #E8E8E8;
+}
+
+/* Narrow screens collapse the input to an icon; centre the magnifier in that
+   chip, hide the placeholder and the shortcut hints that would otherwise sit
+   outside it, and restore all three once the field takes focus and expands. */
+@media (max-width: 996px) {
+  .navbar__search:not(:focus-within) input {
+    width: 36px; /* a square icon chip rather than a 32px narrow one */
+    padding-left: 0;
+    background-position: center;
+  }
+
+  .navbar__search:not(:focus-within) input::placeholder {
+    color: transparent;
+  }
+
+  .navbar__search:not(:focus-within) kbd {
+    display: none;
+  }
 }
 
 /* Target plugin's CSS module classes and ensure all DocSearch elements are light in dark theme */
@@ -998,19 +1406,21 @@ html[data-theme='dark'] .searchBar .dropdownMenu svg {
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
-/* Jump to Top above DevEx Sessions (Meetup), same right alignment */
-@media (max-width: 767px) {
+/* Docusaurus ships its own back-to-top arrow (48px, z-index 199) that appears
+   after an upward scroll. On desktop the floating sessions control owns that
+   corner, so the arrow stacks above it; on phones the sessions control lives in
+   the navbar and the corner is free again. */
+@media (max-width: 768px) {
   .theme-back-to-top-button {
-    bottom: 4.9rem !important;
-    right: 1.7rem !important;
+    bottom: 1.5rem !important;
+    right: 1.5rem !important;
   }
 }
 
-/* Jump to Top to the left of DevEx Sessions (Meetup), same baseline */
-@media (min-width: 767px) {
+@media (min-width: 769px) {
   .theme-back-to-top-button {
-    bottom: 2rem !important;
-    right: 2.5rem !important;
+    bottom: 5.75rem !important; /* 24px inset + 56px control + 12px gap */
+    right: 1.5rem !important;
   }
 }
 /* ─────────────────────────────────────────────────────────────────────────── */
@@ -1275,4 +1685,59 @@ html[data-theme='dark'] .searchBar .dropdownMenu svg {
   max-width: var(--content-max-width);
   margin-left: auto;
   margin-right: auto;
+}
+.navbar__link {
+  color: white !important;
+  font-weight: 500;
+}
+.navbar__link:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+.footer {
+  background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  border-top: 3px solid var(--ifm-color-primary);
+}
+.footer__title {
+  color: var(--ifm-color-primary-light);
+  font-weight: 600;
+}
+.footer__link-item {
+  color: var(--ifm-color-secondary-lighter);
+  transition: color 0.2s ease;
+}
+.footer__link-item:hover {
+  color: var(--ifm-color-primary-light);
+}
+[data-theme='dark'] .navbar__link:hover {
+  color: white !important;
+  opacity: 0.8;
+}
+.footer__link-item {
+  color: var(--ifm-color-secondary-lighter) !important;
+  transition: color 0.2s ease;
+}
+.footer__link-item:hover {
+  color: var(--ifm-color-primary-light) !important;
+}
+[data-theme] .navbar button[aria-label*="Toggle color mode"] {
+  color: #ffffff !important;
+}
+[data-theme] .navbar button[aria-label*="Toggle color mode"] svg {
+  fill: #ffffff !important;
+  stroke: #ffffff !important;
+}
+[data-theme='dark'] .footer__link-item {
+  color: var(--ifm-color-secondary-lighter) !important;
+}
+[data-theme='dark'] .footer__link-item:hover {
+  color: var(--ifm-color-primary-light) !important;
+}
+[data-theme='dark'] .footer div[class*="copyright"] {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+[data-theme='dark'] .footer a {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+[data-theme='dark'] .footer a:hover {
+  color: white !important;
 }
