@@ -1,0 +1,132 @@
+{
+  "generatedAt": "2026-11-06",
+  "total": 21,
+  "sessions": [
+    {
+      "number": "22",
+      "title": "AI-Ready Cardano Repositories",
+      "quarter": "Q4 2026",
+      "href": "/docs/working-group/q4-2026/sessions/22-ai-ready-cardano-repos/session-notes"
+    },
+    {
+      "number": "21",
+      "title": "Building a Production Cardano SDK: From Validators to dApp",
+      "quarter": "Q2 2026",
+      "href": "/docs/working-group/q2-2026/sessions/21-cardano-production-sdk/session-notes"
+    },
+    {
+      "number": "20",
+      "title": "One API Call to Understand Cardano",
+      "quarter": "Q2 2026",
+      "href": "/docs/working-group/q2-2026/sessions/20-one-api-call-blockfrost/session-notes"
+    },
+    {
+      "number": "19",
+      "title": "Building a Production-Grade MCP Server for Cardano",
+      "quarter": "Q2 2026",
+      "href": "/docs/working-group/q2-2026/sessions/19-cardano-mcp-server/session-notes"
+    },
+    {
+      "number": "18",
+      "title": "Using AI in Your Cardano Dev Workflow",
+      "quarter": "Q2 2026",
+      "href": "/docs/working-group/q2-2026/sessions/18-cardano-ai-dev-workflow/session-notes"
+    },
+    {
+      "number": "17",
+      "title": "Default Developer Environment for Cardano",
+      "quarter": "Q2 2026",
+      "href": "/docs/working-group/q2-2026/sessions/17-default-developer-environment/session-notes"
+    },
+    {
+      "number": "16",
+      "title": "UI ↔ Smart Contracts (Wallets + Tx flow)",
+      "quarter": "Q2 2026",
+      "href": "/docs/working-group/q2-2026/sessions/16-ui-smart-contract-interaction/session-notes"
+    },
+    {
+      "number": "15",
+      "title": "dApp Architecture: From Wallet to Backend",
+      "quarter": "Q2 2026",
+      "href": "/docs/working-group/q2-2026/sessions/15-dapp-architecture-demo/session-notes"
+    },
+    {
+      "number": "14",
+      "title": "Repository Walkthrough: Offchain and SDK building",
+      "quarter": "Q2 2026",
+      "href": "/docs/working-group/q2-2026/sessions/14-sdk-repo-walkthrough/session-notes"
+    },
+    {
+      "number": "14",
+      "title": "CIP-68 NFT Standard",
+      "quarter": "Q1 2026",
+      "href": "/docs/working-group/q1-2026/sessions/14-cip-68-nft-standard/session-notes"
+    },
+    {
+      "number": "13",
+      "title": "Deeper Dive: Smart Contracts & Languages",
+      "quarter": "Q1 2026",
+      "href": "/docs/working-group/q1-2026/sessions/13-smart-contracts-languages/session-notes"
+    },
+    {
+      "number": "12",
+      "title": "Cardano Developer Pathway",
+      "quarter": "Q1 2026",
+      "href": "/docs/working-group/sessions/q1-2026/cardano-developer-pathway/session-notes/"
+    },
+    {
+      "number": "11",
+      "title": "Open Source Documentation",
+      "quarter": "Q1 2026",
+      "href": "/docs/working-group/sessions/q1-2026/open-source-docs/session-notes/"
+    },
+    {
+      "number": "10",
+      "title": "Wallet Integration & Developer Experience",
+      "quarter": "Q1 2026",
+      "href": "/docs/working-group/sessions/q1-2026/wallet-integration/Session-1/session-notes/"
+    },
+    {
+      "number": "9",
+      "title": "Community Builder Story - Konma & HaskLedger",
+      "quarter": "Q1 2026",
+      "href": "/docs/working-group/sessions/q1-2026/community-builder-story/session-notes/"
+    },
+    {
+      "number": "8",
+      "title": "Native Tokens Guide",
+      "quarter": "Q1 2026",
+      "href": "/docs/working-group/q1-2025/sessions/08-open-clinic-1/session-notes"
+    },
+    {
+      "number": "7",
+      "title": "Contributing to Intersect",
+      "quarter": "Q1 2026",
+      "href": "/docs/working-group/q1-2025/sessions/07-contributing-intersect/session-notes"
+    },
+    {
+      "number": "4",
+      "title": "Essential Links in Cardano",
+      "quarter": "Q4 2025",
+      "href": "/docs/working-group/sessions/q4-2025/essential-links/session-notes/"
+    },
+    {
+      "number": "3",
+      "title": "Cardano Dev Environment",
+      "quarter": "Q4 2025",
+      "href": "/docs/working-group/sessions/q4-2025/dev-environment-setup/session-notes/"
+    },
+    {
+      "number": "2",
+      "title": "Opportunities in Cardano (2025)",
+      "quarter": "Q4 2025",
+      "href": "/docs/working-group/sessions/q4-2025/dev-opportunities/session-notes/"
+    },
+    {
+      "number": "1",
+      "title": "Kickoff & Orientation",
+      "quarter": "Q4 2025",
+      "href": "/docs/working-group/sessions/q4-2025/kickoff-orientation/session-notes/"
+    }
+  ]
+}

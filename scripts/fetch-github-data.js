@@ -43,6 +43,10 @@ async function fetchGitHubData() {
     headers['Authorization'] = `token ${process.env.GITHUB_TOKEN}`;
   }
 
+  // Stars and forks, for the repo chip in the navbar. Same rule as everything else here:
+  // keep the previous values when a fetch fails, and let the site show the snapshot.
+  let repo = { stars: null, forks: null, fullName: REPO, url: `https://github.com/${REPO}` };
+
   let contributors = [];
   let stats = {
     mergedPRs: '15+',
@@ -55,6 +59,7 @@ async function fetchGitHubData() {
   // Whether this run replaced the preserved snapshot with fresh API data.
   let contributorsOk = false;
   let statsOk = false;
+  let repoOk = false;
   let refreshed = false;
 
   // Preserve existing data if available
@@ -66,6 +71,9 @@ async function fetchGitHubData() {
       }
       if (existing.stats) {
         stats = existing.stats;
+      }
+      if (existing.repo) {
+        repo = existing.repo;
       }
       if (existing.updatedAt) {
         updatedAt = existing.updatedAt;
@@ -116,11 +124,26 @@ async function fetchGitHubData() {
     }
 
     statsOk = prsRes.ok && openIssuesRes.ok && closedIssuesRes.ok;
+
+    // 4. Repo metadata. Unauthenticated calls are allowed and cost one request.
+    const repoRes = await fetch(`https://api.github.com/repos/${REPO}`, { headers });
+    if (repoRes.ok) {
+      const meta = await repoRes.json();
+      repo = {
+        stars: meta.stargazers_count ?? repo.stars,
+        forks: meta.forks_count ?? repo.forks,
+        fullName: meta.full_name ?? repo.fullName,
+        url: meta.html_url ?? repo.url,
+      };
+      repoOk = true;
+    } else {
+      console.warn(`Repo API returned ${repoRes.status}`);
+    }
   } catch (error) {
     console.warn('Warning: Error fetching GitHub data at build time, using fallback values:', error.message);
   }
 
-  refreshed = contributorsOk && statsOk;
+  refreshed = contributorsOk && statsOk && repoOk;
   if (refreshed) {
     updatedAt = new Date().toISOString();
   } else {
@@ -138,6 +161,7 @@ async function fetchGitHubData() {
   }
 
   const payload = {
+    repo,
     contributors,
     stats,
     updatedAt,

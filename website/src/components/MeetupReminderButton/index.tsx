@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { MeetupReminderButtonProps } from "./types";
 import { DEFAULT_SESSIONS, DEVEX_SESSIONS_ENABLED } from "./constants";
 import { useMeetupSessions } from "./hooks/useMeetupSessions";
@@ -18,6 +19,42 @@ const MeetupReminderButton: React.FC<MeetupReminderButtonProps> = ({
   const [isExpanded, setIsExpanded] = useState(false);
   const [selectedSession, setSelectedSession] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
+
+  // On phones the control moves into the navbar: a fixed button over full-bleed
+  // text always covers a word or a number, and no offset fixes that. Desktop
+  // keeps the floating control, where the page has room at the right.
+  const [inNavbar, setInNavbar] = useState(false);
+  const [navSlot, setNavSlot] = useState<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const query = window.matchMedia("(max-width: 768px)");
+    const sync = () => setInNavbar(query.matches);
+    sync();
+    query.addEventListener("change", sync);
+    return () => query.removeEventListener("change", sync);
+  }, []);
+
+  useEffect(() => {
+    if (!inNavbar) {
+      setNavSlot(null);
+      return;
+    }
+
+    const find = () => {
+      const slot = document.querySelector<HTMLElement>(".navbar__items--right");
+      setNavSlot(slot);
+      return slot !== null;
+    };
+
+    if (find()) return;
+
+    // The navbar can mount after this effect on a cold load.
+    const observer = new MutationObserver(() => {
+      if (find()) observer.disconnect();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    return () => observer.disconnect();
+  }, [inNavbar]);
 
   const { sessionDates, meetingStatuses } = useMeetupSessions(
     DEVEX_SESSIONS_ENABLED ? sessions : [],
@@ -47,6 +84,10 @@ const MeetupReminderButton: React.FC<MeetupReminderButtonProps> = ({
     }
   };
 
+  const toggleExpanded = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   const currentSession = sessions.find((s) => s.id === selectedSession);
   const currentSessionDate = selectedSession
     ? sessionDates.get(selectedSession)
@@ -59,14 +100,27 @@ const MeetupReminderButton: React.FC<MeetupReminderButtonProps> = ({
     return null;
   }
 
-  return (
-    <div className={styles.container}>
+  if (inNavbar && !navSlot) {
+    // Waiting for the navbar to mount: render nothing rather than flashing the
+    // floating control at the corner first.
+    return null;
+  }
+
+  const usesNavbar = inNavbar && navSlot !== null;
+  const controlClass = [
+    styles.floatingButton,
+    isExpanded ? styles.expanded : "",
+    usesNavbar ? styles.navTrigger : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const control = (
+    <>
       <button
         ref={buttonRef}
-        className={`${styles.floatingButton} ${
-          isExpanded ? styles.expanded : ""
-        }`}
-        onClick={() => setIsExpanded(!isExpanded)}
+        className={controlClass}
+        onClick={toggleExpanded}
         onKeyDown={handleKeyDown}
         aria-label="Toggle DevEx Sessions"
         aria-expanded={isExpanded}
@@ -118,7 +172,7 @@ const MeetupReminderButton: React.FC<MeetupReminderButtonProps> = ({
         <div
           ref={panelRef}
           id="meetup-panel"
-          className={styles.panel}
+          className={`${styles.panel} ${usesNavbar ? styles.panelInNav : ""}`}
           role="dialog"
           aria-label="DevEx Sessions information panel"
         >
@@ -179,8 +233,14 @@ const MeetupReminderButton: React.FC<MeetupReminderButtonProps> = ({
           </div>
         </div>
       )}
-    </div>
+    </>
   );
+
+  if (usesNavbar && navSlot) {
+    return createPortal(control, navSlot);
+  }
+
+  return <div className={styles.container}>{control}</div>;
 };
 
 export default MeetupReminderButton;
