@@ -100,7 +100,7 @@
 .rule {
   height: 1px;
   margin: var(--space-8) 0 var(--space-5);
-  background: var(--ifm-color-primary-light);
+  background: var(--color-brand-primary-lighter);
 }
 
 /* The reference centres its legal row under the rule and stops there. */
@@ -116,6 +116,7 @@
 
 .wordmarkWrap {
   margin-top: var(--space-8);
+  /* Full footer width, because it is a child of the footer rather than the container. */
   /* The wrapper is the container, and the span inside it is what is sized in cqw:
      container units resolve against the nearest ANCESTOR container, so setting
      font-size in cqw on the container itself falls back to the viewport. */
@@ -125,10 +126,11 @@
 
 .wordmark {
   display: block;
-  /* 1cqw is 1% of the wrapper's width and "DevEx" at -0.05em tracking measures
-     2.85em, so 34.4cqw sets the word to about 98% of the column at every width. A
-     vw-based size fit desktop but cut the x on wide screens. */
-  font-size: 34.4cqw;
+  /* 1cqw is 1% of the wrapper's width, and "DevEx" at -0.05em tracking measures
+     2.848em, so 35cqw lands the word at about 99.7% of the footer's full width: flush
+     left, a few pixels of blue at the right, never clipped. A vw-based size fitted one
+     screen and cut the x on the others, which is why this is in container units. */
+  font-size: 35cqw;
   /* The crop: about two thirds of the cap height (0.45em against a 0.70em cap),
      which sits between half and three quarters. The negative margin cancels the
      ascender space so the slice starts at the cap line, not in empty blue. */
@@ -139,8 +141,12 @@
   line-height: 0.78;
   letter-spacing: -0.05em;
   /* One step lighter than the footer surface, the way the reference tints its mark:
-     #4F72FE against #2353FF is 1.38:1, texture rather than text. */
-  color: var(--ifm-color-primary-light);
+     #4F72FE against #2353FF is 1.38:1, texture rather than text.
+
+     A brand token, not --ifm-color-primary-light: the footer stays blue in both themes,
+     so its mark must stay the same blue too. A themed token would change the wordmark's
+     colour in dark mode while its background refused to move. */
+  color: var(--color-brand-primary-lighter);
   white-space: nowrap;
   user-select: none;
 }

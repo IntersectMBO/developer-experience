@@ -106,12 +106,17 @@ export default function Footer(): ReactNode {
           ))}
         </nav>
 
-        {/* Cropped wordmark: a few chars at display size, cut by the footer's own
-            bottom edge. It reads as texture rather than content because only the
-            top half of the glyphs exists, and it is `aria-hidden` for that reason. */}
-        <div className={styles.wordmarkWrap} aria-hidden="true">
-          <span className={styles.wordmark}>DevEx</span>
-        </div>
+      </div>
+
+      {/* Cropped wordmark: a few chars at display size, cut by the footer's own bottom
+          edge. It reads as texture rather than content because only the top half of the
+          glyphs exists, and it is `aria-hidden` for that reason.
+
+          Outside the container on purpose. Inside it the word was clipped to the 1140
+          column and sat centred with blue either side; the mark is meant to run the full
+          width of the footer, so it is a child of the footer itself. */}
+      <div className={styles.wordmarkWrap} aria-hidden="true">
+        <span className={styles.wordmark}>DevEx</span>
       </div>
     </footer>
   );
