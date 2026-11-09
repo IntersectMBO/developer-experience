@@ -51,7 +51,7 @@ Short reference for the pathway. For the diagrams, see [Session Notes](../sessio
 ## 5. Funding & Community
 
 - **Project Catalyst** – [projectcatalyst.io](https://projectcatalyst.io), quarterly, $10k–$500k+
-- **Hubs** – [Cardano Forum](https://forum.cardano.org), [Cardano Stack Exchange](https://cardano.stackexchange.com), Discord, [IOG](https://discord.gg/inputoutput), [Gimbalabs](https://discord.gg/gimbalabs)
+- **Hubs** – [Cardano Forum](https://forum.cardano.org), [Cardano Stack Exchange](https://cardano.stackexchange.com), Discord, [IOG](https://iohk.io/en/community/), [Gimbalabs](https://gimbalabs.com)
 
 ---
 
