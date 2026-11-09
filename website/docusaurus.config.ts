@@ -282,6 +282,10 @@ const config: Config = {
               label: "FAQs",
               to: "/docs/faq/",
             },
+            {
+              label: "Notable Contributors",
+              to: "/docs/notable-contributors/",
+            },
           ],
         },
       ],
