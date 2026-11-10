@@ -144,7 +144,7 @@ Welcome to the Cardano ecosystem! This guide provides a comprehensive map of whe
 | -------------------------- | ------------------------------------------- | -------------------------------------------------------------- |
 | **Cardano Forum**          | Long-form discussions and proposals         | [forum.cardano.org](https://forum.cardano.org)                 |
 | **Intersect Discord**      | Real-time community chat and working groups | First become a member at [Intersect](https://www.intersectmbo.org/) and register at [members.intersectmbo.org](https://members.intersectmbo.org/registration) to get Discord access |
-| **IOG Technical Discord**  | Developer-focused technical support         | [discord.gg/inputoutput](https://discord.gg/inputoutput)       |
+| **IOG Technical Discord**  | Developer-focused technical support         | [iohk.io/community](https://iohk.io/en/community/)             |
 | **Cardano Stack Exchange** | Q&A for developers                          | [cardano.stackexchange.com](https://cardano.stackexchange.com) |
 | **Reddit**                 | Community discussions                       | [r/cardano](https://reddit.com/r/cardano)                      |
 
@@ -194,7 +194,7 @@ _Join working groups through the [Intersect portal](https://intersectmbo.org)_
 - [ ] Review [stake pool operator documentation](https://developers.cardano.org/docs/operate-a-stake-pool/)
 - [ ] Understand hardware and network requirements
 - [ ] Set up monitoring and alerting
-- [ ] Join [SPO Discord channels](https://discord.gg/cardano-community) for peer support
+- [ ] Join the Cardano SPO community channels for peer support
 - [ ] Test setup on testnet before mainnet
 
 ---
