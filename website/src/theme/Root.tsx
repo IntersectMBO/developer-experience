@@ -8,6 +8,48 @@ export default function Root({ children }: { children: ReactNode }) {
   const { siteConfig } = useDocusaurusContext();
 
   useEffect(() => {
+    // A new deploy, or a rebuild behind a running server, replaces the hashed
+    // chunks. A tab left open across that boundary fails the next lazy route
+    // load with ChunkLoadError and shows a dead error overlay. Reload once
+    // instead, rate-limited so a genuinely missing chunk cannot loop.
+    const KEY = "devex:chunk-reload";
+    const isChunkError = (message: string) =>
+      /ChunkLoadError|Loading (CSS )?chunk [\w.~-]+ failed/i.test(message);
+
+    const reloadOnce = () => {
+      try {
+        const last = Number(window.sessionStorage.getItem(KEY) ?? 0);
+        if (Date.now() - last < 15000) return;
+        window.sessionStorage.setItem(KEY, String(Date.now()));
+      } catch {
+        // Session storage blocked: reloading blindly risks a loop.
+        return;
+      }
+      window.location.reload();
+    };
+
+    const onRejection = (event: PromiseRejectionEvent) => {
+      const reason = event.reason as Error | string | undefined;
+      const message =
+        typeof reason === "string" ? reason : reason?.message ?? String(reason ?? "");
+      if (!isChunkError(message)) return;
+      event.preventDefault();
+      reloadOnce();
+    };
+
+    const onError = (event: ErrorEvent) => {
+      if (isChunkError(event.message ?? "")) reloadOnce();
+    };
+
+    window.addEventListener("unhandledrejection", onRejection);
+    window.addEventListener("error", onError);
+    return () => {
+      window.removeEventListener("unhandledrejection", onRejection);
+      window.removeEventListener("error", onError);
+    };
+  }, []);
+
+  useEffect(() => {
     // Minimal MutationObserver to fix any black text in search dropdown that CSS might miss
     const observer = new MutationObserver(() => {
       const darkTheme = document.documentElement.getAttribute("data-theme") === "dark";
