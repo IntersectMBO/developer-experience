@@ -1,7 +1,10 @@
-import { DEFAULT_SESSIONS } from '../MeetupReminderButton/constants';
+import Link from '@docusaurus/Link';
+import { DEFAULT_SESSIONS, DEVEX_SESSIONS_ENABLED } from '../MeetupReminderButton/constants';
 import { calculateNextMeetup } from '../MeetupReminderButton/utils/dateUtils';
 import { generateGoogleCalendarUrl } from '../MeetupReminderButton/utils/calendarUtils';
 import styles from './styles.module.css';
+
+const SESSIONS_ARCHIVE = '/docs/working-group/';
 
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 const MONTHS = [
@@ -28,23 +31,60 @@ function formatTime(date: Date): string {
  * The next working-group call, taken from the same calendar data the floating
  * sessions control reads.
  *
- * The date is resolved during the build rather than in an effect, so the card is
- * in the server-rendered markup and the page does not shift when the clock
- * arrives. The cost is that a build that happens just before a call keeps
- * showing it until the next deploy; a build that happens after one has ended
- * moves straight to the next date. Nothing here counts down, because a countdown
- * would have to read the browser clock and would disagree with the markup.
+ * The date is resolved during render so the card is in the server markup.
+ * suppressHydrationWarning is on the date and time only: a visit that falls
+ * in a later fortnight can show the next date without a recoverable hydration
+ * error. Nothing here counts down.
  */
+function StatusCard({
+  label,
+  title,
+  copy,
+}: {
+  label: string;
+  title: string;
+  copy: string;
+}) {
+  return (
+    <div className={styles.sessionCard}>
+      <p className={styles.sessionLabelQuiet}>{label}</p>
+      <h3 className={styles.sessionTitle}>{title}</h3>
+      <p className={styles.sessionMeta}>{copy}</p>
+      <div className={styles.sessionActions}>
+        <Link to={SESSIONS_ARCHIVE}>Browse the sessions</Link>
+      </div>
+    </div>
+  );
+}
+
 export default function NextSession() {
   const session = DEFAULT_SESSIONS[0];
   if (!session) return null;
+
+  if (!DEVEX_SESSIONS_ENABLED) {
+    return (
+      <StatusCard
+        label="Paused"
+        title="The working group series is paused"
+        copy="The sessions control is hidden for the same reason. Notes from past calls stay in the archive."
+      />
+    );
+  }
 
   const next = calculateNextMeetup(
     session.baseDate,
     session.recurrence?.interval ?? 2,
     session.endDate,
   );
-  if (!next) return null;
+  if (!next) {
+    return (
+      <StatusCard
+        label="Archive"
+        title="This series has no further date"
+        copy="Notes from past calls stay in the archive."
+      />
+    );
+  }
 
   return (
     <div className={styles.sessionCard}>
@@ -52,8 +92,10 @@ export default function NextSession() {
       <h3 className={styles.sessionTitle}>{session.title}</h3>
 
       <p className={styles.sessionWhen}>
-        <time dateTime={next.toISOString()}>{formatDate(next)}</time>
-        <span>{formatTime(next)}</span>
+        <time suppressHydrationWarning dateTime={next.toISOString()}>
+          {formatDate(next)}
+        </time>
+        <span suppressHydrationWarning>{formatTime(next)}</span>
       </p>
       <p className={styles.sessionMeta}>Bi-weekly, Thursdays · Google Meet</p>
 
