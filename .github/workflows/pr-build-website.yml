@@ -11,6 +11,10 @@ on:
       - main
     paths:
       - "website/**"
+      - "package-lock.json"
+      - "yarn.lock"
+      - "**/yarn.lock"
+      - "**/pnpm-lock.yaml"
       - ".github/workflows/pr-build-website.yml"
 
 permissions:
@@ -29,6 +33,16 @@ jobs:
       - uses: actions/checkout@v6
         with:
           fetch-depth: 0
+
+      - name: Guard against duplicate lockfiles
+        working-directory: ${{ github.workspace }}
+        run: |
+          extra=$(git ls-files | grep -E '(^|/)(yarn\.lock|pnpm-lock\.yaml)$|^package-lock\.json$' || true)
+          if [ -n "$extra" ]; then
+            echo "::error::website/package-lock.json is the only lockfile that may be tracked. Found: $extra"
+            exit 1
+          fi
+          echo "Only website/package-lock.json is tracked."
 
       - uses: actions/setup-node@v6
         with:

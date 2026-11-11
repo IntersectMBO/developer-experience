@@ -8,29 +8,27 @@ allowed-tools: Read, Write, Edit, Grep, Bash
 
 ## Project Tooling Constraint
 
-This project strictly uses **Yarn** as its package manager. The `website/package.json` declares:
-
-```json
-"packageManager": "yarn@1.22.22+sha512..."
-```
+`website/` standardises on **npm**. Both workflows install with `npm ci` against `website/package-lock.json`, and `website/package.json` intentionally declares no `packageManager`, so no other tool auto-selects itself.
 
 ## Lockfile Rule
 
-- Do **not** commit a `bun.lock` file.
-- Do **not** introduce Bun-specific lockfiles, configuration, or scripts.
-- Committing `bun.lock` could cause confusion for other contributors and break our CI, which expects `yarn.lock`.
+- `website/package-lock.json` is the single source of truth for locked versions.
+- Do **not** commit `website/yarn.lock`, `website/pnpm-lock.yaml`, `bun.lock`, `bun.lockb`, or a `package-lock.json` at the repository root.
+- The guard in `.github/workflows/pr-build-website.yml` fails any PR that tracks a second lockfile, so a reintroduced one blocks the build rather than drifting quietly.
 
 ## What to Flag
 
 During review, block or request removal of:
 
-- `bun.lock` or `bun.lockb`
-- `bunfig.toml`
-- Scripts or documentation that assume Bun is the package manager
-- Changes that switch `packageManager` away from Yarn without explicit team approval
+- `yarn.lock`, `pnpm-lock.yaml`, `bun.lock`, `bun.lockb`, or a root-level `package-lock.json`
+- `bunfig.toml`, `.yarnrc*`, `pnpm-workspace.yaml`, or any Bun/PNPM-specific config
+- A `packageManager` field added back to `website/package.json`
+- A `resolutions` block: it is Yarn-only. Pins belong in `overrides`, which is what `npm ci` applies
+- Scripts or documentation that tell contributors to use yarn, pnpm or bun, or push to `gh-pages` by hand
 
 ## Preferred Alternatives
 
-- Use `yarn install` to update dependencies.
-- Use `yarn add <pkg>` to add packages.
-- Keep `yarn.lock` as the single source of truth for locked dependency versions.
+- Use `npm install` to update dependencies.
+- Use `npm install <pkg>` to add packages.
+- Commit `website/package.json` and `website/package-lock.json` together.
+- Add or change pins in the `overrides` block, then record them in `website/SECURITY.md`.

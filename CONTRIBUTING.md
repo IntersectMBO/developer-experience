@@ -33,7 +33,7 @@ Thank you for your interest in contributing to the Cardano Developer Experience 
 
 ### Prerequisites
 - Node.js 22.23.4 or later on the 22 line, matching `engines` in `website/package.json`. The repository root `.nvmrc` is `22.23.4`, so `nvm use` (or `fnm use`) selects the same runtime the workflows install.
-- npm or yarn
+- npm
 - Git
 - Basic understanding of Markdown
 
@@ -52,7 +52,7 @@ Thank you for your interest in contributing to the Cardano Developer Experience 
 
 3. **Start Local Server**
    ```bash
-   npm start
+   npm run start:dev
    ```
 
 4. **Make Changes**

@@ -4,7 +4,7 @@ How to confirm that dependency security issues are addressed.
 
 ## 1. Run audits locally
 
-CI installs the website with npm (`npm ci` against `website/package-lock.json`). `overrides` in `package.json` are what that install applies. `resolutions` stay in sync for anyone still using Yarn.
+CI installs the website with npm (`npm ci` against `website/package-lock.json`). `overrides` in `package.json` are what that install applies, and they are the only place the pins live now that `resolutions` is gone.
 
 From `website/`:
 
@@ -25,7 +25,7 @@ npm run audit:ci
 
 ## 3. Pins in package.json
 
-`resolutions` and `overrides` are kept identical. Notable pins after the November 2026 pass:
+Every pin lives in the `overrides` block of `package.json`. Notable pins after the November 2026 pass:
 
 | Package | Pinned version | Why |
 | --- | --- | --- |
@@ -43,7 +43,7 @@ npm run audit:ci
 | brace-expansion | 5.0.12 | Past 4.0.0-5.0.11 |
 | image-size | `file:vendor/image-size` | Vendored 2.0.3 because npm 2.0.2 and below stay in the advisory range |
 
-`postcss`, `shell-quote`, `ajv`, `js-yaml`, `webpack-dev-server`, `websocket-driver`, `katex`, and `tinypool` stay pinned as well. Read both blocks in `package.json` for the full list.
+`postcss`, `shell-quote`, `ajv`, `js-yaml`, `webpack-dev-server`, `websocket-driver`, `katex`, and `tinypool` stay pinned as well. Read the `overrides` block in `package.json` for the full list.
 
 Direct ranges moved with the open Dependabot pull requests: `mermaid` ^12.3.0, `dotenv` ^18.0.10, `@types/node` ^26.6.6.
 
@@ -59,7 +59,7 @@ npm install
 npm run build
 ```
 
-Commit `package.json`, `package-lock.json`, and `yarn.lock` together so the two lockfiles do not drift.
+Commit `package.json` and `package-lock.json` together. `website/package-lock.json` is the only tracked lockfile, so the two cannot drift apart.
 
 ## 6. Node.js runtime
 
@@ -70,5 +70,5 @@ GitHub Actions and `.nvmrc` pin Node.js 22.23.4. That release is the floor for t
 These scan rows stay informational. They do not select the runtime:
 
 - `website/package-lock.json` stays lockfileVersion 3.
-- `packageManager` still declares Yarn 1.22.22. CI installs with npm.
+- `website/package.json` declares no `packageManager`. CI installs with npm from `website/package-lock.json`.
 - `website/vendor/image-size` keeps `engines.node` of `>=16.x`. That range belongs to the vendored package.
