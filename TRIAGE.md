@@ -32,6 +32,10 @@ For every new issue or PR, the triaging maintainer:
 | `help wanted` | Maintainers would like community help here |
 | `stale` | Applied automatically after prolonged inactivity (see automation below) |
 | `pinned` | Exempt from stale automation |
+| `dependencies` | Dependency update pull requests. Dependabot applies this. |
+| `ci` | GitHub Actions updates. Dependabot applies this together with `dependencies`. |
+
+`dependencies` and `ci` are created by [`.github/workflows/ensure-labels.yml`](.github/workflows/ensure-labels.yml) when they are missing. Dependabot cannot apply a label that does not exist.
 
 ## Response-time expectations (SLAs)
 
