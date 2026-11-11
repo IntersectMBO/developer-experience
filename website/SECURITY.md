@@ -25,26 +25,31 @@ npm run audit:ci
 
 ## 3. Pins in package.json
 
-`resolutions` and `overrides` are kept identical. Notable pins after the October 2026 pass:
+`resolutions` and `overrides` are kept identical. Notable pins after the November 2026 pass:
 
 | Package | Pinned version | Why |
 | --- | --- | --- |
-| undici | 7.30.0 | Past the 7.0.0-7.29.0 advisory range, without jumping to undici 8 |
-| fast-uri | 4.2.2 | Past 4.0.0-4.1.4 |
-| brace-expansion | 5.0.12 | Past 4.0.0-5.0.11 |
-| joi | 18.2.9 | Past 18.0.0-18.2.8 |
-| shell-quote | 1.12.0 | Past 1.8.4-1.10.0 |
+| undici | 7.30.2 | Past the 7.x advisories that include 7.30.0, without jumping to undici 8 |
+| joi | 18.3.2 | Past 18.0.0-18.3.0 |
+| fast-uri | 4.2.3 | Past 4.0.0-4.2.2 |
+| body-parser | 1.20.9 | Past <1.20.9, staying on 1.x |
+| qs | 6.16.1 | Past <=6.16.0, staying inside body-parser's 6.16 line |
+| serialize-javascript | 7.1.4 | Past <7.1.3 |
+| follow-redirects | 1.16.3 | Past <=1.16.1 |
+| launch-editor | 2.14.2 | Past <=2.14.1 |
+| node-forge | 1.4.3 | Past <=1.4.0. The npm tree does not install it. The Yarn lock did |
+| minimatch | 11.0.7 | The advisory covers every 10.x release |
 | dompurify | 3.4.17 | Past <=3.4.15 |
-| tinypool | 2.2.0 | Past <=2.1.1; production `npm run build` still succeeds |
-| katex | 0.19.0 | Past 0.11.0-0.18.1 |
-| postcss-selector-parser | 7.1.6 | Past <7.1.6 |
+| brace-expansion | 5.0.12 | Past 4.0.0-5.0.11 |
 | image-size | `file:vendor/image-size` | Vendored 2.0.3 because npm 2.0.2 and below stay in the advisory range |
 
-`node-forge`, `postcss`, `qs`, `minimatch`, `ajv`, `js-yaml`, `webpack-dev-server`, `websocket-driver`, and `body-parser` stay pinned as well. Read both blocks in `package.json` for the full list.
+`postcss`, `shell-quote`, `ajv`, `js-yaml`, `webpack-dev-server`, `websocket-driver`, `katex`, and `tinypool` stay pinned as well. Read both blocks in `package.json` for the full list.
+
+Direct ranges moved with the open Dependabot pull requests: `mermaid` ^12.3.0, `dotenv` ^18.0.10, `@types/node` ^26.6.6.
 
 ## 4. Residual finding
 
-`braces` is still reported by `npm audit` at high severity, including the latest release (`3.0.3`). The advisory range is every published version, so there is no override that clears it. It is pulled in by `micromatch` and `chokidar` under Docusaurus. Revisit when a patched `braces` release exists. Do not downgrade Docusaurus to chase a clean audit.
+`npm audit` has no high or moderate findings after this pass. The remaining low is `deepmerge` 4.3.1 (`GHSA-gcqx-w48m-w2h4`). That is the newest 4.x release, and `@svgr/plugin-svgo` requires `^4.3.1`, so there is no safe override. Revisit when a patched `deepmerge` release exists. Do not downgrade Docusaurus to chase a clean audit.
 
 ## 5. After you change pins
 
