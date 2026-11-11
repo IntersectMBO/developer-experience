@@ -41,3 +41,7 @@ jobs:
           stale-pr-label: stale
           exempt-issue-labels: pinned,Security
           exempt-pr-labels: pinned,Security
+          # Default is 30. The open set is larger than that, so a run can skip
+          # items and leave a stale label in place, or fail to close one.
+          operations-per-run: 100
+          remove-stale-when-updated: true

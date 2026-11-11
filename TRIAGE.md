@@ -50,7 +50,12 @@ The [`stale.yml`](.github/workflows/stale.yml) workflow enforces the inactivity 
 - **Issues** are marked `stale` after **30 days** without activity and closed **14 days** later if still inactive.
 - **PRs** are marked `stale` after **21 days** without activity and closed **7 days** later if still inactive.
 - Items labelled `pinned` or `Security` are never marked stale.
-- Any comment or update resets the clock.
+- Any comment or update resets the clock, and the next run removes the `stale` label. `remove-stale-when-updated` is set in the workflow so that behaviour is explicit.
+- One run processes up to **100** items. The action default is 30, which is smaller than the open set, so a daily run could skip issues or pull requests.
+
+#301 and #343 through #364 are the open verification set. Each one names a different page, and each one says it is part of #301. They are not duplicates. They stay labelled `pinned` until a maintainer finishes that audit. `pinned` is already exempt from this job.
+
+#265 is still a good first issue, and it is the only open issue that already carries `stale`. A maintainer decides whether that tutorial stays open before the closer runs. The label is not that decision.
 
 ## Security scanning
 
