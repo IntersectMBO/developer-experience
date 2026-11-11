@@ -4,7 +4,7 @@ How to confirm that dependency security issues are addressed.
 
 ## 1. Run audits locally
 
-CI installs the website with npm (`npm ci` against `website/package-lock.json`). `overrides` in `package.json` are what that install applies. `resolutions` stay in sync for anyone still using Yarn.
+CI installs the website with npm (`npm ci` against `website/package-lock.json`). `overrides` in `package.json` are what that install applies, and they are the only place the pins live now that `resolutions` is gone.
 
 From `website/`:
 
@@ -25,7 +25,7 @@ npm run audit:ci
 
 ## 3. Pins in package.json
 
-`resolutions` and `overrides` are kept identical. Notable pins after the October 2026 pass:
+`overrides` in `package.json` carry every pin. Notable pins after the October 2026 pass:
 
 | Package | Pinned version | Why |
 | --- | --- | --- |
