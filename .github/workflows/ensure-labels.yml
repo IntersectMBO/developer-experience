@@ -1,0 +1,35 @@
+name: Ensure repository labels
+
+# dependabot.yml requests `dependencies` and `ci`. If those labels are missing,
+# Dependabot pull requests are opened with no labels. See issue #393.
+
+on:
+  schedule:
+    - cron: "0 5 * * 1" # Monday 05:00 UTC, before the weekly Dependabot run
+  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/ensure-labels.yml
+
+permissions:
+  issues: write
+
+jobs:
+  labels:
+    name: Ensure Dependabot labels
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create missing labels
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create "dependencies" \
+            --repo "$GITHUB_REPOSITORY" \
+            --description "Pull requests that update a dependency" \
+            --color "0366d6" \
+            --force
+          gh label create "ci" \
+            --repo "$GITHUB_REPOSITORY" \
+            --description "Continuous integration and GitHub Actions" \
+            --color "5319e7" \
+            --force
