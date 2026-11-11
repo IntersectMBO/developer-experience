@@ -1,158 +1,161 @@
-/* Community Section Styles */
-.communitySection {
-  padding: 6rem 0;
-  background: var(--ifm-background-color);
+/* Section 03.
+   The frame (section, head, buttons) is imported from the Landing component's
+   stylesheet so this block cannot drift away from sections 01-03 again. Only
+   what is unique to this block lives here. */
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-12);
+  align-items: start;
 }
 
-.communityContent {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.sectionTitle {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--ifm-color-primary);
-  margin-bottom: 1.5rem;
-  line-height: 1.2;
-  text-align: center;
-}
-
-.sectionDescription {
-  font-size: 1.125rem;
-  color: var(--ifm-color-content-secondary);
-  line-height: 1.6;
-  margin-bottom: 2rem;
-  text-align: center;
-}
-
-.communityStats {
+.support {
   display: flex;
-  gap: 2rem;
-  margin-top: 2rem;
+  flex-direction: column;
 }
 
-.statItem {
-  text-align: center;
-}
-
-.statNumber {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--ifm-color-primary);
-  margin-bottom: 0.5rem;
-}
-
-.statLabel {
-  font-size: 0.875rem;
-  color: var(--ifm-color-content-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.communityImage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.imagePlaceholder {
-  background: var(--ifm-color-primary);
-  color: white;
-  padding: 3rem 2rem;
-  border-radius: 16px;
-  text-align: center;
-  width: 100%;
-  max-width: 400px;
-}
-
-.imagePlaceholder h3 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.imagePlaceholder p {
-  font-size: 1rem;
-  opacity: 0.9;
+.supportCopy {
   margin: 0;
+  max-width: 46ch;
+  font-size: var(--text-body);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
 }
 
-@media screen and (max-width: 996px) {
-  .sectionTitle {
-    font-size: 2rem;
-  }
-
-  .sectionDescription {
-    font-size: 1rem;
-  }
-
-  .communityStats {
-    gap: 1.5rem;
-  }
-
-  .statNumber {
-    font-size: 1.25rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .communitySection {
-    padding: 4rem 0;
-  }
-
-  .sectionTitle {
-    font-size: 1.75rem;
-  }
-
-  .sectionDescription {
-    font-size: 0.95rem;
-  }
-
-  .communityStats {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
-
-  .imagePlaceholder {
-    padding: 2rem 1.5rem;
-  }
-
-  .imagePlaceholder h3 {
-    font-size: 1.5rem;
-  }
-}
-
-.contributorsContainer {
-  margin-bottom: 2rem;
+.actions {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+/* Right column: the next call, from the same calendar data the floating
+   sessions control reads. */
+.sessionCard {
+  padding: var(--space-5);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--card-bg, var(--color-surface));
+}
+
+/* The page's one warm accent, and it means one thing: this is live, not archived.
+   Blazing Amber, not Vanilla, because the badge is a now-state rather than a highlight;
+   vanilla stays available for the page's own buttons. Midnight on blazing measures
+   5.04:1, and it is the only pairing here that does: white on blazing is 3.35:1. */
+.sessionLabel {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 var(--space-3);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent-blazing);
+  color: var(--color-brand-midnight);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sessionTitle {
+  margin: 0 0 var(--space-2);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.sessionWhen {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin: 0 0 var(--space-1);
+  font-size: var(--text-body-sm);
+  color: var(--color-text);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Date then time, with the time set back so the pair reads as one line. */
+.sessionWhen span {
+  color: var(--color-text-muted);
+}
+
+.sessionWhen span::before {
+  content: '·';
+  margin-right: 0.35rem;
+  color: var(--color-text-muted);
+}
+
+.sessionMeta {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+}
+
+.sessionActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  font-size: var(--text-body-sm);
+  font-weight: 600;
+}
+
+.sessionActions a {
+  color: var(--ifm-color-primary) !important;
+  text-decoration: none;
+}
+
+.sessionActions a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- contributors ---------- */
+
+.contributors {
+  margin-top: var(--space-6);
 }
 
 .contributorsList {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding-left: 14px; /* Offset for negative margin */
+  flex-wrap: nowrap;
+  padding-left: 12px; /* offset for the first avatar's negative margin */
+}
+
+/* A nowrap strip of eight avatars has a 264px min-content, which is wider than a 200px
+   viewport can give. Because the strip could not shrink, the browser widened the whole
+   document to 288 and every narrow layout inherited the overflow: folded phones and
+   watch-sized screens scrolled sideways. Wrapping keeps every avatar and lets the band
+   narrow to whatever it is given. */
+@media (max-width: 480px) {
+  .contributorsList {
+    flex-wrap: wrap;
+    row-gap: 6px;
+    padding-left: 8px;
+  }
 }
 
 .contributorAvatar {
-  width: 44px;
-  height: 44px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: -12px;
   border-radius: 50%;
+  border: 3px solid var(--color-background);
+  background: var(--color-surface);
   overflow: hidden;
-  border: 3px solid var(--ifm-background-color);
-  transition: transform 0.2s ease, z-index 0.2s;
-  cursor: pointer;
-  z-index: 1;
-  margin-left: -14px;
-  background-color: var(--ifm-color-secondary);
+  transition: border-color 0.15s ease;
 }
 
+/* No transform: a hover that moves a row is motion. The border change carries the
+   hover instead, and it is blazing rather than brand blue: the ring is a 3px
+   graphic on a moon band, where blazing measures 3.02:1, and it keeps blue for
+   links and buttons on the same band. */
 .contributorAvatar:hover {
-  transform: translateY(-4px) scale(1.1);
-  z-index: 10;
+  border-color: var(--color-accent-blazing);
 }
 
 .contributorAvatar img {
@@ -161,8 +164,44 @@
   object-fit: cover;
 }
 
-.fallbackText {
-  font-size: 0.95rem;
-  color: var(--ifm-color-content-secondary);
-  text-align: center;
+.contributorMore {
+  font-size: var(--text-caption);
+  font-weight: 600;
+  color: var(--color-text-secondary) !important;
+  font-variant-numeric: tabular-nums;
+  text-decoration: none;
+}
+
+.contributorsNote {
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-caption);
+  color: var(--color-text-muted);
+}
+
+.contributorsNote a {
+  color: var(--color-link);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* ---------- responsive ---------- */
+
+@media screen and (max-width: 996px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+/* Match the hero: below 640px the two buttons stack and fill the column rather
+   than wrapping into a ragged pair of different widths. */
+@media screen and (max-width: 640px) {
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions a[class*='textLink'] {
+    align-self: flex-start;
+  }
 }

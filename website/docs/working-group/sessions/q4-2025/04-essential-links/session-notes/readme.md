@@ -273,7 +273,7 @@ Where to go when you need help or want to connect with other builders.
 
 ### Discord Servers
 
-**Cardano Developers** - https://discord.gg/kfATXEENPD  
+**Cardano Developers** - Check cardano.org for the current invite  
 *Focus:* General Cardano development  
 *Channels:* plutus-help, development, tools
 
@@ -281,7 +281,7 @@ Where to go when you need help or want to connect with other builders.
 *Focus:* Direct connection to IOG developers  
 *Good for:* Core protocol questions
 
-**Intersect MBO** - https://discord.gg/intersectmbo  
+**Intersect MBO** - [Join as a member](https://intersectmbo.org/membership) to get server access  
 *Focus:* Contributing to Cardano's open-source development  
 *Channels:* developer-experience, technical-steering-committee, open-source-committee
 

@@ -5,6 +5,42 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.4.0] - 2026-10-28
+
+July-October 2026.
+
+### Added
+
+* Session 22: AI-ready Cardano repositories (notes, resources, recordings stub) ([5a9076e](https://github.com/IntersectMBO/developer-experience/commit/5a9076e), [6d81078](https://github.com/IntersectMBO/developer-experience/commit/6d81078))
+* Brand kit page and footer link ([6afd3c3](https://github.com/IntersectMBO/developer-experience/commit/6afd3c3))
+* Design-token baseline in the site CSS ([c5cc6a3](https://github.com/IntersectMBO/developer-experience/commit/c5cc6a3))
+* CodeQL workflow for the website sources ([811083f](https://github.com/IntersectMBO/developer-experience/commit/811083f))
+* Pull-request build gate for website changes ([d170bac](https://github.com/IntersectMBO/developer-experience/commit/d170bac))
+* October 2026 repository health snapshot ([7eaf6ab](https://github.com/IntersectMBO/developer-experience/commit/7eaf6ab))
+
+### Changed
+
+* DevEx Sessions button restored for the biweekly Thursday call ([d71295e](https://github.com/IntersectMBO/developer-experience/commit/d71295e))
+* Website builds and the contributor pin use Node.js 22 ([cc59562](https://github.com/IntersectMBO/developer-experience/commit/cc59562), [82fedb7](https://github.com/IntersectMBO/developer-experience/commit/82fedb7))
+* Poppins loaded from our own origin ([6e6598c](https://github.com/IntersectMBO/developer-experience/commit/6e6598c))
+* Homepage canonical URL, community metrics freshness, card hover, and sidebar category click target ([55bcd5b](https://github.com/IntersectMBO/developer-experience/commit/55bcd5b), [e246d73](https://github.com/IntersectMBO/developer-experience/commit/e246d73), [7569402](https://github.com/IntersectMBO/developer-experience/commit/7569402), [9b049fb](https://github.com/IntersectMBO/developer-experience/commit/9b049fb))
+* Pages deploy is one workflow, with path filters and a timeout ([c77c83d](https://github.com/IntersectMBO/developer-experience/commit/c77c83d), [8064e94](https://github.com/IntersectMBO/developer-experience/commit/8064e94))
+
+### Fixed
+
+* Dependabot and npm audit pins, including the vendored image-size patch ([94a61f1](https://github.com/IntersectMBO/developer-experience/commit/94a61f1), [97e084e](https://github.com/IntersectMBO/developer-experience/commit/97e084e), [f449259](https://github.com/IntersectMBO/developer-experience/commit/f449259))
+* Docs feedback widget and Google Apps Script channel removed ([2d47f3a](https://github.com/IntersectMBO/developer-experience/commit/2d47f3a), [1050df3](https://github.com/IntersectMBO/developer-experience/commit/1050df3))
+* Broken session and docs links, including the Session 15 file URL ([6894f13](https://github.com/IntersectMBO/developer-experience/commit/6894f13), [0591dd0](https://github.com/IntersectMBO/developer-experience/commit/0591dd0))
+* Contributor counts skip bots and AI agents ([18547e9](https://github.com/IntersectMBO/developer-experience/commit/18547e9))
+
+### Documentation
+
+* Q4 2026 maintainer progress report ([c09b39c](https://github.com/IntersectMBO/developer-experience/commit/c09b39c))
+
+### Chore
+
+* Changelog tag check no longer installs dependencies at the repo root ([830711a](https://github.com/IntersectMBO/developer-experience/commit/830711a))
+
 ## [2.3.0] - 2026-06-04
 
 Q2 2026 (Apr–Jun): application development focus — SDK/off-chain architecture, dApp design, wallet integration, default dev environment, and Cardano MCP server.

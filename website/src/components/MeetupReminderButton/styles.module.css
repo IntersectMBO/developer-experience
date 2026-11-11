@@ -1,62 +1,162 @@
 /* Container for the entire component */
 .container {
   position: fixed;
-  bottom: 1rem;
+  /* 24px inset from both edges, the usual place for a floating action. */
+  bottom: 1.5rem;
   right: 1.5rem;
 
-  z-index: 9999;
+  /* Above page content, below anything modal. */
+  z-index: 1000;
   font-family: var(--ifm-font-family-base);
 }
 
-/* Floating Button */
+/* Floating action: an extended FAB on desktop, a circular icon FAB on phones.
+   Brand blue is fixed across themes so the white label holds its 5.6:1 in dark
+   mode too, and matches the primary button the home page already uses. */
 .floatingButton {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.7rem 1.25rem;
-  background: var(--ifm-color-primary);
-  color: white;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  background: var(--color-brand-primary);
+  color: #ffffff;
+  /* The footer is brand blue now, so a blue control sitting over it needs a rim to
+     exist at all. On the white and moon bands the rim is invisible, which is the
+     point: it only appears where it is needed.
+
+     The rim is the page's own surface, not a fixed cream. Pinned to moon it vanished in
+     light mode as intended and turned into a bright white ring in dark mode, which is the
+     opposite of the job: it should separate the button from whatever is behind it. */
   border: none;
-  border-radius: 50px;
-  box-shadow: 0 4px 12px rgba(37, 85, 254, 0.3);
+  outline: 2px solid var(--color-background);
+  outline-offset: -2px;
+  border-radius: var(--radius-md);
+  /* Same depth set as the page's primary buttons: contact shadow plus a blue lift, so the
+     floating control belongs to the same object family as the CTAs it sits above. */
+  box-shadow: var(--btn-shadow);
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  outline: none;
+  line-height: 1;
+  transition: width 0.18s ease, background-color 0.15s ease, box-shadow 0.15s ease,
+    transform 0.12s ease;
 }
 
 .floatingButton:hover {
-  background: var(--ifm-color-primary-dark);
-  box-shadow: 0 6px 16px rgba(37, 85, 254, 0.4);
+  background: var(--color-brand-primary-dark);
+  box-shadow: var(--btn-shadow-hover);
+  /* Two pixels, not one: a floating control has nothing behind it to register a single
+     pixel of movement against. */
   transform: translateY(-2px);
 }
 
+.floatingButton:active {
+  box-shadow: var(--btn-shadow-active);
+  transform: translateY(1px) scale(0.96);
+}
+
 .floatingButton:focus-visible {
-  outline: 2px solid var(--ifm-color-primary);
+  /* Not --color-text: in light mode that is midnight, and the control floats over the
+     midnight bands, so the ring vanished exactly where it was needed. */
+  outline: 2px solid var(--focus-ring);
   outline-offset: 3px;
 }
 
-.floatingButton:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 8px rgba(37, 85, 254, 0.3);
-}
-
 .floatingButton.expanded {
-  background: var(--ifm-color-primary-dark);
+  background: var(--color-brand-primary-dark);
 }
 
 /* Button Icon */
 .icon {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
 }
 
-/* Button Text */
+/* Button Text — collapsed to nothing until the control is hovered or focused.
+   Kept in the DOM so the label is still announced by a screen reader. */
 .buttonText {
+  max-width: 0;
+  margin-left: 0;
+  overflow: hidden;
+  opacity: 0;
+  white-space: nowrap;
   font-weight: 600;
-  letter-spacing: 0.025em;
+  letter-spacing: 0;
+  transition: max-width 0.18s ease, margin-left 0.18s ease, opacity 0.14s ease;
+}
+
+/* Expand to a pill on hover, and on keyboard focus. Gated on width only: an
+   environment can report `hover: none` while still having a mouse, and then the
+   label would never be reachable. Below 769px the label is display:none, so
+   touch devices keep the icon-only control. */
+@media (min-width: 769px) {
+  .floatingButton:hover,
+  .floatingButton:focus-visible {
+    width: 11.5rem;
+  }
+
+  .floatingButton:hover .buttonText,
+  .floatingButton:focus-visible .buttonText {
+    max-width: 11rem;
+    margin-left: 0.5rem;
+    opacity: 1;
+  }
+}
+
+/* Phones: the control moves into the navbar and borrows the search chip's
+   shape, so it never covers a line of text. The search container is absolutely
+   positioned at right:24px, so this is too, one chip further left. */
+.navTrigger {
+  position: absolute;
+  right: 4.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: none;
+  color: #ffffff;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+
+.navTrigger:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+/* The chip is vertically centred with a translate, so the press has to keep it: a bare
+   scale here would drop the control 50% out of the bar. */
+.navTrigger:active {
+  transform: translateY(-50%) scale(0.92);
+}
+
+/* Movement is feedback, not decoration, but a reader who has asked for less motion gets
+   the colour and shadow change without the travel. */
+@media (prefers-reduced-motion: reduce) {
+  .floatingButton:hover,
+  .floatingButton:active {
+    transform: none;
+  }
+
+  .navTrigger:active {
+    transform: translateY(-50%);
+  }
+}
+
+.navTrigger .icon {
+  width: 18px;
+  height: 18px;
+}
+
+@media (max-width: 767px) {
+  .container {
+    bottom: 1rem;
+    right: 1rem;
+  }
 }
 
 /* Expandable Panel */
@@ -70,20 +170,20 @@
   border: 1px solid var(--ifm-color-emphasis-200);
   border-radius: 16px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Opened from the navbar on phones: a sheet under the bar, full width. */
+.panel.panelInNav {
+  position: fixed;
+  top: calc(var(--ifm-navbar-height) + 0.5rem);
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: auto;
+  width: auto;
+  max-width: none;
+  max-height: calc(100dvh - var(--ifm-navbar-height) - 1.5rem);
+  overflow: auto;
 }
 
 /* Panel Header */
@@ -220,17 +320,12 @@
   background: var(--ifm-color-primary-darker);
   color: #ffffff !important;
   text-decoration: none;
-  transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .linkButton:focus-visible {
   outline: 2px solid var(--ifm-color-primary);
   outline-offset: 2px;
-}
-
-.linkButton:active {
-  transform: translateY(0);
 }
 
 .linkButton.copied {
@@ -293,7 +388,6 @@
 .sessionOption:hover {
   /* background: var(--ifm-color-primary-lightest); */
   border-color: var(--ifm-color-primary);
-  transform: translateX(4px);
 }
 
 .sessionOption:hover .sessionOptionTitle {
@@ -347,7 +441,6 @@
 
 .backButton:hover {
   background: var(--ifm-color-emphasis-100);
-  transform: translateX(-2px);
 }
 
 .backButton:focus-visible {
@@ -386,7 +479,6 @@
 
 .calendarButton:hover {
   background: var(--ifm-color-primary-dark);
-  transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(37, 85, 254, 0.3);
 }
 
@@ -396,7 +488,6 @@
 }
 
 .calendarButton:active {
-  transform: translateY(0);
   box-shadow: 0 2px 8px rgba(37, 85, 254, 0.2);
 }
 
@@ -576,11 +667,11 @@
 }
 
 
-/* Desktop (≥768px): DevEx Sessions (Meetup) shifted left from the right edge, same baseline as Jump to Top */
+/* Desktop (≥768px): 24px inset from both edges, the standard FAB corner. */
 @media (min-width: 768px) {
   .container {
-    right: 6rem;
-    bottom: 2rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
   }
 }
 
@@ -591,11 +682,12 @@
     bottom: 4.5rem;
   }
 
-  .floatingButton {
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
+  .icon {
+    width: 24px;
+    height: 24px;
   }
 
+  /* Touch has no hover, so the label never expands: keep it out of the button. */
   .buttonText {
     display: none;
   }
@@ -631,21 +723,21 @@
 
 @media (max-width: 480px) {
   .container {
-    bottom: 0.75rem;
-    right: 1.5rem;
+    bottom: 1rem;
+    right: 1rem;
   }
 
   .floatingButton {
-    padding: 0.625rem;
+    padding: 0;
   }
 
   .icon {
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
   }
 
   .panel {
-    bottom: 4rem;
+    bottom: 4.5rem;
   }
 
   .panelHeader {
@@ -689,25 +781,11 @@
 @media (prefers-reduced-motion: reduce) {
 
   .floatingButton,
+  .floatingButton .buttonText,
   .linkButton,
   .calendarButton,
   .closeButton,
   .panel {
     transition: none;
-  }
-
-  @keyframes slideUp {
-
-    from,
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .floatingButton:hover,
-  .linkButton:hover,
-  .calendarButton:hover {
-    transform: none;
   }
 }

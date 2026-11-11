@@ -37,8 +37,8 @@ If you get stuck while following these guides:
 2. **Join our Discord**: First become a member at [Intersect](https://www.intersectmbo.org/) and register at [members.intersectmbo.org](https://members.intersectmbo.org/registration). After joining, you'll get access to our Discord community's #developer-experience channel
 3. **Community Forums and Channels**:
    - [Cardano Forum](https://forum.cardano.org) - Official community discussions
-   - [IOG Technical Discord](https://discord.gg/inputoutput) - Technical support from IOG
-   - [Gimbalabs Discord](https://discord.gg/gimbalabs) - Developer-focused community
+   - [IOG Technical Community](https://iohk.io/en/community/) - Technical support from IOG
+   - [Gimbalabs](https://gimbalabs.com) - Developer-focused community
    - [Cardano Stack Exchange](https://cardano.stackexchange.com) - Q&A format (Note: Check recent activity and response times before posting)
 4. **Attend our Working Group**: See [Working Group sessions](../../working-group/readme.md)
 

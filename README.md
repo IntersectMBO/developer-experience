@@ -11,7 +11,7 @@
   <a href="https://devex.intersectmbo.org"><img src="https://img.shields.io/badge/Website-devex.intersectmbo.org-0033AD?style=flat-square&logo=cardano&logoColor=white" alt="Developer Experience website"></a>
   <a href="https://github.com/IntersectMBO/developer-experience/actions/workflows/deploy.yml"><img src="https://img.shields.io/github/actions/workflow/status/IntersectMBO/developer-experience/deploy.yml?branch=main&style=flat-square&label=Deploy&logo=githubactions&logoColor=white" alt="Deploy status"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache%202.0-009688?style=flat-square&logo=apache&logoColor=white" alt="Apache 2.0 License"></a>
-  <a href="website/package.json"><img src="https://img.shields.io/badge/Node.js-%3E%3D20-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js 20+"></a>
+  <a href="website/package.json"><img src="https://img.shields.io/badge/Node.js-%3E%3D22.23.4-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js 22.23.4+"></a>
   <a href="website/package.json"><img src="https://img.shields.io/badge/Docusaurus-3.10-2ECC71?style=flat-square&logo=docusaurus&logoColor=white" alt="Docusaurus"></a>
 </p>
 
@@ -65,7 +65,7 @@ Get the documentation site running locally in under 5 minutes:
 git clone https://github.com/IntersectMBO/developer-experience.git
 cd developer-experience/website
 
-# 2. Install dependencies (Node.js 20+ required)
+# 2. Install dependencies (Node.js 22.23.4 or later required)
 npm install
 
 # 3. Start the development server with hot reload
@@ -80,7 +80,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser. Edits to fi
 
 | Requirement | Version |
 | --- | --- |
-| [Node.js](https://nodejs.org/) | 20 or higher |
+| [Node.js](https://nodejs.org/) | 22.23.4 or later |
 | npm | Bundled with Node.js |
 | Git | Any recent version |
 

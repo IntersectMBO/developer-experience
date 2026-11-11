@@ -27,7 +27,7 @@ Pick the path that matches your background and goals — these are parallel trac
 | Track | Starting point | Guide |
 |---|---|---|
 | **dApp / Smart Contracts** | New to Cardano, building products | [Beginner Guides](/docs/how-to-guide/beginner/) |
-| **Infrastructure / DevOps** | Running nodes, indexers, block explorers | [Advanced Guides](/docs/how-to-guide/advanced/) |
+| **Infrastructure / DevOps** | Running nodes, indexers, block explorers | [Advanced Guides](/docs/how-to-guide/advanced/), starting with a [local devnet](/docs/how-to-guide/advanced/yaci-devkit.mdx) |
 | **Core Protocol (Haskell)** | Systems/PL background, want to contribute to ledger or consensus | [Core Protocol Contributor](/docs/how-to-guide/advanced/core-protocol-contributor.md) |
 | **Core Protocol (Rust)** | Rust background, want to contribute to Pallas or Dolos | [Core Protocol Contributor](/docs/how-to-guide/advanced/core-protocol-contributor.md) |
 
@@ -49,6 +49,7 @@ Built by the community, for the community. Join our working groups and help shap
 
 ### How-To Guides
 - **[Beginner](/docs/how-to-guide/beginner/)** - Getting started guides for newcomers
+- **[Local devnet](/docs/how-to-guide/advanced/yaci-devkit.mdx)** - Stand up a single-node Cardano network with a Blockfrost-compatible indexer in Docker, in minutes, instead of reaching for a public testnet first
 - **Advanced** - Deep-dive technical guides for experienced developers (see [Cardano API](/docs/how-to-guide/advanced/cardano-api.md) and [cardano-db-sync](/docs/how-to-guide/advanced/cardano-db-sync.md))
 
 ### Tutorials

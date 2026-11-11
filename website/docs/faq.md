@@ -44,7 +44,7 @@ The **Developer Experience Working Group** holds weekly sessions.
 <details>
 <summary>Where can I ask questions and get help?</summary>
 
-- **Discord**: Join the `#developer-experience` channel in the [Intersect Discord](https://discord.gg/intersect).
+- **Discord**: The `#developer-experience` channel lives in the Intersect Discord, which is open to [members](https://intersectmbo.org/membership).
 - **Stack Exchange**: For technical Q&A: [cardano.stackexchange.com](https://cardano.stackexchange.com).
 - **Cardano Forum**: For discussions: [forum.cardano.org](https://forum.cardano.org).
 
@@ -137,4 +137,4 @@ Decisions are made through **Working Groups**, **Committees** (like the Technica
 ---
 
 ## Still have questions?
-If you didn't find your answer here, please ask in the **[Discord Community](https://discord.com/invite/intersect)** or open an issue in this repository.
+If you didn't find your answer here, [open an issue](https://github.com/IntersectMBO/developer-experience/issues/new/choose) in this repository, or ask in the `#developer-experience` channel once you've [joined Intersect](https://intersectmbo.org/membership).
