@@ -40,6 +40,21 @@
   background: var(--card-bg, var(--color-surface));
 }
 
+.sessionLabelQuiet {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 var(--space-3);
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
 /* The page's one warm accent, and it means one thing: this is live, not archived.
    Blazing Amber, not Vanilla, because the badge is a now-state rather than a highlight;
    vanilla stays available for the page's own buttons. Midnight on blazing measures
