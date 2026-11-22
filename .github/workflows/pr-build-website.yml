@@ -53,6 +53,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Audit dependencies for high advisories
+        run: npm run audit:ci
+
       - name: Build website
         run: npm run build
         env:
