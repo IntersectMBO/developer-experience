@@ -168,7 +168,7 @@ const config: Config = {
       { name: "keywords", content: "Cardano, developer experience, blockchain, smart contracts, DeFi, Intersect MBO" },
       { name: "author", content: "Intersect MBO Developer Experience Working Group" },
     ],
-    image: "img/docusaurus-social-card.jpg",
+    image: "img/social-card.png",
     navbar: {
       title: "Developer Experience",
       logo: {
