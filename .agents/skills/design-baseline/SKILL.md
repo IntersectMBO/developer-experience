@@ -21,7 +21,7 @@ A shared reference for building or modifying the Developer Experience portal UI.
 2. **Brand-true, not brand-loud.** Use Intersect colors and type with purpose.
 3. **Consistent rhythm.** Spacing, type scale, and component behavior follow a unified grid and scale.
 4. **Accessible by default.** Color contrast, focus states, and readable type sizes are non-negotiable.
-5. **No gradients, no blend modes, no transparency tricks.** Solid fills only.
+5. **No gradients, no blend modes.** Solid fills for anything that carries a label; alpha only for shadows, rings and overlay washes.
 
 ## Color Tokens
 
@@ -38,8 +38,8 @@ A shared reference for building or modifying the Developer Experience portal UI.
 
 | Token | Hex | Usage |
 | --- | --- | --- |
-| `--color-accent-vanilla` | `#FEC104` | Highlights, callouts, badges |
-| `--color-accent-blazing` | `#FF4B11` | Urgent CTAs, warnings |
+| `--color-accent-vanilla` | `#FEC104` | Reserved: no consumer on the site today. Fill only with midnight text if it is ever used, never text on a light surface |
+| `--color-accent-blazing` | `#FF4B11` | Two jobs: the "Next session" chip (fill, midnight label) and the contributor hover ring. Not a CTA colour |
 | `--color-accent-raspberry` | `#F8908F` | Soft emphasis, tags |
 | `--color-accent-caramel` | `#FCE4C6` | Warm neutral backgrounds |
 | `--color-accent-black` | `#000000` | Maximum contrast, rare |
