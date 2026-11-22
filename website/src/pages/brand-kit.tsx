@@ -121,16 +121,19 @@ const DOWNLOADS = [
 
 const DOS = [
   'Use Genie Blue as the dominant brand color.',
+  'Keep blue for anything a reader can act on, and let it be the only action color.',
   'Use Poppins for headings and body copy.',
   'Maintain clear space around the logo.',
-  'Apply solid fills only — no gradients or blend modes.',
+  'Fill anything that carries a label solidly. Alpha is for shadows, rings and overlays.',
   'Use sentence case for headings and labels.',
 ];
 
 const DONTS = [
   'Do not stretch, rotate, or distort the logo.',
   'Do not add new colors outside the defined palettes.',
-  'Do not use gradients or transparency effects.',
+  'Do not use gradients or blend modes.',
+  'Do not put text on a translucent fill, or fade a color to make it a text color.',
+  'Do not use Blazing Amber as a call to action, or Vanilla Sunset for decoration.',
   'Do not use exclusionary or culturally appropriated language.',
   'Do not capitalize words that are not proper nouns.',
 ];
