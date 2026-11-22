@@ -103,20 +103,19 @@ for (const quarterDir of listDirs(DOCS)) {
       (!isWeak(fromHeading) && fromHeading) ||
       humanise(sessionDir);
 
-    // A frontmatter slug is the canonical route. Without one, the route is the
-    // doc's own path under docs/ after Docusaurus's default number-prefix parsing:
-    // "22-ai-ready-cardano-repos" is served at "ai-ready-cardano-repos", and a
-    // readme/index file is the folder itself. Getting this wrong is silent, so the
-    // build's broken-link check is what catches it.
-    const base = path.basename(file).replace(/\.mdx?$/, '');
-    const dir = path
-      .relative(DOCS_ROOT, path.dirname(file))
-      .split(path.sep)
-      .map((segment) => segment.replace(/^\d+[-_.]/, ''))
-      .join('/');
-    const href = fields.slug
-      ? `/docs${fields.slug.startsWith('/') ? '' : '/'}${fields.slug}`
-      : `/docs/${dir}/${base === 'readme' || base === 'index' ? '' : base + '/'}`;
+    // A session's route is its frontmatter slug, and nothing else. Nothing is
+    // derived from the file path any more: every session-notes page carries one,
+    // and a new session that forgets it fails this build by name instead of
+    // silently shipping a folder-derived URL that the next rename breaks.
+    if (!fields.slug) {
+      const shown = path.relative(path.join(__dirname, '..'), file);
+      throw new Error(
+        `[sessions] ${shown} has no frontmatter slug. Every session-notes page needs one, ` +
+          'in the shape /working-group/<quarter>/sessions/<NN-slug>/session-notes. ' +
+          'See "Session notes pages" in CONTRIBUTING.md.'
+      );
+    }
+    const href = `/docs${fields.slug.startsWith('/') ? '' : '/'}${fields.slug}`;
 
     sessions.push({
       number,

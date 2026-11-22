@@ -179,6 +179,24 @@ Issues and PRs are triaged on a regular cadence — see [TRIAGE.md](TRIAGE.md) f
 - Check links are working before submission
 - Use relative links for internal content
 
+### Session notes pages
+
+A working group session lives at `website/docs/working-group/sessions/<quarter>/<NN-slug>/session-notes/readme.md`, and its frontmatter carries the canonical title and the route:
+
+```yaml
+---
+title: Session 22 AI-Ready Cardano Repositories
+sidebar_label: Session Notes
+sidebar_position: 1
+slug: /working-group/q4-2026/sessions/22-ai-ready-cardano-repos/session-notes
+---
+```
+
+- **`slug` is required.** The session index on the landing page is generated from these pages, and it reads the slug and nothing else, so a page without one fails the build with a message naming the file.
+- **Shape:** `/working-group/<quarter>/sessions/<NN-slug>/session-notes`. The folder name and the slug agree; the numeric prefix keeps the order and is dropped from the URL only by the slug itself.
+- **Folders are lowercase and hyphenated.** `14-cip-68-nft-standard`, not `14-CIP-68 NFT-Standard`; `session-2`, not `Session-2`; `recordings`, not `Recording`. A folder that runs over more than one sitting nests the extra parts (`session-1/`, `session-2/`) and gives each its slug.
+- **A moved page keeps its old URL.** Add the old route to `redirects` in `website/docusaurus.config.ts` in the same change, next to the existing entries.
+
 ## Community Guidelines
 
 ### Be Respectful

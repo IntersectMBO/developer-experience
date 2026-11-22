@@ -1,4 +1,5 @@
 ---
+slug: /working-group/q4-2025/sessions/02-dev-opportunities/session-notes
 title: Session 02 Overview
 sidebar_label: Session Notes
 sidebar_position: 1

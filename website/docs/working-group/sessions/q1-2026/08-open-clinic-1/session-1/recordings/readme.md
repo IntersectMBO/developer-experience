@@ -1,7 +1,7 @@
 ---
 title: "Session 08: Open Clinic #1 - Recordings"
 sidebar_label: Recordings
-slug: /working-group/q1-2025/sessions/08-open-clinic-1/recordings
+slug: /working-group/q1-2026/sessions/08-open-clinic-1/recordings
 ---
 
 # Session 08: Open Clinic #1 - Recordings

@@ -2,7 +2,7 @@
 title: "Session 07: Contributing to Intersect"
 sidebar_label: Session Notes
 sidebar_position: 1
-slug: /working-group/q1-2025/sessions/07-contributing-intersect/session-notes
+slug: /working-group/q1-2026/sessions/07-contributing-intersect/session-notes
 ---
 
 # Contributing to Intersect: A Call to Action

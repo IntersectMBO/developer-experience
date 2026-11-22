@@ -1,4 +1,5 @@
 ---
+slug: /working-group/q1-2026/sessions/10-wallet-integration/session-1/session-notes
 title: Session 10 Overview
 sidebar_label: Session Notes
 sidebar_position: 1

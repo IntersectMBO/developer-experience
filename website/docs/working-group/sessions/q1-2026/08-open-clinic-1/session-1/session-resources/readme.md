@@ -1,7 +1,7 @@
 ---
 title: "Session 08: Native Tokens Resources"
 sidebar_label: Session Resources
-slug: /working-group/q1-2025/sessions/08-open-clinic-1/session-resources
+slug: /working-group/q1-2026/sessions/08-open-clinic-1/session-resources
 ---
 
 # Native Tokens Resources

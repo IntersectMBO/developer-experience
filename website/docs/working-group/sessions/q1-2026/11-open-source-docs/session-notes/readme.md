@@ -1,4 +1,5 @@
 ---
+slug: /working-group/q1-2026/sessions/11-open-source-docs/session-notes
 title: "Open Source Documentation"
 sidebar_label: Session Notes
 sidebar_position: 1
