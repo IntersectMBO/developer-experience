@@ -38,8 +38,8 @@ A shared reference for building or modifying the Developer Experience portal UI.
 
 | Token | Hex | Usage |
 | --- | --- | --- |
-| `--color-accent-vanilla` | `#FEC104` | Fill for a "live, now" mark (the next-session chip), with midnight text. Never text on a light surface |
-| `--color-accent-blazing` | `#FF4B11` | "Careful": warning callouts, contributor hover ring. Not a CTA colour |
+| `--color-accent-vanilla` | `#FEC104` | Reserved: no consumer on the site today. Fill only with midnight text if it is ever used, never text on a light surface |
+| `--color-accent-blazing` | `#FF4B11` | Two jobs: the "Next session" chip (fill, midnight label) and the contributor hover ring. Not a CTA colour |
 | `--color-accent-raspberry` | `#F8908F` | Soft emphasis, tags |
 | `--color-accent-caramel` | `#FCE4C6` | Warm neutral backgrounds |
 | `--color-accent-black` | `#000000` | Maximum contrast, rare |
