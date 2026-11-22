@@ -879,252 +879,103 @@ html[data-theme='dark'] {
   border: 1px solid rgba(37, 85, 254, 0.1);
 }
 
-/* Sidebar styling - Professional Menu Design */
+/* Sidebar: flat list rows, after docs.logos.co, in our own tokens.
+   The row is square by default; set --sidebar-row-radius to 4px to bring back the
+   chip shape. The 2px rule carries the brand and the label stays ink, which is the
+   balance their sidebar strikes: location is a fill plus a rule, not a colour change. */
 .theme-doc-sidebar-container {
-  background: #ffffff !important;
-  border-right: 1px solid rgba(37, 85, 254, 0.1);
+  background: transparent;
+  border-right: 1px solid var(--color-border);
 }
 
 .theme-doc-sidebar-menu {
-  background: #ffffff !important;
+  background: transparent;
 }
 
-/* Section Headers - Thin font, dark charcoal gray */
+.menu__link,
 .menu__list-item-collapsible .menu__link,
-.menu__list-item-collapsible .menu__link--sublist,
-.menu__caret::before {
-  color: #333333 !important;
-  font-weight: 300 !important;
-  font-size: 0.9rem !important;
-  background: transparent !important;
+.menu__list-item-collapsible .menu__link--sublist {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-weight: var(--sidebar-row-weight, 400);
+  border-left: 2px solid transparent;
+  border-radius: var(--sidebar-row-radius, 0);
+  padding: 6px 12px 6px 10px;
+  transition:
+    background 180ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    border-color 180ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    color 180ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
-.menu__list-item-collapsible .menu__link:hover,
+.menu__link:hover,
 .menu__list-item-collapsible .menu__link--sublist:hover {
-  color: #333333 !important;
-  background: transparent !important;
+  background: rgba(29, 29, 27, 0.05);
+  color: var(--ifm-font-color-base);
 }
 
-/* Inactive menu items - Thin font, medium-light gray */
-.menu__link {
-  color: #404040 !important;
-  background: transparent !important;
-  font-weight: 300 !important;
-  font-size: 0.9rem !important;
+/* The band belongs to the page that is open, not to the folder above it. */
+.menu__list-item-collapsible .menu__link--active {
+  background: transparent;
+  border-left-color: transparent;
+  color: var(--color-text-secondary);
 }
 
-.menu__link:hover {
-  background: transparent !important;
-  color: #404040 !important;
-}
-
-/* Active/Selected menu item - Bold font, vibrant blue with left border indicator */
-/* Only apply to non-collapsible links (not parent folders) */
-.menu__link--active:not(.menu__link--sublist) {
-  background: transparent !important;
-  color: #2555fe !important;
-  font-weight: 600 !important;
-  font-size: 0.9rem !important;
-  border-left: 3px solid #2555fe !important;
-  padding-left: calc(var(--ifm-menu-link-padding-horizontal) - 3px) !important;
-  margin-left: 0 !important;
-}
-
-.menu__link--active:not(.menu__link--sublist):hover {
-  background: transparent !important;
-  color: #2555fe !important;
-  border-left-color: #2555fe !important;
-}
-
-/* More specific selectors for active menu items (not parent folders) */
-.theme-doc-sidebar-container .menu__link--active:not(.menu__link--sublist) {
-  color: #2555fe !important;
-  background: transparent !important;
-  border-left: 3px solid #2555fe !important;
-  font-weight: 600 !important;
-  font-size: 0.9rem !important;
-}
-
-.theme-doc-sidebar-container .menu__link--active:not(.menu__link--sublist):hover {
-  color: #2555fe !important;
-  background: transparent !important;
-  border-left-color: #2555fe !important;
-}
-
-/* Override any conflicting styles - only for non-parent links */
 .menu__link--active:not(.menu__link--sublist),
 .menu__link--active:not(.menu__link--sublist):visited,
 .menu__link--active:not(.menu__link--sublist):focus,
-.menu__link--active:not(.menu__link--sublist):active {
-  color: #2555fe !important;
-  background: transparent !important;
-  border-left: 3px solid #2555fe !important;
-  font-weight: 600 !important;
-  font-size: 0.9rem !important;
+.menu__link--active:not(.menu__link--sublist):hover {
+  background: var(--color-surface);
+  border-left-color: var(--color-brand-primary);
+  color: var(--ifm-font-color-base);
+  font-weight: var(--sidebar-row-weight, 400);
 }
 
-/* Ensure parent folders stay gray even if child is active */
-.menu__list-item-collapsible .menu__link--active,
-.menu__list-item-collapsible .menu__link--active.menu__link--sublist {
-  color: #333333 !important;
-  font-weight: 300 !important;
-  border-left: none !important;
-  padding-left: var(--ifm-menu-link-padding-horizontal) !important;
+/* Chevron: quiet by default, and it turns with the same easing as the row.
+   Our swizzled Category draws its own SVG, so Infima's ::before chevron is hidden
+   here: without this both render and each category shows two arrows. */
+.menu__caret::before,
+.menu__list-item-collapsible .menu__caret::before {
+  display: none;
 }
 
-.menu__list-item-collapsible .menu__link--active:hover,
-.menu__list-item-collapsible .menu__link--active.menu__link--sublist:hover {
-  color: #333333 !important;
-  border-left: none !important;
+.menu__caret {
+  width: 1.75rem;
+  justify-content: center;
 }
 
-/* Menu icons/arrows - Light gray */
-.menu__caret,
-.menu__caret::before {
-  color: #999999 !important;
+.menu__caret svg {
+  opacity: 0.55;
+  transition: transform 180ms cubic-bezier(0.2, 0.7, 0.2, 1), opacity 180ms;
 }
 
-/* Nested menu items - thin font, maintain gray color for inactive nested items */
-.menu__list .menu__list-item .menu__link {
-  color: #404040 !important;
-  font-weight: 300 !important;
-  font-size: 0.9rem !important;
+.menu__caret:hover svg {
+  opacity: 1;
 }
 
-.menu__list .menu__list-item .menu__link:hover {
-  color: #404040 !important;
-  background: transparent !important;
-}
-
-/* Nested active menu items - bold font, blue with left border */
-.menu__list .menu__list-item .menu__link--active:not(.menu__link--sublist) {
-  color: #2555fe !important;
-  border-left: 3px solid #2555fe !important;
-  font-weight: 600 !important;
-  font-size: 0.9rem !important;
-}
-
-/* Remove any background highlights */
-.menu__link:not(.menu__link--active) {
-  background: transparent !important;
-}
-
-/* Ensure menu list items have transparent background */
-.menu__list-item {
-  background: transparent !important;
-}
-
-/* Dark mode sidebar - Maintain professional look */
+/* Dark mode: the band lifts off the page instead of tinting into it. */
 [data-theme='dark'] .theme-doc-sidebar-container {
-  background: #1a1a1a !important;
+  background: transparent;
 }
 
 [data-theme='dark'] .theme-doc-sidebar-menu {
-  background: #1a1a1a !important;
+  background: transparent;
 }
 
-/* Dark mode section headers - thin font */
-[data-theme='dark'] .menu__list-item-collapsible .menu__link,
-[data-theme='dark'] .menu__list-item-collapsible .menu__link--sublist {
-  color: #cccccc !important;
-  font-weight: 300 !important;
-  font-size: 0.9rem !important;
-}
-
-/* Dark mode inactive menu items - thin font, lighter gray for better contrast */
-[data-theme='dark'] .menu__link {
-  color: #999999 !important;
-  background: transparent !important;
-  font-weight: 300 !important;
-  font-size: 0.9rem !important;
+[data-theme='dark'] .menu__link,
+[data-theme='dark'] .menu__list-item-collapsible .menu__link {
+  color: var(--color-text-secondary);
 }
 
 [data-theme='dark'] .menu__link:hover {
-  color: #999999 !important;
-  background: transparent !important;
+  background: rgba(245, 243, 235, 0.06);
+  color: var(--ifm-font-color-base);
 }
 
-/* Dark mode active menu item - bold font, blue with left border */
-/* Only for non-parent links */
-[data-theme='dark'] .menu__link--active:not(.menu__link--sublist) {
-  background: transparent !important;
-  color: #2e7bff !important;
-  border-left: 3px solid #2e7bff !important;
-  font-weight: 600 !important;
-  font-size: 0.9rem !important;
-}
-
-[data-theme='dark'] .menu__link--active:not(.menu__link--sublist):hover {
-  background: transparent !important;
-  color: #2e7bff !important;
-  border-left-color: #2e7bff !important;
-}
-
-/* More specific dark mode selectors - only for non-parent links */
-[data-theme='dark'] .theme-doc-sidebar-container .menu__link--active:not(.menu__link--sublist) {
-  color: #2e7bff !important;
-  background: transparent !important;
-  border-left: 3px solid #2e7bff !important;
-  font-weight: 600 !important;
-  font-size: 0.9rem !important;
-}
-
-[data-theme='dark'] .theme-doc-sidebar-container .menu__link--active:not(.menu__link--sublist):hover {
-  color: #2e7bff !important;
-  background: transparent !important;
-  border-left-color: #2e7bff !important;
-}
-
-/* Override dark mode conflicting styles - only for non-parent links */
 [data-theme='dark'] .menu__link--active:not(.menu__link--sublist),
-[data-theme='dark'] .menu__link--active:not(.menu__link--sublist):visited,
-[data-theme='dark'] .menu__link--active:not(.menu__link--sublist):focus,
-[data-theme='dark'] .menu__link--active:not(.menu__link--sublist):active {
-  color: #2e7bff !important;
-  background: transparent !important;
-  border-left: 3px solid #2e7bff !important;
-  font-weight: 600 !important;
-  font-size: 0.9rem !important;
-}
-
-/* Ensure dark mode parent folders stay gray even if child is active */
-[data-theme='dark'] .menu__list-item-collapsible .menu__link--active,
-[data-theme='dark'] .menu__list-item-collapsible .menu__link--active.menu__link--sublist {
-  color: #cccccc !important;
-  font-weight: 300 !important;
-  border-left: none !important;
-  padding-left: var(--ifm-menu-link-padding-horizontal) !important;
-}
-
-[data-theme='dark'] .menu__list-item-collapsible .menu__link--active:hover,
-[data-theme='dark'] .menu__list-item-collapsible .menu__link--active.menu__link--sublist:hover {
-  color: #cccccc !important;
-  border-left: none !important;
-}
-
-/* Dark mode menu icons/arrows */
-[data-theme='dark'] .menu__caret,
-[data-theme='dark'] .menu__caret::before {
-  color: #999999 !important;
-}
-
-/* Dark mode nested menu items - thin font */
-[data-theme='dark'] .menu__list .menu__list-item .menu__link {
-  color: #999999 !important;
-  font-weight: 300 !important;
-  font-size: 0.9rem !important;
-}
-
-[data-theme='dark'] .menu__list .menu__list-item .menu__link:hover {
-  color: #999999 !important;
-  background: transparent !important;
-}
-
-[data-theme='dark'] .menu__list .menu__list-item .menu__link--active:not(.menu__link--sublist) {
-  color: #2e7bff !important;
-  border-left: 3px solid #2e7bff !important;
-  font-weight: 600 !important;
-  font-size: 0.9rem !important;
+[data-theme='dark'] .menu__link--active:not(.menu__link--sublist):hover {
+  background: var(--color-surface);
+  border-left-color: var(--color-brand-primary);
+  color: var(--ifm-font-color-base);
 }
 
 /* Dark mode navbar - ensure plain white text */
