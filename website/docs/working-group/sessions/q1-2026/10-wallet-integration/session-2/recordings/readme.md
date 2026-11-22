@@ -1,7 +1,7 @@
 ---
 title: "Session 2 - Recordings"
 sidebar_label: Recordings
-slug: /working-group/q1-2026/sessions/10-wallet-integration/Session-2/recordings
+slug: /working-group/q1-2026/sessions/10-wallet-integration/session-2/recordings
 ---
 
 # Session 2 - Recordings

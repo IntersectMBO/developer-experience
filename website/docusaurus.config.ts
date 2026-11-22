@@ -163,6 +163,21 @@ const config: Config = {
             to: "/docs/working-group/q1-2026/sessions/08-open-clinic-1/session-2/recordings/",
           },
           {
+            // Two folder-derived routes under the wallet-integration session: its
+            // Session-1 pages had no slug, so their URLs came from the folder, which
+            // these renames changed. One capitalised slug is corrected below too.
+            from: "/docs/working-group/sessions/q1-2026/wallet-integration/Session-1/session-notes/",
+            to: "/docs/working-group/q1-2026/sessions/10-wallet-integration/session-1/session-notes/",
+          },
+          {
+            from: "/docs/working-group/sessions/q1-2026/wallet-integration/Session-1/recordings/",
+            to: "/docs/working-group/q1-2026/sessions/10-wallet-integration/session-1/recordings/",
+          },
+          {
+            from: "/docs/working-group/q1-2026/sessions/10-wallet-integration/Session-2/recordings/",
+            to: "/docs/working-group/q1-2026/sessions/10-wallet-integration/session-2/recordings/",
+          },
+          {
             // The folder was misspelled sesion-notes until 2026-11; the route comes
             // from the directory name, so the old URL is kept alive here. It points
             // at the slug route directly, so this stays one hop.

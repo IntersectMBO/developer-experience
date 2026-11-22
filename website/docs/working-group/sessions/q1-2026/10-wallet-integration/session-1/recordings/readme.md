@@ -1,4 +1,5 @@
 ---
+slug: /working-group/q1-2026/sessions/10-wallet-integration/session-1/recordings
 title: Session 10 Recording
 sidebar_label: Recordings
 ---
