@@ -179,7 +179,7 @@ const config: Config = {
       { name: "keywords", content: "Cardano, developer experience, blockchain, smart contracts, DeFi, Intersect MBO" },
       { name: "author", content: "Intersect MBO Developer Experience Working Group" },
     ],
-    image: "img/docusaurus-social-card.jpg",
+    image: "img/social-card.png",
     navbar: {
       // The lockup carries the wordmark, so the bar renders no text beside it.
       title: "",
