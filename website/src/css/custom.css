@@ -172,6 +172,9 @@
   --ifm-background-surface-color: var(--color-surface);
   --ifm-font-color-base: var(--color-text);
   --ifm-color-emphasis-300: var(--color-border);
+  --ifm-color-emphasis-200: var(--color-border);
+  --ifm-color-emphasis-100: var(--color-surface);
+  --ifm-color-emphasis-700: var(--color-text-secondary);
 
   /* Code styling */
   --ifm-code-font-size: 95%;
