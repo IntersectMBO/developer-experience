@@ -3,58 +3,58 @@
   "total": 22,
   "sessions": [
     {
-      "number": "22",
+      "number": "23",
       "title": "AI-Ready Cardano Repositories",
       "quarter": "Q4 2026",
-      "href": "/docs/working-group/q4-2026/sessions/22-ai-ready-cardano-repos/session-notes"
+      "href": "/docs/working-group/q4-2026/sessions/23-ai-ready-cardano-repos/session-notes"
+    },
+    {
+      "number": "22",
+      "title": "Building a Production Cardano SDK: From Validators to dApp",
+      "quarter": "Q2 2026",
+      "href": "/docs/working-group/q2-2026/sessions/22-cardano-production-sdk/session-notes"
     },
     {
       "number": "21",
-      "title": "Building a Production Cardano SDK: From Validators to dApp",
+      "title": "One API Call to Understand Cardano",
       "quarter": "Q2 2026",
-      "href": "/docs/working-group/q2-2026/sessions/21-cardano-production-sdk/session-notes"
+      "href": "/docs/working-group/q2-2026/sessions/21-one-api-call-blockfrost/session-notes"
     },
     {
       "number": "20",
-      "title": "One API Call to Understand Cardano",
+      "title": "Building a Production-Grade MCP Server for Cardano",
       "quarter": "Q2 2026",
-      "href": "/docs/working-group/q2-2026/sessions/20-one-api-call-blockfrost/session-notes"
+      "href": "/docs/working-group/q2-2026/sessions/20-cardano-mcp-server/session-notes"
     },
     {
       "number": "19",
-      "title": "Building a Production-Grade MCP Server for Cardano",
+      "title": "Using AI in Your Cardano Dev Workflow",
       "quarter": "Q2 2026",
-      "href": "/docs/working-group/q2-2026/sessions/19-cardano-mcp-server/session-notes"
+      "href": "/docs/working-group/q2-2026/sessions/19-cardano-ai-dev-workflow/session-notes"
     },
     {
       "number": "18",
-      "title": "Using AI in Your Cardano Dev Workflow",
+      "title": "Default Developer Environment for Cardano",
       "quarter": "Q2 2026",
-      "href": "/docs/working-group/q2-2026/sessions/18-cardano-ai-dev-workflow/session-notes"
+      "href": "/docs/working-group/q2-2026/sessions/18-default-developer-environment/session-notes"
     },
     {
       "number": "17",
-      "title": "Default Developer Environment for Cardano",
+      "title": "UI ↔ Smart Contracts (Wallets + Tx flow)",
       "quarter": "Q2 2026",
-      "href": "/docs/working-group/q2-2026/sessions/17-default-developer-environment/session-notes"
+      "href": "/docs/working-group/q2-2026/sessions/17-ui-smart-contract-interaction/session-notes"
     },
     {
       "number": "16",
-      "title": "UI ↔ Smart Contracts (Wallets + Tx flow)",
+      "title": "dApp Architecture: From Wallet to Backend",
       "quarter": "Q2 2026",
-      "href": "/docs/working-group/q2-2026/sessions/16-ui-smart-contract-interaction/session-notes"
+      "href": "/docs/working-group/q2-2026/sessions/16-dapp-architecture-demo/session-notes"
     },
     {
       "number": "15",
-      "title": "dApp Architecture: From Wallet to Backend",
-      "quarter": "Q2 2026",
-      "href": "/docs/working-group/q2-2026/sessions/15-dapp-architecture-demo/session-notes"
-    },
-    {
-      "number": "14",
       "title": "Repository Walkthrough: Offchain and SDK building",
       "quarter": "Q2 2026",
-      "href": "/docs/working-group/q2-2026/sessions/14-sdk-repo-walkthrough/session-notes"
+      "href": "/docs/working-group/q2-2026/sessions/15-sdk-repo-walkthrough/session-notes"
     },
     {
       "number": "14",

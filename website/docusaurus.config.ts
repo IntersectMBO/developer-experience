@@ -184,6 +184,105 @@ const config: Config = {
             from: "/docs/working-group/sessions/q4-2025/repo-walkthrough/sesion-notes/",
             to: "/docs/working-group/q4-2025/sessions/06-repo-walkthrough/session-notes/",
           },
+          // Session 14 was used twice: q1-2026 CIP-68 and q2-2026 sdk-repo. The
+          // q2-2026 run and everything after it moves up by one, so the number is a
+          // single sequence again (q4-2026 22 becomes 23). Old routes stay alive.
+          {
+            from: "/docs/working-group/q2-2026/sessions/14-sdk-repo-walkthrough/recordings/",
+            to: "/docs/working-group/q2-2026/sessions/15-sdk-repo-walkthrough/recordings/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/14-sdk-repo-walkthrough/session-notes/",
+            to: "/docs/working-group/q2-2026/sessions/15-sdk-repo-walkthrough/session-notes/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/14-sdk-repo-walkthrough/session-resources/",
+            to: "/docs/working-group/q2-2026/sessions/15-sdk-repo-walkthrough/session-resources/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/15-dapp-architecture-demo/recordings/",
+            to: "/docs/working-group/q2-2026/sessions/16-dapp-architecture-demo/recordings/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/15-dapp-architecture-demo/session-notes/",
+            to: "/docs/working-group/q2-2026/sessions/16-dapp-architecture-demo/session-notes/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/15-dapp-architecture-demo/session-resources/",
+            to: "/docs/working-group/q2-2026/sessions/16-dapp-architecture-demo/session-resources/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/16-ui-smart-contract-interaction/session-notes/",
+            to: "/docs/working-group/q2-2026/sessions/17-ui-smart-contract-interaction/session-notes/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/16-ui-smart-contract-interaction/session-resources/",
+            to: "/docs/working-group/q2-2026/sessions/17-ui-smart-contract-interaction/session-resources/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/17-default-developer-environment/session-notes/",
+            to: "/docs/working-group/q2-2026/sessions/18-default-developer-environment/session-notes/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/17-default-developer-environment/session-resources/",
+            to: "/docs/working-group/q2-2026/sessions/18-default-developer-environment/session-resources/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/18-cardano-ai-dev-workflow/recordings/",
+            to: "/docs/working-group/q2-2026/sessions/19-cardano-ai-dev-workflow/recordings/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/18-cardano-ai-dev-workflow/session-notes/",
+            to: "/docs/working-group/q2-2026/sessions/19-cardano-ai-dev-workflow/session-notes/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/18-cardano-ai-dev-workflow/session-resources/",
+            to: "/docs/working-group/q2-2026/sessions/19-cardano-ai-dev-workflow/session-resources/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/19-cardano-mcp-server/recordings/",
+            to: "/docs/working-group/q2-2026/sessions/20-cardano-mcp-server/recordings/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/19-cardano-mcp-server/session-notes/",
+            to: "/docs/working-group/q2-2026/sessions/20-cardano-mcp-server/session-notes/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/19-cardano-mcp-server/session-resources/",
+            to: "/docs/working-group/q2-2026/sessions/20-cardano-mcp-server/session-resources/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/20-one-api-call-blockfrost/session-notes/",
+            to: "/docs/working-group/q2-2026/sessions/21-one-api-call-blockfrost/session-notes/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/20-one-api-call-blockfrost/session-resources/",
+            to: "/docs/working-group/q2-2026/sessions/21-one-api-call-blockfrost/session-resources/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/21-cardano-production-sdk/recordings/",
+            to: "/docs/working-group/q2-2026/sessions/22-cardano-production-sdk/recordings/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/21-cardano-production-sdk/session-notes/",
+            to: "/docs/working-group/q2-2026/sessions/22-cardano-production-sdk/session-notes/",
+          },
+          {
+            from: "/docs/working-group/q2-2026/sessions/21-cardano-production-sdk/session-resources/",
+            to: "/docs/working-group/q2-2026/sessions/22-cardano-production-sdk/session-resources/",
+          },
+          {
+            from: "/docs/working-group/q4-2026/sessions/22-ai-ready-cardano-repos/recordings/",
+            to: "/docs/working-group/q4-2026/sessions/23-ai-ready-cardano-repos/recordings/",
+          },
+          {
+            from: "/docs/working-group/q4-2026/sessions/22-ai-ready-cardano-repos/session-notes/",
+            to: "/docs/working-group/q4-2026/sessions/23-ai-ready-cardano-repos/session-notes/",
+          },
+          {
+            from: "/docs/working-group/q4-2026/sessions/22-ai-ready-cardano-repos/session-resources/",
+            to: "/docs/working-group/q4-2026/sessions/23-ai-ready-cardano-repos/session-resources/",
+          },
         ],
         createRedirects(existingPath: string) {
           const renamedSessionPaths = [

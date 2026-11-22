@@ -186,7 +186,7 @@ export const topics: Topic[] = [
     href: '/docs/working-group/',
     links: [
       { label: 'Session archive', href: '/docs/working-group/' },
-      { label: 'Repository walkthrough', href: '/docs/working-group/q2-2026/sessions/14-sdk-repo-walkthrough/session-notes/' },
+      { label: 'Repository walkthrough', href: '/docs/working-group/q2-2026/sessions/15-sdk-repo-walkthrough/session-notes/' },
     ],
   },
   {

@@ -1,0 +1,8 @@
+{
+    "label": "Session 23: AI-Ready Cardano Repos",
+    "position": 22,
+    "link": {
+        "type": "generated-index",
+        "description": "How to structure Cardano GitHub repositories so AI agents and AI-powered developers can understand, test, review, and contribute safely."
+    }
+}
