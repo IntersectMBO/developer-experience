@@ -101,10 +101,47 @@ const config: Config = {
             to: "/docs/tutorials/local-cardano-payment-detector/",
           },
           {
+            // These eight pages carried no slug, so their URLs came from the folder
+            // path (numeric prefixes stripped, the literal "sessions" kept). They now
+            // carry a slug in the shape every other session uses, and these keep the
+            // old routes alive.
+            from: "/docs/working-group/sessions/q1-2026/community-builder-story/session-notes/",
+            to: "/docs/working-group/q1-2026/sessions/09-community-builder-story/session-notes/",
+          },
+          {
+            from: "/docs/working-group/sessions/q1-2026/open-source-docs/session-notes/",
+            to: "/docs/working-group/q1-2026/sessions/11-open-source-docs/session-notes/",
+          },
+          {
+            from: "/docs/working-group/sessions/q1-2026/cardano-developer-pathway/session-notes/",
+            to: "/docs/working-group/q1-2026/sessions/12-cardano-developer-pathway/session-notes/",
+          },
+          {
+            from: "/docs/working-group/sessions/q4-2025/kickoff-orientation/session-notes/",
+            to: "/docs/working-group/q4-2025/sessions/01-kickoff-orientation/session-notes/",
+          },
+          {
+            from: "/docs/working-group/sessions/q4-2025/dev-opportunities/session-notes/",
+            to: "/docs/working-group/q4-2025/sessions/02-dev-opportunities/session-notes/",
+          },
+          {
+            from: "/docs/working-group/sessions/q4-2025/dev-environment-setup/session-notes/",
+            to: "/docs/working-group/q4-2025/sessions/03-dev-environment-setup/session-notes/",
+          },
+          {
+            from: "/docs/working-group/sessions/q4-2025/essential-links/session-notes/",
+            to: "/docs/working-group/q4-2025/sessions/04-essential-links/session-notes/",
+          },
+          {
+            from: "/docs/working-group/sessions/q4-2025/repo-walkthrough/session-notes/",
+            to: "/docs/working-group/q4-2025/sessions/06-repo-walkthrough/session-notes/",
+          },
+          {
             // The folder was misspelled sesion-notes until 2026-11; the route comes
-            // from the directory name, so the old URL is kept alive here.
+            // from the directory name, so the old URL is kept alive here. It points
+            // at the slug route directly, so this stays one hop.
             from: "/docs/working-group/sessions/q4-2025/repo-walkthrough/sesion-notes/",
-            to: "/docs/working-group/sessions/q4-2025/repo-walkthrough/session-notes/",
+            to: "/docs/working-group/q4-2025/sessions/06-repo-walkthrough/session-notes/",
           },
         ],
         createRedirects(existingPath: string) {
