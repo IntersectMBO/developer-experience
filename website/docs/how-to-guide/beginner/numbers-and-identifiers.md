@@ -176,6 +176,8 @@ function AddressInspector() {
 
 The kinds matter more than they look. An enterprise address (`addr1v…`, `addr1w…`) has no stake credential, so it can hold funds but never earns rewards or votes. A reward address (`stake1…`) is not a payment address and cannot receive ADA. If you build a form, refuse the ones that cannot do the job instead of letting the wallet fail.
 
+That is the shape of an address. Why the two credentials exist at all, and what each one controls, is on the [Addresses](address.md) page.
+
 ## Where these numbers come from
 
 Protocol parameters are not constants in the code. `coinsPerUTxOByte`, `minPoolCost`, the slot length and the epoch length are all read from the node or a provider, per network, and they change by governance.

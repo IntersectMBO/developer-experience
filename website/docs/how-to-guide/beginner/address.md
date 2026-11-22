@@ -41,3 +41,8 @@ While the payment credentials control how to spend an output, delegation credent
 Test your knowledge on Address in Cardano transactions by taking this quiz. Click the link below to get started:
 
 [Cardano Address Quiz](https://docs.google.com/forms/d/1s7LRH1GYGS4um0rPYZexMh6WaDAjIkBeszmtkJUs-Qk/edit)
+
+## Reading a real address
+
+When you have an address in front of you, the header becomes the first few characters after `1`. [Numbers and Identifiers](numbers-and-identifiers.md) has a block you can paste one into: it reports the network and the credential kind, and it explains why an enterprise address cannot earn rewards.
+
