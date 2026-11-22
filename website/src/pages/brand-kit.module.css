@@ -174,6 +174,105 @@
   font-family: var(--ifm-font-family-monospace);
 }
 
+.rolesTableWrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  border: var(--border-width) solid var(--ifm-color-emphasis-300);
+  border-radius: var(--radius-lg);
+  background: var(--ifm-background-surface-color);
+  overflow: hidden;
+}
+
+.rolesTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-body-sm);
+}
+
+.rolesTable th,
+.rolesTable td {
+  padding: var(--space-4);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: var(--border-width) solid var(--ifm-color-emphasis-200);
+}
+
+.rolesTable thead th {
+  font-size: var(--text-caption);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.rolesTable tbody tr:last-child th,
+.rolesTable tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.roleJob {
+  font-weight: 600;
+  color: var(--ifm-font-color-base);
+  white-space: nowrap;
+}
+
+.roleWhat {
+  color: var(--ifm-font-color-base);
+}
+
+.roleWhy {
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.5;
+}
+
+.roleChip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.roleSwatch {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  border-radius: var(--radius-sm);
+  border: var(--border-width) solid var(--ifm-color-emphasis-300);
+}
+
+.roleHex {
+  font-family: var(--ifm-font-family-monospace);
+  color: var(--ifm-color-emphasis-700);
+}
+
+.trackGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.trackName {
+  /* Reserve two lines at the card's line-height so the hue line below it shares one
+     baseline across the row. Measured: 1 line is 25.5px, 2 lines 51px. */
+  min-height: 3.2em;
+}
+
+.trackSwatches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: var(--border-width) solid var(--ifm-color-emphasis-300);
+}
+
+.trackSwatch {
+  display: block;
+  height: 96px;
+}
+
+.trackSwatch + .trackSwatch {
+  border-left: var(--border-width) solid var(--ifm-color-emphasis-300);
+}
+
 .typeCard {
   max-width: var(--content-max-width);
   margin: 0 auto;
@@ -229,6 +328,86 @@
 .usageList li {
   margin-bottom: var(--space-3);
   line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .rolesTableWrap {
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    overflow: visible;
+  }
+
+  .rolesTable {
+    font-size: var(--text-body-sm);
+  }
+
+  .rolesTable thead {
+    display: none;
+  }
+
+  .rolesTable,
+  .rolesTable tbody,
+  .rolesTable tr,
+  .rolesTable th,
+  .rolesTable td {
+    display: block;
+    width: auto;
+  }
+
+  .rolesTable tbody tr {
+    padding: var(--space-4);
+    margin-bottom: var(--space-4);
+    border: var(--border-width) solid var(--ifm-color-emphasis-300);
+    border-radius: var(--radius-lg);
+    background: var(--ifm-color-emphasis-100);
+  }
+
+  .rolesTable tbody tr:nth-child(2n) {
+    background: var(--ifm-color-emphasis-100);
+  }
+
+  .rolesTable tbody tr:last-child {
+    margin-bottom: 0;
+  }
+
+  .rolesTable th,
+  .rolesTable td {
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .roleJob {
+    font-size: var(--text-body);
+    white-space: normal;
+    margin-bottom: var(--space-1);
+  }
+
+  .roleWhat {
+    margin-bottom: var(--space-2);
+  }
+
+  .rolesTable td[data-label] {
+    margin-top: var(--space-3);
+  }
+
+  .rolesTable td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 2px;
+    font-size: var(--text-caption);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ifm-color-emphasis-600);
+  }
+}
+
+@media (max-width: 640px) {
+  .trackName {
+    min-height: 0;
+  }
 }
 
 @media (max-width: 768px) {
