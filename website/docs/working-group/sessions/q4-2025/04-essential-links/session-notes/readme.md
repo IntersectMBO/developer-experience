@@ -1,3 +1,7 @@
+---
+slug: /working-group/q4-2025/sessions/04-essential-links/session-notes
+---
+
 # Essential Links in Cardano
 
 ## Introduction

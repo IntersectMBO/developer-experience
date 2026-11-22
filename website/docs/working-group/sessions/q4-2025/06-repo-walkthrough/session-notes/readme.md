@@ -1,3 +1,7 @@
+---
+slug: /working-group/q4-2025/sessions/06-repo-walkthrough/session-notes
+---
+
 # Repository Walkthrough & Demo
 
 ## Introduction

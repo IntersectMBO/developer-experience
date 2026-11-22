@@ -1,4 +1,5 @@
 ---
+slug: /working-group/q4-2025/sessions/01-kickoff-orientation/session-notes
 title: Session 01 Kickoff & Orientation
 sidebar_label: Session Notes
 sidebar_position: 1

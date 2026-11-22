@@ -1,4 +1,5 @@
 ---
+slug: /working-group/q1-2026/sessions/09-community-builder-story/session-notes
 title: Session 09 Overview
 sidebar_label: Session Notes
 sidebar_position: 1

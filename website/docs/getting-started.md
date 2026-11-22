@@ -16,7 +16,7 @@ This repository serves as the comprehensive guide for developers and contributor
 **[Complete Intersect Membership Guide →](./intersect-membership-guide.md)**
 
 ### 2. **New to Cardano?**
-Start with our comprehensive ecosystem overview: [**Directive: Kickoff & Orientation**](/docs/working-group/sessions/q4-2025/01-kickoff-orientation/session-notes/readme.md)
+Start with our comprehensive ecosystem overview: [**Directive: Kickoff & Orientation**](/docs/working-group/q4-2025/sessions/01-kickoff-orientation/session-notes/)
 
 This guide provides a complete map of the Cardano ecosystem, including core repositories, documentation resources, developer tools, and community support channels.
 
@@ -123,7 +123,7 @@ By the end of Q1 2026, we aim to:
 
 **Step 1**: [Join Intersect - Get Your Voice in Cardano](./intersect-membership-guide.md)
 
-**Step 2**: [Directive: Kickoff & Orientation](/docs/working-group/sessions/q4-2025/01-kickoff-orientation/session-notes/readme.md)
+**Step 2**: [Directive: Kickoff & Orientation](/docs/working-group/q4-2025/sessions/01-kickoff-orientation/session-notes/)
 
 **Step 3**: [Beginner Guides](/docs/how-to-guide/beginner/)
 

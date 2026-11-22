@@ -1,4 +1,5 @@
 ---
+slug: /working-group/q4-2025/sessions/03-dev-environment-setup/session-notes
 title: Session 03 Overview
 sidebar_label: Session Notes
 sidebar_position: 1
