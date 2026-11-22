@@ -150,6 +150,7 @@ const config: Config = {
 
   themes: [
     "@docusaurus/theme-mermaid",
+    "@docusaurus/theme-live-codeblock",
     [
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
@@ -167,6 +168,9 @@ const config: Config = {
   ],
 
   themeConfig: {
+    liveCodeBlock: {
+      playgroundPosition: "bottom",
+    },
     // The toggle is a navbar item (src/theme/NavbarItem/ComponentTypes.tsx), placed before
     // the search field. Docusaurus appends its own after every right-hand item, so it has
     // to be switched off here or the bar shows two.

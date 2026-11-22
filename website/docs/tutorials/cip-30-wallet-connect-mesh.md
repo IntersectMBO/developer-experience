@@ -124,6 +124,87 @@ That `recipient` address is any `addr_test1…` you control or trust. Sending to
 
 `complete()` is the step that talks to the provider for protocol parameters. If it throws `Blockfrost error: 403`, the key is wrong or belongs to another network.
 
+## Do the arithmetic before you sign
+
+A user should never see their first error message from the wallet. Three of the numbers a payment form needs are pure arithmetic, so they can run in the page before any wallet is involved. Edit this and watch it react:
+
+```jsx live
+function PreflightCalculator() {
+  const [ada, setAda] = React.useState(5);
+  const [assetName, setAssetName] = React.useState('TOKEN');
+  const [address, setAddress] = React.useState('addr_test1vqh');
+
+  // Cardano amounts are integers in lovelace, and 1 ADA is 1,000,000 lovelace.
+  const lovelace = Math.round(ada * 1e6);
+
+  // A native asset is identified as policyId + assetName in hex, no separator.
+  const policyId = '86a9c2c1cf0e1b3b7d5e6c1b9f3f0f2b1c8a4b1a2c3d4e5f6a7b8c9d';
+  const hex = [...new TextEncoder().encode(assetName)]
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
+  const unit = policyId + hex;
+
+  // The prefix tells you the network, and sending to the wrong one is the classic mistake.
+  const network = address.startsWith('addr_test1')
+    ? 'preview / preprod testnet'
+    : address.startsWith('addr1')
+      ? 'mainnet'
+      : 'not a Cardano address';
+
+  const ok = network !== 'not a Cardano address';
+
+  return (
+    <div style={{ fontFamily: 'inherit', fontSize: 14, lineHeight: 1.6 }}>
+      <label style={{ display: 'block', marginBottom: 8 }}>
+        Amount in ADA{' '}
+        <input
+          type="number"
+          value={ada}
+          onChange={(e) => setAda(Number(e.target.value))}
+          style={{ width: 90, padding: '2px 6px' }}
+        />
+      </label>
+      <label style={{ display: 'block', marginBottom: 8 }}>
+        Asset name{' '}
+        <input
+          value={assetName}
+          onChange={(e) => setAssetName(e.target.value)}
+          style={{ width: 140, padding: '2px 6px' }}
+        />
+      </label>
+      <label style={{ display: 'block', marginBottom: 12 }}>
+        Recipient{' '}
+        <input
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          style={{ width: 420, padding: '2px 6px' }}
+        />
+      </label>
+      <table style={{ borderCollapse: 'collapse', fontSize: 13 }}>
+        <tbody>
+          <tr>
+            <td style={{ padding: '2px 12px 2px 0' }}>quantity</td>
+            <td><code>{String(lovelace)}</code> lovelace</td>
+          </tr>
+          <tr>
+            <td style={{ padding: '2px 12px 2px 0' }}>unit</td>
+            <td><code>{unit.slice(0, 16)}…{unit.slice(-8)}</code></td>
+          </tr>
+          <tr>
+            <td style={{ padding: '2px 12px 2px 0' }}>network</td>
+            <td style={{ color: ok ? '#0a7c42' : '#c13a0b', fontWeight: 600 }}>
+              {network}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  );
+}
+```
+
+Type an `addr1` prefix into the last field and the network line changes to mainnet before any wallet is involved, which is exactly the mistake this label is there to catch: a testnet wallet will refuse the transaction, and the reader finds out here rather than after signing. Use the same `quantity` and `unit` strings in `txBuilder.txOut()`.
+
 ## Sign and submit
 
 Signing is the wallet's job, and submission can be too:
