@@ -66,9 +66,19 @@ Two automated scanners run on this repository, and their findings are triaged in
 
 Items labelled `Security` are never marked stale (see automation above), so a scanning alert stays visible until a maintainer closes it as fixed or dismissed with a reason.
 
-### Dismissing a code scanning alert
+### Dependency advisory gate
 
-Only a maintainer (a triager listed under [Roles](#roles) with write access) may dismiss a code scanning alert. Contributors can propose a dismissal in a comment, but the dismissal itself is a maintainer action.
+`pr-build-website.yml` and `deploy.yml` both run `npm run audit:ci` (`npm audit --omit=dev --audit-level=high`) after installing dependencies:
+
+- **High and critical** advisories fail the PR build and block the deploy.
+- **Moderate and low** findings are reported but do not gate, because a gate that reddens on findings nobody can fix gets bypassed.
+- `--omit=dev` keeps advisories that only affect build-time tooling out of the release gate. `npm run audit` still reports the full tree locally.
+
+### Dismissing a scanning alert
+
+Only a maintainer (a triager listed under [Roles](#roles) with write access) may dismiss an alert, whether it comes from CodeQL or from Dependabot. Contributors can propose a dismissal in a comment, but the dismissal itself is a maintainer action.
+
+A dependency advisory dismissal has one extra requirement: the comment names the condition that reopens it, which is a patched release or a new call path into the vulnerable code. An advisory with no patched release is dismissed as `won't fix` only when the vulnerable path is not reachable from contributor or visitor input; if something in the repo feeds untrusted input into it, the alert stays open and the fix is real work.
 
 Acceptable dismissal reasons — use the matching GitHub reason code:
 
