@@ -17,7 +17,7 @@
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
     "audit": "npm audit",
-    "audit:ci": "npm audit --audit-level=high",
+    "audit:ci": "npm audit --omit=dev --audit-level=high",
     "changelog": "node ../scripts/changelog-dates.js",
     "postinstall": "patch-package"
   },
