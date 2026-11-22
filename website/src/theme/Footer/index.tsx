@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import { useThemeConfig } from '@docusaurus/theme-common';
 
 import styles from './styles.module.css';
@@ -39,6 +40,11 @@ export default function Footer(): ReactNode {
   // the navbar title is now empty, and the site title is the longer "Cardano Developer
   // Experience". The footer draws the mark itself, so it needs the short name.
   const name = 'Developer Experience';
+  // The logo path in themeConfig.footer.logo is written without a leading slash, the same
+  // way navbar.logo is. Rendered verbatim it resolves against the current route, so it
+  // worked on "/" and 404'd on every docs page. useBaseUrl is what the stock navbar and
+  // footer use for exactly this reason, and it keeps working under a non-root baseUrl.
+  const logoSrc = useBaseUrl(footer?.logo?.src ?? '');
   if (!footer) return null;
 
   const logo = footer.logo;
@@ -50,7 +56,7 @@ export default function Footer(): ReactNode {
         <div className={styles.grid}>
           <div className={styles.brand}>
             <Link className={styles.mark} to="/" aria-label={name}>
-              {logo && <img src={logo.src} alt="" width={32} height={32} />}
+              {logo && <img src={logoSrc} alt="" width={32} height={32} />}
               <span className={styles.name}>{name}</span>
             </Link>
             <p className={styles.copy}>Copyright © {new Date().getFullYear()} Intersect MBO.</p>
