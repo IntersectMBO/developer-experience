@@ -24,7 +24,7 @@ Q4 continues the DevEx Working Group with a sharper focus on **AI-native develop
   - Repo artifacts that matter: `README`, architecture maps, `AGENTS.md` / rules, blueprints, MCP, CI gates
   - Maintainer playbook: branch protection, CODEOWNERS, no auto-merge
   - Open discussion prompts
-- **Deliverable**: [Session Notes](./22-ai-ready-cardano-repos/session-notes/readme.md) | [Resources](./22-ai-ready-cardano-repos/session-resources/readme.md)
+- **Deliverable**: [Session Notes](./23-ai-ready-cardano-repos/session-notes/readme.md) | [Resources](./23-ai-ready-cardano-repos/session-resources/readme.md)
 
 ## Working Group Information
 For operational details, roles, repository structure, and participation guidelines, please see the [Working Group Overview](../../readme.md).
