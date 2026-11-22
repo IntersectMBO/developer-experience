@@ -5,7 +5,7 @@
  * Usage: node scripts/changelog-dates.js --from YYYY-MM-DD --to YYYY-MM-DD
  */
 
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const { argv } = require('process');
 
 // Parse command line arguments
@@ -36,8 +36,21 @@ function getCommits(fromDate, toDate) {
     try {
         const since = `${fromDate} 00:00:00`;
         const until = `${toDate} 23:59:59`;
-        const command = `git log --since="${since}" --until="${until}" --pretty=format:"%h|%s|%an|%ad" --date=short`;
-        const output = execSync(command, { encoding: 'utf-8' });
+        // No shell: git is invoked with an argument vector, so nothing in the dates
+        // can reach a shell even if the validation above ever loosens. Codepoint:
+        // this is what clears the CodeQL js/indirect-command-line-injection alert,
+        // which fired on the template string the old execSync call built.
+        const output = execFileSync(
+            'git',
+            [
+                'log',
+                `--since=${since}`,
+                `--until=${until}`,
+                '--pretty=format:%h|%s|%an|%ad',
+                '--date=short',
+            ],
+            { encoding: 'utf-8' }
+        );
         return output.trim().split('\n').filter(line => line.length > 0);
     } catch (error) {
         return [];
