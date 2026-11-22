@@ -137,6 +137,32 @@ const config: Config = {
             to: "/docs/working-group/q4-2025/sessions/06-repo-walkthrough/session-notes/",
           },
           {
+            // These six pages carried slugs that said q1-2025 while their folders say
+            // q1-2026. The slugs now match the folder; the old routes stay alive.
+            from: "/docs/working-group/q1-2025/sessions/07-contributing-intersect/recordings/",
+            to: "/docs/working-group/q1-2026/sessions/07-contributing-intersect/recordings/",
+          },
+          {
+            from: "/docs/working-group/q1-2025/sessions/07-contributing-intersect/session-notes/",
+            to: "/docs/working-group/q1-2026/sessions/07-contributing-intersect/session-notes/",
+          },
+          {
+            from: "/docs/working-group/q1-2025/sessions/08-open-clinic-1/recordings/",
+            to: "/docs/working-group/q1-2026/sessions/08-open-clinic-1/recordings/",
+          },
+          {
+            from: "/docs/working-group/q1-2025/sessions/08-open-clinic-1/session-notes/",
+            to: "/docs/working-group/q1-2026/sessions/08-open-clinic-1/session-notes/",
+          },
+          {
+            from: "/docs/working-group/q1-2025/sessions/08-open-clinic-1/session-resources/",
+            to: "/docs/working-group/q1-2026/sessions/08-open-clinic-1/session-resources/",
+          },
+          {
+            from: "/docs/working-group/q1-2025/sessions/08-open-clinic-1/session-2/recordings/",
+            to: "/docs/working-group/q1-2026/sessions/08-open-clinic-1/session-2/recordings/",
+          },
+          {
             // The folder was misspelled sesion-notes until 2026-11; the route comes
             // from the directory name, so the old URL is kept alive here. It points
             // at the slug route directly, so this stays one hop.

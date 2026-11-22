@@ -2,7 +2,7 @@
 title: "Session 08: Native Tokens Guide"
 sidebar_label: Session Notes
 sidebar_position: 1
-slug: /working-group/q1-2025/sessions/08-open-clinic-1/session-notes
+slug: /working-group/q1-2026/sessions/08-open-clinic-1/session-notes
 ---
 
 # Cardano Native Tokens

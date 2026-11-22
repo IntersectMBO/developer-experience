@@ -1,7 +1,7 @@
 ---
 title: "Session 07: Contributing to Intersect - Recordings"
 sidebar_label: Recordings
-slug: /working-group/q1-2025/sessions/07-contributing-intersect/recordings
+slug: /working-group/q1-2026/sessions/07-contributing-intersect/recordings
 ---
 
 # Session 07: Contributing to Intersect - Recordings
