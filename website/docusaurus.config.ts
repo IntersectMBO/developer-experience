@@ -100,6 +100,12 @@ const config: Config = {
             from: "/docs/tutorials/readme",
             to: "/docs/tutorials/local-cardano-payment-detector/",
           },
+          {
+            // The folder was misspelled sesion-notes until 2026-11; the route comes
+            // from the directory name, so the old URL is kept alive here.
+            from: "/docs/working-group/sessions/q4-2025/repo-walkthrough/sesion-notes/",
+            to: "/docs/working-group/sessions/q4-2025/repo-walkthrough/session-notes/",
+          },
         ],
         createRedirects(existingPath: string) {
           const renamedSessionPaths = [
