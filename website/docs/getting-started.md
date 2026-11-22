@@ -54,6 +54,7 @@ Built by the community, for the community. Join our working groups and help shap
 
 ### Tutorials
 - **[Hands-On tutorials](/docs/tutorials/local-cardano-payment-detector.md)** - Interactive coding tutorials and workshops
+- **[Wallet connect and a first payment](/docs/tutorials/cip-30-wallet-connect-mesh/)** - Connect a CIP-30 browser wallet, send test ADA on preview with Mesh, and confirm it on an explorer
 
 ### Resources
 - **[Repositories](/docs/resources/repositories/)** - Essential GitHub repositories, tools, and APIs
