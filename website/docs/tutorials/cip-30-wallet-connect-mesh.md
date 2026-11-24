@@ -1,14 +1,26 @@
 # Build a Wallet Connection and Send Your First Payment
 
-Almost every dApp on Cardano starts the same way. A browser wallet holds the keys, your app asks it for permission to see addresses and to request signatures, and the transaction is assembled somewhere else. The wallet never hands over a private key, so the only thing your app can do with the user's funds is ask them to approve an action.
+Most Cardano front-end work now starts with a coding agent. The agent is usually good at the code and bad at one thing: knowing which generation of Mesh is current. Trained on a mix of tutorials and blog posts, it reaches for `BrowserWallet` and the `Transaction` class with complete confidence, and neither is what Mesh's docs teach today.
 
-We're going to build a small page that walks that whole path once: it lists the CIP-30 wallets installed in the browser, connects to one, refuses to continue if it is on the wrong network, reads the address and funds, builds an ADA payment with Mesh, asks the wallet to sign it, and submits it. Everything runs on **preview testnet**, so nothing here can cost you real funds.
+So this page is written the way the work actually gets done. First you give the agent Mesh's live documentation, so it stops guessing. Then you make it build a wallet connection and a first payment on **preview testnet**, and you check the handful of facts it gets wrong. Nothing here costs real funds: preview ADA comes from a faucet and is worthless.
+
+The result is a page that lists the CIP-30 wallets in the browser, connects to one, refuses to continue if it is on the wrong network, reads the address and funds, builds an ADA payment, has the wallet sign it, submits it, and waits for confirmation.
+
+## The Four Facts Agents Get Wrong
+
+Everything below depends on these being right, so read them before you read the code an agent gives you:
+
+- **`BrowserWallet` is the previous class.** The current one is `MeshCardanoBrowserWallet`, exported by `@meshsdk/wallet`. The old name still resolves from `@meshsdk/core`, which is exactly what makes the mistake hard to see: the imports compile and the method names are subtly wrong.
+- **Transactions are built with `MeshTxBuilder`.** The `Transaction` class still ships in `@meshsdk/transaction`, but Mesh's docs no longer teach it, and an agent that reaches for it produces code no current page will help you debug.
+- **Raw wallet calls return CBOR.** `getUtxos()` and `getBalance()` hand back hex strings; `getUtxosMesh()` and `getBalanceMesh()` hand back `UTxO[]` and `Asset[]`, which is what the builder wants.
+- **`BlockfrostProvider(key)` has not changed.** It is the one thing an agent gets right while getting the rest wrong, which is how a session can look correct for twenty minutes and then fail on the first wallet call.
 
 ## Prerequisites
 
-You'll need five things in place before the first line of code:
+You'll need six things in place before the first line of code:
 
 - **Node.js 20 or later**, and npm.
+- **A coding agent with file access in your editor**: Claude Code, Cursor, or Copilot in VS Code. The page works without one, but the MCP step below is why the agent stops inventing API names.
 - **A CIP-30 browser wallet**: Eternl, Lace, Nami, Flint or Gero. Install the extension before you start, because the page can only see wallets that already exist in the browser.
 - **A preview testnet account in that wallet.** Create a fresh account and switch the wallet's network to **Preview**, not Mainnet.
 - **Test ADA** from the [Cardano testnet faucet](https://docs.cardano.org/cardano-testnets/tools/faucet). Pick **Preview**, paste one of your wallet's `addr_test1…` addresses, and request funds. It arrives in a minute or two.
@@ -20,55 +32,9 @@ Every address in this tutorial starts with `addr_test1`. If your wallet shows an
 
 :::
 
-## How the Pieces Fit
+## Step 1: Hand Your Agent the Mesh Docs
 
-Two pieces, and it is worth keeping them separate in your head.
-
-- **The wallet** holds keys and signs. It never leaves the user's browser.
-- **Your app** builds the transaction body, and a **provider** (Blockfrost) supplies protocol parameters and answers "has this been confirmed yet".
-
-Mesh gives you a class for each: `MeshCardanoBrowserWallet` for the wallet, `MeshTxBuilder` for the transaction, and `BlockfrostProvider` for chain data.
-
-## Setting Up the Project
-
-### The Scaffold
-
-The fastest route is the Mesh CLI, which sets up Next.js with Mesh already installed:
-
-```bash
-npx meshjs mesh-preview-payment
-cd mesh-preview-payment
-```
-
-Answer the prompts, choose the React/Next.js template, then start the dev server:
-
-```bash
-npm run dev
-```
-
-You'll build the page you just created in the steps below.
-
-### Adding Mesh to an Existing App
-
-If you already have a React or Next.js app, install both packages instead. `@meshsdk/wallet` holds the CIP-30 wallet wrapper, and `@meshsdk/core` holds the transaction builder and the providers:
-
-```bash
-npm install @meshsdk/core @meshsdk/wallet
-```
-
-### The Provider Key
-
-The provider needs a Blockfrost project key. Put it in `.env.local` so it is not committed:
-
-```
-NEXT_PUBLIC_BLOCKFROST_KEY=preview…
-```
-
-`NEXT_PUBLIC_` means the key is visible in the browser. That is acceptable for a preview project key and unacceptable for anything else; the Blockfrost docs are explicit that a project key is not a secret once it is in front-end code.
-
-## Optional: Point Your Assistant at the Mesh Docs
-
-The Mesh API has moved more than once. `MeshCardanoBrowserWallet`, `getUtxosMesh()` and `MeshTxBuilder({ fetcher })` are all newer than what a coding assistant learned from its training data, so an assistant working from memory will cheerfully write `BrowserWallet` and a `Transaction` class that no longer exist. Mesh ships an MCP server for exactly this: your editor connects to it, and the assistant reads the current documentation instead of recalling it.
+Mesh publishes an MCP server that puts its documentation inside your editor. Once the agent can read the docs, it generates code against the version you installed, and it can point at the page that told it so.
 
 Add it to your editor's MCP configuration. Claude Code and Cursor read `mcpServers`:
 
@@ -91,95 +57,126 @@ VS Code uses the same block under a `servers` key, and each entry there also tak
 
 :::warning
 
-Check it before you rely on it. As of November 2026 the published server (`meshjs-mcp@1.1.1`) starts and lists `askDocs`, but the hosted service behind that tool (`mimir-api.meshjs.dev`) does not resolve, so every call answers "Couldn't match documentation". If that happens to you, hand the assistant the documentation file instead: [meshjs.dev/llms-full.txt](https://meshjs.dev/llms-full.txt) is the whole doc set in one file, and every Mesh page has a markdown twin you get by appending `.md` to its URL.
+Test it before you trust it, because the step does not work end to end today. As of November 2026 the published server (`meshjs-mcp@1.1.1`) starts and lists `askDocs`, but the hosted service behind that tool (`mimir-api.meshjs.dev`) does not resolve, so every call answers "Couldn't match documentation". Mesh's own [AI MCP page](https://meshjs.dev/ai/mcp) still documents the setup above, and the package still installs.
+
+If that happens to you, give the agent the documentation as a file instead. [meshjs.dev/llms-full.txt](https://meshjs.dev/llms-full.txt) is the complete doc set in one file, and every Mesh page has a markdown twin you get by appending `.md` to its URL:
+
+```bash
+curl -o docs/mesh-llms.txt https://meshjs.dev/llms-full.txt
+```
+
+Then tell the agent once, at the start of the session: *read `docs/mesh-llms.txt` before writing any Mesh code, and cite the page for every API you use.*
 
 :::
 
-Then ask it something that has a version in the answer, and check the result against [the browser wallet page](https://meshjs.dev/apis/wallets/browserwallet) before you paste it into your app.
+### Prove the Docs Are In Play
 
-## Connecting the Wallet
+Before building anything, ask the agent a question whose answer changed between versions:
+
+> Which package exports `MeshCardanoBrowserWallet`, and what does `enable()` do when the user declines?
+
+An agent reading the docs names `@meshsdk/wallet` and says the promise rejects. An agent working from memory answers `@meshsdk/react` and that `enable()` returns `null`. If you get the second answer, fix the documentation access before you write any code, or every snippet below will be wrong in the same quiet way.
+
+## Step 2: Scaffold the Project
+
+The fastest route is the Mesh CLI, which sets up Next.js with Mesh installed:
+
+```bash
+npx meshjs mesh-preview-payment
+cd mesh-preview-payment
+```
+
+If you already have a React or Next.js app, install the two packages instead. `@meshsdk/wallet` holds the CIP-30 wallet wrapper, and `@meshsdk/core` holds the transaction builder and the providers:
+
+```bash
+npm install @meshsdk/core @meshsdk/wallet
+```
+
+## Step 3: Wire the Provider
+
+Only one of the three actors in this flow touches the network. The provider answers questions about the chain, and it needs a Blockfrost project key in `.env.local`:
+
+```
+NEXT_PUBLIC_BLOCKFROST_KEY=preview…
+```
+
+`NEXT_PUBLIC_` means the key is visible in the browser. That is acceptable for a preview project key and unacceptable for anything else; the Blockfrost docs are explicit that a project key is not a secret once it is in front-end code.
+
+```tsx
+import { BlockfrostProvider } from '@meshsdk/core';
+
+const provider = new BlockfrostProvider(process.env.NEXT_PUBLIC_BLOCKFROST_KEY!);
+```
+
+**Prompt:** "Create the Blockfrost provider from the key in `.env.local`, and tell me which Mesh calls actually go to it."
+
+**Reject it if:** the agent claims the wallet calls need the provider. Discovery, connection and signing are the wallet's own API; only building and confirming reach the chain.
+
+## Step 4: Connect the Wallet
 
 ### The Building Blocks
 
-The browser exposes wallets under `window.cardano`. Mesh wraps that for you, so the first step is one import:
+The browser exposes CIP-30 wallets under `window.cardano`. Mesh wraps them:
 
 ```tsx
 import { MeshCardanoBrowserWallet } from '@meshsdk/wallet';
 ```
 
-Everything in this section comes off that class. There is no provider involved yet, because discovery, connection and signing are the wallet's own API.
-
 ### What Is Installed
-
-Ask the browser which CIP-30 wallets are present:
 
 ```tsx
 const installed = MeshCardanoBrowserWallet.getInstalledWallets();
 // [{ id: 'eternl', name: 'Eternl', icon: 'data:image/png;base64,…', version: '…' }]
 ```
 
-Each entry carries the `id` you pass to `enable()`, a display `name`, a base64 `icon` you can use as an `<img>` source, and the extension's `version`.
+Each entry carries the `id` to pass to `enable()`, a display `name`, a base64 `icon` for an `<img>` source, and the extension's `version`.
 
-One thing surprises people: this returns nothing until the extension is installed **and the page has been reloaded**. Extensions inject themselves at page load, so a page that was already open when you installed the wallet keeps showing an empty list until you refresh it.
+This returns nothing until the extension is installed **and the page has been reloaded**. Extensions inject themselves at page load, so a page that was open when you installed the wallet keeps showing an empty list.
 
 ### Asking for Permission
-
-Pick one of those ids and ask for permission. This is where the wallet popup appears:
 
 ```tsx
 const wallet = await MeshCardanoBrowserWallet.enable('eternl');
 ```
 
-Pass an `id` from `getInstalledWallets()` rather than a hardcoded guess, because the id is the wallet's own registration key and it differs between extensions. The identifier `eternl` only works for a reader who has Eternl installed.
-
-`enable()` rejects if the user declines. Catch it and show a message; do not retry in a loop, because each attempt reopens the wallet popup.
+`enable()` rejects if the user declines. Show that as a message and let them try again; do not retry in a loop, because each attempt reopens the wallet popup.
 
 ### Guarding the Network
 
-Before any transaction work, read the network the wallet is actually on:
-
 ```tsx
-const networkId = await wallet.getNetworkId();
-// 0 = testnet, 1 = mainnet
-```
+const networkId = await wallet.getNetworkId();   // 0 = testnet, 1 = mainnet
 
-Then refuse to continue unless it is testnet:
-
-```tsx
-if ((await wallet.getNetworkId()) !== 0) {
+if (networkId !== 0) {
   throw new Error('Switch the wallet to Preview testnet before continuing.');
 }
 ```
 
-The network is a property of the account inside the wallet, not of your app, so this is the check that catches a reader who followed every step but left the wallet on mainnet. Doing it first means the failure arrives as a sentence instead of as a rejected transaction later.
+The network belongs to the account inside the wallet, not to your app, so this is the check that catches the reader who followed every step and left the wallet on mainnet. Doing it first turns a rejected transaction into a sentence.
 
-## Reading the Address and the Funds
+**Prompt:** "List the installed CIP-30 wallets, let me pick one, connect to it, and refuse to continue unless the wallet's network id is 0."
+
+**Reject it if:** it hardcodes a wallet id instead of using the ids from `getInstalledWallets()`, it checks `networkId === 1` rather than `!== 0`, or it connects inside `useEffect` on mount. The popup has to follow a click.
+
+## Step 5: Address, UTxOs and Amounts
 
 ### The Change Address
 
-A wallet can own many addresses. The one to build against is the change address:
+A wallet can own many addresses. The one to build against is the change address, where the unspent remainder goes:
 
 ```tsx
 const changeAddress = await wallet.getChangeAddressBech32();
-// "addr_test1qz…"
 ```
-
-Change is the money the transaction sends back to you. Whatever your payment does not spend ends up at this address, so the builder needs it to close the balance.
 
 ### UTxOs, Not a Balance
 
-Cardano has no account balance. Funds live in unspent transaction outputs, and a wallet is simply the collection of outputs its addresses can spend:
+Cardano has no account balance. Funds live in unspent transaction outputs, and a wallet is the collection its addresses can spend:
 
 ```tsx
 const utxos = await wallet.getUtxosMesh();
 // [{ input: { txHash, outputIndex }, output: { address, amount: [{ unit: 'lovelace', quantity }] } }]
 ```
 
-Each entry names the output it spends (`txHash` plus `outputIndex`) and the value it carries. That is the list you hand to the transaction builder in the next section.
-
 ### Why Every Amount Is a String
-
-To read the funds, find the lovelace in the assets the wallet reports:
 
 ```tsx
 const balance = await wallet.getBalanceMesh();
@@ -187,78 +184,56 @@ const lovelace = balance.find((a) => a.unit === 'lovelace')?.quantity ?? '0';
 console.log(`${Number(lovelace) / 1_000_000} tADA`);
 ```
 
-Amounts are always integers of the smallest unit. One ADA is `1_000_000` lovelace, and every quantity in the Mesh API is a **string**, not a number, because some tokens have 19 decimal places and JavaScript integers cannot hold them. Convert only for display.
+One ADA is `1_000_000` lovelace, and every quantity in the Mesh API is a **string**, because some tokens have 19 decimal places and JavaScript integers cannot hold them. Convert only for display.
 
-## Building the Payment
+**Prompt:** "Show my change address, my UTxO count and my total in tADA, and use the `*Mesh` wallet methods for the structured values."
 
-### The Transaction Body
+**Reject it if:** it calls `getUtxos()` or `getBalance()` and then parses CBOR by hand, or it turns a quantity into a number before dividing.
 
-A transaction body says which UTxOs go in, which outputs come out, and where the change goes. Mesh selects the UTxOs, calculates the fee, and returns the change to your address:
+## Step 6: Build the Payment
+
+A transaction body says which UTxOs go in, which outputs come out, and where the change goes. Mesh selects the inputs, calculates the fee, and returns the remainder to your address:
 
 ```tsx
-import { BlockfrostProvider, MeshTxBuilder } from '@meshsdk/core';
+import { MeshTxBuilder } from '@meshsdk/core';
 
-const provider = new BlockfrostProvider(process.env.NEXT_PUBLIC_BLOCKFROST_KEY!);
-
-const txBuilder = new MeshTxBuilder({ fetcher: provider });
-
-const unsignedTx = await txBuilder
+const unsignedTx = await new MeshTxBuilder({ fetcher: provider })
   .txOut('addr_test1vq…', [{ unit: 'lovelace', quantity: String(5_000_000) }])
   .changeAddress(await wallet.getChangeAddressBech32())
   .selectUtxosFrom(await wallet.getUtxosMesh())
   .complete();
 ```
 
-`txOut` takes the recipient address and the amount as an asset list, in the same `unit`/`quantity` shape the wallet reported. `selectUtxosFrom` takes the UTxOs from the previous step, and `changeAddress` tells the builder where the remainder goes.
+`txOut` takes the recipient and an asset list in the same `unit`/`quantity` shape the wallet reported. `complete()` is the first call that reads the chain, so it is also the first one that can fail on your key rather than your code: a `Blockfrost error: 403` means the key is wrong, or belongs to another network. The result is an unsigned transaction in CBOR hex, a proposal until the wallet signs it.
 
-### Choosing a Recipient
+**Prompt:** "Build a 5 tADA payment to the address I paste, with the change back to me, using `MeshTxBuilder` and the UTxOs from the wallet."
 
-That `recipient` address is any `addr_test1…` you control or trust. Sending to a second address in your own wallet is the safest first run, because you can watch the exact amount arrive.
+**Reject it if:** it constructs the CBOR itself, uses the `Transaction` class, or hardcodes the UTxO list. `selectUtxosFrom` exists so the builder can pick.
 
-### What complete() Does
-
-`complete()` is the step that talks to the provider for protocol parameters. Nothing before it touches the network, so it is also the first call that can fail on your key rather than on your code. If it throws `Blockfrost error: 403`, the key is wrong or belongs to another network.
-
-The result is an unsigned transaction in CBOR hex. It is a proposal until the wallet signs it.
-
-## Signing and Submitting
-
-### Sign
-
-Signing is the wallet's job:
+## Step 7: Sign, Submit, Confirm
 
 ```tsx
-const signedTx = await wallet.signTx(unsignedTx, false);   // false = not a multi-sig
-```
-
-The second argument to `signTx` is `partialSign`. It matters only when more than one party has to sign; pass `false` for a single-signature payment.
-
-### Submit
-
-Submission can be the wallet's job too:
-
-```tsx
+const signedTx = await wallet.signTx(unsignedTx, false);   // false = single signature
 const txHash = await wallet.submitTx(signedTx);
-console.log(`Submitted: ${txHash}`);
 ```
 
-You can also submit through the provider (`provider.submitTx(signedTx)`) when the transaction is signed by a key your server holds rather than by the browser wallet. For this walkthrough, submitting through the wallet is the shorter path.
+The second argument to `signTx` is `partialSign`, and it matters only when more than one party has to sign. Submit through the provider (`provider.submitTx`) instead when a key your server holds signed the transaction.
 
-## Confirming It Landed
-
-A transaction hash is not a receipt. Poll until the chain says otherwise:
+A hash is not a receipt, so wait for the chain:
 
 ```tsx
-provider.onTxConfirmed(txHash, () => {
-  console.log('Confirmed');
-});
+provider.onTxConfirmed(txHash, () => console.log('Confirmed'));
 ```
 
-Or paste the hash into the search box at [preview.cexplorer.io](https://preview.cexplorer.io/) and read the inputs, outputs and fee on the block explorer. That page is also the fastest way to confirm the recipient address matches what you intended.
+Or paste the hash into the search box at [preview.cexplorer.io](https://preview.cexplorer.io/) and read the inputs, outputs and fee there.
+
+**Prompt:** "Sign the transaction with the wallet, submit it, then keep polling until it confirms and show me the hash."
+
+**Reject it if:** it treats a returned hash as success, or it logs the signed CBOR to the console.
 
 ## The Whole Page
 
-All of the above in one component, including the wallet prompt, the network guard and the error handling:
+Everything above in one component, with the error handling the prompts ask for. Read it as the spec your agent should have arrived at:
 
 ```tsx
 'use client';
@@ -318,8 +293,6 @@ export default function Payment() {
 
 ## Run It
 
-Start the dev server and open the page:
-
 ```bash
 npm run dev
 ```
@@ -330,31 +303,33 @@ Then:
 2. Click the button, pick your preview wallet in the popup, and approve.
 3. Watch the status line move through connecting, building and signing.
 4. Approve the transaction in the wallet.
-5. Paste the transaction hash into [preview.cexplorer.io](https://preview.cexplorer.io/) and check the recipient address and the amount.
+5. Paste the hash into [preview.cexplorer.io](https://preview.cexplorer.io/) and check the recipient and the amount.
 
 Expected: the status line ends at `Confirmed <txHash>`, and the explorer shows a fee taken from your balance and 5 tADA at the recipient.
 
 ## Troubleshooting
 
+**The agent wrote `BrowserWallet`, the `Transaction` class, or `.getUtxos()`.** It is answering from training data. Redo Step 1, then ask again with the specific page linked, and check the package on every import it produces.
+
 **"No wallets found" / the list is empty.** The extension is installed but the page loaded before it. Reload. If it is still empty, the wallet is disabled for this site, or it is not a CIP-30 wallet.
 
-**Wrong network.** `addr1…` instead of `addr_test1…` means the wallet is on mainnet. Switch the network in the wallet, not in your app, then reload.
+**Wrong network.** `addr1…` instead of `addr_test1…` means the wallet is on mainnet. Switch the network in the wallet, then reload.
 
-**`Blockfrost error: 403` or "project not found".** The key is invalid, or it was created for a different network than the addresses you are using. A mainnet key and a preview address will never work together.
+**`Blockfrost error: 403` or "project not found".** The key is invalid, or it was created for a different network than the addresses you are using.
 
-**"Not enough funds" / the fee cannot be covered.** Test ADA has not arrived yet, or you are trying to send more than the wallet holds. Leave at least ~2 tADA for fees and the minimum ADA per output.
+**"Not enough funds" / the fee cannot be covered.** Test ADA has not arrived yet, or you are sending more than the wallet holds. Leave at least ~2 tADA for fees and the minimum ADA per output.
 
 **"UTxOs are not available" right after a transaction.** The wallet has not refreshed. Wait a few seconds and call `getUtxosMesh()` again before rebuilding.
 
-**Missing collateral.** Collateral is required only for transactions that run Plutus scripts, and a plain ADA payment is not one. If you later add a smart contract call, get it with `wallet.getCollateralMesh()` and pass it to the builder; wallets also expose a way to set collateral, and Mesh has a guide for it.
+**Missing collateral.** Collateral is required only for transactions that run Plutus scripts, and a plain ADA payment is not one. If you later add a smart contract call, get it with `wallet.getCollateralMesh()` and pass it to the builder.
 
-**"User rejected the request".** The wallet popup was dismissed. Surface it as a message rather than an error toast, and let the user try again when they choose to.
+**"User rejected the request".** The wallet popup was dismissed. Show it as a message and let the user retry.
 
 ## Summary
 
-You built a page where a browser wallet connects to your app, the app checks which network the wallet is on, reads the address and UTxOs, builds a 5 tADA payment with `MeshTxBuilder`, asks the wallet to sign it, submits it, and waits for confirmation.
+You wired a coding agent to Mesh's documentation, then used it to build a page where a browser wallet connects, the app checks which network the wallet is on, reads the address and UTxOs, builds a 5 tADA payment with `MeshTxBuilder`, asks the wallet to sign, submits, and waits for confirmation.
 
-The pattern underneath is the one every Cardano dApp reuses: the keys stay in the wallet, your app builds the transaction describing the change it wants, and a provider supplies the chain data that building and confirming need. Changing the recipient and the amount is all that separates this from a checkout, a mint or a treasury payment.
+The pattern underneath is the one every Cardano dApp reuses: keys stay in the wallet, your app describes the change it wants, and a provider supplies the chain data. The new part is the division of labour. The agent writes most of the lines, and your job moves to the four facts it cannot know: which class is current, which call returns objects instead of CBOR, and whether the wallet it connected to is on the network you think it is.
 
 ## Where to Go Next
 
