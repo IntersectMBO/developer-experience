@@ -66,6 +66,37 @@ NEXT_PUBLIC_BLOCKFROST_KEY=preview…
 
 `NEXT_PUBLIC_` means the key is visible in the browser. That is acceptable for a preview project key and unacceptable for anything else; the Blockfrost docs are explicit that a project key is not a secret once it is in front-end code.
 
+## Optional: Point Your Assistant at the Mesh Docs
+
+The Mesh API has moved more than once. `MeshCardanoBrowserWallet`, `getUtxosMesh()` and `MeshTxBuilder({ fetcher })` are all newer than what a coding assistant learned from its training data, so an assistant working from memory will cheerfully write `BrowserWallet` and a `Transaction` class that no longer exist. Mesh ships an MCP server for exactly this: your editor connects to it, and the assistant reads the current documentation instead of recalling it.
+
+Add it to your editor's MCP configuration. Claude Code and Cursor read `mcpServers`:
+
+```json
+{
+  "mcpServers": {
+    "mesh-mcp": {
+      "command": "npx",
+      "args": ["-y", "meshjs-mcp"],
+      "env": {
+        "API_KEY": "your-api-key",
+        "MODEL": "your-preferred-model"
+      }
+    }
+  }
+}
+```
+
+VS Code uses the same block under a `servers` key, and each entry there also takes a `"name"`. `API_KEY` is a key from OpenAI, Anthropic or Google, and `MODEL` is a model that key can call, for example `gpt-4o` or `claude-sonnet-4-20250514`. After a restart the assistant gains one tool, `askDocs`, which searches Mesh's documentation and returns matching chunks with their source links.
+
+:::warning
+
+Check it before you rely on it. As of November 2026 the published server (`meshjs-mcp@1.1.1`) starts and lists `askDocs`, but the hosted service behind that tool (`mimir-api.meshjs.dev`) does not resolve, so every call answers "Couldn't match documentation". If that happens to you, hand the assistant the documentation file instead: [meshjs.dev/llms-full.txt](https://meshjs.dev/llms-full.txt) is the whole doc set in one file, and every Mesh page has a markdown twin you get by appending `.md` to its URL.
+
+:::
+
+Then ask it something that has a version in the answer, and check the result against [the browser wallet page](https://meshjs.dev/apis/wallets/browserwallet) before you paste it into your app.
+
 ## Connecting the Wallet
 
 ### The Building Blocks
