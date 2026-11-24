@@ -1,40 +1,37 @@
----
-title: Connect a Wallet and Send Your First Payment
-sidebar_label: Wallet connect and payment
-sidebar_position: 2
----
+# Build a Wallet Connection and Send Your First Payment
 
-Almost every dApp on Cardano starts the same way: a browser wallet holds the keys, your app asks it for permission to see addresses and ask for signatures, and the transaction is built somewhere else. This tutorial walks that whole path once, on **preview testnet**, so nothing here can cost you real funds.
+Almost every dApp on Cardano starts the same way. A browser wallet holds the keys, your app asks it for permission to see addresses and to request signatures, and the transaction is assembled somewhere else. The wallet never hands over a private key, so the only thing your app can do with the user's funds is ask them to approve an action.
 
-You will end up with a small page that:
-
-1. Lists the CIP-30 wallets installed in the browser.
-2. Connects to one and confirms it is on preview, not mainnet.
-3. Builds an ADA payment with Mesh and asks the wallet to sign it.
-4. Submits the signed transaction and waits for confirmation.
+We're going to build a small page that walks that whole path once: it lists the CIP-30 wallets installed in the browser, connects to one, refuses to continue if it is on the wrong network, reads the address and funds, builds an ADA payment with Mesh, asks the wallet to sign it, and submits it. Everything runs on **preview testnet**, so nothing here can cost you real funds.
 
 ## Prerequisites
 
+You'll need five things in place before the first line of code:
+
 - **Node.js 20 or later**, and npm.
-- **A CIP-30 browser wallet**: Eternl, Lace, Nami, Flint or Gero. Install the extension before you start; the app can only see wallets that already exist in the browser.
+- **A CIP-30 browser wallet**: Eternl, Lace, Nami, Flint or Gero. Install the extension before you start, because the page can only see wallets that already exist in the browser.
 - **A preview testnet account in that wallet.** Create a fresh account and switch the wallet's network to **Preview**, not Mainnet.
 - **Test ADA** from the [Cardano testnet faucet](https://docs.cardano.org/cardano-testnets/tools/faucet). Pick **Preview**, paste one of your wallet's `addr_test1…` addresses, and request funds. It arrives in a minute or two.
-- **A Blockfrost preview project key** from [blockfrost.io](https://blockfrost.io/). The free tier is enough. Create the project with network **Preview**; a mainnet key will fail against preview addresses.
+- **A Blockfrost preview project key** from [blockfrost.io](https://blockfrost.io/). The free tier is enough. Create the project with network **Preview**, because a mainnet key will fail against preview addresses.
 
 :::warning
+
 Every address in this tutorial starts with `addr_test1`. If your wallet shows an `addr1…` address, you are on mainnet and the transaction will be rejected at submit. That is the single most common source of confusion here.
+
 :::
 
-## What you are building
+## How the Pieces Fit
 
-Two pieces, and it is worth keeping them separate in your head:
+Two pieces, and it is worth keeping them separate in your head.
 
 - **The wallet** holds keys and signs. It never leaves the user's browser.
 - **Your app** builds the transaction body, and a **provider** (Blockfrost) supplies protocol parameters and answers "has this been confirmed yet".
 
-Mesh gives you a class for each: `MeshCardanoBrowserWallet` for the wallet, `MeshTxBuilder` for the transaction, `BlockfrostProvider` for chain data.
+Mesh gives you a class for each: `MeshCardanoBrowserWallet` for the wallet, `MeshTxBuilder` for the transaction, and `BlockfrostProvider` for chain data.
 
-## Scaffold the project
+## Setting Up the Project
+
+### The Scaffold
 
 The fastest route is the Mesh CLI, which sets up Next.js with Mesh already installed:
 
@@ -49,31 +46,73 @@ Answer the prompts, choose the React/Next.js template, then start the dev server
 npm run dev
 ```
 
-If you already have a React or Next.js app, install the three packages instead:
+You'll build the page you just created in the steps below.
+
+### Adding Mesh to an Existing App
+
+If you already have a React or Next.js app, install both packages instead. `@meshsdk/wallet` holds the CIP-30 wallet wrapper, and `@meshsdk/core` holds the transaction builder and the providers:
 
 ```bash
 npm install @meshsdk/core @meshsdk/wallet
 ```
 
-## Connect a CIP-30 wallet
+### The Provider Key
 
-The browser exposes wallets under `window.cardano`. Mesh wraps that for you:
+The provider needs a Blockfrost project key. Put it in `.env.local` so it is not committed:
+
+```
+NEXT_PUBLIC_BLOCKFROST_KEY=preview…
+```
+
+`NEXT_PUBLIC_` means the key is visible in the browser. That is acceptable for a preview project key and unacceptable for anything else; the Blockfrost docs are explicit that a project key is not a secret once it is in front-end code.
+
+## Connecting the Wallet
+
+### The Building Blocks
+
+The browser exposes wallets under `window.cardano`. Mesh wraps that for you, so the first step is one import:
 
 ```tsx
 import { MeshCardanoBrowserWallet } from '@meshsdk/wallet';
-
-// 1. What is installed in this browser?
-const installed = MeshCardanoBrowserWallet.getInstalledWallets();
-// [{ id: 'eternl', name: 'Eternl', icon: 'data:image/png;base64,…', version: '…' }]
-
-// 2. Ask one of them for permission. This is where the wallet popup appears.
-const wallet = await MeshCardanoBrowserWallet.enable('eternl');
-
-// 3. Which network is it on? 0 = testnet, 1 = mainnet
-const networkId = await wallet.getNetworkId();
 ```
 
-Guard on that network id before you do anything else:
+Everything in this section comes off that class. There is no provider involved yet, because discovery, connection and signing are the wallet's own API.
+
+### What Is Installed
+
+Ask the browser which CIP-30 wallets are present:
+
+```tsx
+const installed = MeshCardanoBrowserWallet.getInstalledWallets();
+// [{ id: 'eternl', name: 'Eternl', icon: 'data:image/png;base64,…', version: '…' }]
+```
+
+Each entry carries the `id` you pass to `enable()`, a display `name`, a base64 `icon` you can use as an `<img>` source, and the extension's `version`.
+
+One thing surprises people: this returns nothing until the extension is installed **and the page has been reloaded**. Extensions inject themselves at page load, so a page that was already open when you installed the wallet keeps showing an empty list until you refresh it.
+
+### Asking for Permission
+
+Pick one of those ids and ask for permission. This is where the wallet popup appears:
+
+```tsx
+const wallet = await MeshCardanoBrowserWallet.enable('eternl');
+```
+
+Pass an `id` from `getInstalledWallets()` rather than a hardcoded guess, because the id is the wallet's own registration key and it differs between extensions. The identifier `eternl` only works for a reader who has Eternl installed.
+
+`enable()` rejects if the user declines. Catch it and show a message; do not retry in a loop, because each attempt reopens the wallet popup.
+
+### Guarding the Network
+
+Before any transaction work, read the network the wallet is actually on:
+
+```tsx
+const networkId = await wallet.getNetworkId();
+// 0 = testnet, 1 = mainnet
+```
+
+Then refuse to continue unless it is testnet:
 
 ```tsx
 if ((await wallet.getNetworkId()) !== 0) {
@@ -81,28 +120,47 @@ if ((await wallet.getNetworkId()) !== 0) {
 }
 ```
 
-Two things that surprise people:
+The network is a property of the account inside the wallet, not of your app, so this is the check that catches a reader who followed every step but left the wallet on mainnet. Doing it first means the failure arrives as a sentence instead of as a rejected transaction later.
 
-- `getInstalledWallets()` returns nothing until the extension is installed **and the page has been reloaded**. Extensions inject themselves at page load.
-- `enable()` rejects if the user declines. Catch it and show a message; do not retry in a loop, because each attempt reopens the wallet popup.
+## Reading the Address and the Funds
 
-## Read the address and the funds
+### The Change Address
+
+A wallet can own many addresses. The one to build against is the change address:
 
 ```tsx
 const changeAddress = await wallet.getChangeAddressBech32();
 // "addr_test1qz…"
+```
 
+Change is the money the transaction sends back to you. Whatever your payment does not spend ends up at this address, so the builder needs it to close the balance.
+
+### UTxOs, Not a Balance
+
+Cardano has no account balance. Funds live in unspent transaction outputs, and a wallet is simply the collection of outputs its addresses can spend:
+
+```tsx
 const utxos = await wallet.getUtxosMesh();
 // [{ input: { txHash, outputIndex }, output: { address, amount: [{ unit: 'lovelace', quantity }] } }]
+```
 
+Each entry names the output it spends (`txHash` plus `outputIndex`) and the value it carries. That is the list you hand to the transaction builder in the next section.
+
+### Why Every Amount Is a String
+
+To read the funds, find the lovelace in the assets the wallet reports:
+
+```tsx
 const balance = await wallet.getBalanceMesh();
 const lovelace = balance.find((a) => a.unit === 'lovelace')?.quantity ?? '0';
 console.log(`${Number(lovelace) / 1_000_000} tADA`);
 ```
 
-Amounts are always integers of the smallest unit. One ADA is `1_000_000` lovelace, and every quantity in the Mesh API is a **string**, not a number, because some tokens have 19 decimal places and JavaScript integers cannot hold them.
+Amounts are always integers of the smallest unit. One ADA is `1_000_000` lovelace, and every quantity in the Mesh API is a **string**, not a number, because some tokens have 19 decimal places and JavaScript integers cannot hold them. Convert only for display.
 
-## Build the payment
+## Building the Payment
+
+### The Transaction Body
 
 A transaction body says which UTxOs go in, which outputs come out, and where the change goes. Mesh selects the UTxOs, calculates the fee, and returns the change to your address:
 
@@ -120,25 +178,42 @@ const unsignedTx = await txBuilder
   .complete();
 ```
 
-That `recipient` address is any `addr_test1…` you control or trust. Sending to a second address in your own wallet is the safest first run: you can see the exact amount arrive.
+`txOut` takes the recipient address and the amount as an asset list, in the same `unit`/`quantity` shape the wallet reported. `selectUtxosFrom` takes the UTxOs from the previous step, and `changeAddress` tells the builder where the remainder goes.
 
-`complete()` is the step that talks to the provider for protocol parameters. If it throws `Blockfrost error: 403`, the key is wrong or belongs to another network.
+### Choosing a Recipient
 
-## Sign and submit
+That `recipient` address is any `addr_test1…` you control or trust. Sending to a second address in your own wallet is the safest first run, because you can watch the exact amount arrive.
 
-Signing is the wallet's job, and submission can be too:
+### What complete() Does
+
+`complete()` is the step that talks to the provider for protocol parameters. Nothing before it touches the network, so it is also the first call that can fail on your key rather than on your code. If it throws `Blockfrost error: 403`, the key is wrong or belongs to another network.
+
+The result is an unsigned transaction in CBOR hex. It is a proposal until the wallet signs it.
+
+## Signing and Submitting
+
+### Sign
+
+Signing is the wallet's job:
 
 ```tsx
 const signedTx = await wallet.signTx(unsignedTx, false);   // false = not a multi-sig
-const txHash = await wallet.submitTx(signedTx);
-console.log(`Submitted: ${txHash}`);
 ```
 
 The second argument to `signTx` is `partialSign`. It matters only when more than one party has to sign; pass `false` for a single-signature payment.
 
+### Submit
+
+Submission can be the wallet's job too:
+
+```tsx
+const txHash = await wallet.submitTx(signedTx);
+console.log(`Submitted: ${txHash}`);
+```
+
 You can also submit through the provider (`provider.submitTx(signedTx)`) when the transaction is signed by a key your server holds rather than by the browser wallet. For this walkthrough, submitting through the wallet is the shorter path.
 
-## Confirm it landed
+## Confirming It Landed
 
 A transaction hash is not a receipt. Poll until the chain says otherwise:
 
@@ -150,7 +225,9 @@ provider.onTxConfirmed(txHash, () => {
 
 Or paste the hash into the search box at [preview.cexplorer.io](https://preview.cexplorer.io/) and read the inputs, outputs and fee on the block explorer. That page is also the fastest way to confirm the recipient address matches what you intended.
 
-## The whole thing, in one component
+## The Whole Page
+
+All of the above in one component, including the wallet prompt, the network guard and the error handling:
 
 ```tsx
 'use client';
@@ -163,47 +240,68 @@ const provider = new BlockfrostProvider(process.env.NEXT_PUBLIC_BLOCKFROST_KEY!)
 
 export default function Payment() {
   const [status, setStatus] = useState<string>('Not connected');
+  const [pending, setPending] = useState(false);
 
   async function pay() {
-    setStatus('Connecting…');
-    const wallet = await MeshCardanoBrowserWallet.enable('eternl');
+    setPending(true);
 
-    if ((await wallet.getNetworkId()) !== 0) {
-      setStatus('Wrong network: switch the wallet to Preview.');
-      return;
+    try {
+      setStatus('Connecting…');
+      const wallet = await MeshCardanoBrowserWallet.enable('eternl');
+
+      if ((await wallet.getNetworkId()) !== 0) {
+        setStatus('Wrong network: switch the wallet to Preview.');
+        return;
+      }
+
+      setStatus('Building…');
+      const unsignedTx = await new MeshTxBuilder({ fetcher: provider })
+        .txOut('addr_test1vq…', [{ unit: 'lovelace', quantity: '5000000' }])
+        .changeAddress(await wallet.getChangeAddressBech32())
+        .selectUtxosFrom(await wallet.getUtxosMesh())
+        .complete();
+
+      setStatus('Waiting for the wallet to sign…');
+      const signedTx = await wallet.signTx(unsignedTx, false);
+      const txHash = await wallet.submitTx(signedTx);
+
+      setStatus(`Submitted ${txHash}, waiting for confirmation…`);
+      provider.onTxConfirmed(txHash, () => setStatus(`Confirmed ${txHash}`));
+    } catch (error) {
+      setStatus(`Failed: ${error instanceof Error ? error.message : String(error)}`);
+    } finally {
+      setPending(false);
     }
-
-    setStatus('Building…');
-    const unsignedTx = await new MeshTxBuilder({ fetcher: provider })
-      .txOut('addr_test1vq…', [{ unit: 'lovelace', quantity: '5000000' }])
-      .changeAddress(await wallet.getChangeAddressBech32())
-      .selectUtxosFrom(await wallet.getUtxosMesh())
-      .complete();
-
-    setStatus('Waiting for the wallet to sign…');
-    const signedTx = await wallet.signTx(unsignedTx, false);
-    const txHash = await wallet.submitTx(signedTx);
-
-    setStatus(`Submitted ${txHash}, waiting for confirmation…`);
-    provider.onTxConfirmed(txHash, () => setStatus(`Confirmed ${txHash}`));
   }
 
   return (
     <div>
-      <button onClick={pay}>Send 5 tADA</button>
+      <button onClick={pay} disabled={pending}>
+        Send 5 tADA
+      </button>
       <p>{status}</p>
     </div>
   );
 }
 ```
 
-Put the key in `.env.local` so it is not committed:
+## Run It
 
-```
-NEXT_PUBLIC_BLOCKFROST_KEY=preview…
+Start the dev server and open the page:
+
+```bash
+npm run dev
 ```
 
-`NEXT_PUBLIC_` means the key is visible in the browser. That is acceptable for a preview project key and unacceptable for anything else; the Blockfrost docs are explicit that a project key is not a secret once it is in front-end code.
+Then:
+
+1. Open [http://localhost:3000](http://localhost:3000).
+2. Click the button, pick your preview wallet in the popup, and approve.
+3. Watch the status line move through connecting, building and signing.
+4. Approve the transaction in the wallet.
+5. Paste the transaction hash into [preview.cexplorer.io](https://preview.cexplorer.io/) and check the recipient address and the amount.
+
+Expected: the status line ends at `Confirmed <txHash>`, and the explorer shows a fee taken from your balance and 5 tADA at the recipient.
 
 ## Troubleshooting
 
@@ -221,7 +319,13 @@ NEXT_PUBLIC_BLOCKFROST_KEY=preview…
 
 **"User rejected the request".** The wallet popup was dismissed. Surface it as a message rather than an error toast, and let the user try again when they choose to.
 
-## Where to go next
+## Summary
+
+You built a page where a browser wallet connects to your app, the app checks which network the wallet is on, reads the address and UTxOs, builds a 5 tADA payment with `MeshTxBuilder`, asks the wallet to sign it, submits it, and waits for confirmation.
+
+The pattern underneath is the one every Cardano dApp reuses: the keys stay in the wallet, your app builds the transaction describing the change it wants, and a provider supplies the chain data that building and confirming need. Changing the recipient and the amount is all that separates this from a checkout, a mint or a treasury payment.
+
+## Where to Go Next
 
 - [Browser Wallet API (Mesh)](https://meshjs.dev/apis/wallets/browserwallet): every CIP-30 method Mesh wraps, including `signData` for proving ownership.
 - [Mesh transaction builder](https://meshjs.dev/apis/txbuilder): minting, multi-asset payments, metadata, TTL and script interactions.
