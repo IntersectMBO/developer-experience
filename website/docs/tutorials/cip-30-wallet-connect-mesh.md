@@ -2,7 +2,7 @@
 
 Most Cardano front-end work now starts with a coding agent. The agent is usually good at the code and bad at one thing: knowing which generation of Mesh is current. Trained on a mix of tutorials and blog posts, it reaches for `BrowserWallet` and the `Transaction` class with complete confidence, and neither is what Mesh's docs teach today.
 
-So this page is written the way the work actually gets done. First you give the agent Mesh's live documentation, so it stops guessing. Then you make it build a wallet connection and a first payment on **preview testnet**, and you check the handful of facts it gets wrong. Nothing here costs real funds: preview ADA comes from a faucet and is worthless.
+So this page is written the way the work actually gets done. First you hand the agent Mesh's documentation as a local file, so it stops guessing. Then you make it build a wallet connection and a first payment on **preview testnet**, and you check the handful of facts it gets wrong. Nothing here costs real funds: preview ADA comes from a faucet and is worthless.
 
 The result is a page that lists the CIP-30 wallets in the browser, connects to one, refuses to continue if it is on the wrong network, reads the address and funds, builds an ADA payment, has the wallet sign it, submits it, and waits for confirmation.
 
@@ -60,33 +60,6 @@ Before building anything, ask the agent a question whose answer changed between 
 > Which package exports `MeshCardanoBrowserWallet`, and what does `enable()` do when the user declines?
 
 An agent reading the docs names `@meshsdk/wallet` and says the promise rejects. An agent working from memory answers `@meshsdk/react` and that `enable()` returns `null`. If you get the second answer, fix the documentation access before you write any code, or every snippet below will be wrong in the same quiet way.
-
-### The MCP Server, For When It Works
-
-If you would rather have the docs in your editor as a tool than as a file, Mesh ships an MCP server for that. Claude Code and Cursor read `mcpServers`:
-
-```json
-{
-  "mcpServers": {
-    "mesh-mcp": {
-      "command": "npx",
-      "args": ["-y", "meshjs-mcp"],
-      "env": {
-        "API_KEY": "your-api-key",
-        "MODEL": "your-preferred-model"
-      }
-    }
-  }
-}
-```
-
-VS Code uses the same block under a `servers` key, and each entry there also takes a `"name"`. `API_KEY` is a key from OpenAI, Anthropic or Google, and `MODEL` is a model that key can call, for example `gpt-4o` or `claude-sonnet-4-20250514`. After a restart the assistant gains one tool, `askDocs`, which searches Mesh's documentation and returns matching chunks with their source links.
-
-:::warning
-
-As of November 2026 this does not answer. The published server (`meshjs-mcp@1.1.1`) starts and lists `askDocs`, but the hosted service behind that tool (`mimir-api.meshjs.dev`) does not resolve, so every call returns "Couldn't match documentation". Mesh's own [AI MCP page](https://meshjs.dev/ai/mcp) still documents the setup, and the package still installs, so keep the config for when the service is back. Until then, the file above is the method that works.
-
-:::
 
 ## Step 2: Scaffold the Project
 
